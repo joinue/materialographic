@@ -8,7 +8,7 @@ import Link from 'next/link'
 export default function ChecklistPage() {
   const checklistRef = useRef<HTMLDivElement>(null)
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     if (!checklistRef.current) return
 
     const pdf = new jsPDF({
@@ -17,17 +17,49 @@ export default function ChecklistPage() {
       format: 'a4',
     })
 
-    // Set up fonts and styling
+    // Load logo once
+    let logoDataUrl: string | null = null
+    try {
+      const logoImg = await fetch('/logo.png').then(res => res.blob()).then(blob => {
+        return new Promise<string>((resolve) => {
+          const reader = new FileReader()
+          reader.onloadend = () => resolve(reader.result as string)
+          reader.readAsDataURL(blob)
+        })
+      })
+      logoDataUrl = logoImg
+    } catch (e) {
+      // If logo fails to load, continue without it
+    }
+
+    // Helper function to add small logo to bottom right of page
+    const addFooterLogo = () => {
+      if (logoDataUrl) {
+        pdf.addImage(logoDataUrl, 'PNG', 190 - 8, 290 - 8, 8, 8)
+      }
+    }
+
+    // First page - title at top, logo + URL below, then date
     pdf.setFontSize(20)
-    pdf.setTextColor(37, 99, 235) // primary-600
+    pdf.setTextColor(37, 99, 235)
+    pdf.setFont('helvetica', 'bold')
     pdf.text('Metallographic Sample Preparation Checklist', 20, 20)
 
+    // Logo badge and URL below title (smaller) - only on first page
+    if (logoDataUrl) {
+      pdf.addImage(logoDataUrl, 'PNG', 20, 25, 8, 8)
+    }
+    pdf.setFontSize(11)
+    pdf.setTextColor(0, 0, 0)
+    pdf.setFont('helvetica', 'normal')
+    pdf.text('Metallography.org', 30, 30)
+
+    // Generated date with a little spacing
     pdf.setFontSize(10)
     pdf.setTextColor(100, 100, 100)
-    pdf.text('Metallography.org - Free Educational Resources', 20, 30)
-    pdf.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 35)
+    pdf.text(`Generated: ${new Date().toLocaleDateString()}`, 20, 38)
 
-    let yPosition = 45
+    let yPosition = 50
     const lineHeight = 7
     const leftMargin = 20
     const pageHeight = 280
@@ -47,23 +79,16 @@ export default function ChecklistPage() {
     // Section function
     const addSection = (title: string, items: string[]) => {
       // Check if we have enough space for header + at least one item
-      const headerSpace = lineHeight * 2
-      const firstItemSpace = lineHeight * 2.5
-      const totalNeeded = headerSpace + firstItemSpace
-      
-      if (yPosition + totalNeeded > pageHeight - footerHeight) {
-        pdf.addPage()
-        yPosition = 20
-      }
+      checkPageBreak(lineHeight * 4)
       
       pdf.setFontSize(14)
       pdf.setTextColor(0, 0, 0)
-      pdf.setFont(undefined, 'bold')
+      pdf.setFont('helvetica', 'bold')
       pdf.text(title, leftMargin, yPosition)
       yPosition += lineHeight * 1.5
 
       pdf.setFontSize(10)
-      pdf.setFont(undefined, 'normal')
+      pdf.setFont('helvetica', 'normal')
       pdf.setTextColor(50, 50, 50)
 
       items.forEach((item, index) => {
@@ -76,7 +101,7 @@ export default function ChecklistPage() {
         pdf.text(lines, leftMargin + 5, yPosition)
         yPosition += lineHeight * (lines.length > 1 ? lines.length : 1) + 1
       })
-      yPosition += lineHeight
+      yPosition += lineHeight * 0.5
     }
 
     // Pre-Preparation
@@ -184,40 +209,27 @@ export default function ChecklistPage() {
     // Notes section
     checkPageBreak(lineHeight * 6)
     pdf.setFontSize(12)
-    pdf.setFont(undefined, 'bold')
+    pdf.setFont('helvetica', 'bold')
     pdf.text('Notes:', leftMargin, yPosition)
-    yPosition += lineHeight * 2
+    yPosition += lineHeight * 1.5
 
     pdf.setFontSize(10)
-    pdf.setFont(undefined, 'normal')
+    pdf.setFont('helvetica', 'normal')
     pdf.setDrawColor(200, 200, 200)
     for (let i = 0; i < 8; i++) {
-      if (yPosition + lineHeight * 1.5 > pageHeight - footerHeight) {
-        pdf.addPage()
-        yPosition = 20
-      }
+      checkPageBreak(lineHeight * 2)
       pdf.line(leftMargin, yPosition, rightMargin, yPosition)
       yPosition += lineHeight * 1.5
     }
 
-    // Footer
+    // Footer with logo
     const pageCount = pdf.getNumberOfPages()
     for (let i = 1; i <= pageCount; i++) {
       pdf.setPage(i)
+      addFooterLogo()
       pdf.setFontSize(8)
-      pdf.setTextColor(150, 150, 150)
-      pdf.text(
-        `Page ${i} of ${pageCount} | metallography.org`,
-        leftMargin,
-        pageHeight - 10,
-        { align: 'left' }
-      )
-      pdf.text(
-        'Free Educational Resource',
-        rightMargin,
-        pageHeight - 10,
-        { align: 'right' }
-      )
+      pdf.setTextColor(100, 100, 100)
+      pdf.text(`Page ${i} of ${pageCount} | metallography.org`, 105, 290, { align: 'center' })
     }
 
     pdf.save('metallography-sample-preparation-checklist.pdf')
@@ -233,9 +245,9 @@ export default function ChecklistPage() {
           >
             ← Back to Resources
           </Link>
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center justify-between mt-8">
             <div>
-              <h1 className="text-4xl font-bold mb-2">Sample Preparation Checklist</h1>
+              <h1 className="text-4xl font-bold mb-2 text-gray-900">Sample Preparation Checklist</h1>
               <p className="text-gray-600">
                 A comprehensive checklist to ensure you follow all steps in the preparation process
               </p>

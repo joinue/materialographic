@@ -109,17 +109,37 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="-mt-24">
-      {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center">
-        <div className="container-custom relative z-10 pt-32 pb-20 mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <AnimateOnScroll animation="fadeInUp" duration={800} className="max-w-2xl">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-                Free Metallographic Sample Preparation Resources
+      {/* Hero Section with Background */}
+      <section className="relative min-h-[100vh] flex items-center pt-24 pb-32">
+        {/* Background Image with Overlay - extends to cover header area */}
+        <div className="absolute -top-24 left-0 right-0 h-[calc(100vh+6rem)] z-0">
+          <div className="relative w-full h-full">
+            <Image
+              src="/images/microstructures/Ferrite-Pearlite steel.JPG"
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+              quality={95}
+              sizes="100vw"
+              style={{ objectPosition: 'center 30%' }}
+            />
+            {/* Shadow Overlay for Text Visibility */}
+            <div className="absolute inset-0 bg-black/40"></div>
+            {/* Gradient fade at bottom for smooth transition */}
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-white/20 to-white"></div>
+          </div>
+        </div>
+        
+        <div className="container-custom relative z-10 w-full flex items-center min-h-[calc(100vh-6rem)] py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+            <AnimateOnScroll animation="fadeInUp" duration={800}>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+                Free Metallography Resources
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-100 mb-12 leading-relaxed drop-shadow-md">
                 Expert guides, best practices, and educational content to help you master 
-                metallographic sample preparation techniques.
+                metallographic sample preparation and analysis techniques.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <CTA href="/guides" variant="primary" className="no-underline">
@@ -130,15 +150,41 @@ export default function Home() {
                 </CTA>
               </div>
             </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInRight" duration={800} delay={200} className="hidden lg:block">
-              <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src="/images/microstructures/431 Stainless steel, Kallings no. 2, 400X.JPG"
-                  alt="Stainless steel microstructure showing grain structure at 400X magnification"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+            <AnimateOnScroll animation="fadeInUp" duration={800} className="hidden lg:block">
+              <div className="relative w-full">
+                {/* Browser Window Frame */}
+                <div className="bg-gray-100 rounded-t-lg border border-gray-300 shadow-2xl overflow-hidden">
+                  {/* Browser Title Bar */}
+                  <div className="bg-white border-b border-gray-200 px-4 py-2.5 flex items-center gap-2">
+                    {/* Traffic Light Dots (macOS style) */}
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    {/* Address Bar */}
+                    <div className="flex-1 mx-4 bg-gray-50 rounded-md px-4 py-1.5 border border-gray-200 flex items-center gap-2">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span className="text-xs text-gray-600 font-medium flex-1">metallography.org/guides</span>
+                      <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Browser Content */}
+                  <div className="relative bg-white">
+                    <Image
+                      src="/images/webpage-snaps/guides-page.png"
+                      alt="Preview of guides page showing available metallography guides"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto"
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
             </AnimateOnScroll>
           </div>
@@ -203,8 +249,8 @@ export default function Home() {
               <div className="card">
                 <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/consumables/mounting-cover.webp"
-                    alt="Sample mounting equipment and materials for metallography"
+                    src="/images/expert-metallography.jpg"
+                    alt="Metallography expert working with sample preparation equipment"
                     fill
                     className="object-cover"
                   />

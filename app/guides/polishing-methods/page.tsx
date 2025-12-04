@@ -217,6 +217,17 @@ export default function PolishingMethodsGuide() {
                 types provide varying levels of hardness, nap, and cutting action. Selecting the 
                 appropriate pad for each polishing stage is essential.
               </p>
+              <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                <p className="text-sm text-gray-700">
+                  <strong>Historical Note:</strong> The importance of polishing cloth selection was recognized early in 
+                  metallography's development. In the 1920s-1930s, "kitten-ear" broadcloth was a popular polishing cloth 
+                  that became unavailable due to fashion changes. Metallographers searched for substitutes, eventually 
+                  working with manufacturers to produce specialized cloths for metallographic use. This early recognition 
+                  of cloth importance led to the wide variety of specialized polishing pads available today, with 
+                  "kitten-ear" style cloths still used for final polishing of soft metals where scratch removal is 
+                  particularly difficult.
+                </p>
+              </div>
               <div className="mt-3 mb-1 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
                   href="https://shop.metallographic.com/collections/polishing-pads"

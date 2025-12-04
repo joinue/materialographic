@@ -40,13 +40,28 @@ export default function GritSizeChartPage() {
     { fepa: 'P2500', ansi: '3000', jis: '3000', micron: '8.4', mesh: '2500', category: 'Ultra Fine' },
   ]
 
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     // Create PDF in landscape orientation
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
       format: 'a4',
     })
+
+    // Load white logo for blue background
+    let logoDataUrl: string | null = null
+    try {
+      const logoImg = await fetch('/logo-white.png').then(res => res.blob()).then(blob => {
+        return new Promise<string>((resolve) => {
+          const reader = new FileReader()
+          reader.onloadend = () => resolve(reader.result as string)
+          reader.readAsDataURL(blob)
+        })
+      })
+      logoDataUrl = logoImg
+    } catch (e) {
+      // If logo fails to load, continue without it
+    }
 
     // Constants for layout
     const pageWidth = 297 // A4 landscape width
@@ -76,15 +91,21 @@ export default function GritSizeChartPage() {
       pdf.setDrawColor(37, 99, 235)
       pdf.rect(margin, yPos - 8, pageWidth - margin * 2, 8, 'F')
       
+      // Add logo if available
+      if (logoDataUrl) {
+        pdf.addImage(logoDataUrl, 'PNG', margin + 2, yPos - 7, 6, 6)
+      }
+      
       pdf.setFontSize(16)
       pdf.setFont(undefined, 'bold')
       pdf.setTextColor(255, 255, 255)
       pdf.text('Grit Size Conversion Chart', pageWidth / 2, yPos - 2, { align: 'center' })
       
-      pdf.setFontSize(8)
-      pdf.setFont(undefined, 'normal')
-      pdf.setTextColor(200, 200, 200)
-      pdf.text('Metallography.org', margin + 5, yPos - 2)
+      pdf.setFontSize(12)
+      pdf.setFont(undefined, 'bold')
+      pdf.setTextColor(255, 255, 255)
+      const logoOffset = logoDataUrl ? 10 : 0
+      pdf.text('Metallography.org', margin + 5 + logoOffset, yPos - 2)
       pdf.text(`Generated: ${new Date().toLocaleDateString()}`, pageWidth - margin - 5, yPos - 2, { align: 'right' })
     }
 

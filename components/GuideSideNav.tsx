@@ -16,6 +16,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
   const [activeSection, setActiveSection] = useState<string>('')
   const [progress, setProgress] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [navBottom, setNavBottom] = useState<number | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,30 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       // Calculate scroll progress
       const scrollProgress = (scrollTop / (documentHeight - windowHeight)) * 100
       setProgress(Math.min(100, Math.max(0, scrollProgress)))
+
+      // Find footer element to prevent overlap
+      const footer = document.querySelector('footer')
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect()
+        const footerTop = footerRect.top
+        
+        // Calculate when nav should stop (when footer starts to appear in viewport)
+        // Nav should stop when footer top is less than viewport bottom
+        const viewportBottom = windowHeight
+        const navShouldStop = footerTop < viewportBottom
+        
+        if (navShouldStop) {
+          // Calculate bottom offset to prevent overlap
+          // Add padding to ensure nav doesn't touch footer
+          const overlap = viewportBottom - footerTop
+          const bottomOffset = Math.max(0, overlap + 24) // 24px padding
+          setNavBottom(bottomOffset)
+        } else {
+          setNavBottom(null)
+        }
+      } else {
+        setNavBottom(null)
+      }
 
       // Find active section
       const sectionElements = sections
@@ -101,7 +126,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
           shadow-lg border-r-2 border-primary-700
           transition-all duration-300 ease-in-out
           items-center justify-center
-          ${isOpen ? 'left-72' : 'left-0'}
+          ${isOpen ? 'left-80' : 'left-0'}
         `}
         aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
         aria-expanded={isOpen}
@@ -125,15 +150,27 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       {/* Navigation */}
       <nav
         className={`
-          hidden xl:block fixed left-4 top-24 bottom-0 w-72 z-40 pointer-events-none
+          hidden xl:block fixed left-4 top-24 w-80 z-40 pointer-events-none
           ${isOpen ? 'xl:translate-x-0' : 'xl:-translate-x-full'}
           3xl:translate-x-0
           transition-transform duration-300 ease-in-out
         `}
+        style={{
+          bottom: navBottom !== null ? `${navBottom}px` : '0',
+        }}
         aria-label="Table of contents"
       >
-        <div className="sticky top-24 py-8 pr-6 pointer-events-auto">
-          <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg border border-gray-200/50 p-5 backdrop-blur-sm max-h-[calc(100vh-8rem)] overflow-y-auto">
+        <div className="h-full flex items-center pointer-events-auto">
+          <div className="w-full py-8 pr-6">
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg border border-gray-200/50 p-5 backdrop-blur-sm overflow-y-auto custom-scrollbar mx-auto"
+              style={{
+                maxHeight: navBottom !== null 
+                  ? `calc(100vh - ${96 + (navBottom || 0)}px)` 
+                  : 'calc(100vh - 8rem)',
+                height: 'fit-content',
+                maxWidth: '100%',
+              }}
+            >
             {/* Header */}
             <div className="mb-6 pb-4 border-b border-gray-200/60">
               <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
@@ -211,6 +248,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
                 })}
               </ol>
             </nav>
+            </div>
           </div>
         </div>
       </nav>

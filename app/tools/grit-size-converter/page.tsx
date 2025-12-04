@@ -7,35 +7,69 @@ export default function GritSizeConverter() {
   const [inputType, setInputType] = useState('fepa')
   const [results, setResults] = useState<Record<string, string | null>>({})
 
-  const conversions: Record<string, Record<string, number>> = {
-    '120': { fepa: 120, ansi: 120, jis: 120, micron: 125 },
-    '180': { fepa: 180, ansi: 180, jis: 180, micron: 75 },
-    '240': { fepa: 240, ansi: 240, jis: 240, micron: 58 },
-    '320': { fepa: 320, ansi: 320, jis: 320, micron: 46 },
-    '400': { fepa: 400, ansi: 400, jis: 400, micron: 35 },
-    '500': { fepa: 500, ansi: 500, jis: 500, micron: 30 },
-    '600': { fepa: 600, ansi: 600, jis: 600, micron: 25 },
-    '800': { fepa: 800, ansi: 800, jis: 800, micron: 21 },
-    '1000': { fepa: 1000, ansi: 1000, jis: 1000, micron: 18 },
-    '1200': { fepa: 1200, ansi: 1200, jis: 1200, micron: 15 },
-  }
+  const conversions = [
+    { fepa: 'P12', ansi: '16', jis: '16', micron: '1815' },
+    { fepa: 'P16', ansi: '20', jis: '20', micron: '1324' },
+    { fepa: 'P20', ansi: '24', jis: '24', micron: '1000' },
+    { fepa: 'P24', ansi: '30', jis: '30', micron: '764' },
+    { fepa: 'P30', ansi: '36', jis: '36', micron: '642' },
+    { fepa: 'P36', ansi: '40', jis: '40', micron: '538' },
+    { fepa: 'P40', ansi: '50', jis: '50', micron: '425' },
+    { fepa: 'P50', ansi: '60', jis: '60', micron: '336' },
+    { fepa: 'P60', ansi: '80', jis: '80', micron: '269' },
+    { fepa: 'P80', ansi: '100', jis: '100', micron: '201' },
+    { fepa: 'P100', ansi: '120', jis: '120', micron: '162' },
+    { fepa: 'P120', ansi: '150', jis: '150', micron: '125' },
+    { fepa: 'P150', ansi: '180', jis: '180', micron: '100' },
+    { fepa: 'P180', ansi: '220', jis: '220', micron: '82' },
+    { fepa: 'P220', ansi: '240', jis: '240', micron: '68' },
+    { fepa: 'P240', ansi: '280', jis: '280', micron: '58.5' },
+    { fepa: 'P280', ansi: '320', jis: '320', micron: '52.2' },
+    { fepa: 'P320', ansi: '360', jis: '360', micron: '46.2' },
+    { fepa: 'P360', ansi: '400', jis: '400', micron: '40.5' },
+    { fepa: 'P400', ansi: '500', jis: '500', micron: '35.0' },
+    { fepa: 'P500', ansi: '600', jis: '600', micron: '30.2' },
+    { fepa: 'P600', ansi: '800', jis: '800', micron: '25.8' },
+    { fepa: 'P800', ansi: '1000', jis: '1000', micron: '21.8' },
+    { fepa: 'P1000', ansi: '1200', jis: '1200', micron: '18.3' },
+    { fepa: 'P1200', ansi: '1500', jis: '1500', micron: '15.3' },
+    { fepa: 'P1500', ansi: '2000', jis: '2000', micron: '12.6' },
+    { fepa: 'P2000', ansi: '2500', jis: '2500', micron: '10.3' },
+    { fepa: 'P2500', ansi: '3000', jis: '3000', micron: '8.4' },
+  ]
 
   const handleConvert = () => {
-    const value = inputValue.trim()
+    const value = inputValue.trim().toUpperCase()
     if (!value) return
 
-    // Find matching grit
-    const match = Object.keys(conversions).find(key => 
-      conversions[key][inputType] === parseInt(value)
-    )
+    let match: typeof conversions[0] | undefined
+
+    if (inputType === 'fepa') {
+      // Handle FEPA with or without P prefix
+      const fepaValue = value.startsWith('P') ? value : `P${value}`
+      match = conversions.find(c => c.fepa === fepaValue)
+    } else if (inputType === 'ansi') {
+      match = conversions.find(c => c.ansi === value)
+    } else if (inputType === 'jis') {
+      match = conversions.find(c => c.jis === value)
+    } else if (inputType === 'micron') {
+      // Find closest match for micron (allowing some tolerance)
+      const micronValue = parseFloat(value)
+      if (!isNaN(micronValue)) {
+        match = conversions.find(c => {
+          const cMicron = parseFloat(c.micron)
+          // Allow 5% tolerance for matching
+          return Math.abs(cMicron - micronValue) / cMicron < 0.05
+        })
+      }
+    }
 
     if (match) {
-      const conversion = conversions[match]
       setResults({
-        fepa: conversion.fepa.toString(),
-        ansi: conversion.ansi.toString(),
-        jis: conversion.jis.toString(),
-        micron: `${conversion.micron} μm`,
+        fepa: match.fepa,
+        ansi: match.ansi,
+        jis: match.jis,
+        micron: `${match.micron} μm`,
       })
     } else {
       setResults({
@@ -83,7 +117,7 @@ export default function GritSizeConverter() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder={inputType === 'micron' ? 'e.g., 25' : 'e.g., 400'}
+                placeholder={inputType === 'micron' ? 'e.g., 125' : inputType === 'fepa' ? 'e.g., P120 or 120' : 'e.g., 150'}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
             </div>

@@ -105,18 +105,19 @@ export default function StainlessSteelGuide() {
                     className="w-full h-auto"
                   />
                 </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Precision abrasive cut-off blades designed for stainless steel sectioning. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-VHS abrasive cut-off blades designed for hard and case-hardened stainless steels. For general stainless steel grades, MAX-D series blades are also suitable. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
               </div>
               <ul>
+                <li>Use MAX-VHS series blades for hard and case-hardened stainless steels, or MAX-D series for general stainless steel grades</li>
                 <li>Use a thin abrasive cut-off wheel (0.5-1.0 mm thickness)</li>
                 <li>Apply steady, moderate pressure</li>
                 <li>Use adequate coolant to prevent overheating</li>
                 <li>Allow the wheel to do the cutting - avoid forcing</li>
               </ul>
               <ProductLink 
-                productName="Abrasive Blades"
+                productName="MAX-VHS and MAX-D Abrasive Blades"
                 href="https://shop.metallographic.com/collections/abrasive-blades"
-                description="High-quality abrasive blades designed for stainless steel sectioning"
+                description="MAX-VHS blades for hard/case-hardened stainless steel, MAX-D blades for general stainless steel grades"
               />
             </section>
 

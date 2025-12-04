@@ -193,7 +193,7 @@ export default function MetallographicMountingGuide() {
               </div>
               <h3>Common Compression Mounting Materials</h3>
               <ul>
-                <li><strong>Phenolic:</strong> Hard, durable, excellent edge retention. Best for metals and high-throughput applications. Requires 3000-4000 psi and 150-180°C.</li>
+                <li><strong>Phenolic:</strong> Hard, durable, excellent edge retention. Best for metals and high-throughput applications. Requires 3000-4000 psi and 150-180°C. Phenolic resins (originally Bakelite) were first introduced for metallographic mounting in 1928, revolutionizing the field by providing consistent, durable mounts.</li>
                 <li><strong>Epoxy:</strong> Strong adhesion, minimal shrinkage. Good for edge retention. Requires 2000-3000 psi and 150-180°C.</li>
                 <li><strong>Diallyl phthalate (DAP):</strong> Very hard, excellent for edge retention. Suitable for automated polishing systems.</li>
                 <li><strong>Acrylic:</strong> Fast curing, transparent. Good for quick turnaround but less durable than phenolic or epoxy.</li>
