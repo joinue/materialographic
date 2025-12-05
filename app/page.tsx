@@ -44,6 +44,10 @@ export default function Home() {
     url: 'https://metallography.org',
     description: 'Free educational resources, guides, and best practices for metallographic sample preparation',
     logo: 'https://metallography.org/logo.png',
+    founder: {
+      '@type': 'Organization',
+      name: 'Metallography.org',
+    },
     sameAs: [
       'https://materialsprep.com',
       'https://shop.metallographic.com',
@@ -102,11 +106,28 @@ export default function Home() {
     },
   }
 
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://metallography.org',
+      },
+    ],
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       <div className="-mt-24">
       {/* Hero Section with Background */}
@@ -116,7 +137,7 @@ export default function Home() {
           <div className="relative w-full h-full">
             <Image
               src="/images/microstructures/Ferrite-Pearlite steel.JPG"
-              alt=""
+              alt="Ferrite-Pearlite steel microstructure background showing metallographic sample preparation results"
               fill
               className="object-cover object-center"
               priority
@@ -145,8 +166,8 @@ export default function Home() {
                 <CTA href="/guides" variant="primary" className="no-underline">
                   Browse Guides
                 </CTA>
-                <CTA href="https://materialsprep.com" variant="secondary" className="no-underline">
-                  Try Procedure Tool
+                <CTA href="/guides" variant="secondary" className="no-underline">
+                  Browse Guides
                 </CTA>
               </div>
             </AnimateOnScroll>
@@ -177,7 +198,7 @@ export default function Home() {
                   <div className="relative bg-white">
                     <Image
                       src="/images/webpage-snaps/guides-page.png"
-                      alt="Preview of guides page showing available metallography guides"
+                      alt="Preview of metallography guides page showing comprehensive sample preparation resources and tutorials"
                       width={800}
                       height={600}
                       className="w-full h-auto"
@@ -202,7 +223,7 @@ export default function Home() {
           </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimateOnScroll animation="fadeInUp" delay={100} duration={600}>
-              <div className="card">
+              <div className="card h-full flex flex-col">
                 <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                   <Image
                     src="/images/consumables/grinding & lapping-cover.webp"
@@ -212,7 +233,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">Comprehensive Guides</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
                   Step-by-step tutorials covering grinding, polishing, etching, and material-specific preparation techniques. 
                   Learn proven methods from industry experts with years of experience.
                 </p>
@@ -224,29 +245,29 @@ export default function Home() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fadeInUp" delay={200} duration={600}>
-              <div className="card">
+              <div className="card h-full flex flex-col">
                 <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/consumables/final polishing & analysis-cover.webp"
-                    alt="Final polishing and analysis tools for metallographic samples"
+                    src="/images/webpage-snaps/grit-size-tool.png"
+                    alt="Grit size converter tool for metallographic sample preparation showing grit size conversion interface"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">Practical Tools</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  Save and manage your preparation procedures with our free tool. Get personalized recommendations, 
-                  track your methods, and optimize your workflow for better results.
+                <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
+                  Free calculators and reference tools to help with your metallographic work. Convert grit sizes, 
+                  calculate polishing times, select etchants, and more.
                 </p>
-                <Link href="https://materialsprep.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1">
-                  Try Procedure Tool
+                <Link href="/tools" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1">
+                  Browse Tools
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fadeInUp" delay={300} duration={600}>
-              <div className="card">
+              <div className="card h-full flex flex-col">
                 <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
                   <Image
                     src="/images/expert-metallography.jpg"
@@ -256,7 +277,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">Expert Resources</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
                   Downloadable checklists, reference materials, troubleshooting guides, and best practice documents 
                   to support your metallography work and ensure quality outcomes.
                 </p>
@@ -304,7 +325,7 @@ export default function Home() {
                 <div className="relative w-full h-48">
                   <Image
                     src="/images/microstructures/6061-Aluminum.jpg"
-                    alt="6061 Aluminum microstructure"
+                    alt="6061 Aluminum alloy microstructure showing grain structure from metallographic sample preparation"
                     fill
                     className="object-cover"
                   />
@@ -319,7 +340,7 @@ export default function Home() {
             </AnimateOnScroll>
             
             <AnimateOnScroll animation="scaleIn" delay={150} duration={500}>
-              <Link href="/guides/troubleshooting-common-issues" className="bg-white border-2 border-gray-300 rounded-lg overflow-hidden transition-all duration-200 hover:border-primary-400 hover:shadow-md group block">
+              <Link href="/resources/troubleshooting-guide" className="bg-white border-2 border-gray-300 rounded-lg overflow-hidden transition-all duration-200 hover:border-primary-400 hover:shadow-md group block">
                 <div className="relative w-full h-48">
                   <Image
                     src="/images/microstructures/Inclusion-oxide-2.jpg"
@@ -361,7 +382,7 @@ export default function Home() {
                 <div className="relative w-full h-48">
                   <Image
                     src="/images/consumables/rough polishing-cover.png"
-                    alt="Polishing materials"
+                    alt="Metallographic polishing materials including diamond paste and polishing cloths for sample preparation"
                     fill
                     className="object-cover"
                   />
@@ -380,7 +401,7 @@ export default function Home() {
                 <div className="relative w-full h-48">
                   <Image
                     src="/images/consumables/etching.webp"
-                    alt="Various Etchants"
+                    alt="Various metallographic etchants and chemical reagents for microstructural analysis"
                     fill
                     className="object-cover"
                   />
@@ -406,39 +427,50 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container-custom">
-          <AnimateOnScroll animation="fadeInUp" duration={700} className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">Ready to Get Started?</h2>
-            <p className="text-xl mb-4 text-gray-600 leading-relaxed">
-              Save your procedures, get personalized recommendations, and optimize your metallographic sample preparation workflow.
-            </p>
-            <p className="text-base mb-10 text-gray-500">
-              Free tool with no registration required
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="https://materialsprep.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-tertiary"
-              >
-                Try Procedure Tool Free
-              </Link>
-              <Link 
-                href="https://shop.metallographic.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
-                Shop Consumables
-              </Link>
-              <Link 
-                href="https://metallographic.com/equipment" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Browse Equipment
-              </Link>
+          <AnimateOnScroll animation="fadeInUp" duration={700} className="max-w-4xl mx-auto">
+            <div className="card relative overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src="/images/microstructures/Ferrite-Pearlite steel.JPG"
+                  alt="Metallographic sample background"
+                  fill
+                  className="object-cover opacity-10"
+                />
+                {/* Gradient overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-white"></div>
+              </div>
+              
+              {/* Content */}
+              <div className="relative z-10 text-center">
+                <h2 className="text-4xl font-bold mb-4 text-gray-900">Ready to Get Started?</h2>
+                <p className="text-xl mb-4 text-gray-600 leading-relaxed">
+                  Explore comprehensive guides, step-by-step tutorials, and expert resources to master metallographic sample preparation.
+                </p>
+                <p className="text-base mb-10 text-gray-500">
+                  Free resources with no registration required
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link 
+                    href="/guides" 
+                    className="btn-primary"
+                  >
+                    Browse Guides
+                  </Link>
+                  <Link 
+                    href="/resources" 
+                    className="btn-secondary"
+                  >
+                    View Resources
+                  </Link>
+                  <Link 
+                    href="/guides/equipment-overview" 
+                    className="btn-tertiary"
+                  >
+                    Equipment Guide
+                  </Link>
+                </div>
+              </div>
             </div>
           </AnimateOnScroll>
         </div>

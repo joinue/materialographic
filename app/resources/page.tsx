@@ -56,6 +56,15 @@ const resources = [
     order: 4,
   },
   {
+    title: 'Standards Database',
+    slug: 'standards',
+    description: 'Searchable database of ASTM, ISO, and other standards for metallography. Browse by category, organization, or search by standard number or title.',
+    category: 'Reference Charts',
+    type: 'Database',
+    icon: FileText,
+    order: 5,
+  },
+  {
     title: 'Safety Data Sheet Quick Reference',
     slug: 'safety-data-sheet-reference',
     description: 'Quick reference for essential safety information for common chemicals used in metallography laboratories. Includes hazards, handling, and first aid.',
@@ -233,10 +242,13 @@ export default function ResourcesPage() {
                     </p>
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {categoryResources.map((resource, index) => (
+                    {categoryResources.map((resource, index) => {
+                      // Standards database links to /standards, not /resources/standards
+                      const href = resource.slug === 'standards' ? '/standards' : `/resources/${resource.slug}`
+                      return (
                       <AnimatedCard key={resource.slug} index={index} animation="fadeInUp" duration={500}>
                         <Link 
-                          href={`/resources/${resource.slug}`}
+                          href={href}
                           className="card hover:border-gray-300 group"
                         >
                         <div className="flex items-start justify-between mb-3">
@@ -262,7 +274,8 @@ export default function ResourcesPage() {
                         </span>
                         </Link>
                       </AnimatedCard>
-                    ))}
+                      )
+                    })}
                   </div>
                 </section>
               )
@@ -271,10 +284,13 @@ export default function ResourcesPage() {
         ) : (
           // Show filtered resources in grid when a specific category is selected
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {filteredResources.map((resource, index) => (
+            {filteredResources.map((resource, index) => {
+              // Standards database links to /standards, not /resources/standards
+              const href = resource.slug === 'standards' ? '/standards' : `/resources/${resource.slug}`
+              return (
               <AnimatedCard key={resource.slug} index={index} animation="fadeInUp" duration={500}>
                 <Link 
-                  href={`/resources/${resource.slug}`}
+                  href={href}
                   className="card hover:border-gray-300 group"
                 >
                 <div className="flex items-start justify-between mb-3">
@@ -300,7 +316,8 @@ export default function ResourcesPage() {
                 </span>
                 </Link>
               </AnimatedCard>
-            ))}
+              )
+            })}
           </div>
         )}
 
@@ -311,7 +328,7 @@ export default function ResourcesPage() {
         )}
 
         {/* Newsletter Signup */}
-        <div className="mt-16 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-8 max-w-3xl mx-auto text-center">
+        <div className="mt-16 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Get New Resources Delivered</h2>
           <p className="text-gray-700 mb-6">
             Subscribe to our newsletter and receive new guides, resources, and tips directly in your inbox.

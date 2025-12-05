@@ -25,7 +25,7 @@ export default function MetallographicMountingGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Metallographic Mounting
@@ -577,9 +577,9 @@ export default function MetallographicMountingGuide() {
             <section id="summary" className="scroll-mt-24">
               <h2>Summary</h2>
               <p>
-                Metallographic mounting is a fundamental step that significantly impacts the quality and 
-                efficiency of your sample preparation workflow. Selecting the right mounting method—whether 
-                compression or castable—depends on your specific sample characteristics, throughput requirements, 
+                Metallographic mounting is a fundamental step that greatly impacts the quality and 
+                efficiency of your sample preparation workflow. Selecting the right mounting method (whether 
+                compression or castable) depends on your specific sample characteristics, throughput requirements, 
                 and available resources.
               </p>
               <div className="bg-primary-50 border-l-4 border-primary-600 p-6 my-6 rounded">
@@ -594,7 +594,7 @@ export default function MetallographicMountingGuide() {
               </div>
               <p>
                 Remember that mounting is the foundation of your sample preparation process. A well-executed 
-                mount makes subsequent grinding and polishing steps more efficient and effective, ultimately 
+                mount makes subsequent grinding and polishing steps more efficient and effective, 
                 leading to better microstructural analysis results. Take time to select the appropriate method, 
                 follow best practices, and you'll be rewarded with mounts that support excellent metallographic 
                 analysis.

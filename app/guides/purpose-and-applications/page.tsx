@@ -26,7 +26,7 @@ export default function PurposeAndApplicationsGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Purpose and Applications
@@ -117,7 +117,7 @@ export default function PurposeAndApplicationsGuide() {
               <h3>Property-Structure Relationships</h3>
               <p>
                 By correlating microstructure with mechanical, thermal, and chemical properties, metallography 
-                helps predict material behavior and performance. This understanding is crucial for:
+                helps predict material behavior and performance. This understanding is important for:
               </p>
               <ul>
                 <li>Selecting appropriate materials for specific applications</li>
@@ -128,7 +128,7 @@ export default function PurposeAndApplicationsGuide() {
               <h3>Quality Verification</h3>
               <p>
                 Metallography provides objective, visual evidence of material quality, processing history, 
-                and conformance to specifications. This makes it an essential tool for quality assurance 
+                and conformance to specifications. This makes it a key tool for quality assurance 
                 and certification processes.
               </p>
             </section>
@@ -280,7 +280,7 @@ export default function PurposeAndApplicationsGuide() {
               <h2>Materials Development Applications</h2>
               <p>
                 Developing new materials with improved properties requires understanding how composition 
-                and processing affect microstructure. Metallography is essential throughout this process.
+                and processing affect microstructure. Metallography plays a key role throughout this process.
               </p>
               <h3>Alloy Development</h3>
               <p>
@@ -435,11 +435,11 @@ export default function PurposeAndApplicationsGuide() {
               </ul>
               <p>
                 Whether you're working in quality control, failure analysis, research and development, or 
-                process optimization, understanding the purpose and applications of metallography is essential 
+                process optimization, understanding the purpose and applications of metallography is important 
                 for effective materials characterization and analysis.
               </p>
               <p>
-                As you continue your journey in metallography, remember that proper sample preparation is 
+                As you work with metallography, remember that proper sample preparation is 
                 fundamental to obtaining meaningful results. The quality of your metallographic analysis 
                 depends directly on the quality of your sample preparation techniques.
               </p>
@@ -447,10 +447,10 @@ export default function PurposeAndApplicationsGuide() {
 
             {/* Equipment Recommendations */}
             <section className="mt-12 bg-gray-50 border-l-4 border-primary-600 p-6 rounded">
-              <h2 className="text-2xl font-semibold mb-4">Essential Equipment for Metallography</h2>
+              <h2 className="text-2xl font-semibold mb-4">Key Equipment for Metallography</h2>
               <p className="mb-4 text-gray-700">
                 To perform metallographic analysis, you'll need proper equipment for sample preparation 
-                and examination. Here are the essential tools:
+                and examination. Here are the key tools:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
@@ -503,7 +503,7 @@ export default function PurposeAndApplicationsGuide() {
                   </div>
                   <h3 className="text-base font-semibold mb-1">Grinder Polishers</h3>
                   <p className="text-gray-700 mb-2 text-xs leading-relaxed flex-grow">
-                    Proper grinding and polishing equipment is essential for preparing samples that reveal 
+                    Proper grinding and polishing equipment is needed for preparing samples that reveal 
                     true microstructures without artifacts or damage.
                   </p>
                   <Link 
@@ -520,7 +520,7 @@ export default function PurposeAndApplicationsGuide() {
 
             {/* CTA Section */}
             <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mt-12 rounded">
-              <h2 className="text-2xl font-semibold mb-4">Ready to Start Your Metallography Journey?</h2>
+              <h2 className="text-2xl font-semibold mb-4">Ready to Get Started with Metallography?</h2>
               <p className="mb-4">
                 Now that you understand the purpose and applications of metallography, explore our 
                 comprehensive guides to learn the techniques needed for proper sample preparation.

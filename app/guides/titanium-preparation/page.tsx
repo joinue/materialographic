@@ -24,7 +24,7 @@ export default function TitaniumGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Titanium Preparation
@@ -382,7 +382,7 @@ export default function TitaniumGuide() {
                 <Link href="/guides/polishing-methods" className="text-primary-600 hover:underline font-semibold">
                   → Polishing Methods
                 </Link>
-                <Link href="/guides/troubleshooting-common-issues" className="text-primary-600 hover:underline font-semibold">
+                <Link href="/resources/troubleshooting-guide" className="text-primary-600 hover:underline font-semibold">
                   → Troubleshooting Common Issues
                 </Link>
                 <Link href="/guides/etching-procedures" className="text-primary-600 hover:underline font-semibold">

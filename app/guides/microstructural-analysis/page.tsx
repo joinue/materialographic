@@ -22,7 +22,7 @@ export default function MicrostructuralAnalysisGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Microstructural Analysis
@@ -419,7 +419,7 @@ export default function MicrostructuralAnalysisGuide() {
                     <div>
                       <p className="text-sm text-gray-700 mb-2">
                         <strong>What you see:</strong> Alternating light and dark lamellae (plates). The spacing 
-                        depends on cooling rate—faster cooling produces finer pearlite.
+                        depends on cooling rate: faster cooling produces finer pearlite.
                       </p>
                       <p className="text-sm text-gray-700 mb-2">
                         <strong>What it means:</strong> Eutectoid transformation from austenite. Fine pearlite (from 

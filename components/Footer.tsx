@@ -21,12 +21,12 @@ export default function Footer() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 relative z-20">
                 <Link 
-                  href="https://materialsprep.com" 
+                  href="https://www.metallographic.com" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-tertiary text-center whitespace-nowrap"
                 >
-                  Procedure Tool
+                  Metallographic.com
                 </Link>
                 <Link 
                   href="https://shop.metallographic.com" 
@@ -54,7 +54,6 @@ export default function Footer() {
                 <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Guides</Link></li>
                 <li><Link href="/resources" className="text-gray-400 hover:text-white transition-colors text-sm">Resources</Link></li>
                 <li><Link href="/tools" className="text-gray-400 hover:text-white transition-colors text-sm">Tools</Link></li>
-                <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link></li>
               </ul>
             </div>
             
@@ -73,7 +72,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="https://metallographic.com/equipment" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    Equipment
+                    Shop Equipment
                   </Link>
                 </li>
                 <li>
@@ -98,7 +97,6 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Getting Started</Link></li>
                 <li><Link href="/resources" className="text-gray-400 hover:text-white transition-colors text-sm">Documentation</Link></li>
-                <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Latest Articles</Link></li>
               </ul>
             </div>
           </div>

@@ -258,7 +258,7 @@ export default function GritSizeChartPage() {
 
   return (
     <div className="py-12">
-      <div className="container-custom max-w-6xl">
+      <div className="container-custom">
         <div className="mb-8">
           <Link 
             href="/resources" 

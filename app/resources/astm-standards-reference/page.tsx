@@ -1,135 +1,29 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import jsPDF from 'jspdf'
 import { Download } from 'lucide-react'
 import Link from 'next/link'
+import { Standard, getAllStandards } from '@/lib/supabase'
 
 export default function ASTMStandardsReferencePage() {
   const guideRef = useRef<HTMLDivElement>(null)
+  const [astmStandards, setAstmStandards] = useState<Standard[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const astmStandards = [
-    {
-      standard: 'ASTM E3',
-      title: 'Standard Guide for Preparation of Metallographic Specimens',
-      description: 'Comprehensive guide covering all aspects of metallographic specimen preparation including sectioning, mounting, grinding, polishing, and etching procedures.',
-      category: 'Preparation',
-    },
-    {
-      standard: 'ASTM E407',
-      title: 'Standard Practice for Microetching Metals and Alloys',
-      description: 'Procedures for microetching metals and alloys to reveal microstructural features. Includes reagent preparation, application methods, and safety considerations.',
-      category: 'Etching',
-    },
-    {
-      standard: 'ASTM E112',
-      title: 'Standard Test Methods for Determining Average Grain Size',
-      description: 'Methods for determining average grain size using comparison charts, planimetric (Jeffries) method, and intercept method. Includes procedures for different grain structures.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E883',
-      title: 'Standard Guide for Reflected-Light Photomicrography',
-      description: 'Guidelines for capturing photomicrographs of metallographic specimens, including equipment setup, lighting, magnification selection, and image documentation.',
-      category: 'Documentation',
-    },
-    {
-      standard: 'ASTM E384',
-      title: 'Standard Test Method for Microindentation Hardness of Materials',
-      description: 'Test method for determining microindentation hardness using Knoop and Vickers indenters. Covers test procedures, equipment calibration, and reporting requirements.',
-      category: 'Testing',
-    },
-    {
-      standard: 'ASTM E92',
-      title: 'Standard Test Methods for Vickers Hardness and Knoop Hardness of Metallic Materials',
-      description: 'Test methods for Vickers and Knoop hardness testing. Includes procedures, equipment requirements, and calculation methods.',
-      category: 'Testing',
-    },
-    {
-      standard: 'ASTM E18',
-      title: 'Standard Test Methods for Rockwell Hardness of Metallic Materials',
-      description: 'Test methods for Rockwell hardness testing using various scales (A, B, C, etc.). Covers procedures, equipment calibration, and test conditions.',
-      category: 'Testing',
-    },
-    {
-      standard: 'ASTM E10',
-      title: 'Standard Test Method for Brinell Hardness of Metallic Materials',
-      description: 'Test method for Brinell hardness testing. Includes procedures, indenter specifications, test forces, and measurement requirements.',
-      category: 'Testing',
-    },
-    {
-      standard: 'ASTM E140',
-      title: 'Standard Hardness Conversion Tables for Metals',
-      description: 'Conversion tables for converting between different hardness scales (Rockwell, Brinell, Vickers, Knoop). Provides relationship tables for various materials.',
-      category: 'Reference',
-    },
-    {
-      standard: 'ASTM E1245',
-      title: 'Standard Practice for Determining the Inclusion or Second-Phase Constituent Content of Metals by Automatic Image Analysis',
-      description: 'Practice for quantitative analysis of inclusions and second-phase constituents using automatic image analysis systems.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E45',
-      title: 'Standard Test Methods for Determining the Inclusion Content of Steel',
-      description: 'Methods for determining the inclusion content of steel using comparison charts and image analysis. Covers rating procedures and reporting.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E562',
-      title: 'Standard Test Method for Determining Volume Fraction by Systematic Manual Point Count',
-      description: 'Manual point count method for determining volume fraction of phases or constituents in microstructures. Includes procedures and statistical considerations.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E930',
-      title: 'Standard Test Methods for Estimating the Largest Observed Grain Size (ALA Grain Size)',
-      description: 'Methods for estimating the largest observed grain size in a microstructure, useful for quality control and failure analysis applications.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E1181',
-      title: 'Standard Test Methods for Characterizing Duplex Grain Sizes',
-      description: 'Methods for characterizing materials with duplex (bimodal) grain size distributions. Includes procedures for measurement and reporting.',
-      category: 'Analysis',
-    },
-    {
-      standard: 'ASTM E1951',
-      title: 'Standard Guide for Calibrating Reticles and Light Microscope Magnifications',
-      description: 'Guide for calibrating microscope magnifications and reticles to ensure accurate measurements. Includes procedures for various calibration methods.',
-      category: 'Calibration',
-    },
-    {
-      standard: 'ASTM E2015',
-      title: 'Standard Guide for Preparation of Plastics and Polymeric Specimens for Microstructural Examination',
-      description: 'Guide for preparing polymeric materials for microstructural examination. Covers sectioning, mounting, polishing, and etching techniques for plastics.',
-      category: 'Preparation',
-    },
-    {
-      standard: 'ASTM E340',
-      title: 'Standard Practice for Macroetching Metals and Alloys',
-      description: 'Practice for macroetching metals and alloys to reveal large-scale structural features. Includes reagent preparation and application methods.',
-      category: 'Etching',
-    },
-    {
-      standard: 'ASTM E381',
-      title: 'Standard Method of Macroetch Testing, Inspection, and Rating Steel Products, Comprising Bars, Billets, Blooms, and Forgings',
-      description: 'Method for macroetch testing of steel products to reveal defects, segregation, and flow lines. Includes rating procedures and acceptance criteria.',
-      category: 'Testing',
-    },
-    {
-      standard: 'ASTM E1578',
-      title: 'Standard Guide for Laboratory Information Management Systems (LIMS)',
-      description: 'Guide for implementing and using Laboratory Information Management Systems for tracking samples, procedures, and results.',
-      category: 'Documentation',
-    },
-    {
-      standard: 'ASTM E1919',
-      title: 'Standard Guide for Worldwide Published Standards Relating to Metallography',
-      description: 'Comprehensive guide listing published standards from various organizations worldwide related to metallography and materials testing.',
-      category: 'Reference',
-    },
-  ]
+  useEffect(() => {
+    async function fetchStandards() {
+      try {
+        const standards = await getAllStandards()
+        setAstmStandards(standards)
+      } catch (error) {
+        console.error('Error fetching standards:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchStandards()
+  }, [])
 
   const downloadPDF = async () => {
     const pdf = new jsPDF({
@@ -203,8 +97,8 @@ export default function ASTMStandardsReferencePage() {
     pdf.text(introLines, leftMargin, yPos)
     yPos += introLines.length * lineHeight + 5
 
-    // Group by category
-    const categories = ['Preparation', 'Etching', 'Analysis', 'Testing', 'Documentation', 'Calibration', 'Reference']
+    // Group by category (get unique categories from standards)
+    const categories = Array.from(new Set(astmStandards.map(s => s.category))).sort()
     
     categories.forEach(category => {
       const categoryStandards = astmStandards.filter(s => s.category === category)
@@ -308,7 +202,8 @@ export default function ASTMStandardsReferencePage() {
               </div>
               <button
                 onClick={downloadPDF}
-                className="btn-primary flex items-center gap-2 whitespace-nowrap"
+                disabled={loading || astmStandards.length === 0}
+                className="btn-primary flex items-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Download size={20} />
                 Download PDF
@@ -323,29 +218,36 @@ export default function ASTMStandardsReferencePage() {
               </p>
             </div>
 
-            <div className="space-y-8">
-              {['Preparation', 'Etching', 'Analysis', 'Testing', 'Documentation', 'Calibration', 'Reference'].map(category => {
-                const categoryStandards = astmStandards.filter(s => s.category === category)
-                if (categoryStandards.length === 0) return null
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                <p className="mt-4 text-gray-600">Loading standards...</p>
+              </div>
+            ) : (
+              <div className="space-y-8">
+                {Array.from(new Set(astmStandards.map(s => s.category))).sort().map(category => {
+                  const categoryStandards = astmStandards.filter(s => s.category === category)
+                  if (categoryStandards.length === 0) return null
 
-                return (
-                  <section key={category}>
-                    <h3 className="text-lg font-semibold mb-3 text-primary-600">{category}</h3>
-                    <div className="space-y-4">
-                      {categoryStandards.map((standard, idx) => (
-                        <div key={idx} className="border-l-4 border-primary-500 pl-4">
-                          <div className="flex items-center gap-2 mb-1">
-                            <h4 className="font-semibold">{standard.standard}</h4>
+                  return (
+                    <section key={category}>
+                      <h3 className="text-lg font-semibold mb-3 text-primary-600">{category}</h3>
+                      <div className="space-y-4">
+                        {categoryStandards.map((standard) => (
+                          <div key={standard.id} className="border-l-4 border-primary-500 pl-4">
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-semibold">{standard.standard}</h4>
+                            </div>
+                            <p className="text-sm font-medium text-gray-700 mb-1">{standard.title}</p>
+                            <p className="text-sm text-gray-600">{standard.description}</p>
                           </div>
-                          <p className="text-sm font-medium text-gray-700 mb-1">{standard.title}</p>
-                          <p className="text-sm text-gray-600">{standard.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
-                )
-              })}
-            </div>
+                        ))}
+                      </div>
+                    </section>
+                  )
+                })}
+              </div>
+            )}
 
             <div className="mt-8 pt-6 border-t border-gray-200">
               <h3 className="text-lg font-semibold mb-3">Important Notes</h3>

@@ -22,7 +22,7 @@ export default function CommonMisconceptionsGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Common Misconceptions
@@ -92,7 +92,7 @@ export default function CommonMisconceptionsGuide() {
                   Each grinding step removes damage from the previous step. If you skip steps (e.g., going from 240 
                   grit directly to 600 grit), you'll never fully remove the deeper scratches from the coarser grit. 
                   These scratches will persist through polishing and appear in your final microstructure. The progressive 
-                  refinement process is essential—each step builds on the previous one.
+                  refinement process is essential: each step builds on the previous one.
                 </p>
               </div>
 
@@ -104,7 +104,7 @@ export default function CommonMisconceptionsGuide() {
                 <p className="text-sm text-gray-700">
                   Too much pressure can cause: edge rounding, relief between phases, embedded abrasives, sample damage, 
                   and inconsistent results. Moderate, consistent pressure is more effective. Let the abrasive do the 
-                  work—pressure should be sufficient to maintain contact but not so high that you're forcing the process.
+                  work. Pressure should be sufficient to maintain contact but not so high that you're forcing the process.
                 </p>
               </div>
 
@@ -161,7 +161,7 @@ export default function CommonMisconceptionsGuide() {
                 <p className="text-sm text-gray-700">
                   Excessive polishing can cause: relief between phases (hard phases stand proud, soft phases are recessed), 
                   edge rounding, removal of important surface features, and wasted time. Polish until scratches are removed 
-                  and the surface is suitable for etching—not until it's perfect. Some materials actually need less polishing 
+                  and the surface is suitable for etching, not until it's perfect. Some materials actually need less polishing 
                   than others.
                 </p>
               </div>
@@ -380,7 +380,7 @@ export default function CommonMisconceptionsGuide() {
               <ul>
                 <li>Allow adequate time for each step</li>
                 <li>Don't rush through preparation</li>
-                <li>Quality takes time—accept that</li>
+                <li>Quality takes time: accept that</li>
                 <li>Plan your work to avoid time pressure</li>
               </ul>
 

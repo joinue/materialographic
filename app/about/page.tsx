@@ -1,0 +1,239 @@
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
+import Link from 'next/link'
+import { ChevronRight, Award, Users, BookOpen, Heart } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'About Metallography.org',
+  description: 'Learn about Metallography.org, a free educational service provided to the metallography community to help spread good information and best practices in sample preparation.',
+  keywords: ['about metallography.org', 'metallography education', 'PACE Technologies', 'metallographic resources', 'sample preparation education'],
+  openGraph: {
+    title: 'About Metallography.org | Free Metallographic Resources',
+    description: 'Learn about Metallography.org, a free educational service provided to the metallography community.',
+    url: 'https://metallography.org/about',
+    siteName: 'Metallography.org',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Metallography.org - About',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Metallography.org',
+    description: 'Learn about Metallography.org, a free educational service provided to the metallography community.',
+    images: ['/logo.png'],
+  },
+  alternates: {
+    canonical: 'https://metallography.org/about',
+  },
+}
+
+export default function AboutPage() {
+  return (
+    <div className="py-12">
+      <div className="container-custom">
+        {/* Header Section */}
+        <AnimateOnScroll animation="fadeInUp" duration={700} className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">About Metallography.org</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            A free educational service dedicated to advancing metallographic sample preparation 
+            and helping the global metallography community achieve consistent, accurate results.
+          </p>
+        </AnimateOnScroll>
+
+        {/* Main Story Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+          <div className="lg:col-span-2">
+            <AnimateOnScroll animation="fadeInUp" delay={100} duration={600}>
+              <div className="card">
+                <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Mission</h2>
+                <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                  <p className="mb-4">
+                    Metallography.org was created as a service to the metallography community, 
+                    driven by a passion for advancing metallographic sample preparation and helping 
+                    spread good information throughout the field.
+                  </p>
+                  <p className="mb-4">
+                    Our mission is to provide free, detailed, and reliable educational resources 
+                    that support laboratories, researchers, and students around the world. We believe 
+                    that access to quality information should be freely available to everyone working 
+                    in metallography and microstructural analysis.
+                  </p>
+                  <p className="mb-4">
+                    Through detailed guides, practical tools, reference materials, and expert knowledge, 
+                    we aim to help practitioners at all levels achieve consistent, accurate results in 
+                    their metallographic work. Whether you're preparing samples for quality control, 
+                    research, or failure analysis, our resources are designed to support your success.
+                  </p>
+                  <p>
+                    This platform is the brainchild of PACE Technologies President Marc Salerno, 
+                    who envisioned a complete resource that would serve the entire metallography 
+                    community, from students just getting started to experienced professionals 
+                    seeking to refine their techniques.
+                  </p>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+
+          <div className="lg:col-span-1">
+            <AnimateOnScroll animation="fadeInUp" delay={200} duration={600}>
+              <div className="card bg-gradient-to-br from-primary-50 to-primary-100 border-primary-200">
+                <h3 className="text-xl font-bold mb-4 text-gray-900">Quick Facts</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <BookOpen className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-gray-900">Free Resources</p>
+                      <p className="text-sm text-gray-600">All guides, tools, and materials are completely free to use</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Users className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-gray-900">Community Focused</p>
+                      <p className="text-sm text-gray-600">Designed to serve the global metallography community</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Heart className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-gray-900">Expert Knowledge</p>
+                      <p className="text-sm text-gray-600">Content created by industry professionals with years of experience</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+
+        {/* PACE Technologies Connection Section */}
+        <AnimateOnScroll animation="fadeInUp" delay={300} duration={600} className="mb-16">
+          <div className="card bg-gray-50 border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-4 text-gray-900">Rooted in Experience</h2>
+                <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                  <p className="mb-4">
+                    Metallography.org is supported by PACE Technologies, a family-owned and operated 
+                    company founded in 1997 by Dr. Donald and Cathy Zipperian. What began as a small 
+                    project in the Zipperian family's home (with an office in the basement and warehouse 
+                    in the garage) has grown into a trusted name in metallographic equipment and consumables.
+                  </p>
+                  <p className="mb-4">
+                    Driven by a passion for advancing metallographic sample preparation after years in 
+                    the industry, PACE Technologies has dedicated itself to designing and manufacturing 
+                    reliable, high-quality equipment that supports laboratories and researchers worldwide. 
+                    This commitment to quality and service earned PACE Technologies the prestigious 
+                    Presidential "E" Award in 2015 for contributing to the growth of U.S. exports.
+                  </p>
+                  <p>
+                    Building on this foundation of expertise and dedication, Metallography.org extends 
+                    PACE Technologies' commitment to the community by providing free educational resources 
+                    that help practitioners achieve consistent, accurate results in metallography and 
+                    microstructural analysis.
+                  </p>
+                </div>
+              </div>
+              <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
+                <Image
+                  src="/images/donz.jpg"
+                  alt="Donald Zipperian PhD, founder of PACE Technologies, who also worked with Buehler"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </AnimateOnScroll>
+
+        {/* Values Section */}
+        <AnimateOnScroll animation="fadeInUp" delay={400} duration={600} className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">What We Stand For</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              The principles that guide everything we do
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="card text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Education First</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We believe knowledge should be freely accessible. Our detailed guides and resources 
+                are designed to help everyone, from beginners to experts, improve their metallographic skills.
+              </p>
+            </div>
+
+            <div className="card text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Quality & Accuracy</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Every resource is crafted with attention to detail and accuracy. We draw from industry 
+                standards, best practices, and years of hands-on experience to provide reliable information.
+              </p>
+            </div>
+
+            <div className="card text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Community Support</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We're here to support the global metallography community. Whether you're troubleshooting 
+                a problem or learning a new technique, we're committed to helping you succeed.
+              </p>
+            </div>
+          </div>
+        </AnimateOnScroll>
+
+        {/* Call to Action Section */}
+        <AnimateOnScroll animation="fadeInUp" delay={500} duration={600}>
+          <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-8 md:p-12 text-center border border-primary-200">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to Explore Our Resources?</h2>
+            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+              Discover detailed guides, practical tools, and expert knowledge to help you master 
+              metallographic sample preparation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/guides" 
+                className="btn-primary inline-flex items-center justify-center gap-2"
+              >
+                Browse Guides
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+              <Link 
+                href="/resources" 
+                className="btn-secondary inline-flex items-center justify-center gap-2"
+              >
+                View Resources
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+              <Link 
+                href="/contact" 
+                className="btn-tertiary inline-flex items-center justify-center gap-2"
+              >
+                Contact Us
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </AnimateOnScroll>
+      </div>
+    </div>
+  )
+}
+

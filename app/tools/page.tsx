@@ -289,7 +289,7 @@ export default function ToolsPage() {
         )}
 
         {/* Featured Tool */}
-        <div className="mt-16 bg-primary-600 text-white rounded-lg p-8 max-w-4xl mx-auto">
+        <div className="mt-16 bg-primary-600 text-white rounded-lg p-8">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="text-6xl">📋</div>
             <div className="flex-1">

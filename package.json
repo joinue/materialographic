@@ -2,6 +2,9 @@
   "name": "metallography.org",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
     "jspdf": "^3.0.4",
     "lucide-react": "^0.555.0",
     "next": "^14.0.4",

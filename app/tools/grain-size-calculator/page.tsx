@@ -157,7 +157,7 @@ export default function GrainSizeCalculator() {
   return (
     <div className="py-12">
       <div className="container-custom">
-        <div className="max-w-4xl mx-auto">
+        <div>
           <h1 className="text-4xl font-bold mb-4">Grain Size Calculator</h1>
           <p className="text-xl text-gray-600 mb-8">
             Calculate ASTM grain size numbers and convert between different grain size measurements 

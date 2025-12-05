@@ -23,7 +23,7 @@ export default function SafetyFundamentalsGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Safety Fundamentals
@@ -440,7 +440,7 @@ export default function SafetyFundamentalsGuide() {
                 <p className="text-sm text-gray-700 font-semibold">
                   <strong>Emergency Preparedness:</strong> Review emergency procedures regularly. Participate in 
                   emergency drills. Know the location of safety equipment (eyewash stations, fire extinguishers, first 
-                  aid kits). Seconds count in emergencies—being prepared saves lives.
+                  aid kits). Seconds count in emergencies: being prepared saves lives.
                 </p>
               </div>
             </section>
@@ -486,7 +486,7 @@ export default function SafetyFundamentalsGuide() {
               <div className="bg-primary-50 border-l-4 border-primary-600 p-6 my-6 rounded">
                 <h3 className="text-lg font-semibold mb-3">Safety is Everyone's Responsibility</h3>
                 <p className="text-sm text-gray-700">
-                  Safety in the laboratory is not just about following rules—it's about creating an environment where 
+                  Safety in the laboratory is not just about following rules; it's about creating an environment where 
                   everyone can work safely and effectively. When everyone takes safety seriously, accidents are 
                   prevented, and the laboratory becomes a better place to work. Remember: there's no such thing as 
                   being too safe in a laboratory environment.

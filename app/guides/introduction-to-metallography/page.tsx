@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 export const metadata: Metadata = {
   title: 'Introduction to Metallography | Metallography.org',
@@ -27,7 +28,7 @@ export default function IntroductionToMetallographyGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Introduction to Metallography
@@ -65,29 +66,32 @@ export default function IntroductionToMetallographyGuide() {
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            <section id="what-is-metallography" className="scroll-mt-24">
-              <h2>What is Metallography?</h2>
-              <p>
-                Metallography is the scientific study and analysis of the microstructure of metals and alloys. 
-                The term comes from the Greek words "metallon" (metal) and "graphos" (to write or describe), 
-                literally meaning "the description of metals." Through careful sample preparation and microscopic 
-                examination, metallography reveals the internal structure of materials, allowing scientists and 
-                engineers to understand how a material's structure relates to its properties and performance.
-              </p>
-              
-              <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
-                <Image
-                  src="/images/microstructures/Ferrite-Pearlite steel.JPG"
-                  alt="Example microstructure showing ferrite and pearlite in steel"
-                  width={600}
-                  height={450}
-                  className="w-full h-auto"
-                />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">
-                  Example microstructure: Ferrite and pearlite in steel. Metallography reveals the internal 
-                  structure that determines material properties.
+            <AnimateOnScroll animation="fadeInUp" delay={0}>
+              <section id="what-is-metallography" className="scroll-mt-24">
+                <h2>What is Metallography?</h2>
+                <p>
+                  Metallography is the scientific study and analysis of the microstructure of metals and alloys. 
+                  The term comes from the Greek words "metallon" (metal) and "graphos" (to write or describe), 
+                  literally meaning "the description of metals." Through careful sample preparation and microscopic 
+                  examination, metallography reveals the internal structure of materials, allowing scientists and 
+                  engineers to understand how a material's structure relates to its properties and performance.
                 </p>
-              </div>
+                
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
+                    <Image
+                      src="/images/microstructures/Ferrite-Pearlite steel.JPG"
+                      alt="Example microstructure showing ferrite and pearlite in steel"
+                      width={600}
+                      height={450}
+                      className="w-full h-auto"
+                    />
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">
+                      Example microstructure: Ferrite and pearlite in steel. Metallography reveals the internal 
+                      structure that determines material properties.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
 
               <p>
                 At its core, metallography involves three main steps:
@@ -107,21 +111,25 @@ export default function IntroductionToMetallographyGuide() {
                 prepare a sample to reveal its true structure, then examine and analyze it to understand the material.
               </p>
 
-              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Key Insight:</strong> Metallography bridges the gap between a material's processing 
-                  history and its final properties. By examining microstructure, we can understand why a material 
-                  behaves the way it does and how to improve it.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={200}>
+                  <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Key Insight:</strong> Metallography bridges the gap between a material's processing 
+                      history and its final properties. By examining microstructure, we can understand why a material 
+                      behaves the way it does and how to improve it.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="why-metallography-matters" className="scroll-mt-24">
-              <h2>Why Metallography Matters</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="why-metallography-matters" className="scroll-mt-24">
+                <h2>Why Metallography Matters</h2>
               <p>
                 Metallography is fundamental to materials science and engineering because it provides direct 
-                insight into the relationship between structure and properties. The microstructure of a material—its 
-                grain size, phase distribution, defects, and other features—directly determines its mechanical, 
+                insight into the relationship between structure and properties. The microstructure of a material (its 
+                grain size, phase distribution, defects, and other features) directly determines its mechanical, 
                 electrical, thermal, and chemical properties.
               </p>
               <p className="mt-4">
@@ -132,8 +140,8 @@ export default function IntroductionToMetallographyGuide() {
 
               <h3>Understanding Material Behavior</h3>
               <p>
-                Every material's behavior—whether it's strong or weak, ductile or brittle, corrosion-resistant 
-                or susceptible—can be traced back to its microstructure. Metallography allows us to:
+                Every material's behavior (whether it's strong or weak, ductile or brittle, corrosion-resistant 
+                or susceptible) can be traced back to its microstructure. Metallography allows us to:
               </p>
               <ul>
                 <li><strong>Explain material properties:</strong> Understand why a material has specific strength, 
@@ -171,17 +179,21 @@ export default function IntroductionToMetallographyGuide() {
                 <li><strong>Failure analysis:</strong> Investigate why materials fail and how to prevent failures</li>
               </ul>
 
-              <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Real-World Impact:</strong> Metallography is used in industries ranging from aerospace 
-                  and automotive to medical devices and electronics. It ensures that materials meet safety and 
-                  performance requirements in critical applications.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Real-World Impact:</strong> Metallography is used in industries ranging from aerospace 
+                      and automotive to medical devices and electronics. It ensures that materials meet safety and 
+                      performance requirements in critical applications.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="history" className="scroll-mt-24">
-              <h2>A Short History of Metallography</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="history" className="scroll-mt-24">
+                <h2>A Short History of Metallography</h2>
               <p>
                 Understanding the history of metallography provides context for how this field developed and why 
                 certain techniques and principles are fundamental today. While humans have been working with metals 
@@ -194,7 +206,7 @@ export default function IntroductionToMetallographyGuide() {
                 an English geologist and metallurgist. In 1863, Sorby adapted techniques from petrography (the study of 
                 rocks) to examine metals. He was the first to prepare metal samples by grinding and polishing, then 
                 observe them under a microscope. Sorby's groundbreaking work revealed that metals had internal 
-                structures—grains, phases, and other features—that could be studied and related to material properties.
+                structures (grains, phases, and other features) that could be studied and related to material properties.
               </p>
               <p>
                 Sorby's contributions were revolutionary. He developed methods for sample preparation, used chemical 
@@ -211,27 +223,31 @@ export default function IntroductionToMetallographyGuide() {
                 spectroscopy (EDS), and automated image analysis provide unprecedented insight into material structure.
               </p>
 
-              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Historical Perspective:</strong> From Sorby's first observations to today's advanced analytical 
-                  techniques, metallography has evolved from a descriptive science to a quantitative discipline. The 
-                  fundamental principles established by early metallographers remain valid, but modern tools provide 
-                  unprecedented insight into material structure.
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Historical Perspective:</strong> From Sorby's first observations to today's advanced analytical 
+                      techniques, metallography has evolved from a descriptive science to a quantitative discipline. The 
+                      fundamental principles established by early metallographers remain valid, but modern tools provide 
+                      unprecedented insight into material structure.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+
+                <p className="text-sm text-gray-600 italic mt-4">
+                  This section provides a brief overview of metallography's history. For a comprehensive exploration 
+                  of the field's evolution, including ancient foundations, the Industrial Revolution era, electron 
+                  microscopy developments, and modern digital techniques, see our complete{' '}
+                  <Link href="/guides/history-of-metallography" className="text-primary-600 hover:underline font-semibold">
+                    History of Metallography guide
+                  </Link>.
                 </p>
-              </div>
+              </section>
+            </AnimateOnScroll>
 
-              <p className="text-sm text-gray-600 italic mt-4">
-                This section provides a brief overview of metallography's history. For a comprehensive exploration 
-                of the field's evolution, including ancient foundations, the Industrial Revolution era, electron 
-                microscopy developments, and modern digital techniques, see our complete{' '}
-                <Link href="/guides/history-of-metallography" className="text-primary-600 hover:underline font-semibold">
-                  History of Metallography guide
-                </Link>.
-              </p>
-            </section>
-
-            <section id="basic-concepts" className="scroll-mt-24">
-              <h2>Basic Concepts and Terminology</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="basic-concepts" className="scroll-mt-24">
+                <h2>Basic Concepts and Terminology</h2>
               <p>
                 Understanding metallography requires familiarity with key concepts and terminology. These 
                 fundamental terms will help you navigate the field and understand material structures.
@@ -269,51 +285,53 @@ export default function IntroductionToMetallographyGuide() {
               </ul>
 
               <h3>Common Microstructural Features</h3>
-              <div className="overflow-x-auto my-6">
-                <table className="min-w-full border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Term</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Definition</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Significance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Grain Size</td>
-                      <td className="border border-gray-300 px-4 py-3">Average size of individual crystals</td>
-                      <td className="border border-gray-300 px-4 py-3">Affects strength, toughness, and ductility. Smaller grains generally increase strength.</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Phase</td>
-                      <td className="border border-gray-300 px-4 py-3">Region with uniform composition and structure</td>
-                      <td className="border border-gray-300 px-4 py-3">Different phases have different properties. Phase distribution determines overall material behavior.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Grain Boundary</td>
-                      <td className="border border-gray-300 px-4 py-3">Interface between adjacent grains</td>
-                      <td className="border border-gray-300 px-4 py-3">Affects material properties and can be sites for precipitation or failure initiation.</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Precipitate</td>
-                      <td className="border border-gray-300 px-4 py-3">Small particles of a second phase</td>
-                      <td className="border border-gray-300 px-4 py-3">Can strengthen materials (precipitation hardening) or affect other properties.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Inclusion</td>
-                      <td className="border border-gray-300 px-4 py-3">Non-metallic particles in the material</td>
-                      <td className="border border-gray-300 px-4 py-3">Can act as stress concentrators and affect mechanical properties, especially toughness.</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-300 px-4 py-3 font-medium">Work Hardening</td>
-                      <td className="border border-gray-300 px-4 py-3">Increase in strength due to plastic deformation</td>
-                      <td className="border border-gray-300 px-4 py-3">Visible as elongated grains or deformation bands. Affects material formability.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="overflow-x-auto my-6">
+                    <table className="min-w-full border-collapse border border-gray-300">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Term</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Definition</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Significance</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Grain Size</td>
+                          <td className="border border-gray-300 px-4 py-3">Average size of individual crystals</td>
+                          <td className="border border-gray-300 px-4 py-3">Affects strength, toughness, and ductility. Smaller grains generally increase strength.</td>
+                        </tr>
+                        <tr className="bg-gray-50">
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Phase</td>
+                          <td className="border border-gray-300 px-4 py-3">Region with uniform composition and structure</td>
+                          <td className="border border-gray-300 px-4 py-3">Different phases have different properties. Phase distribution determines overall material behavior.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Grain Boundary</td>
+                          <td className="border border-gray-300 px-4 py-3">Interface between adjacent grains</td>
+                          <td className="border border-gray-300 px-4 py-3">Affects material properties and can be sites for precipitation or failure initiation.</td>
+                        </tr>
+                        <tr className="bg-gray-50">
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Precipitate</td>
+                          <td className="border border-gray-300 px-4 py-3">Small particles of a second phase</td>
+                          <td className="border border-gray-300 px-4 py-3">Can strengthen materials (precipitation hardening) or affect other properties.</td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Inclusion</td>
+                          <td className="border border-gray-300 px-4 py-3">Non-metallic particles in the material</td>
+                          <td className="border border-gray-300 px-4 py-3">Can act as stress concentrators and affect mechanical properties, especially toughness.</td>
+                        </tr>
+                        <tr className="bg-gray-50">
+                          <td className="border border-gray-300 px-4 py-3 font-medium">Work Hardening</td>
+                          <td className="border border-gray-300 px-4 py-3">Increase in strength due to plastic deformation</td>
+                          <td className="border border-gray-300 px-4 py-3">Visible as elongated grains or deformation bands. Affects material formability.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </AnimateOnScroll>
 
-              <h3>Magnification and Observation</h3>
+                <h3>Magnification and Observation</h3>
               <p>
                 Metallographic examination typically uses:
               </p>
@@ -326,18 +344,22 @@ export default function IntroductionToMetallographyGuide() {
                 analysis. Used in advanced research.</li>
               </ul>
 
-              <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Learning Tip:</strong> Start with understanding grain structure and phases. These are the 
-                  most fundamental microstructural features and appear in virtually all metallographic analysis.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Learning Tip:</strong> Start with understanding grain structure and phases. These are the 
+                      most fundamental microstructural features and appear in virtually all metallographic analysis.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="phases-and-transformations" className="scroll-mt-24">
-              <h2>Phases and Phase Transformations</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="phases-and-transformations" className="scroll-mt-24">
+                <h2>Phases and Phase Transformations</h2>
               <p>
-                Understanding phases—distinct regions with uniform composition and crystal structure—is fundamental to 
+                Understanding phases (distinct regions with uniform composition and crystal structure) is fundamental to 
                 metallography. Different phases have different properties, and the distribution, size, and morphology 
                 of phases determine overall material behavior. Phase transformations, driven by heat treatment and 
                 processing, create these microstructures.
@@ -349,9 +371,10 @@ export default function IntroductionToMetallographyGuide() {
                 on composition and heat treatment:
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">Ferrite (α-Fe)</h4>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Ferrite (α-Fe)</h4>
                   <p className="text-sm text-gray-700 mb-2">
                     Body-centered cubic (BCC) iron with low carbon solubility. Soft, ductile, and magnetic. Appears 
                     light in etched microstructures.
@@ -410,7 +433,8 @@ export default function IntroductionToMetallographyGuide() {
                     pearlite, bainite, and as separate particles in some steels.
                   </p>
                 </div>
-              </div>
+                  </div>
+                </AnimateOnScroll>
 
               <h3>Grain Boundaries</h3>
               <p>
@@ -456,15 +480,17 @@ export default function IntroductionToMetallographyGuide() {
                 <li><strong>Grain growth:</strong> Increase in average grain size at elevated temperatures</li>
               </ul>
 
-              <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Key Principle:</strong> The microstructure you observe is a "snapshot" of the material's 
-                  processing history. By understanding phase transformations, you can interpret what processing steps 
-                  a material has undergone and predict its properties.
-                </p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Key Principle:</strong> The microstructure you observe is a "snapshot" of the material's 
+                      processing history. By understanding phase transformations, you can interpret what processing steps 
+                      a material has undergone and predict its properties.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
 
-              <h3>Phase Diagrams</h3>
+                <h3>Phase Diagrams</h3>
               <p>
                 Phase diagrams (equilibrium diagrams) show which phases are stable at different temperatures and 
                 compositions. While metallography examines actual microstructures (which may differ from equilibrium 
@@ -524,9 +550,10 @@ export default function IntroductionToMetallographyGuide() {
               </ul>
 
               <h3>Industry-Specific Applications</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">Aerospace</h4>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Aerospace</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
                     <li>• Titanium and superalloy characterization</li>
                     <li>• Coating and surface treatment analysis</li>
@@ -556,16 +583,19 @@ export default function IntroductionToMetallographyGuide() {
                     <li>• Pipeline and pressure vessel inspection</li>
                     <li>• Corrosion and degradation studies</li>
                   </ul>
-                </div>
-              </div>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
 
-              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Versatility:</strong> While metallography is often associated with metals, the same 
-                  principles apply to ceramics, composites, and other materials. The goal is always to understand 
-                  structure-property relationships.
-                </p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Versatility:</strong> While metallography is often associated with metals, the same 
+                      principles apply to ceramics, composites, and other materials. The goal is always to understand 
+                      structure-property relationships.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
             </section>
 
             <section id="standards-practices" className="scroll-mt-24">
@@ -584,16 +614,17 @@ export default function IntroductionToMetallographyGuide() {
                 influenced international standardization efforts. Key standards include:
               </p>
 
-              <div className="overflow-x-auto my-6">
-                <table className="min-w-full border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Standard</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Title</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="overflow-x-auto my-6">
+                    <table className="min-w-full border-collapse border border-gray-300">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Standard</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Title</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                     <tr>
                       <td className="border border-gray-300 px-4 py-3 font-medium">ASTM E3</td>
                       <td className="border border-gray-300 px-4 py-3">Standard Guide for Preparation of Metallographic Specimens</td>
@@ -624,20 +655,21 @@ export default function IntroductionToMetallographyGuide() {
                       <td className="border border-gray-300 px-4 py-3">Standard Test Methods for Determining Average Grain Size Using Semiautomatic and Automatic Image Analysis</td>
                       <td className="border border-gray-300 px-4 py-3">Computer-based methods for grain size measurement using image analysis software.</td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
+                      </tbody>
+                    </table>
+                  </div>
+                </AnimateOnScroll>
 
-              <h3>ISO Standards</h3>
+                <h3>ISO Standards</h3>
               <p>
                 The International Organization for Standardization (ISO) also publishes standards for metallography, 
                 particularly for international trade and certification:
               </p>
               <ul>
-                <li><strong>ISO 643:</strong> Steels — Micrographic determination of the apparent grain size</li>
-                <li><strong>ISO 4499:</strong> Hardmetals — Metallographic determination of microstructure</li>
-                <li><strong>ISO 4967:</strong> Steel — Determination of content of non-metallic inclusions — Micrographic method using standard diagrams</li>
-                <li><strong>ISO 14250:</strong> Steel — Metallographic characterization of duplex grain size and distributions</li>
+                <li><strong>ISO 643:</strong> Steels: Micrographic determination of the apparent grain size</li>
+                <li><strong>ISO 4499:</strong> Hardmetals: Metallographic determination of microstructure</li>
+                <li><strong>ISO 4967:</strong> Steel: Determination of content of non-metallic inclusions - Micrographic method using standard diagrams</li>
+                <li><strong>ISO 14250:</strong> Steel: Metallographic characterization of duplex grain size and distributions</li>
               </ul>
 
               <h3>Safety Considerations</h3>
@@ -646,29 +678,33 @@ export default function IntroductionToMetallographyGuide() {
                 Safety must always be a priority:
               </p>
 
-              <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
-                <h4 className="font-semibold mb-2">Chemical Safety</h4>
-                <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Always read Safety Data Sheets (SDS) for all chemicals before use</li>
-                  <li>• Use appropriate personal protective equipment (gloves, eye protection, lab coat)</li>
-                  <li>• Work in well-ventilated areas, preferably in a fume hood when using etchants</li>
-                  <li>• Store chemicals properly and label all containers clearly</li>
-                  <li>• Dispose of chemical waste according to local regulations</li>
-                  <li>• Never mix chemicals unless you know the reaction products are safe</li>
-                </ul>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
+                    <h4 className="font-semibold mb-2">Chemical Safety</h4>
+                    <ul className="text-sm space-y-1 text-gray-700">
+                      <li>• Always read Safety Data Sheets (SDS) for all chemicals before use</li>
+                      <li>• Use appropriate personal protective equipment (gloves, eye protection, lab coat)</li>
+                      <li>• Work in well-ventilated areas, preferably in a fume hood when using etchants</li>
+                      <li>• Store chemicals properly and label all containers clearly</li>
+                      <li>• Dispose of chemical waste according to local regulations</li>
+                      <li>• Never mix chemicals unless you know the reaction products are safe</li>
+                    </ul>
+                  </div>
+                </AnimateOnScroll>
 
-              <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
-                <h4 className="font-semibold mb-2">Equipment Safety</h4>
-                <ul className="text-sm space-y-1 text-gray-700">
-                  <li>• Follow manufacturer instructions for all equipment</li>
-                  <li>• Use proper guards and safety features on cutting and grinding equipment</li>
-                  <li>• Secure samples properly to prevent movement during cutting or grinding</li>
-                  <li>• Be aware of rotating equipment and moving parts</li>
-                  <li>• Keep work areas clean and organized to prevent accidents</li>
-                  <li>• Use appropriate eye protection when operating any equipment</li>
-                </ul>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={200}>
+                  <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
+                    <h4 className="font-semibold mb-2">Equipment Safety</h4>
+                    <ul className="text-sm space-y-1 text-gray-700">
+                      <li>• Follow manufacturer instructions for all equipment</li>
+                      <li>• Use proper guards and safety features on cutting and grinding equipment</li>
+                      <li>• Secure samples properly to prevent movement during cutting or grinding</li>
+                      <li>• Be aware of rotating equipment and moving parts</li>
+                      <li>• Keep work areas clean and organized to prevent accidents</li>
+                      <li>• Use appropriate eye protection when operating any equipment</li>
+                    </ul>
+                  </div>
+                </AnimateOnScroll>
 
               <h3>Best Practices for Quality Results</h3>
               <ul>
@@ -682,17 +718,21 @@ export default function IntroductionToMetallographyGuide() {
                 <li><strong>Quality control:</strong> Establish quality control procedures and checkpoints</li>
               </ul>
 
-              <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Standards Compliance:</strong> When working to meet specific standards or certifications, 
-                  ensure you have the current version of relevant standards and follow them precisely. Standards are 
-                  regularly updated, so check for revisions.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Standards Compliance:</strong> When working to meet specific standards or certifications, 
+                      ensure you have the current version of relevant standards and follow them precisely. Standards are 
+                      regularly updated, so check for revisions.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="preparation-process" className="scroll-mt-24">
-              <h2>The Sample Preparation Process</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="preparation-process" className="scroll-mt-24">
+                <h2>The Sample Preparation Process</h2>
               <p>
                 Successful metallographic analysis depends on proper sample preparation. A poorly prepared sample 
                 will not reveal the true microstructure, leading to incorrect conclusions. The preparation process 
@@ -704,83 +744,85 @@ export default function IntroductionToMetallographyGuide() {
                 The standard metallographic preparation process consists of five main steps:
               </p>
 
-              <div className="space-y-6 my-6">
-                <div className="border-l-4 border-primary-600 pl-4">
-                  <h4 className="text-lg font-semibold mb-2">1. Sectioning</h4>
-                  <p className="text-gray-700">
-                    Cutting a representative sample from the larger workpiece. The goal is to obtain a sample 
-                    that represents the material or feature of interest while minimizing damage. Sectioning can 
-                    be done using abrasive cutting or precision wafering, depending on the material and requirements.
-                  </p>
-                  <Link 
-                    href="/guides/sectioning" 
-                    className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
-                  >
-                    Learn more about Sectioning →
-                  </Link>
-                </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="space-y-6 my-6">
+                    <div className="border-l-4 border-primary-600 pl-4">
+                      <h4 className="text-lg font-semibold mb-2">1. Sectioning</h4>
+                      <p className="text-gray-700">
+                        Cutting a representative sample from the larger workpiece. The goal is to obtain a sample 
+                        that represents the material or feature of interest while minimizing damage. Sectioning can 
+                        be done using abrasive cutting or precision wafering, depending on the material and requirements.
+                      </p>
+                      <Link 
+                        href="/guides/sectioning" 
+                        className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
+                      >
+                        Learn more about Sectioning →
+                      </Link>
+                    </div>
 
-                <div className="border-l-4 border-primary-600 pl-4">
-                  <h4 className="text-lg font-semibold mb-2">2. Mounting</h4>
-                  <p className="text-gray-700">
-                    Embedding the sample in resin to create a standardized, easy-to-handle mount. Mounting protects 
-                    edges, makes small samples manageable, and creates a uniform surface for grinding and polishing. 
-                    Compression mounting and castable mounting are the two main methods.
-                  </p>
-                  <Link 
-                    href="/guides/mounting" 
-                    className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
-                  >
-                    Learn more about Mounting →
-                  </Link>
-                </div>
+                    <div className="border-l-4 border-primary-600 pl-4">
+                      <h4 className="text-lg font-semibold mb-2">2. Mounting</h4>
+                      <p className="text-gray-700">
+                        Embedding the sample in resin to create a standardized, easy-to-handle mount. Mounting protects 
+                        edges, makes small samples manageable, and creates a uniform surface for grinding and polishing. 
+                        Compression mounting and castable mounting are the two main methods.
+                      </p>
+                      <Link 
+                        href="/guides/mounting" 
+                        className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
+                      >
+                        Learn more about Mounting →
+                      </Link>
+                    </div>
 
-                <div className="border-l-4 border-primary-600 pl-4">
-                  <h4 className="text-lg font-semibold mb-2">3. Grinding</h4>
-                  <p className="text-gray-700">
-                    Removing surface damage from sectioning and creating a flat surface using progressively finer 
-                    abrasives. Grinding typically progresses from coarse grits (e.g., 120 grit) to fine grits 
-                    (e.g., 600 or 800 grit). Proper grinding removes damage while minimizing introduction of new 
-                    damage.
-                  </p>
-                  <Link 
-                    href="/guides/grinding-techniques" 
-                    className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
-                  >
-                    Learn more about Grinding Techniques →
-                  </Link>
-                </div>
+                    <div className="border-l-4 border-primary-600 pl-4">
+                      <h4 className="text-lg font-semibold mb-2">3. Grinding</h4>
+                      <p className="text-gray-700">
+                        Removing surface damage from sectioning and creating a flat surface using progressively finer 
+                        abrasives. Grinding typically progresses from coarse grits (e.g., 120 grit) to fine grits 
+                        (e.g., 600 or 800 grit). Proper grinding removes damage while minimizing introduction of new 
+                        damage.
+                      </p>
+                      <Link 
+                        href="/guides/grinding-techniques" 
+                        className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
+                      >
+                        Learn more about Grinding Techniques →
+                      </Link>
+                    </div>
 
-                <div className="border-l-4 border-primary-600 pl-4">
-                  <h4 className="text-lg font-semibold mb-2">4. Polishing</h4>
-                  <p className="text-gray-700">
-                    Creating a mirror-like surface free of scratches. Polishing uses fine abrasives (diamond 
-                    pastes, suspensions, or oxide polishing compounds) on soft cloths. The goal is to remove all 
-                    grinding scratches and create a surface suitable for microscopic examination.
-                  </p>
-                  <Link 
-                    href="/guides/polishing-methods" 
-                    className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
-                  >
-                    Learn more about Polishing Methods →
-                  </Link>
-                </div>
+                    <div className="border-l-4 border-primary-600 pl-4">
+                      <h4 className="text-lg font-semibold mb-2">4. Polishing</h4>
+                      <p className="text-gray-700">
+                        Creating a mirror-like surface free of scratches. Polishing uses fine abrasives (diamond 
+                        pastes, suspensions, or oxide polishing compounds) on soft cloths. The goal is to remove all 
+                        grinding scratches and create a surface suitable for microscopic examination.
+                      </p>
+                      <Link 
+                        href="/guides/polishing-methods" 
+                        className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
+                      >
+                        Learn more about Polishing Methods →
+                      </Link>
+                    </div>
 
-                <div className="border-l-4 border-primary-600 pl-4">
-                  <h4 className="text-lg font-semibold mb-2">5. Etching</h4>
-                  <p className="text-gray-700">
-                    Applying chemical reagents to reveal the microstructure. Etching selectively attacks different 
-                    phases and grain boundaries, creating contrast that makes microstructural features visible 
-                    under the microscope. Different materials require different etchants.
-                  </p>
-                  <Link 
-                    href="/resources/common-etchants-guide" 
-                    className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
-                  >
-                    Learn more about Etching →
-                  </Link>
-                </div>
-              </div>
+                    <div className="border-l-4 border-primary-600 pl-4">
+                      <h4 className="text-lg font-semibold mb-2">5. Etching</h4>
+                      <p className="text-gray-700">
+                        Applying chemical reagents to reveal the microstructure. Etching selectively attacks different 
+                        phases and grain boundaries, creating contrast that makes microstructural features visible 
+                        under the microscope. Different materials require different etchants.
+                      </p>
+                      <Link 
+                        href="/resources/common-etchants-guide" 
+                        className="text-primary-600 hover:underline font-semibold text-sm mt-2 inline-block"
+                      >
+                        Learn more about Etching →
+                      </Link>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
 
               <h3>Key Principles</h3>
               <p>
@@ -797,30 +839,33 @@ export default function IntroductionToMetallographyGuide() {
                 reproduce results</li>
               </ul>
 
-              <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Important:</strong> Sample preparation is both an art and a science. While the steps are 
-                  straightforward, achieving excellent results requires practice, attention to detail, and 
-                  understanding of material-specific requirements. Each material may need slight variations in technique.
-                </p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Important:</strong> Sample preparation is both an art and a science. While the steps are 
+                      straightforward, achieving excellent results requires practice, attention to detail, and 
+                      understanding of material-specific requirements. Each material may need slight variations in technique.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
 
-              <h3>Common Problems and Solutions</h3>
+                <h3>Common Problems and Solutions</h3>
               <p>
                 New metallographers often encounter specific problems during preparation. Understanding these issues 
                 and their solutions helps you achieve better results:
               </p>
 
-              <div className="overflow-x-auto my-6">
-                <table className="min-w-full border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Problem</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Common Causes</th>
-                      <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Solutions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="overflow-x-auto my-6">
+                    <table className="min-w-full border-collapse border border-gray-300">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Problem</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Common Causes</th>
+                          <th className="border border-gray-300 px-4 py-3 text-left font-semibold">Solutions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                     <tr>
                       <td className="border border-gray-300 px-4 py-3 font-medium">Scratches remaining after polishing</td>
                       <td className="border border-gray-300 px-4 py-3">
@@ -943,20 +988,23 @@ export default function IntroductionToMetallographyGuide() {
                         </ul>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
-              </div>
+                      </tbody>
+                    </table>
+                  </div>
+                </AnimateOnScroll>
 
-              <p className="mt-4">
-                These challenges are normal and improve with experience. Our <Link 
-                href="/guides/troubleshooting-common-issues" 
-                className="text-primary-600 hover:underline font-semibold"
-              >Troubleshooting Guide</Link> provides more detailed solutions to common problems.
-              </p>
-            </section>
+                <p className="mt-4">
+                  These challenges are normal and improve with experience. Our <Link 
+                  href="/resources/troubleshooting-guide" 
+                  className="text-primary-600 hover:underline font-semibold"
+                >Troubleshooting Guide</Link> provides more detailed solutions to common problems.
+                </p>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="microscopy-techniques" className="scroll-mt-24">
-              <h2>Microscopy Techniques</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="microscopy-techniques" className="scroll-mt-24">
+                <h2>Microscopy Techniques</h2>
               <p>
                 Once a sample is properly prepared, various microscopy techniques can be used to examine and analyze 
                 the microstructure. Each technique has specific advantages and applications. Understanding these 
@@ -967,18 +1015,22 @@ export default function IntroductionToMetallographyGuide() {
                 detailed microscopy methods, and interpreting common microstructures, see our complete guide on 
                 <Link href="/guides/microstructural-analysis" className="text-primary-600 hover:underline font-semibold"> Microstructural Analysis</Link>.
               </p>
-              <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Quick Overview:</strong> Most routine metallographic analysis uses optical (metallurgical) 
-                  microscopes with reflected light illumination. For higher magnification needs or fracture surface 
-                  examination, scanning electron microscopy (SEM) is used. Advanced techniques like EBSD and TEM 
-                  provide specialized information for research applications.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Quick Overview:</strong> Most routine metallographic analysis uses optical (metallurgical) 
+                      microscopes with reflected light illumination. For higher magnification needs or fracture surface 
+                      examination, scanning electron microscopy (SEM) is used. Advanced techniques like EBSD and TEM 
+                      provide specialized information for research applications.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="getting-started" className="scroll-mt-24">
-              <h2>Getting Started</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="getting-started" className="scroll-mt-24">
+                <h2>Getting Started</h2>
               <p>
                 If you're new to metallography, here's a practical path to get started:
               </p>
@@ -1055,17 +1107,19 @@ export default function IntroductionToMetallographyGuide() {
                 <li>Compare your results with published microstructures</li>
               </ul>
 
-              <div className="bg-primary-50 border-l-4 border-primary-600 p-6 my-6 rounded">
-                <h3 className="text-lg font-semibold mb-3">Recommended Learning Path</h3>
-                <ol className="space-y-2 text-sm">
-                  <li><strong>Start here:</strong> Read this introduction to understand the fundamentals</li>
-                  <li><strong>Basics guides:</strong> Review <Link href="/guides/equipment-overview" className="text-primary-600 hover:underline">Equipment Overview</Link>, <Link href="/guides/safety-fundamentals" className="text-primary-600 hover:underline">Safety Fundamentals</Link>, and <Link href="/guides/common-misconceptions" className="text-primary-600 hover:underline">Common Misconceptions</Link></li>
-                  <li><strong>Process guides:</strong> Study sectioning, mounting, grinding, and polishing guides</li>
-                  <li><strong>Material guides:</strong> Find material-specific guides for your materials</li>
-                  <li><strong>Practice:</strong> Prepare samples and refine your technique</li>
-                  <li><strong>Advanced topics:</strong> Explore application-specific guides and advanced techniques</li>
-                </ol>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="bg-primary-50 border-l-4 border-primary-600 p-6 my-6 rounded">
+                    <h3 className="text-lg font-semibold mb-3">Recommended Learning Path</h3>
+                    <ol className="space-y-2 text-sm">
+                      <li><strong>Start here:</strong> Read this introduction to understand the fundamentals</li>
+                      <li><strong>Basics guides:</strong> Review <Link href="/guides/equipment-overview" className="text-primary-600 hover:underline">Equipment Overview</Link>, <Link href="/guides/safety-fundamentals" className="text-primary-600 hover:underline">Safety Fundamentals</Link>, and <Link href="/guides/common-misconceptions" className="text-primary-600 hover:underline">Common Misconceptions</Link></li>
+                      <li><strong>Process guides:</strong> Study sectioning, mounting, grinding, and polishing guides</li>
+                      <li><strong>Material guides:</strong> Find material-specific guides for your materials</li>
+                      <li><strong>Practice:</strong> Prepare samples and refine your technique</li>
+                      <li><strong>Advanced topics:</strong> Explore application-specific guides and advanced techniques</li>
+                    </ol>
+                  </div>
+                </AnimateOnScroll>
 
               <h3>Next Steps</h3>
               <p>
@@ -1086,52 +1140,56 @@ export default function IntroductionToMetallographyGuide() {
                 first samples aren't perfect. Each sample you prepare teaches you something new, and with time 
                 and experience, you'll develop the expertise to prepare excellent samples consistently.
               </p>
-            </section>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="further-reading" className="scroll-mt-24">
-              <h2>Further Reading and Resources</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="further-reading" className="scroll-mt-24">
+                <h2>Further Reading and Resources</h2>
               <p>
                 This introduction provides a foundation, but metallography is a deep field with extensive literature. 
                 The following resources offer more detailed information for those who want to dive deeper.
               </p>
 
               <h3>Essential Books</h3>
-              <div className="space-y-4 my-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">ASM Handbook, Volume 9: Metallography and Microstructures</h4>
-                  <p className="text-sm text-gray-700 mb-2">
-                    Comprehensive reference covering all aspects of metallography. Includes detailed procedures, 
-                    microstructural interpretation, and material-specific information. Essential reference for any 
-                    metallography laboratory.
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    Published by ASM International. Regularly updated with new editions.
-                  </p>
-                </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="space-y-4 my-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">ASM Handbook, Volume 9: Metallography and Microstructures</h4>
+                      <p className="text-sm text-gray-700 mb-2">
+                        Comprehensive reference covering all aspects of metallography. Includes detailed procedures, 
+                        microstructural interpretation, and material-specific information. Essential reference for any 
+                        metallography laboratory.
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Published by ASM International. Regularly updated with new editions.
+                      </p>
+                    </div>
 
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">Metallography: Principles and Practice by George F. Vander Voort</h4>
-                  <p className="text-sm text-gray-700 mb-2">
-                    Comprehensive textbook covering sample preparation, microscopy, and microstructural interpretation. 
-                    Excellent for both beginners and experienced metallographers. Includes extensive information on 
-                    etching and material-specific techniques.
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    Published by ASM International. Considered one of the definitive texts on metallography.
-                  </p>
-                </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Metallography: Principles and Practice by George F. Vander Voort</h4>
+                      <p className="text-sm text-gray-700 mb-2">
+                        Comprehensive textbook covering sample preparation, microscopy, and microstructural interpretation. 
+                        Excellent for both beginners and experienced metallographers. Includes extensive information on 
+                        etching and material-specific techniques.
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Published by ASM International. Considered one of the definitive texts on metallography.
+                      </p>
+                    </div>
 
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2">Practical Metallography by L.E. Samuels</h4>
-                  <p className="text-sm text-gray-700 mb-2">
-                    Practical guide focusing on sample preparation techniques. Excellent for understanding the 
-                    "how-to" aspects of metallography with detailed procedures and troubleshooting.
-                  </p>
-                  <p className="text-xs text-gray-600">
-                    Published by ASM International. Strong emphasis on practical techniques.
-                  </p>
-                </div>
-              </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-2">Practical Metallography by L.E. Samuels</h4>
+                      <p className="text-sm text-gray-700 mb-2">
+                        Practical guide focusing on sample preparation techniques. Excellent for understanding the 
+                        "how-to" aspects of metallography with detailed procedures and troubleshooting.
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Published by ASM International. Strong emphasis on practical techniques.
+                      </p>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
 
               <h3>Industry Resources</h3>
               <p>
@@ -1183,17 +1241,21 @@ export default function IntroductionToMetallographyGuide() {
                 metallographers</li>
               </ul>
 
-              <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
-                <p className="text-sm text-gray-700 mb-2">
-                  <strong>Building Your Library:</strong> Start with Vander Voort's "Metallography: Principles and 
-                  Practice" and the ASM Handbook Volume 9. These two resources will cover most of your needs. Add 
-                  specialized references as you work with specific materials or techniques.
-                </p>
-              </div>
-            </section>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-4 rounded">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Building Your Library:</strong> Start with Vander Voort's "Metallography: Principles and 
+                      Practice" and the ASM Handbook Volume 9. These two resources will cover most of your needs. Add 
+                      specialized references as you work with specific materials or techniques.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+              </section>
+            </AnimateOnScroll>
 
             {/* CTA Section */}
-            <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mt-12 rounded">
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mt-12 rounded">
               <h2 className="text-2xl font-semibold mb-4">Continue Your Learning</h2>
               <p className="mb-4">
                 Ready to learn more? Explore our comprehensive guides on sample preparation techniques, or use 
@@ -1219,10 +1281,12 @@ export default function IntroductionToMetallographyGuide() {
                   View Resources
                 </Link>
               </div>
-            </div>
+              </div>
+            </AnimateOnScroll>
 
             {/* Related Guides */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <div className="mt-12 pt-8 border-t border-gray-200">
               <h2 className="text-2xl font-semibold mb-4">Related Guides</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link href="/guides/purpose-and-applications" className="text-primary-600 hover:underline font-semibold">
@@ -1250,7 +1314,8 @@ export default function IntroductionToMetallographyGuide() {
                   → Grinding Techniques
                 </Link>
               </div>
-            </div>
+              </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ export default function HistoryOfMetallographyGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / History of Metallography
@@ -61,7 +61,7 @@ export default function HistoryOfMetallographyGuide() {
               <h2>Introduction</h2>
               <p>
                 Metallography, the study of the microstructure of metals and alloys, has evolved over 
-                thousands of years—shaped by human curiosity, industrial needs, and advances in microscopy. 
+                thousands of years, shaped by human curiosity, industrial needs, and advances in microscopy. 
                 From early empirical observations to today's sophisticated analytical techniques, the field 
                 has continuously evolved to provide deeper insights into material properties and behavior.
               </p>
@@ -511,7 +511,7 @@ export default function HistoryOfMetallographyGuide() {
                 <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <h4 className="font-semibold text-lg mb-2">Metallurgical Textbook Archives</h4>
                   <p className="text-gray-700 mb-2">
-                    Many older—but still valuable—texts are public domain:
+                    Many older (but still valuable) texts are public domain:
                   </p>
                   <ul className="list-disc list-inside text-gray-700 text-sm space-y-1 mb-2">
                     <li>Howe & Campbell – Metallography (early 1900s)</li>

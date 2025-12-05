@@ -181,6 +181,14 @@ const guides = [
   },
   // Application-Specific Guides (In-depth)
   {
+    title: 'Failure Analysis',
+    slug: 'failure-analysis',
+    description: 'Learn about failure analysis techniques in metallography, including fracture analysis, root cause investigation, and material failure mechanisms.',
+    category: 'Application-Specific',
+    readTime: '20 min read',
+    difficulty: 'Advanced',
+  },
+  {
     title: 'Hardness Testing Preparation',
     slug: 'hardness-testing-preparation',
     description: 'In-depth specialized preparation techniques for samples that will undergo hardness testing. Ensure accurate results with proper surface preparation.',
@@ -357,7 +365,7 @@ export default function GuidesPage() {
                     {categoryGuides.map((guide, index) => (
                       <AnimatedCard key={guide.slug} index={index} animation="fadeInUp" duration={500}>
                         <Link 
-                          href={`/guides/${guide.slug}`}
+                          href={guide.slug === 'troubleshooting-common-issues' ? '/resources/troubleshooting-guide' : `/guides/${guide.slug}`}
                           className="card hover:border-gray-300 group"
                         >
                         <div className="flex items-start justify-between mb-3">
@@ -416,7 +424,7 @@ export default function GuidesPage() {
             {filteredGuides.map((guide, index) => (
               <AnimatedCard key={guide.slug} index={index} animation="fadeInUp" duration={500}>
                 <Link 
-                  href={`/guides/${guide.slug}`}
+                  href={guide.slug === 'troubleshooting-common-issues' ? '/resources/troubleshooting-guide' : `/guides/${guide.slug}`}
                   className="card hover:border-gray-300 group"
                 >
                 <div className="flex items-start justify-between mb-3">
@@ -475,7 +483,7 @@ export default function GuidesPage() {
 
         {/* CTA Section */}
         <div className="mt-20">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="text-center">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Save and Organize Your Procedures</h2>
             <p className="text-xl mb-4 text-gray-600 leading-relaxed">
               Use our free procedure tool to save, organize, and get personalized recommendations for your preparation methods.

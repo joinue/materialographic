@@ -25,7 +25,7 @@ export default function EquipmentOverviewGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Equipment Overview
@@ -848,7 +848,7 @@ export default function EquipmentOverviewGuide() {
               </p>
 
               <div className="bg-primary-600 text-white border-l-4 border-primary-700 p-6 my-6 rounded">
-                <h3 className="text-xl font-semibold mb-3">Get Personalized Equipment Recommendations</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white">Get Personalized Equipment Recommendations</h3>
                 <p className="text-primary-100 mb-4">
                   Not sure which equipment is right for your lab? Use our interactive tool to get personalized equipment 
                   and consumable recommendations based on your specific materials, sample requirements, and workflow needs.

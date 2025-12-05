@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { ChevronRight, ChevronLeft } from 'lucide-react'
 
 interface Section {
@@ -17,6 +18,44 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
   const [progress, setProgress] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [navBottom, setNavBottom] = useState<number | null>(null)
+  const router = useRouter()
+  const pathname = usePathname()
+
+  // Handle initial hash navigation on page load
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash.slice(1) // Remove the # symbol
+      if (hash) {
+        // Wait for page to be fully loaded
+        setTimeout(() => {
+          const element = document.getElementById(hash)
+          if (element) {
+            const headerOffset = 100
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+            
+            // Set active section
+            setActiveSection(hash)
+          }
+        }, 100)
+      }
+    }
+
+    // Handle hash on initial load
+    handleHashNavigation()
+
+    // Also handle hash changes (e.g., browser back/forward)
+    window.addEventListener('hashchange', handleHashNavigation)
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashNavigation)
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,6 +114,10 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
         const section = sectionElements[i]
         if (currentScroll >= section.top) {
           setActiveSection(section.id)
+          // Update URL hash without scrolling
+          if (window.location.hash !== `#${section.id}`) {
+            window.history.replaceState(null, '', `${pathname}#${section.id}`)
+          }
           break
         }
       }
@@ -82,6 +125,9 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       // Set first section as active at top
       if (scrollTop < 100) {
         setActiveSection(sections[0]?.id || '')
+        if (window.location.hash && sections[0]?.id) {
+          window.history.replaceState(null, '', pathname)
+        }
       }
     }
 
@@ -93,7 +139,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [sections])
+  }, [sections, pathname])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
@@ -102,6 +148,9 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       const headerOffset = 100
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      // Update URL with hash
+      window.history.pushState(null, '', `${pathname}#${id}`)
 
       window.scrollTo({
         top: offsetPosition,
@@ -126,7 +175,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
           shadow-lg border-r-2 border-primary-700
           transition-all duration-300 ease-in-out
           items-center justify-center
-          ${isOpen ? 'left-80' : 'left-0'}
+          ${isOpen ? 'left-72' : 'left-0'}
         `}
         aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
         aria-expanded={isOpen}
@@ -150,7 +199,7 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
       {/* Navigation */}
       <nav
         className={`
-          hidden xl:block fixed left-4 top-24 w-80 z-40 pointer-events-none
+          hidden xl:block fixed left-4 top-24 w-72 z-40 pointer-events-none
           ${isOpen ? 'xl:translate-x-0' : 'xl:-translate-x-full'}
           3xl:translate-x-0
           transition-transform duration-300 ease-in-out

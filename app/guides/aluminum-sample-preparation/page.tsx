@@ -3,6 +3,7 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 export const metadata: Metadata = {
   title: 'Aluminum Sample Preparation Guide | Metallography.org',
@@ -24,7 +25,7 @@ export default function AluminumGuide() {
     <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
-        <div className="max-w-4xl mx-auto lg:max-w-4xl xl:max-w-[1024px]">
+        <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
             <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Aluminum Sample Preparation
@@ -58,55 +59,62 @@ export default function AluminumGuide() {
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            <section id="introduction" className="scroll-mt-24">
-              <h2>Introduction</h2>
-              <p>
-                Aluminum and its alloys are among the most commonly analyzed materials in metallography. 
-                Proper preparation is essential to reveal the true microstructure without introducing 
-                artifacts such as deformation, scratches, or contamination. This guide will walk you 
-                through the complete preparation process.
-              </p>
-              <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
-                <Image
-                  src="/images/microstructures/Aluminum-silicon, Kellers, 400X.JPG"
-                  alt="Aluminum-silicon alloy microstructure at 400X magnification, properly prepared and etched with Keller's reagent"
-                  width={600}
-                  height={450}
-                  className="w-full h-auto"
-                />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Aluminum-silicon alloy, Keller's reagent, 400X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
-              </div>
-              <p>
-                Aluminum can be challenging due to its softness and tendency to deform easily. The key 
-                is to use appropriate abrasives, maintain light pressure, and avoid over-polishing which 
-                can introduce relief and smearing.
-              </p>
-            </section>
+            <AnimateOnScroll animation="fadeInUp" delay={0}>
+              <section id="introduction" className="scroll-mt-24">
+                <h2>Introduction</h2>
+                <p>
+                  Aluminum and its alloys are among the most commonly analyzed materials in metallography. 
+                  Proper preparation is essential to reveal the true microstructure without introducing 
+                  artifacts such as deformation, scratches, or contamination. This guide will walk you 
+                  through the complete preparation process.
+                </p>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
+                    <Image
+                      src="/images/microstructures/Aluminum-silicon, Kellers, 400X.JPG"
+                      alt="Aluminum-silicon alloy microstructure at 400X magnification, properly prepared and etched with Keller's reagent"
+                      width={600}
+                      height={450}
+                      className="w-full h-auto"
+                    />
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">Aluminum-silicon alloy, Keller's reagent, 400X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
+                  </div>
+                </AnimateOnScroll>
+                <p>
+                  Aluminum can be challenging due to its softness and tendency to deform easily. The key 
+                  is to use appropriate abrasives, maintain light pressure, and avoid over-polishing which 
+                  can introduce relief and smearing.
+                </p>
+              </section>
+            </AnimateOnScroll>
 
-            <section id="sectioning" className="scroll-mt-24">
-              <h2>Sectioning</h2>
-              <p>
-                When sectioning aluminum samples, use a slow cutting speed to minimize heat generation 
-                and deformation. A cutting speed of 100-200 RPM is typically appropriate for most 
-                aluminum alloys. Aluminum's softness requires careful handling to prevent deformation.
-              </p>
-              <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
-                <Link 
-                  href="https://shop.metallographic.com/collections/abrasive-blades"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:opacity-90 transition-opacity"
-                >
-                  <Image
-                    src="/images/consumables/maxcut-e.webp"
-                    alt="MAX-E abrasive cut-off blades for aluminum sectioning"
-                    width={500}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-E abrasive cut-off blades designed for soft non-ferrous materials like aluminum. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
-              </div>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="sectioning" className="scroll-mt-24">
+                <h2>Sectioning</h2>
+                <p>
+                  When sectioning aluminum samples, use a slow cutting speed to minimize heat generation 
+                  and deformation. A cutting speed of 100-200 RPM is typically appropriate for most 
+                  aluminum alloys. Aluminum's softness requires careful handling to prevent deformation.
+                </p>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
+                    <Link 
+                      href="https://shop.metallographic.com/collections/abrasive-blades"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:opacity-90 transition-opacity"
+                    >
+                      <Image
+                        src="/images/consumables/maxcut-e.webp"
+                        alt="MAX-E abrasive cut-off blades for aluminum sectioning"
+                        width={500}
+                        height={375}
+                        className="w-full h-auto"
+                      />
+                    </Link>
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-E abrasive cut-off blades designed for soft non-ferrous materials like aluminum. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
+                  </div>
+                </AnimateOnScroll>
               <ul>
                 <li>Use MAX-E series blades (designed for soft non-ferrous materials like aluminum)</li>
                 <li>Use a thin abrasive cut-off wheel (0.5-1.0 mm thickness)</li>
@@ -115,15 +123,17 @@ export default function AluminumGuide() {
                 <li>Allow the wheel to do the cutting - avoid forcing</li>
                 <li>Consider using a slower feed rate than for harder materials</li>
               </ul>
-              <ProductLink 
-                productName="MAX-E Abrasive Blades"
-                href="https://shop.metallographic.com/collections/abrasive-blades"
-                description="MAX-E series blades specifically designed for soft non-ferrous materials like aluminum"
-              />
-            </section>
+                <ProductLink 
+                  productName="MAX-E Abrasive Blades"
+                  href="https://shop.metallographic.com/collections/abrasive-blades"
+                  description="MAX-E series blades specifically designed for soft non-ferrous materials like aluminum"
+                />
+              </section>
+            </AnimateOnScroll>
 
-            <section id="mounting" className="scroll-mt-24">
-              <h2>Mounting</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="mounting" className="scroll-mt-24">
+                <h2>Mounting</h2>
               <p>
                 Mounting provides edge retention and easier handling. For aluminum, compression 
                 mounting with phenolic or epoxy resins works well. Cold mounting with epoxy is also 
@@ -144,37 +154,41 @@ export default function AluminumGuide() {
                 <li>Allow to cure at room temperature (typically 4-8 hours)</li>
                 <li>Cold mounting avoids heat that could affect aluminum microstructure</li>
               </ol>
-              <ProductLink 
-                productName="Compression Mounting Equipment"
-                href="https://www.metallographic.com/metallographic-equipment/compression-mounting.html"
-                description="Automatic and manual mounting presses for consistent results"
-              />
-            </section>
+                <ProductLink 
+                  productName="Compression Mounting Equipment"
+                  href="https://www.metallographic.com/metallographic-equipment/compression-mounting.html"
+                  description="Automatic and manual mounting presses for consistent results"
+                />
+              </section>
+            </AnimateOnScroll>
 
-            <section id="grinding" className="scroll-mt-24">
-              <h2>Grinding</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="grinding" className="scroll-mt-24">
+                <h2>Grinding</h2>
               <p>
                 Grinding removes sectioning damage and prepares the surface for polishing. Start with 
                 coarse grits and progressively move to finer grits. For aluminum, use lighter pressure 
                 than for harder materials to avoid deformation. We recommend the following sequence:
               </p>
-              <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
-                <Link 
-                  href="https://shop.metallographic.com/collections/sic-grinding"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:opacity-90 transition-opacity"
-                >
-                  <Image
-                    src="/images/consumables/abrasive grinding-SiC papers.webp"
-                    alt="Silicon carbide grinding papers in various grit sizes for progressive grinding"
-                    width={500}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Silicon carbide (SiC) grinding papers in various grit sizes (120, 240, 400, 600) for progressive grinding. Rotate sample 90° between each grit to ensure complete scratch removal.</p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
+                    <Link 
+                      href="https://shop.metallographic.com/collections/sic-grinding"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:opacity-90 transition-opacity"
+                    >
+                      <Image
+                        src="/images/consumables/abrasive grinding-SiC papers.webp"
+                        alt="Silicon carbide grinding papers in various grit sizes for progressive grinding"
+                        width={500}
+                        height={375}
+                        className="w-full h-auto"
+                      />
+                    </Link>
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">Silicon carbide (SiC) grinding papers in various grit sizes (120, 240, 400, 600) for progressive grinding. Rotate sample 90° between each grit to ensure complete scratch removal.</p>
+                  </div>
+                </AnimateOnScroll>
               <h3>Grinding Sequence</h3>
               <ol>
                 <li><strong>120 grit:</strong> Remove sectioning damage (20-40 seconds per step)</li>
@@ -187,56 +201,60 @@ export default function AluminumGuide() {
                 removal of previous scratches. Use water as a lubricant and maintain <strong>light</strong> pressure 
                 to avoid deformation. Aluminum requires less time per step than harder materials.
               </p>
-              <ProductLink 
-                productName="Silicon Carbide Grinding Papers"
-                href="https://shop.metallographic.com/collections/sic-grinding"
-                description="Premium SiC papers in all grit sizes for consistent grinding"
-              />
-            </section>
+                <ProductLink 
+                  productName="Silicon Carbide Grinding Papers"
+                  href="https://shop.metallographic.com/collections/sic-grinding"
+                  description="Premium SiC papers in all grit sizes for consistent grinding"
+                />
+              </section>
+            </AnimateOnScroll>
 
-            <section id="polishing" className="scroll-mt-24">
-              <h2>Polishing</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="polishing" className="scroll-mt-24">
+                <h2>Polishing</h2>
               <p>
                 Polishing removes grinding scratches and prepares a mirror-like surface. For aluminum, 
                 diamond polishing followed by oxide polishing typically yields excellent results. Use 
                 softer cloths and lighter pressure to avoid smearing and relief.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 max-w-2xl mx-auto">
-                <div className="rounded-lg overflow-hidden">
-                  <Link 
-                    href="https://shop.metallographic.com/collections/diamond-abrasives"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover:opacity-90 transition-opacity"
-                  >
-                    <Image
-                      src="/images/consumables/polycrystalline-diamond-high-viscosity.webp"
-                      alt="Polycrystalline diamond polishing compound for aluminum"
-                      width={300}
-                      height={225}
-                      className="w-full h-auto"
-                    />
-                  </Link>
-                  <p className="text-xs text-gray-600 mt-2 italic text-center">Polycrystalline diamond compound provides consistent cutting action for aluminum alloys.</p>
-                </div>
-                <div className="rounded-lg overflow-hidden">
-                  <Link 
-                    href="https://shop.metallographic.com/collections/polishing-pads"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block hover:opacity-90 transition-opacity"
-                  >
-                    <Image
-                      src="/images/consumables/polishing-pads.webp"
-                      alt="Polishing pads for different polishing stages"
-                      width={300}
-                      height={225}
-                      className="w-full h-auto"
-                    />
-                  </Link>
-                  <p className="text-xs text-gray-600 mt-2 italic text-center">Soft to medium polishing pads are recommended for aluminum to prevent smearing and excessive relief.</p>
-                </div>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 max-w-2xl mx-auto">
+                    <div className="rounded-lg overflow-hidden">
+                      <Link 
+                        href="https://shop.metallographic.com/collections/diamond-abrasives"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block hover:opacity-90 transition-opacity"
+                      >
+                        <Image
+                          src="/images/consumables/polycrystalline-diamond-high-viscosity.webp"
+                          alt="Polycrystalline diamond polishing compound for aluminum"
+                          width={300}
+                          height={225}
+                          className="w-full h-auto"
+                        />
+                      </Link>
+                      <p className="text-xs text-gray-600 mt-2 italic text-center">Polycrystalline diamond compound provides consistent cutting action for aluminum alloys.</p>
+                    </div>
+                    <div className="rounded-lg overflow-hidden">
+                      <Link 
+                        href="https://shop.metallographic.com/collections/polishing-pads"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block hover:opacity-90 transition-opacity"
+                      >
+                        <Image
+                          src="/images/consumables/polishing-pads.webp"
+                          alt="Polishing pads for different polishing stages"
+                          width={300}
+                          height={225}
+                          className="w-full h-auto"
+                        />
+                      </Link>
+                      <p className="text-xs text-gray-600 mt-2 italic text-center">Soft to medium polishing pads are recommended for aluminum to prevent smearing and excessive relief.</p>
+                    </div>
+                  </div>
+                </AnimateOnScroll>
               <h3>Diamond Polishing</h3>
               <ol>
                 <li><strong>9 μm diamond:</strong> 2-3 minutes on a medium-soft cloth (e.g., Microcloth)</li>
@@ -258,30 +276,34 @@ export default function AluminumGuide() {
                 href="https://shop.metallographic.com/collections/diamond-abrasives"
                 description="High-quality diamond polishing compounds in various particle sizes"
               />
-              <ProductLink 
-                productName="Polishing Pads"
-                href="https://shop.metallographic.com/collections/polishing-pads"
-                description="Premium polishing pads for different polishing stages"
-              />
-            </section>
+                <ProductLink 
+                  productName="Polishing Pads"
+                  href="https://shop.metallographic.com/collections/polishing-pads"
+                  description="Premium polishing pads for different polishing stages"
+                />
+              </section>
+            </AnimateOnScroll>
 
-            <section id="etching" className="scroll-mt-24">
-              <h2>Etching</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="etching" className="scroll-mt-24">
+                <h2>Etching</h2>
               <p>
                 Etching reveals the microstructure by selectively attacking grain boundaries and phases. 
                 The choice of etchant depends on the aluminum alloy and what features you want to reveal. 
                 Common etchants include Keller's reagent, Weck's reagent, and various electrolytic solutions.
               </p>
-              <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
-                <Image
-                  src="/images/microstructures/Aluminum-silicon, Kellers, 400X.JPG"
-                  alt="Aluminum-silicon alloy microstructure after proper etching with Keller's reagent, showing grain boundaries and structure at 400X"
-                  width={600}
-                  height={450}
-                  className="w-full h-auto"
-                />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Aluminum-silicon alloy etched with Keller's reagent, 400X magnification. Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={100}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
+                    <Image
+                      src="/images/microstructures/Aluminum-silicon, Kellers, 400X.JPG"
+                      alt="Aluminum-silicon alloy microstructure after proper etching with Keller's reagent, showing grain boundaries and structure at 400X"
+                      width={600}
+                      height={450}
+                      className="w-full h-auto"
+                    />
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">Aluminum-silicon alloy etched with Keller's reagent, 400X magnification. Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
+                  </div>
+                </AnimateOnScroll>
               <h3>Common Etchants for Aluminum</h3>
               <ul>
                 <li><strong>Keller's Reagent:</strong> General purpose, reveals grain boundaries and second phases (1% HF, 1.5% HCl, 2.5% HNO₃, 95% H₂O)</li>
@@ -289,23 +311,25 @@ export default function AluminumGuide() {
                 <li><strong>Barker's Reagent:</strong> Electrolytic etching for anodizing (20ml HBF₄, 200ml H₂O)</li>
                 <li><strong>Graff & Sargent's Reagent:</strong> For age-hardened alloys</li>
               </ul>
-              <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
-                <Link 
-                  href="https://shop.metallographic.com/collections/etchants"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block hover:opacity-90 transition-opacity"
-                >
-                  <Image
-                    src="/images/consumables/etching.webp"
-                    alt="Etching solutions and reagents for aluminum"
-                    width={500}
-                    height={375}
-                    className="w-full h-auto"
-                  />
-                </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for aluminum. Common etchants include Keller's Reagent, Weck's Reagent, and electrolytic solutions. Etching time typically ranges from 5-30 seconds depending on the etchant and alloy.</p>
-              </div>
+                <AnimateOnScroll animation="fadeInUp" delay={150}>
+                  <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
+                    <Link 
+                      href="https://shop.metallographic.com/collections/etchants"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block hover:opacity-90 transition-opacity"
+                    >
+                      <Image
+                        src="/images/consumables/etching.webp"
+                        alt="Etching solutions and reagents for aluminum"
+                        width={500}
+                        height={375}
+                        className="w-full h-auto"
+                      />
+                    </Link>
+                    <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for aluminum. Common etchants include Keller's Reagent, Weck's Reagent, and electrolytic solutions. Etching time typically ranges from 5-30 seconds depending on the etchant and alloy.</p>
+                  </div>
+                </AnimateOnScroll>
               <h3>Etching Procedure</h3>
               <ol>
                 <li>Ensure sample is clean and dry</li>
@@ -319,15 +343,17 @@ export default function AluminumGuide() {
                 Over-etching can obscure fine details and create pitting. For electrolytic etching, 
                 use appropriate voltage and time settings.
               </p>
-              <ProductLink 
-                productName="Etchants"
-                href="https://shop.metallographic.com/collections/etchants"
-                description="Pre-mixed and custom etching solutions for aluminum"
-              />
-            </section>
+                <ProductLink 
+                  productName="Etchants"
+                  href="https://shop.metallographic.com/collections/etchants"
+                  description="Pre-mixed and custom etching solutions for aluminum"
+                />
+              </section>
+            </AnimateOnScroll>
 
-            <section id="troubleshooting" className="scroll-mt-24">
-              <h2>Troubleshooting</h2>
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <section id="troubleshooting" className="scroll-mt-24">
+                <h2>Troubleshooting</h2>
               <h3>Common Issues and Solutions</h3>
               <ul>
                 <li><strong>Scratches remaining:</strong> Insufficient grinding/polishing time or skipped grits. Ensure complete scratch removal at each step.</li>
@@ -338,10 +364,12 @@ export default function AluminumGuide() {
                 <li><strong>Over-etching:</strong> Reduce etching time or dilute etchant. Start with shorter times.</li>
                 <li><strong>Pitting after etching:</strong> Etchant too strong or etching time too long. Dilute etchant or reduce time.</li>
               </ul>
-            </section>
+              </section>
+            </AnimateOnScroll>
 
             {/* CTA Section */}
-            <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mt-12 rounded">
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <div className="bg-primary-50 border-l-4 border-primary-600 p-6 mt-12 rounded">
               <h2 className="text-2xl font-semibold mb-4">Save This Procedure</h2>
               <p className="mb-4">
                 Want to save this procedure and get personalized recommendations? Use our free 
@@ -373,10 +401,12 @@ export default function AluminumGuide() {
                   Browse Equipment
                 </Link>
               </div>
-            </div>
+              </div>
+            </AnimateOnScroll>
 
             {/* Related Guides */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <AnimateOnScroll animation="fadeInUp" delay={50}>
+              <div className="mt-12 pt-8 border-t border-gray-200">
               <h2 className="text-2xl font-semibold mb-4">Related Guides</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link href="/guides/grinding-techniques" className="text-primary-600 hover:underline font-semibold">
@@ -385,14 +415,15 @@ export default function AluminumGuide() {
                 <Link href="/guides/polishing-methods" className="text-primary-600 hover:underline font-semibold">
                   → Polishing Methods
                 </Link>
-                <Link href="/guides/troubleshooting-common-issues" className="text-primary-600 hover:underline font-semibold">
+                <Link href="/resources/troubleshooting-guide" className="text-primary-600 hover:underline font-semibold">
                   → Troubleshooting Common Issues
                 </Link>
                 <Link href="/guides/etching-procedures" className="text-primary-600 hover:underline font-semibold">
                   → Etching Procedures
                 </Link>
               </div>
-            </div>
+              </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </div>

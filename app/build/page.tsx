@@ -71,6 +71,7 @@ export default function BuildYourLab() {
     automation: '',
     budget: '',
     applications: [] as string[],
+    processStages: ['sectioning', 'mounting', 'grinding', 'polishing'] as string[], // Default to core stages
   })
   const [recommendations, setRecommendations] = useState<Recommendations | null>(null)
 
@@ -128,6 +129,17 @@ export default function BuildYourLab() {
     'Production Testing',
   ]
 
+  const processStageOptions = [
+    { id: 'sectioning', label: 'Sectioning', description: 'Cutting and sample preparation equipment' },
+    { id: 'mounting', label: 'Mounting', description: 'Sample mounting equipment and materials' },
+    { id: 'grinding', label: 'Grinding', description: 'Grinding equipment and abrasives' },
+    { id: 'polishing', label: 'Polishing', description: 'Polishing equipment and consumables' },
+    { id: 'etching', label: 'Etching', description: 'Etchants and etching supplies' },
+    { id: 'microscopy', label: 'Microscopy', description: 'Microscopes and imaging equipment' },
+    { id: 'cleaning', label: 'Cleaning', description: 'Sample cleaning equipment' },
+    { id: 'hardness', label: 'Hardness Testing', description: 'Hardness testing equipment' },
+  ]
+
   const generateRecommendations = () => {
     const recs: Recommendations = {
       sectioning: { equipment: [], consumables: [] },
@@ -146,6 +158,7 @@ export default function BuildYourLab() {
     const automation = formData.automation
     const budget = formData.budget
     const applications = formData.applications
+    const selectedStages = formData.processStages
 
     // Derived characteristics
     const isHard = hardness.includes('Hard') || hardness.includes('Very Hard')
@@ -179,7 +192,7 @@ export default function BuildYourLab() {
                                     (isVeryHighThroughput && isProduction)
 
     // ========== SECTIONING RECOMMENDATIONS ==========
-    
+    if (selectedStages.includes('sectioning')) {
     // For hard materials, ceramics, or very hard samples: Precision wafering is essential
     if (isHardMaterial || isVeryHard || (isBrittle && isDelicate)) {
       // PACE PICO series is ideal for precision cutting
@@ -379,9 +392,10 @@ export default function BuildYourLab() {
         })
       }
     }
+    }
 
     // ========== MOUNTING RECOMMENDATIONS ==========
-    
+    if (selectedStages.includes('mounting')) {
     // Compression mounting for most applications
     if (isVeryHighThroughput || (isHighThroughput && isAutomated)) {
       recs.mounting.equipment.push({
@@ -479,9 +493,10 @@ export default function BuildYourLab() {
         })
       }
     }
+    }
 
     // ========== GRINDING RECOMMENDATIONS ==========
-    
+    if (selectedStages.includes('grinding')) {
     // Initial rough grinding - hand/belt grinder for large material removal
     if (isLarge || isVeryLarge || !isDelicate) {
       recs.grinding.equipment.push({
@@ -584,9 +599,10 @@ export default function BuildYourLab() {
         reasoning: 'Proper grit sequence (typically P120→P240→P320→P400→P600) critical for damage removal. SiC for hard materials, Al2O3 for soft.',
       })
     }
+    }
 
     // ========== POLISHING RECOMMENDATIONS ==========
-    
+    if (selectedStages.includes('polishing')) {
     // Polishing equipment
     if (needsPrecision && (isPremium || applications.includes('Failure Analysis'))) {
       // Controlled removal polisher for precision applications
@@ -746,7 +762,52 @@ export default function BuildYourLab() {
       })
     }
 
+    // Ensure at least basic recommendations are always provided
+    if (recs.polishing.equipment.length === 0) {
+      recs.polishing.equipment.push({
+        name: 'NANO Series Grinder Polishers',
+        description: 'Versatile manual grinder polishers suitable for both grinding and polishing operations. Operator controls pressure, speed, and technique.',
+        link: 'https://metallographic.com/metallographic-equipment/grinding-polishing/nano.html',
+        category: 'Manual Polishing',
+        isPACE: true,
+        reasoning: 'Manual systems provide maximum operator control for varied materials and polishing techniques. Cost-effective for low to medium volume.',
+      })
+    }
+    
+    if (recs.polishing.consumables.length === 0) {
+      recs.polishing.consumables.push({
+        name: 'TEXPAN or GOLD PAD Intermediate Polishing Pads',
+        description: 'Intermediate polishing pads for diamond polishing. TEXPAN for harder materials, GOLD PAD for softer materials.',
+        link: 'https://shop.metallographic.com/collections/polishing-cloths',
+        isPACE: true,
+        reasoning: 'Select pad based on material: TEXPAN for hard materials, GOLD PAD for soft materials requiring flatness control.',
+      })
+      recs.polishing.consumables.push({
+        name: 'Diamond Suspensions (6 μm, 3 μm, 1 μm)',
+        description: 'Diamond polishing suspensions for intermediate polishing. Progressive size reduction removes damage.',
+        link: 'https://shop.metallographic.com/collections/diamond-suspensions',
+        isPACE: true,
+        reasoning: 'Diamond polishing essential for damage removal. Progressive grit sequence (6→3→1 μm) removes scratches efficiently.',
+      })
+      recs.polishing.consumables.push({
+        name: 'MICROPAD or TRICOTE Final Polishing Pad',
+        description: 'Final polishing pads for mirror finish. MICROPAD for general use, TRICOTE for better texture control.',
+        link: 'https://shop.metallographic.com/collections/polishing-cloths',
+        isPACE: true,
+        reasoning: 'High-nap pads essential for final polishing. MICROPAD for general use, TRICOTE for better surface texture control.',
+      })
+      recs.polishing.consumables.push({
+        name: 'Colloidal Silica or <1 μm Diamond',
+        description: 'Final polishing suspension for achieving mirror finish.',
+        link: 'https://shop.metallographic.com/collections/polishing-suspensions',
+        isPACE: true,
+        reasoning: 'Final polishing suspension removes fine scratches and produces deformation-free surface for microscopy.',
+      })
+    }
+
+    }
     // ========== ETCHING RECOMMENDATIONS ==========
+    if (selectedStages.includes('etching')) {
     
     if (materialType.includes('Steel') && !isStainless) {
       if (!recs.etching) recs.etching = { consumables: [] }
@@ -780,9 +841,10 @@ export default function BuildYourLab() {
         reasoning: 'Keller\'s reagent is standard for aluminum. Alternative: Weck\'s reagent for anodizing technique.',
       })
     }
+    }
 
     // ========== MICROSCOPY RECOMMENDATIONS ==========
-    
+    if (selectedStages.includes('microscopy')) {
     if (isPremium || applications.includes('Research & Development') || applications.includes('Material Characterization')) {
       recs.microscopy = {
         equipment: [
@@ -844,7 +906,9 @@ export default function BuildYourLab() {
       }
     }
     
+    }
     // ========== HARDNESS TESTING RECOMMENDATIONS ==========
+    if (selectedStages.includes('hardness')) {
     
     if (needsPrecision && (applications.includes('Failure Analysis') || applications.includes('Research & Development'))) {
       recs.hardness = {
@@ -866,7 +930,8 @@ export default function BuildYourLab() {
         ],
       }
     }
-    
+    }
+
     // ========== ADVANCED PREPARATION FOR SPECIALIZED APPLICATIONS ==========
     
     if (needsPrecision && (applications.includes('Failure Analysis') || applications.includes('Research & Development'))) {
@@ -908,7 +973,7 @@ export default function BuildYourLab() {
     }
     
     // Environmental control for sensitive materials
-    if (needsPrecision || materialType.includes('Titanium') || isSoftMetal || isDelicate) {
+    if (selectedStages.includes('cleaning') && (needsPrecision || materialType.includes('Titanium') || isSoftMetal || isDelicate)) {
       if (!recs.cleaning) recs.cleaning = { equipment: [] }
       recs.cleaning.equipment.push({
         name: 'Environmental Control Cabinets',
@@ -998,18 +1063,27 @@ export default function BuildYourLab() {
     }))
   }
 
+  const toggleProcessStage = (stage: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      processStages: prev.processStages.includes(stage)
+        ? prev.processStages.filter((s) => s !== stage)
+        : [...prev.processStages, stage],
+    }))
+  }
+
   const canProceedToStep2 = () => {
     return formData.materialType && formData.materialHardness && formData.sampleSize
   }
 
   const canGenerateRecommendations = () => {
-    return formData.throughput && formData.automation && formData.budget
+    return formData.throughput && formData.automation && formData.budget && formData.processStages.length > 0
   }
 
   return (
     <div className="py-12">
       <div className="container-custom">
-        <div className="max-w-4xl mx-auto">
+        <div>
           {/* Header */}
           <header className="mb-12 text-center">
             <span className="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2 block">
@@ -1018,7 +1092,7 @@ export default function BuildYourLab() {
             <h1 className="text-4xl font-bold mb-4">Build Your Lab</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Get personalized equipment and consumable recommendations based on your sample specifications, 
-              materials, and workflow requirements.
+              materials, and workflow requirements. Select only the process stages you need recommendations for.
             </p>
           </header>
 
@@ -1054,75 +1128,77 @@ export default function BuildYourLab() {
               <h2 className="text-2xl font-bold mb-6">Sample Specifications</h2>
               
               <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Material Type <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.materialType}
-                    onChange={(e) => handleInputChange('materialType', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select material type...</option>
-                    {materialTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Material Type <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.materialType}
+                      onChange={(e) => handleInputChange('materialType', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select material type...</option>
+                      {materialTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Material Hardness <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.materialHardness}
-                    onChange={(e) => handleInputChange('materialHardness', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select hardness level...</option>
-                    {hardnessLevels.map((level) => (
-                      <option key={level} value={level}>
-                        {level}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Material Hardness <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.materialHardness}
+                      onChange={(e) => handleInputChange('materialHardness', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select hardness level...</option>
+                      {hardnessLevels.map((level) => (
+                        <option key={level} value={level}>
+                          {level}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Sample Size <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.sampleSize}
-                    onChange={(e) => handleInputChange('sampleSize', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select sample size...</option>
-                    {sampleSizes.map((size) => (
-                      <option key={size} value={size}>
-                        {size}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Sample Size <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.sampleSize}
+                      onChange={(e) => handleInputChange('sampleSize', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select sample size...</option>
+                      {sampleSizes.map((size) => (
+                        <option key={size} value={size}>
+                          {size}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Sample Shape
-                  </label>
-                  <select
-                    value={formData.sampleShape}
-                    onChange={(e) => handleInputChange('sampleShape', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select sample shape...</option>
-                    <option value="Regular">Regular (Rectangular/Cylindrical)</option>
-                    <option value="Irregular">Irregular/Complex</option>
-                    <option value="Thin">Thin Section</option>
-                    <option value="Small">Small/Delicate</option>
-                  </select>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Sample Shape
+                    </label>
+                    <select
+                      value={formData.sampleShape}
+                      onChange={(e) => handleInputChange('sampleShape', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select sample shape...</option>
+                      <option value="Regular">Regular (Rectangular/Cylindrical)</option>
+                      <option value="Irregular">Irregular/Complex</option>
+                      <option value="Thin">Thin Section</option>
+                      <option value="Small">Small/Delicate</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -1167,58 +1243,98 @@ export default function BuildYourLab() {
               <h2 className="text-2xl font-bold mb-6">Workflow Requirements</h2>
               
               <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Daily Throughput <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.throughput}
-                    onChange={(e) => handleInputChange('throughput', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select throughput level...</option>
-                    {throughputOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Daily Throughput <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.throughput}
+                      onChange={(e) => handleInputChange('throughput', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select throughput level...</option>
+                      {throughputOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Automation Level <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.automation}
+                      onChange={(e) => handleInputChange('automation', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select automation level...</option>
+                      {automationOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Budget Range <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => handleInputChange('budget', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
+                    >
+                      <option value="">Select budget range...</option>
+                      {budgetOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Automation Level <span className="text-red-500">*</span>
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    Process Stages to Include <span className="text-red-500">*</span>
                   </label>
-                  <select
-                    value={formData.automation}
-                    onChange={(e) => handleInputChange('automation', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select automation level...</option>
-                    {automationOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Select which parts of the sample preparation and analysis process you need recommendations for. 
+                    This helps us provide focused recommendations for your specific needs.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {processStageOptions.map((stage) => (
+                      <label
+                        key={stage.id}
+                        className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ${
+                          formData.processStages.includes(stage.id)
+                            ? 'border-primary-600 bg-primary-50'
+                            : 'border-gray-300 bg-white hover:border-gray-400'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={formData.processStages.includes(stage.id)}
+                          onChange={() => toggleProcessStage(stage.id)}
+                          className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-600"
+                        />
+                        <div className="ml-3 flex-1">
+                          <div className="font-semibold text-gray-900">{stage.label}</div>
+                          <div className="text-xs text-gray-600 mt-1">{stage.description}</div>
+                        </div>
+                      </label>
                     ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Budget Range <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={formData.budget}
-                    onChange={(e) => handleInputChange('budget', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-primary-600"
-                  >
-                    <option value="">Select budget range...</option>
-                    {budgetOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                  </div>
+                  {formData.processStages.length === 0 && (
+                    <p className="text-sm text-red-600 mt-2">
+                      Please select at least one process stage.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -1263,6 +1379,7 @@ export default function BuildYourLab() {
                         automation: '',
                         budget: '',
                         applications: [],
+                        processStages: ['sectioning', 'mounting', 'grinding', 'polishing'],
                       })
                     }}
                     className="px-4 py-2 text-sm rounded-full font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200"
@@ -1270,9 +1387,17 @@ export default function BuildYourLab() {
                     Start Over
                   </button>
                 </div>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-4">
                   Based on your specifications, here are our recommended equipment and consumables for your lab setup.
                 </p>
+                <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-gray-700">
+                    <strong>Selected Process Stages:</strong> {formData.processStages.map(stage => {
+                      const stageOption = processStageOptions.find(opt => opt.id === stage)
+                      return stageOption?.label
+                    }).filter(Boolean).join(', ')}
+                  </p>
+                </div>
               </div>
 
               {/* Sectioning */}
@@ -1396,7 +1521,7 @@ export default function BuildYourLab() {
               )}
 
               {/* Mounting */}
-              {(recommendations.mounting.equipment.length > 0 || recommendations.mounting.consumables.length > 0) && (
+              {formData.processStages.includes('mounting') && (recommendations.mounting.equipment.length > 0 || recommendations.mounting.consumables.length > 0) && (
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
                   <div className="flex items-center space-x-3 mb-6">
                     <Wrench className="w-6 h-6 text-primary-600" />
@@ -1501,7 +1626,7 @@ export default function BuildYourLab() {
               )}
 
               {/* Grinding */}
-              {(recommendations.grinding.equipment.length > 0 || recommendations.grinding.consumables.length > 0) && (
+              {formData.processStages.includes('grinding') && (recommendations.grinding.equipment.length > 0 || recommendations.grinding.consumables.length > 0) && (
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
                   <div className="flex items-center space-x-3 mb-6">
                     <Wrench className="w-6 h-6 text-primary-600" />
@@ -1598,7 +1723,7 @@ export default function BuildYourLab() {
               )}
 
               {/* Polishing */}
-              {(recommendations.polishing.equipment.length > 0 || recommendations.polishing.consumables.length > 0) && (
+              {formData.processStages.includes('polishing') && (recommendations.polishing.equipment.length > 0 || recommendations.polishing.consumables.length > 0) && (
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
                   <div className="flex items-center space-x-3 mb-6">
                     <Wrench className="w-6 h-6 text-primary-600" />
@@ -1699,7 +1824,7 @@ export default function BuildYourLab() {
               )}
 
               {/* Etching */}
-              {recommendations.etching && recommendations.etching.consumables.length > 0 && (
+              {formData.processStages.includes('etching') && recommendations.etching && recommendations.etching.consumables.length > 0 && (
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
                   <div className="flex items-center space-x-3 mb-6">
                     <FlaskConical className="w-6 h-6 text-primary-600" />
@@ -1744,7 +1869,7 @@ export default function BuildYourLab() {
               )}
 
               {/* Microscopy */}
-              {recommendations.microscopy && recommendations.microscopy.equipment.length > 0 && (
+              {formData.processStages.includes('microscopy') && recommendations.microscopy && recommendations.microscopy.equipment.length > 0 && (
                 <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
                   <div className="flex items-center space-x-3 mb-6">
                     <Wrench className="w-6 h-6 text-primary-600" />
@@ -1809,21 +1934,153 @@ export default function BuildYourLab() {
                 </div>
               )}
 
+              {/* Cleaning */}
+              {formData.processStages.includes('cleaning') && recommendations.cleaning && recommendations.cleaning.equipment.length > 0 && (
+                <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <Wrench className="w-6 h-6 text-primary-600" />
+                    <h3 className="text-2xl font-bold">Cleaning</h3>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 flex items-center">
+                      <Package className="w-5 h-5 mr-2 text-primary-600" />
+                      Equipment
+                    </h4>
+                    <div className="space-y-4">
+                      {recommendations.cleaning.equipment.map((item, idx) => (
+                        <div key={idx} className={`border-l-4 p-4 rounded ${item.isPACE ? 'bg-gray-50 border-primary-600' : 'bg-amber-50 border-amber-500'}`}>
+                          <div className="flex items-start justify-between mb-2">
+                            <h5 className="font-semibold text-gray-900">{item.name}</h5>
+                            {item.isPACE ? (
+                              <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded font-semibold ml-2">
+                                PACE
+                              </span>
+                            ) : (
+                              <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-semibold ml-2">
+                                Alternative
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                          {item.reasoning && (
+                            <div className={`border-l-2 p-2 rounded mb-2 mt-2 ${item.isPACE ? 'bg-blue-50 border-blue-400' : 'bg-amber-50 border-amber-400'}`}>
+                              <p className="text-xs text-gray-700"><strong>Why this choice:</strong> {item.reasoning}</p>
+                            </div>
+                          )}
+                          {item.alternative && (
+                            <div className="bg-amber-50 border-l-2 border-amber-400 p-2 rounded mb-2 mt-2">
+                              <p className="text-xs text-gray-700"><strong>Alternative consideration:</strong> {item.alternative.name} - {item.alternative.reasoning}</p>
+                              {item.alternative.link !== '#' && (
+                                <Link
+                                  href={item.alternative.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-amber-700 hover:text-amber-800 font-semibold inline-flex items-center mt-1"
+                                >
+                                  Learn more <ChevronRight className="w-3 h-3 ml-1" />
+                                </Link>
+                              )}
+                            </div>
+                          )}
+                          {item.link !== '#' && (
+                            <Link
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-primary-600 hover:text-primary-700 font-semibold inline-flex items-center"
+                            >
+                              View Equipment <ChevronRight className="w-4 h-4 ml-1" />
+                            </Link>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Hardness Testing */}
+              {formData.processStages.includes('hardness') && recommendations.hardness && recommendations.hardness.equipment.length > 0 && (
+                <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <Wrench className="w-6 h-6 text-primary-600" />
+                    <h3 className="text-2xl font-bold">Hardness Testing</h3>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold mb-4 flex items-center">
+                      <Package className="w-5 h-5 mr-2 text-primary-600" />
+                      Equipment
+                    </h4>
+                    <div className="space-y-4">
+                      {recommendations.hardness.equipment.map((item, idx) => (
+                        <div key={idx} className={`border-l-4 p-4 rounded ${item.isPACE ? 'bg-gray-50 border-primary-600' : 'bg-amber-50 border-amber-500'}`}>
+                          <div className="flex items-start justify-between mb-2">
+                            <h5 className="font-semibold text-gray-900">{item.name}</h5>
+                            {item.isPACE ? (
+                              <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded font-semibold ml-2">
+                                PACE
+                              </span>
+                            ) : (
+                              <span className="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-semibold ml-2">
+                                Alternative
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                          {item.reasoning && (
+                            <div className={`border-l-2 p-2 rounded mb-2 mt-2 ${item.isPACE ? 'bg-blue-50 border-blue-400' : 'bg-amber-50 border-amber-400'}`}>
+                              <p className="text-xs text-gray-700"><strong>Why this choice:</strong> {item.reasoning}</p>
+                            </div>
+                          )}
+                          {item.alternative && (
+                            <div className="bg-amber-50 border-l-2 border-amber-400 p-2 rounded mb-2 mt-2">
+                              <p className="text-xs text-gray-700"><strong>Alternative consideration:</strong> {item.alternative.name} - {item.alternative.reasoning}</p>
+                              {item.alternative.link !== '#' && (
+                                <Link
+                                  href={item.alternative.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-amber-700 hover:text-amber-800 font-semibold inline-flex items-center mt-1"
+                                >
+                                  Learn more <ChevronRight className="w-3 h-3 ml-1" />
+                                </Link>
+                              )}
+                            </div>
+                          )}
+                          {item.link !== '#' && (
+                            <Link
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-primary-600 hover:text-primary-700 font-semibold inline-flex items-center"
+                            >
+                              View Equipment <ChevronRight className="w-4 h-4 ml-1" />
+                            </Link>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* CTA Section */}
               <div className="bg-primary-600 text-white rounded-lg p-8 text-center">
-                <h3 className="text-2xl font-bold mb-4">Ready to Build Your Lab?</h3>
-                <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
+                <h3 className="text-2xl font-bold mb-4 text-white">Ready to Build Your Lab?</h3>
+                <p className="text-white mb-6 max-w-2xl mx-auto opacity-90">
                   Contact our experts for personalized consultation, quotes, and support in setting up your 
                   metallographic laboratory.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
-                    href="https://metallographic.com/contact"
+                    href="https://www.metallographic.com/quote"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 inline-block text-sm shadow-lg hover:shadow-xl"
                   >
-                    Contact Sales
+                    Request Quote
                   </Link>
                   <Link
                     href="https://shop.metallographic.com"
