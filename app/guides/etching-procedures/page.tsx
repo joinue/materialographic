@@ -3,11 +3,11 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Etching Procedures Guide | Metallography.org',
-  description: 'Overview of etching techniques, reagent selection, and application methods. Learn how to reveal microstructures effectively and safely.',
-}
+const guide = getGuideBySlug('etching-procedures')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -22,8 +22,28 @@ const sections = [
 ]
 
 export default function EtchingProceduresGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData, howToStructuredData } = getGuideStructuredData(guide)
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      {howToStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
+        />
+      )}
       <GuideSideNav sections={sections} />
       <article className="py-12">
         <div className="container-custom lg:pl-0 xl:pl-0">
@@ -85,6 +105,8 @@ export default function EtchingProceduresGuide() {
                       width={600}
                       height={450}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                     />
                   </Link>
                   <p className="text-sm text-gray-600 mt-2 italic text-center">

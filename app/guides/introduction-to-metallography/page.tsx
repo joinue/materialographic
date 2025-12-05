@@ -3,11 +3,12 @@ import Image from 'next/image'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
 import AnimateOnScroll from '@/components/AnimateOnScroll'
+import GlossaryTermTooltip from '@/components/GlossaryTermTooltip'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Introduction to Metallography | Metallography.org',
-  description: 'Learn the fundamentals of metallography, including what it is, why it matters, and how it\'s used in materials science and engineering.',
-}
+const guide = getGuideBySlug('introduction-to-metallography')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'what-is-metallography', label: 'What is Metallography?' },
@@ -24,8 +25,23 @@ const sections = [
 ]
 
 export default function IntroductionToMetallographyGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -69,8 +85,8 @@ export default function IntroductionToMetallographyGuide() {
             <AnimateOnScroll animation="fadeInUp" delay={0}>
               <section id="what-is-metallography" className="scroll-mt-24">
                 <h2>What is Metallography?</h2>
-                <p>
-                  Metallography is the scientific study and analysis of the microstructure of metals and alloys. 
+              <p>
+                Metallography is the scientific study and analysis of the <GlossaryTermTooltip term="Microstructure">microstructure</GlossaryTermTooltip> of metals and alloys.
                   The term comes from the Greek words "metallon" (metal) and "graphos" (to write or describe), 
                   literally meaning "the description of metals." Through careful sample preparation and microscopic 
                   examination, metallography reveals the internal structure of materials, allowing scientists and 
@@ -80,11 +96,13 @@ export default function IntroductionToMetallographyGuide() {
                 <AnimateOnScroll animation="fadeInUp" delay={100}>
                   <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
                     <Image
-                      src="/images/microstructures/Ferrite-Pearlite steel.JPG"
+                      src="/images/microstructures/Ferrite-Pearlite steel-1.jpg"
                       alt="Example microstructure showing ferrite and pearlite in steel"
                       width={600}
                       height={450}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                     />
                     <p className="text-sm text-gray-600 mt-2 italic text-center">
                       Example microstructure: Ferrite and pearlite in steel. Metallography reveals the internal 
@@ -97,7 +115,7 @@ export default function IntroductionToMetallographyGuide() {
                 At its core, metallography involves three main steps:
               </p>
               <ol>
-                <li><strong>Sample preparation:</strong> Cutting, mounting, grinding, polishing, and etching a 
+                <li><strong>Sample preparation:</strong> <GlossaryTermTooltip term="Sectioning">Cutting</GlossaryTermTooltip>, <GlossaryTermTooltip term="Mounting">mounting</GlossaryTermTooltip>, <GlossaryTermTooltip term="Grinding">grinding</GlossaryTermTooltip>, <GlossaryTermTooltip term="Polishing">polishing</GlossaryTermTooltip>, and <GlossaryTermTooltip term="Etching">etching</GlossaryTermTooltip> a 
                 representative sample to reveal its microstructure</li>
                 <li><strong>Microscopic examination:</strong> Observing the prepared sample under a metallurgical 
                 microscope to study its structure</li>
@@ -129,7 +147,7 @@ export default function IntroductionToMetallographyGuide() {
               <p>
                 Metallography is fundamental to materials science and engineering because it provides direct 
                 insight into the relationship between structure and properties. The microstructure of a material (its 
-                grain size, phase distribution, defects, and other features) directly determines its mechanical, 
+                <GlossaryTermTooltip term="Grain Size"> grain size</GlossaryTermTooltip>, <GlossaryTermTooltip term="Phase">phase</GlossaryTermTooltip> distribution, <GlossaryTermTooltip term="Defect">defects</GlossaryTermTooltip>, and other features) directly determines its mechanical, 
                 electrical, thermal, and chemical properties.
               </p>
               <p className="mt-4">
@@ -250,7 +268,8 @@ export default function IntroductionToMetallographyGuide() {
                 <h2>Basic Concepts and Terminology</h2>
               <p>
                 Understanding metallography requires familiarity with key concepts and terminology. These 
-                fundamental terms will help you navigate the field and understand material structures.
+                fundamental terms will help you navigate the field and understand material structures. 
+                For a comprehensive reference, see our <Link href="/glossary" className="text-primary-600 hover:underline font-semibold">Metallography Glossary</Link>.
               </p>
 
               <h3>Microstructure</h3>
@@ -259,29 +278,29 @@ export default function IntroductionToMetallographyGuide() {
                 microscope. It includes:
               </p>
               <ul>
-                <li><strong>Grains:</strong> Individual crystals within a polycrystalline material. Grain size 
+                <li><strong><GlossaryTermTooltip term="Grain">Grains</GlossaryTermTooltip>:</strong> Individual crystals within a <GlossaryTermTooltip term="Polycrystalline">polycrystalline</GlossaryTermTooltip> material. <GlossaryTermTooltip term="Grain Size">Grain size</GlossaryTermTooltip> 
                 significantly affects material properties.</li>
-                <li><strong>Phases:</strong> Distinct regions with different chemical compositions or crystal 
-                structures (e.g., ferrite and cementite in steel).</li>
-                <li><strong>Grain boundaries:</strong> Interfaces between adjacent grains where atoms are less 
+                <li><strong><GlossaryTermTooltip term="Phase">Phases</GlossaryTermTooltip>:</strong> Distinct regions with different chemical compositions or crystal 
+                structures (e.g., <GlossaryTermTooltip term="Ferrite">ferrite</GlossaryTermTooltip> and <GlossaryTermTooltip term="Cementite">cementite</GlossaryTermTooltip> in steel).</li>
+                <li><strong><GlossaryTermTooltip term="Grain Boundary">Grain boundaries</GlossaryTermTooltip>:</strong> Interfaces between adjacent grains where atoms are less 
                 regularly arranged.</li>
-                <li><strong>Precipitates:</strong> Small particles of a second phase that form within the 
+                <li><strong><GlossaryTermTooltip term="Precipitate">Precipitates</GlossaryTermTooltip>:</strong> Small particles of a second phase that form within the 
                 primary phase.</li>
-                <li><strong>Defects:</strong> Imperfections such as inclusions, voids, cracks, or dislocations.</li>
+                <li><strong><GlossaryTermTooltip term="Defect">Defects</GlossaryTermTooltip>:</strong> Imperfections such as <GlossaryTermTooltip term="Inclusion">inclusions</GlossaryTermTooltip>, <GlossaryTermTooltip term="Void">voids</GlossaryTermTooltip>, <GlossaryTermTooltip term="Crack">cracks</GlossaryTermTooltip>, or <GlossaryTermTooltip term="Dislocation">dislocations</GlossaryTermTooltip>.</li>
               </ul>
 
               <h3>Sample Preparation</h3>
               <p>
-                Proper sample preparation is critical for accurate metallographic analysis. The process typically 
+                Proper <GlossaryTermTooltip term="Preparation">sample preparation</GlossaryTermTooltip> is critical for accurate metallographic analysis. The process typically 
                 includes:
               </p>
               <ul>
-                <li><strong>Sectioning:</strong> Cutting a representative sample from the larger workpiece</li>
-                <li><strong>Mounting:</strong> Embedding the sample in resin for easier handling</li>
-                <li><strong>Grinding:</strong> Removing surface damage and creating a flat surface using 
-                progressively finer abrasives</li>
-                <li><strong>Polishing:</strong> Creating a mirror-like surface free of scratches</li>
-                <li><strong>Etching:</strong> Applying chemical reagents to reveal the microstructure</li>
+                <li><strong><GlossaryTermTooltip term="Sectioning">Sectioning</GlossaryTermTooltip>:</strong> Cutting a representative sample from the larger workpiece</li>
+                <li><strong><GlossaryTermTooltip term="Mounting">Mounting</GlossaryTermTooltip>:</strong> Embedding the sample in <GlossaryTermTooltip term="Resin">resin</GlossaryTermTooltip> for easier handling</li>
+                <li><strong><GlossaryTermTooltip term="Grinding">Grinding</GlossaryTermTooltip>:</strong> Removing surface damage and creating a flat surface using 
+                progressively finer <GlossaryTermTooltip term="Abrasive">abrasives</GlossaryTermTooltip></li>
+                <li><strong><GlossaryTermTooltip term="Polishing">Polishing</GlossaryTermTooltip>:</strong> Creating a mirror-like surface free of scratches</li>
+                <li><strong><GlossaryTermTooltip term="Etching">Etching</GlossaryTermTooltip>:</strong> Applying <GlossaryTermTooltip term="Etchant">chemical reagents</GlossaryTermTooltip> to reveal the microstructure</li>
               </ul>
 
               <h3>Common Microstructural Features</h3>
@@ -381,7 +400,7 @@ export default function IntroductionToMetallographyGuide() {
                   </p>
                   <div className="mt-3 rounded overflow-hidden">
                     <Image
-                      src="/images/microstructures/Ferrite-Pearlite steel.JPG"
+                      src="/images/microstructures/Ferrite-Pearlite steel-1.jpg"
                       alt="Ferrite and pearlite microstructure in steel"
                       width={300}
                       height={225}
@@ -1041,7 +1060,7 @@ export default function IntroductionToMetallographyGuide() {
               </p>
               <ul>
                 <li>Read this guide and understand what metallography is and why it matters</li>
-                <li>Familiarize yourself with basic terminology (grains, phases, microstructure)</li>
+                <li>Familiarize yourself with basic terminology (grains, phases, microstructure) - see our <Link href="/glossary" className="text-primary-600 hover:underline font-semibold">Glossary</Link> for definitions</li>
                 <li>Understand the relationship between structure and properties</li>
                 <li>Learn about the preparation process overview</li>
                 <li>Review <Link href="/guides/equipment-overview" className="text-primary-600 hover:underline font-semibold">
@@ -1086,6 +1105,8 @@ export default function IntroductionToMetallographyGuide() {
                 Take advantage of the resources available:
               </p>
               <ul>
+                <li><Link href="/glossary" className="text-primary-600 hover:underline font-semibold">
+                  Glossary</Link> - Look up technical terms and definitions</li>
                 <li><Link href="/resources/checklist" className="text-primary-600 hover:underline font-semibold">
                   Preparation Checklist</Link> - Use checklists to ensure you don't miss steps</li>
                 <li><Link href="/resources/troubleshooting-guide" className="text-primary-600 hover:underline font-semibold">
@@ -1130,6 +1151,8 @@ export default function IntroductionToMetallographyGuide() {
                   complete guides library</Link> for detailed information on each preparation step</li>
                 <li>Check out <Link href="/resources" className="text-primary-600 hover:underline font-semibold">
                   resources</Link> for checklists, charts, and troubleshooting help</li>
+                <li>Reference the <Link href="/glossary" className="text-primary-600 hover:underline font-semibold">
+                  glossary</Link> when you encounter unfamiliar terms</li>
                 <li>Use our <Link href="/tools" className="text-primary-600 hover:underline font-semibold">
                   tools</Link> to help with etchant selection, grit size conversion, and more</li>
                 <li>Consider material-specific guides if you're working with particular materials</li>
@@ -1319,7 +1342,8 @@ export default function IntroductionToMetallographyGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

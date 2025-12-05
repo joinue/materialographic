@@ -21,9 +21,33 @@ export default function AnimateOnScroll({
 }: AnimateOnScrollProps) {
   // Start with false, but will check on mount if already visible
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Detect mobile device for reduced animations
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    }
+    // Use requestIdleCallback for non-critical initialization
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(checkMobile)
+    } else {
+      // Fallback for browsers without requestIdleCallback
+      setTimeout(checkMobile, 0)
+    }
+    window.addEventListener('resize', checkMobile, { passive: true })
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    // On mobile, reduce animation complexity for better performance
+    if (isMobile && animation !== 'fadeIn') {
+      // Skip complex animations on mobile, just fade in
+      setIsVisible(true)
+      return
+    }
+
     // Fallback: if IntersectionObserver is not supported, show content immediately
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       setIsVisible(true)
@@ -38,21 +62,27 @@ export default function AnimateOnScroll({
     const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
     
     if (isInViewport) {
-      setIsVisible(true)
+      // Use requestAnimationFrame to ensure animation triggers
+      requestAnimationFrame(() => {
+        setIsVisible(true)
+      })
       return
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          // Use requestAnimationFrame to ensure animation triggers
+          requestAnimationFrame(() => {
+            setIsVisible(true)
+          })
           // Disconnect after first animation to improve performance
           observer.disconnect()
         }
       },
       {
         threshold,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin: isMobile ? '0px 0px -100px 0px' : '0px 0px -50px 0px',
       }
     )
 
@@ -61,7 +91,7 @@ export default function AnimateOnScroll({
     return () => {
       observer.disconnect()
     }
-  }, [threshold])
+  }, [threshold, isMobile, animation])
 
   const animationClassMap = {
     fadeIn: 'animate-fadeIn',
@@ -77,8 +107,8 @@ export default function AnimateOnScroll({
       ref={elementRef}
       className={`animate-on-scroll ${isVisible ? animationClassMap[animation] : 'opacity-0'} ${className}`}
       style={{
-        animationDelay: `${delay}ms`,
-        animationDuration: `${duration}ms`,
+        animationDelay: isVisible ? `${delay}ms` : '0ms',
+        animationDuration: isVisible ? `${duration}ms` : '0ms',
       }}
     >
       {children}

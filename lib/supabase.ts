@@ -64,6 +64,30 @@ export interface Material {
   solution_treatment_temp_celsius?: number | null
   aging_temperature_celsius?: number | null
   
+  // Time estimates and difficulty (for metallographers)
+  preparation_difficulty?: 'easy' | 'medium' | 'hard' | 'expert' | null
+  estimated_sectioning_time_minutes?: number | null
+  estimated_mounting_time_minutes?: number | null
+  estimated_grinding_time_minutes?: number | null
+  estimated_polishing_time_minutes?: number | null
+  estimated_etching_time_minutes?: number | null
+  total_preparation_time_minutes?: number | null
+  
+  // Troubleshooting and common issues
+  common_issues?: string[] | null
+  troubleshooting_notes?: string | null
+  success_criteria?: string | null
+  quality_indicators?: string[] | null
+  
+  // Material grades and variants
+  material_grade?: string | null
+  temper_condition?: string | null
+  parent_material_id?: string | null
+  
+  // Enhanced images
+  microstructure_images?: any | null // JSONB array of {url, description, magnification, etchant_used}
+  preparation_step_images?: any | null // JSONB object with step images
+  
   created_at?: string
   updated_at?: string
 }
@@ -142,6 +166,67 @@ export interface Standard {
   updated_at?: string
 }
 
+export interface Equipment {
+  id: string
+  name: string
+  item_id: string
+  slug?: string | null
+  description?: string | null
+  category: string
+  subcategory?: string | null
+  is_pace_product?: boolean | null
+  product_url?: string | null
+  image_url?: string | null
+  blade_size_mm?: number | null
+  blade_size_inches?: number | null
+  automation_level?: 'manual' | 'semi-automated' | 'automated' | null
+  wheel_size_inches?: number[] | null
+  max_cutting_capacity_mm?: number | null
+  max_cutting_capacity_inches?: number | null
+  suitable_for_material_types?: string[] | null
+  suitable_for_hardness?: string[] | null
+  suitable_for_sample_sizes?: string[] | null
+  suitable_for_sample_shapes?: string[] | null
+  suitable_for_throughput?: string[] | null
+  suitable_for_applications?: string[] | null
+  min_budget_level?: string | null
+  tags?: string[] | null
+  status?: 'active' | 'discontinued' | 'draft' | null
+  sort_order?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface Consumable {
+  id: string
+  name: string
+  item_id: string
+  sku?: string | null
+  slug?: string | null
+  description?: string | null
+  category: string
+  subcategory?: string | null
+  is_pace_product?: boolean | null
+  product_url?: string | null
+  image_url?: string | null
+  list_price?: number | null
+  size_mm?: number | null
+  size_inches?: number | null
+  grit_size?: string | null
+  material_composition?: string | null
+  type?: string | null
+  suitable_for_material_types?: string[] | null
+  suitable_for_hardness?: string[] | null
+  compatible_with_equipment?: string[] | null
+  recommended_for_applications?: string[] | null
+  tags?: string[] | null
+  is_active?: boolean | null
+  status?: 'active' | 'discontinued' | 'draft' | null
+  sort_order?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
 export interface MaterialInsert {
   name: string
   category: string
@@ -155,6 +240,23 @@ export interface MaterialInsert {
 }
 
 export interface MaterialUpdate extends Partial<MaterialInsert> {}
+
+// Junction table for material-etchant relationships
+export interface MaterialEtchant {
+  id: string
+  material_id: string
+  etchant_id: string
+  is_primary?: boolean | null
+  is_alternative?: boolean | null
+  recommended_for?: string | null
+  typical_results?: string | null
+  application_notes?: string | null
+  usage_frequency?: 'common' | 'occasional' | 'rare' | null
+  effectiveness_rating?: number | null
+  sort_order?: number | null
+  created_at?: string
+  updated_at?: string
+}
 
 // Helper functions
 export async function getAllMaterials(): Promise<Material[]> {
@@ -433,5 +535,346 @@ export async function searchStandards(query: string): Promise<Standard[]> {
   }
 
   return data || []
+}
+
+// Material-Echant relationship functions
+export async function getEtchantsForMaterial(materialId: string): Promise<Etchant[]> {
+  const { data, error } = await supabase
+    .from('material_etchants')
+    .select(`
+      etchant_id,
+      is_primary,
+      recommended_for,
+      typical_results,
+      effectiveness_rating,
+      etchants (*)
+    `)
+    .eq('material_id', materialId)
+    .order('is_primary', { ascending: false })
+    .order('sort_order', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching etchants for material:', error)
+    throw error
+  }
+
+  // Extract etchants from the joined data
+  return data?.map((item: any) => item.etchants).filter(Boolean) || []
+}
+
+export async function getMaterialsForEtchant(etchantId: string): Promise<Material[]> {
+  const { data, error } = await supabase
+    .from('material_etchants')
+    .select(`
+      material_id,
+      is_primary,
+      recommended_for,
+      materials (*)
+    `)
+    .eq('etchant_id', etchantId)
+    .order('is_primary', { ascending: false })
+    .order('sort_order', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching materials for etchant:', error)
+    throw error
+  }
+
+  // Extract materials from the joined data
+  return data?.map((item: any) => item.materials).filter(Boolean) || []
+}
+
+export async function getMaterialEtchantRelationship(materialId: string, etchantId: string): Promise<MaterialEtchant | null> {
+  const { data, error } = await supabase
+    .from('material_etchants')
+    .select('*')
+    .eq('material_id', materialId)
+    .eq('etchant_id', etchantId)
+    .single()
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null
+    }
+    console.error('Error fetching material-etchant relationship:', error)
+    throw error
+  }
+
+  return data
+}
+
+// Equipment functions
+export async function getEquipmentByCategory(category: string): Promise<Equipment[]> {
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .eq('category', category)
+    .eq('status', 'active')
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching equipment by category:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getEquipmentByCategoryAndSubcategory(
+  category: string,
+  subcategory: string
+): Promise<Equipment[]> {
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .eq('category', category)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching equipment by category and subcategory:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getEquipmentByItemId(itemId: string): Promise<Equipment | null> {
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .eq('item_id', itemId)
+    .eq('status', 'active')
+    .single()
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null
+    }
+    console.error('Error fetching equipment by item_id:', error)
+    throw error
+  }
+
+  return data
+}
+
+// Consumable functions
+export async function getConsumablesByCategory(category: string): Promise<Consumable[]> {
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .eq('category', category)
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching consumables by category:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getConsumablesByCategoryAndSubcategory(
+  category: string,
+  subcategory: string
+): Promise<Consumable[]> {
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .eq('category', category)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching consumables by category and subcategory:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getConsumablesByItemId(itemId: string): Promise<Consumable | null> {
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .eq('item_id', itemId)
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .single()
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null
+    }
+    console.error('Error fetching consumable by item_id:', error)
+    throw error
+  }
+
+  return data
+}
+
+// Smart recommendation functions that use suitability attributes
+export async function getRecommendedEquipment(params: {
+  category: string
+  materialType?: string
+  hardness?: string
+  sampleSize?: string
+  sampleShape?: string
+  throughput?: string
+  automation?: string
+  budget?: string
+  applications?: string[]
+}): Promise<Equipment[]> {
+  let query = supabase
+    .from('equipment')
+    .select('*')
+    .eq('category', params.category)
+    .eq('status', 'active')
+
+  // Filter by automation level if specified
+  if (params.automation) {
+    const automationMap: Record<string, string> = {
+      'Fully Manual': 'manual',
+      'Semi-Automated': 'semi-automated',
+      'Fully Automated': 'automated',
+    }
+    const automationLevel = automationMap[params.automation] || params.automation.toLowerCase().replace('fully-', '')
+    if (automationLevel === 'manual' || automationLevel === 'semi-automated' || automationLevel === 'automated') {
+      query = query.eq('automation_level', automationLevel)
+    }
+  }
+
+  const { data, error } = await query.order('sort_order', { ascending: true }).order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching recommended equipment:', error)
+    throw error
+  }
+
+  if (!data) return []
+
+  // Filter by suitability attributes in memory (but be lenient - only exclude if explicitly incompatible)
+  return data.filter((eq: Equipment) => {
+    // Check material type suitability (only exclude if equipment has restrictions and doesn't match)
+    if (params.materialType && eq.suitable_for_material_types && eq.suitable_for_material_types.length > 0) {
+      const materialMatch = eq.suitable_for_material_types.some((mt: string) => {
+        const mtLower = params.materialType!.toLowerCase()
+        return mtLower.includes(mt.toLowerCase()) || mt.toLowerCase().includes(mtLower)
+      })
+      // Only exclude if there are restrictions and none match
+      if (!materialMatch) return false
+    }
+    // If equipment has no material type restrictions, include it
+
+    // Check hardness suitability (only exclude if equipment has restrictions and doesn't match)
+    if (params.hardness && eq.suitable_for_hardness && eq.suitable_for_hardness.length > 0) {
+      const hardnessMap: Record<string, string> = {
+        'Soft (< 30 HRC)': 'soft',
+        'Medium (30-50 HRC)': 'medium',
+        'Hard (50-65 HRC)': 'hard',
+        'Very Hard (> 65 HRC)': 'very-hard',
+      }
+      const hardnessLevel = hardnessMap[params.hardness] || params.hardness.toLowerCase()
+      // Only exclude if there are restrictions and none match
+      if (!eq.suitable_for_hardness.includes(hardnessLevel)) return false
+    }
+    // If equipment has no hardness restrictions, include it
+
+    // Check sample size suitability (only exclude if equipment has restrictions and doesn't match)
+    if (params.sampleSize && eq.suitable_for_sample_sizes && eq.suitable_for_sample_sizes.length > 0) {
+      const sizeMap: Record<string, string> = {
+        'Small (< 25mm)': 'small',
+        'Medium (25-50mm)': 'medium',
+        'Large (50-100mm)': 'large',
+        'Very Large (> 100mm)': 'very-large',
+      }
+      const sizeLevel = sizeMap[params.sampleSize] || params.sampleSize.toLowerCase()
+      // Only exclude if there are restrictions and none match
+      if (!eq.suitable_for_sample_sizes.includes(sizeLevel)) return false
+    }
+    // If equipment has no sample size restrictions, include it
+
+    // Check throughput suitability (only exclude if equipment has restrictions and doesn't match)
+    if (params.throughput && eq.suitable_for_throughput && eq.suitable_for_throughput.length > 0) {
+      const throughputMap: Record<string, string> = {
+        'Low (1-10 samples/day)': 'low',
+        'Medium (10-50 samples/day)': 'medium',
+        'High (50-200 samples/day)': 'high',
+        'Very High (> 200 samples/day)': 'very-high',
+      }
+      const throughputLevel = throughputMap[params.throughput] || params.throughput.toLowerCase()
+      // Only exclude if there are restrictions and none match
+      if (!eq.suitable_for_throughput.includes(throughputLevel)) return false
+    }
+    // If equipment has no throughput restrictions, include it
+
+    return true
+  })
+}
+
+export async function getRecommendedConsumables(params: {
+  category: string
+  materialType?: string
+  hardness?: string
+  compatibleEquipment?: string[]
+}): Promise<Consumable[]> {
+  let query = supabase
+    .from('consumables')
+    .select('*')
+    .eq('category', params.category)
+    .eq('status', 'active')
+    .eq('is_active', true)
+
+  const { data, error } = await query.order('sort_order', { ascending: true }).order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching recommended consumables:', error)
+    throw error
+  }
+
+  if (!data) return []
+
+  // Filter by suitability attributes in memory
+  return data.filter((cons: Consumable) => {
+    // Check material type suitability
+    if (params.materialType && cons.suitable_for_material_types && cons.suitable_for_material_types.length > 0) {
+      const materialMatch = cons.suitable_for_material_types.some((mt: string) => {
+        const mtLower = params.materialType!.toLowerCase()
+        return mtLower.includes(mt.toLowerCase()) || mt.toLowerCase().includes(mtLower)
+      })
+      if (!materialMatch) return false
+    }
+
+    // Check hardness suitability
+    if (params.hardness && cons.suitable_for_hardness && cons.suitable_for_hardness.length > 0) {
+      const hardnessMap: Record<string, string> = {
+        'Soft (< 30 HRC)': 'soft',
+        'Medium (30-50 HRC)': 'medium',
+        'Hard (50-65 HRC)': 'hard',
+        'Very Hard (> 65 HRC)': 'very-hard',
+      }
+      const hardnessLevel = hardnessMap[params.hardness] || params.hardness.toLowerCase()
+      if (!cons.suitable_for_hardness.includes(hardnessLevel)) return false
+    }
+
+    // Check equipment compatibility
+    if (params.compatibleEquipment && cons.compatible_with_equipment && cons.compatible_with_equipment.length > 0) {
+      const hasCompatible = params.compatibleEquipment.some((eqId: string) =>
+        cons.compatible_with_equipment!.includes(eqId)
+      )
+      if (!hasCompatible) return false
+    }
+
+    return true
+  })
 }
 

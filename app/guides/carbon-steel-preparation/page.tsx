@@ -2,12 +2,13 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
+import MaterialTooltip from '@/components/MaterialTooltip'
 import Link from 'next/link'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Carbon Steel Sample Preparation Guide | Metallography.org',
-  description: 'Complete step-by-step guide to preparing carbon steel samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
-}
+const guide = getGuideBySlug('carbon-steel-preparation')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -20,8 +21,23 @@ const sections = [
 ]
 
 export default function CarbonSteelGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -78,9 +94,11 @@ export default function CarbonSteelGuide() {
               </div>
               <p>
                 Carbon steels can vary significantly in hardness depending on carbon content and heat 
-                treatment. The key is to use appropriate abrasives and maintain consistent pressure 
-                throughout the process. Softer, low-carbon steels require lighter pressure, while 
-                hardened steels can tolerate more aggressive preparation.
+                treatment. For example, <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> is a low-carbon steel 
+                (typically 126 HB) that requires lighter pressure during preparation, while 
+                <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip> is a medium-carbon steel (around 170 HB) that can 
+                tolerate more aggressive preparation. The key is to use appropriate abrasives and maintain 
+                consistent pressure throughout the process based on the specific steel grade and its hardness.
               </p>
             </section>
 
@@ -89,7 +107,9 @@ export default function CarbonSteelGuide() {
               <p>
                 When sectioning carbon steel samples, use a slow cutting speed to minimize heat 
                 generation and deformation. A cutting speed of 100-200 RPM is typically appropriate 
-                for most carbon steel grades. For hardened or high-carbon steels, use slower speeds.
+                for most carbon steel grades like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> and 
+                <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>. For hardened or high-carbon steels such as 
+                <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, use slower speeds to prevent phase transformation.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -274,13 +294,13 @@ export default function CarbonSteelGuide() {
                   height={450}
                   className="w-full h-auto"
                 />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">1018 Carbon steel etched with 2% Nital, magnification (DIC). Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> Carbon steel etched with 2% Nital, magnification (DIC). Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
               </div>
               <h3>Common Etchants for Carbon Steel</h3>
               <ul>
-                <li><strong>2% Nital:</strong> General purpose for softer, low-carbon steels. Reveals ferrite grain boundaries and pearlite structure (2% HNO₃ in ethanol)</li>
-                <li><strong>3% Nital:</strong> Standard concentration for most carbon steels. Most commonly used (3% HNO₃ in ethanol)</li>
-                <li><strong>5% Nital:</strong> For harder carbon steels. More aggressive etching (5% HNO₃ in ethanol)</li>
+                <li><strong>2% Nital:</strong> General purpose for softer, low-carbon steels like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip>. Reveals ferrite grain boundaries and pearlite structure (2% HNO₃ in ethanol)</li>
+                <li><strong>3% Nital:</strong> Standard concentration for most carbon steels including <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>. Most commonly used (3% HNO₃ in ethanol)</li>
+                <li><strong>5% Nital:</strong> For harder carbon steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>. More aggressive etching (5% HNO₃ in ethanol)</li>
                 <li><strong>Picral:</strong> Excellent for revealing pearlite and cementite without attacking ferrite boundaries (2-4g picric acid per 100ml ethanol)</li>
                 <li><strong>Vilella's Reagent:</strong> For ferrite-carbide structures. Also useful for revealing prior austenite grain boundaries</li>
               </ul>
@@ -311,9 +331,10 @@ export default function CarbonSteelGuide() {
               </ol>
               <p>
                 <strong>Tip:</strong> Start with shorter etching times (5-10 seconds) and increase if needed. 
-                Over-etching can obscure fine details. For softer steels, use lower Nital concentrations 
-                (2-3%). For hardened steels, higher concentrations (5%) may be needed. Picral is 
-                particularly useful for revealing pearlite structures.
+                Over-etching can obscure fine details. For softer steels like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip>, 
+                use lower Nital concentrations (2-3%). For hardened steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, 
+                higher concentrations (5%) may be needed. Picral is particularly useful for revealing pearlite 
+                structures in medium-carbon steels like <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>.
               </p>
               <ProductLink 
                 productName="Etchants"
@@ -392,7 +413,8 @@ export default function CarbonSteelGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

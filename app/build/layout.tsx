@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import BuildPageWrapper from './BuildPageWrapper'
 
 export const metadata: Metadata = {
   title: 'Build Your Lab | Metallography.org',
@@ -10,6 +11,6 @@ export default function BuildLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return <BuildPageWrapper>{children}</BuildPageWrapper>
 }
 

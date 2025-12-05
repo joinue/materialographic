@@ -37,6 +37,39 @@
   
   a {
     @apply text-primary-600 hover:text-primary-700 no-underline;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded;
+  }
+  
+  /* Accessibility: Focus styles for keyboard navigation */
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+  
+  /* Screen reader only class */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+    left: -9999px;
+  }
+  
+  .sr-only:focus,
+  .sr-only:focus-visible {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
   
   ul, ol {
@@ -50,15 +83,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 text-white px-8 py-2.5 rounded-full font-semibold hover:bg-primary-700 hover:text-white transition-all duration-200 inline-block text-sm shadow-md hover:shadow-lg cursor-pointer relative z-10;
+    @apply bg-primary-600 text-white px-6 sm:px-8 py-3 sm:py-2.5 rounded-full font-semibold hover:bg-primary-700 hover:text-white transition-all duration-200 inline-flex items-center justify-center text-sm shadow-md hover:shadow-lg cursor-pointer relative z-10 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply bg-gray-100 text-gray-900 px-8 py-2.5 rounded-full font-semibold hover:bg-gray-200 hover:text-gray-900 transition-all duration-200 inline-block text-sm border border-gray-300 shadow-sm hover:shadow-md cursor-pointer relative z-10;
+    @apply bg-gray-100 text-gray-900 px-6 sm:px-8 py-3 sm:py-2.5 rounded-full font-semibold hover:bg-gray-200 hover:text-gray-900 transition-all duration-200 inline-flex items-center justify-center text-sm border border-gray-300 shadow-sm hover:shadow-md cursor-pointer relative z-10 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
   
   .btn-tertiary {
-    @apply bg-white text-gray-900 px-8 py-2.5 rounded-full font-semibold hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 inline-block text-sm border border-gray-200 shadow-sm hover:shadow-md cursor-pointer relative z-10;
+    @apply bg-white text-gray-900 px-6 sm:px-8 py-3 sm:py-2.5 rounded-full font-semibold hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 inline-flex items-center justify-center text-sm border border-gray-200 shadow-sm hover:shadow-md cursor-pointer relative z-10 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
   }
   
   .card {
@@ -68,6 +101,15 @@
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+}
+
+/* Hide header and footer on build page */
+body.build-page-active .build-page-hidden {
+  display: none;
+}
+
+body.build-page-active .build-page-main {
+  padding-top: 0 !important;
 }
 
 @layer utilities {

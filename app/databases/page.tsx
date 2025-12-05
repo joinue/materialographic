@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Database, Package, FlaskConical, FileText, ChevronRight, Search } from 'lucide-react'
+import { Database, Package, FlaskConical, FileText, Image as ImageIcon, ChevronRight, Search } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
 import { getAllMaterials, getAllEtchants, getAllStandards } from '@/lib/supabase'
 
@@ -28,6 +28,14 @@ const databases = [
     slug: 'standards',
     description: 'Reference database of ASTM and ISO standards relevant to metallography, including preparation methods, testing procedures, and analysis guidelines.',
     icon: FileText,
+    color: 'primary',
+    status: 'active',
+  },
+  {
+    title: 'Microstructure Gallery',
+    slug: 'microstructures',
+    description: 'Browse our extensive collection of high-quality microstructure images from various materials, treatments, and preparation techniques. Search and filter by material type, magnification, and etchant.',
+    icon: ImageIcon,
     color: 'primary',
     status: 'active',
   },

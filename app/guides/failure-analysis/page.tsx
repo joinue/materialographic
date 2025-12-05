@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import GuideSideNav from '@/components/GuideSideNav';
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo';
 
-export const metadata: Metadata = {
-  title: 'Failure Analysis in Metallography | Metallography.org',
-  description: 'Learn about failure analysis techniques in metallography, including fracture analysis, root cause investigation, and material failure mechanisms.',
-};
+const guide = getGuideBySlug('failure-analysis')!;
+
+export const metadata: Metadata = getGuideMetadata(guide);
 
 const sections = [
   { id: 'introduction', label: 'Introduction to Failure Analysis' },
@@ -20,8 +20,23 @@ const sections = [
 ];
 
 export default function FailureAnalysisPage() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide);
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -401,7 +416,8 @@ export default function FailureAnalysisPage() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   );
 }
 

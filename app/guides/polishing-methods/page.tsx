@@ -3,11 +3,12 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import YouTubeVideo from '@/components/YouTubeVideo'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Polishing Methods Guide | Metallography.org',
-  description: 'Learn effective polishing techniques for different materials and applications. Comprehensive guide covering diamond polishing, oxide polishing, controlled removal, and final polishing methods.',
-}
+const guide = getGuideBySlug('polishing-methods')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -23,8 +24,28 @@ const sections = [
 ]
 
 export default function PolishingMethodsGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData, howToStructuredData } = getGuideStructuredData(guide)
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      {howToStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
+        />
+      )}
       <GuideSideNav sections={sections} />
       <article className="py-12">
         <div className="container-custom lg:pl-0 xl:pl-0">
@@ -86,6 +107,8 @@ export default function PolishingMethodsGuide() {
                     width={600}
                     height={450}
                     className="w-full h-auto"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                   />
                 </Link>
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Final polishing consumables including diamond abrasives, oxide suspensions, and polishing pads. Proper selection ensures mirror-like surfaces suitable for microstructural analysis.</p>
@@ -118,6 +141,8 @@ export default function PolishingMethodsGuide() {
                       width={250}
                       height={250}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 250px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Polycrystalline diamond: aggressive cutting, ideal for hard materials</p>
@@ -135,6 +160,8 @@ export default function PolishingMethodsGuide() {
                       width={250}
                       height={250}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 250px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Monocrystalline diamond: gentler cutting, less aggressive</p>
@@ -164,6 +191,13 @@ export default function PolishingMethodsGuide() {
                 <li><strong>1 μm diamond:</strong> Fine polishing (2-3 minutes)</li>
                 <li><strong>0.25 μm diamond (optional):</strong> Ultra-fine preparation (1-2 minutes)</li>
               </ol>
+
+              <YouTubeVideo
+                videoId="PT2fRdSvhDM"
+                title="Automated Grinding & Polishing with NANO 1000S & FEMTO 1100S"
+                description="Watch Dr. Donald Zipperian demonstrate automated grinding and polishing using the NANO 1000S and FEMTO 1100S systems. Learn how to program and operate these automated systems for consistent, high-quality results in both grinding and polishing stages."
+              />
+
               <h3>Diamond Abrasive Types</h3>
               <ul>
                 <li><strong>Polycrystalline Diamond:</strong> Aggressive cutting, good for hard materials</li>
@@ -500,6 +534,13 @@ export default function PolishingMethodsGuide() {
                 <li>Ideal for batch processing</li>
                 <li>Pulse mode prevents staining</li>
               </ul>
+
+              <YouTubeVideo
+                videoId="cPkzthQbLcM"
+                title="Vibratory Polishing with the GIGA S"
+                description="Learn vibratory polishing techniques from Dr. Donald Zipperian. This video demonstrates how to use the GIGA S vibratory polisher for final polishing, including setup, parameter selection, and achieving superior surface finishes for EBSD and high-quality microstructural analysis."
+              />
+
               <h3>Vibratory Polishing Process</h3>
               <ol>
                 <li>Prepare sample through standard grinding and initial polishing</li>

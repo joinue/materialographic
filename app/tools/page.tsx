@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { Search, Calculator, FlaskConical, Workflow } from 'lucide-react'
+import { Search, Calculator, FlaskConical, Workflow, Layers, Clock, Ruler, Hourglass, Square, ClipboardList, Box } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
 
 // Tool categories in order
@@ -14,7 +14,7 @@ const tools = [
     title: 'Grit Size Converter',
     slug: 'grit-size-converter',
     description: 'Convert between different grit size standards (FEPA, ANSI, JIS, micron).',
-    icon: '🔢',
+    icon: Layers,
     category: 'Calculators',
     calculatorOrder: 1,
   },
@@ -22,7 +22,7 @@ const tools = [
     title: 'Polishing Time Calculator',
     slug: 'polishing-time-calculator',
     description: 'Calculate optimal polishing times based on material and grit size.',
-    icon: '⏱️',
+    icon: Clock,
     category: 'Calculators',
     calculatorOrder: 2,
   },
@@ -30,7 +30,7 @@ const tools = [
     title: 'Grain Size Calculator',
     slug: 'grain-size-calculator',
     description: 'Calculate ASTM grain size numbers and convert between grain size measurements.',
-    icon: '📏',
+    icon: Ruler,
     category: 'Calculators',
     calculatorOrder: 3,
   },
@@ -38,7 +38,7 @@ const tools = [
     title: 'Mounting Material Calculator',
     slug: 'mounting-material-calculator',
     description: 'Calculate the amount of mounting material needed for compression or castable mounting.',
-    icon: '🧮',
+    icon: Box,
     category: 'Calculators',
     calculatorOrder: 4,
   },
@@ -46,7 +46,7 @@ const tools = [
     title: 'Total Procedure Time Estimator',
     slug: 'procedure-time-estimator',
     description: 'Estimate total time for complete sample preparation including grinding, polishing, and mounting.',
-    icon: '⏳',
+    icon: Hourglass,
     category: 'Calculators',
     calculatorOrder: 5,
   },
@@ -54,21 +54,21 @@ const tools = [
     title: 'Etchant Selector',
     slug: 'etchant-selector',
     description: 'Find the right etchant for your material and application.',
-    icon: '🧪',
+    icon: FlaskConical,
     category: 'Reference',
   },
   {
     title: 'Sample Size/Mold Compatibility Checker',
     slug: 'mold-compatibility-checker',
     description: 'Check if your sample fits in standard mounting molds and get size recommendations.',
-    icon: '📐',
+    icon: Square,
     category: 'Reference',
   },
   {
     title: 'Procedure Tool',
     slug: 'procedure-tool',
     description: 'Save, organize, and get recommendations for your preparation procedures.',
-    icon: '📋',
+    icon: ClipboardList,
     category: 'Workflow',
     external: true,
     href: 'https://materialsprep.com',
@@ -211,36 +211,43 @@ export default function ToolsPage() {
                     </p>
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {categoryTools.map((tool, index) => (
-                      <AnimatedCard key={tool.slug} index={index} animation="fadeInUp" duration={500}>
-                        <div className="card hover:border-gray-300 group text-center">
-                        <div className="text-5xl mb-4">{tool.icon}</div>
-                        <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
-                          {tool.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                          {tool.description}
-                        </p>
-                        {tool.external ? (
-                          <Link 
-                            href={tool.href || '#'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary inline-block"
-                          >
-                            Use Tool →
-                          </Link>
-                        ) : (
-                          <Link 
-                            href={`/tools/${tool.slug}`} 
-                            className="btn-primary inline-block"
-                          >
-                            Use Tool →
-                          </Link>
-                        )}
-                        </div>
-                      </AnimatedCard>
-                    ))}
+                    {categoryTools.map((tool, index) => {
+                      const IconComponent = tool.icon
+                      return (
+                        <AnimatedCard key={tool.slug} index={index} animation="fadeInUp" duration={500}>
+                          <div className="card hover:border-gray-300 group text-center">
+                            <div className="flex justify-center mb-4">
+                              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                                <IconComponent className="w-8 h-8 text-primary-600" />
+                              </div>
+                            </div>
+                            <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
+                              {tool.title}
+                            </h3>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                              {tool.description}
+                            </p>
+                            {tool.external ? (
+                              <Link 
+                                href={tool.href || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-primary inline-block"
+                              >
+                                Use Tool →
+                              </Link>
+                            ) : (
+                              <Link 
+                                href={`/tools/${tool.slug}`} 
+                                className="btn-primary inline-block"
+                              >
+                                Use Tool →
+                              </Link>
+                            )}
+                          </div>
+                        </AnimatedCard>
+                      )
+                    })}
                   </div>
                 </section>
               )
@@ -249,36 +256,43 @@ export default function ToolsPage() {
         ) : (
           // Show filtered tools in grid when a specific category is selected
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {filteredTools.map((tool, index) => (
-              <AnimatedCard key={tool.slug} index={index} animation="fadeInUp" duration={500}>
-                <div className="card hover:border-gray-300 group text-center">
-                <div className="text-5xl mb-4">{tool.icon}</div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
-                  {tool.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  {tool.description}
-                </p>
-                {tool.external ? (
-                  <Link 
-                    href={tool.href || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-block"
-                  >
-                    Use Tool →
-                  </Link>
-                ) : (
-                  <Link 
-                    href={`/tools/${tool.slug}`} 
-                    className="btn-primary inline-block"
-                  >
-                    Use Tool →
-                  </Link>
-                )}
-                </div>
-              </AnimatedCard>
-            ))}
+            {filteredTools.map((tool, index) => {
+              const IconComponent = tool.icon
+              return (
+                <AnimatedCard key={tool.slug} index={index} animation="fadeInUp" duration={500}>
+                  <div className="card hover:border-gray-300 group text-center">
+                    <div className="flex justify-center mb-4">
+                      <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                        <IconComponent className="w-8 h-8 text-primary-600" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
+                      {tool.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {tool.description}
+                    </p>
+                    {tool.external ? (
+                      <Link 
+                        href={tool.href || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary inline-block"
+                      >
+                        Use Tool →
+                      </Link>
+                    ) : (
+                      <Link 
+                        href={`/tools/${tool.slug}`} 
+                        className="btn-primary inline-block"
+                      >
+                        Use Tool →
+                      </Link>
+                    )}
+                  </div>
+                </AnimatedCard>
+              )
+            })}
           </div>
         )}
 
@@ -291,7 +305,9 @@ export default function ToolsPage() {
         {/* Featured Tool */}
         <div className="mt-16 bg-primary-600 text-white rounded-lg p-8">
           <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="text-6xl">📋</div>
+            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <ClipboardList className="w-10 h-10 text-white" />
+            </div>
             <div className="flex-1">
               <h2 className="text-2xl font-bold mb-3 text-white">Procedure Tool</h2>
               <p className="text-primary-100 mb-4">

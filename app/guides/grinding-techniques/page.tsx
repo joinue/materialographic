@@ -3,11 +3,12 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import YouTubeVideo from '@/components/YouTubeVideo'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Grinding Techniques Guide | Metallography.org',
-  description: 'Master the art of grinding with proper grit selection, pressure control, and technique. Learn progressive grinding methods for optimal surface quality.',
-}
+const guide = getGuideBySlug('grinding-techniques')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -21,8 +22,29 @@ const sections = [
 ]
 
 export default function GrindingTechniquesGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData, howToStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      {howToStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
+        />
+      )}
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -80,6 +102,8 @@ export default function GrindingTechniquesGuide() {
                     width={600}
                     height={450}
                     className="w-full h-auto"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                   />
                 </Link>
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Grinding and lapping consumables including silicon carbide papers, powders, and accessories. Progressive grinding removes sectioning damage while preparing the surface for polishing.</p>
@@ -111,6 +135,8 @@ export default function GrindingTechniquesGuide() {
                       width={300}
                       height={225}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Silicon carbide (SiC) grinding papers available in grit sizes from 120 to 1200. Start with coarsest grit needed to remove sectioning damage.</p>
@@ -128,6 +154,8 @@ export default function GrindingTechniquesGuide() {
                       width={300}
                       height={225}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Silicon carbide grinding powders for specialized applications. Powders can be used with lapping plates for precision grinding.</p>
@@ -161,6 +189,8 @@ export default function GrindingTechniquesGuide() {
                       width={250}
                       height={188}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 250px"
                     />
                   </Link>
                 </div>
@@ -217,6 +247,19 @@ export default function GrindingTechniquesGuide() {
                 <li>Avoid staying in one area too long (prevents over-grinding)</li>
                 <li>Maintain consistent contact with the grinding surface</li>
               </ul>
+
+              <YouTubeVideo
+                videoId="oFQoUkcwTMc"
+                title="Manual Grinding with PENTA 7500S & PENTA 5000A"
+                description="Learn proper manual grinding techniques from Dr. Donald Zipperian. This video demonstrates correct sample orientation, grinding motion, pressure control, and proper use of the PENTA manual grinding systems."
+              />
+
+              <YouTubeVideo
+                videoId="PT2fRdSvhDM"
+                title="Automated Grinding & Polishing with NANO 1000S & FEMTO 1100S"
+                description="Watch Dr. Donald Zipperian demonstrate automated grinding and polishing using the NANO 1000S and FEMTO 1100S systems. Learn how to program and operate these automated systems for consistent, high-quality results."
+              />
+
               <h3>Time Management</h3>
               <p>
                 Each grinding step typically requires 30-60 seconds, but this varies based on:
@@ -309,6 +352,8 @@ export default function GrindingTechniquesGuide() {
                   width={600}
                   height={450}
                   className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                 />
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Proper grinding technique helps avoid contamination and surface defects. Clean samples between grits, use fresh abrasives, and maintain consistent pressure to prevent artifacts.</p>
               </div>
@@ -391,6 +436,8 @@ export default function GrindingTechniquesGuide() {
                         width={250}
                         height={188}
                         className="max-w-full max-h-full object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 250px"
                       />
                     </Link>
                   </div>
@@ -422,6 +469,8 @@ export default function GrindingTechniquesGuide() {
                         width={250}
                         height={188}
                         className="max-w-full max-h-full object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 250px"
                       />
                     </Link>
                   </div>
@@ -498,7 +547,8 @@ export default function GrindingTechniquesGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

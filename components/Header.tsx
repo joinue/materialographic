@@ -28,9 +28,9 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <nav className="container-custom max-w-[1536px] py-4">
-        <div className="flex items-center justify-between h-16 px-6 rounded-full bg-white/85 backdrop-blur-sm border border-gray-200/80 shadow-lg shadow-gray-900/5">
-          {/* Logo and Navigation */}
-          <div className="flex items-center space-x-4">
+        <div className="flex items-center h-16 px-6 rounded-full bg-white/85 backdrop-blur-sm border border-gray-200/80 shadow-lg shadow-gray-900/5">
+          {/* Logo */}
+          <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3">
               <div className="relative">
                 <Image 
@@ -42,13 +42,14 @@ export default function Header() {
                   priority
                 />
               </div>
-              <span className="hidden xl:block text-xl font-bold tracking-tight text-gray-900">
+              <span className="hidden xl:block text-2xl font-bold tracking-tight text-gray-900">
                 Metallography.org
               </span>
             </Link>
-            
-            {/* Desktop Navigation with Dropdowns */}
-            <div className="hidden lg:flex items-center space-x-0">
+          </div>
+          
+          {/* Desktop Navigation with Dropdowns - Centered */}
+          <div className="hidden lg:flex items-center space-x-0 flex-1 justify-center">
               <div 
                 className="relative"
                 onMouseEnter={() => setActiveDropdown('guides')}
@@ -127,6 +128,9 @@ export default function Header() {
                         <Link href="/resources?category=Preparation Guides" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Preparation Guides
                         </Link>
+                        <Link href="/resources?category=Video Resources" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Video Resources
+                        </Link>
                         <Link href="/resources?category=Troubleshooting" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Troubleshooting
                         </Link>
@@ -134,6 +138,9 @@ export default function Header() {
                       <div className="border-t border-gray-200 my-2 mx-2"></div>
                       <div className="px-2">
                         <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Popular</p>
+                        <Link href="/glossary" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Glossary
+                        </Link>
                         <Link href="/resources/checklist" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Sample Prep Checklist
                         </Link>
@@ -142,9 +149,6 @@ export default function Header() {
                         </Link>
                         <Link href="/resources/common-etchants-guide" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Common Etchants
-                        </Link>
-                        <Link href="/resources/hardness-scale-conversion" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Hardness Conversion
                         </Link>
                       </div>
                     </div>
@@ -248,7 +252,6 @@ export default function Header() {
                 )}
               </div>
             </div>
-          </div>
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
@@ -267,7 +270,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-sm shadow-sm hover:shadow-md"
             >
-              Shop Consumables
+              Stock Your Lab
             </Link>
             <Link 
               href="/build" 
@@ -280,9 +283,10 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 rounded-lg transition-all duration-200 text-gray-700 hover:bg-gray-100"
+            className="lg:hidden ml-auto p-2 rounded-lg transition-all duration-200 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -350,9 +354,11 @@ export default function Header() {
               </div>
               {mobileExpandedSection === 'resources' && (
                 <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                  <Link href="/glossary" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Glossary</Link>
                   <Link href="/resources?category=Checklists & Quick References" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Checklists & Quick References</Link>
                   <Link href="/resources?category=Reference Charts" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Reference Charts</Link>
                   <Link href="/resources?category=Preparation Guides" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Preparation Guides</Link>
+                  <Link href="/resources?category=Video Resources" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Video Resources</Link>
                   <Link href="/resources?category=Troubleshooting" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Troubleshooting</Link>
                 </div>
               )}
@@ -436,7 +442,7 @@ export default function Header() {
                 className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-center text-sm shadow-sm hover:shadow-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Shop Consumables
+                Stock Your Lab
               </Link>
               <Link 
                 href="/build" 

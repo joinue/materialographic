@@ -3,11 +3,11 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Purpose and Applications of Metallography | Metallography.org',
-  description: 'Discover the various applications of metallography in quality control, failure analysis, research, and materials development.',
-}
+const guide = getGuideBySlug('purpose-and-applications')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -22,8 +22,23 @@ const sections = [
 ]
 
 export default function PurposeAndApplicationsGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -574,7 +589,8 @@ export default function PurposeAndApplicationsGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

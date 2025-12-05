@@ -23,6 +23,27 @@ Free educational resources and guides for metallographic sample preparation. Thi
 npm install
 ```
 
+### Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# Supabase (required)
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Resend (required for contact form)
+RESEND_API_KEY=re_your_resend_api_key
+# Optional: Custom from email (defaults to onboarding@resend.dev for testing)
+# For production, verify your domain in Resend and use: RESEND_FROM_EMAIL=Metallography.org <noreply@metallography.org>
+```
+
+**Getting a Resend API Key:**
+1. Sign up at [resend.com](https://resend.com) (free tier: 3,000 emails/month)
+2. Create an API key in the dashboard
+3. Add it to your `.env.local` file
+4. For production: Verify your domain in Resend dashboard to use custom "from" addresses
+
 ### Development
 
 ```bash

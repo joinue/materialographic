@@ -3,11 +3,12 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import MaterialTooltip from '@/components/MaterialTooltip'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Copper Alloys Sample Preparation Guide | Metallography.org',
-  description: 'Complete step-by-step guide to preparing copper and copper alloy samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
-}
+const guide = getGuideBySlug('copper-alloys-preparation')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -20,8 +21,23 @@ const sections = [
 ]
 
 export default function CopperAlloysGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -62,6 +78,8 @@ export default function CopperAlloysGuide() {
               <h2>Introduction</h2>
               <p>
                 Copper and its alloys (brass, bronze) are commonly analyzed materials in metallography. 
+                Common examples include <MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">electrolytic tough pitch copper</MaterialTooltip>, 
+                <MaterialTooltip materialName="C26000 Cartridge Brass">cartridge brass</MaterialTooltip>, and various bronze alloys. 
                 Proper preparation is essential to reveal the true microstructure without introducing 
                 artifacts such as deformation, scratches, smearing, or contamination. This guide will walk you 
                 through the complete preparation process.
@@ -74,13 +92,15 @@ export default function CopperAlloysGuide() {
                   height={450}
                   className="w-full h-auto"
                 />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Tough pitch copper, ASTM No. 30 etchant, 200X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">Tough pitch copper</MaterialTooltip>, ASTM No. 30 etchant, 200X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
               </div>
               <p>
                 Copper alloys can be challenging due to their softness and tendency to deform and smear easily. 
                 The key is to use appropriate abrasives, maintain light pressure throughout the process, and avoid 
-                over-polishing which can introduce relief and smearing. Different copper alloys (pure copper, brass, 
-                bronze) may require slight variations in technique.
+                over-polishing which can introduce relief and smearing. Different copper alloys may require slight variations in technique. 
+                For example, softer alloys like <MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">electrolytic tough pitch copper</MaterialTooltip> 
+                require extra care to prevent smearing, while harder alloys like <MaterialTooltip materialName="C17200 Beryllium Copper">beryllium copper</MaterialTooltip> 
+                can tolerate slightly higher pressures during preparation.
               </p>
             </section>
 
@@ -89,7 +109,9 @@ export default function CopperAlloysGuide() {
               <p>
                 When sectioning copper and copper alloy samples, use a slow cutting speed to minimize heat generation 
                 and deformation. A cutting speed of 100-200 RPM is typically appropriate for most copper alloys. 
-                Copper's softness requires careful handling to prevent deformation and smearing.
+                Copper's softness requires careful handling to prevent deformation and smearing. This is especially important 
+                for pure copper grades like <MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">C11000</MaterialTooltip> 
+                and softer brass alloys like <MaterialTooltip materialName="C26000 Cartridge Brass">C26000 cartridge brass</MaterialTooltip>.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -158,7 +180,8 @@ export default function CopperAlloysGuide() {
                 Grinding removes sectioning damage and prepares the surface for polishing. Start with 
                 coarse grits and progressively move to finer grits. For copper and copper alloys, use lighter pressure 
                 than for harder materials to avoid deformation. We recommend starting with 240-320 grit and progressing 
-                through finer grits:
+                through finer grits. This approach works well for common alloys like <MaterialTooltip materialName="C26000 Cartridge Brass">C26000 cartridge brass</MaterialTooltip> 
+                and <MaterialTooltip materialName="C36000 Free-Cutting Brass">C36000 free-cutting brass</MaterialTooltip>:
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -286,15 +309,15 @@ export default function CopperAlloysGuide() {
                   height={450}
                   className="w-full h-auto"
                 />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Tough pitch copper etched with ASTM No. 30, 200X magnification. Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">Tough pitch copper</MaterialTooltip> etched with ASTM No. 30, 200X magnification. Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
               </div>
               <h3>Common Etchants for Copper and Copper Alloys</h3>
               <ul>
-                <li><strong>Copper No. 1:</strong> Standard etchant for copper and brass. Reveals grain boundaries and twin boundaries (125ml HNO₃, 125ml H₂O). Most common for copper and brass.</li>
+                <li><strong>Copper No. 1:</strong> Standard etchant for copper and brass. Reveals grain boundaries and twin boundaries (125ml HNO₃, 125ml H₂O). Most common for copper and brass alloys like <MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">C11000</MaterialTooltip> and <MaterialTooltip materialName="C26000 Cartridge Brass">C26000 cartridge brass</MaterialTooltip>.</li>
                 <li><strong>Copper No. 2:</strong> Alternative to Copper No. 1. Effective for copper and brass alloys. Reveals grain structure and phases (200ml H₂O, 50ml HCl, 10g FeCl₃).</li>
-                <li><strong>ASTM No. 30:</strong> Standard ASTM etchant for copper and copper alloys. Reveals grain boundaries and structure. Fresh solution works best (62.5ml NH₄OH, 125ml H₂O₂ 3%, 62.5ml H₂O).</li>
+                <li><strong>ASTM No. 30:</strong> Standard ASTM etchant for copper and copper alloys. Reveals grain boundaries and structure. Fresh solution works best (62.5ml NH₄OH, 125ml H₂O₂ 3%, 62.5ml H₂O). Excellent for <MaterialTooltip materialName="C11000 Electrolytic Tough Pitch Copper">tough pitch copper</MaterialTooltip>.</li>
                 <li><strong>Ammonium Persulfate:</strong> For brasses with cobalt. Reveals grain boundaries and phase structure (50g (NH₄)₂S₂O₈, 245ml H₂O).</li>
-                <li><strong>Potassium Dichromate:</strong> For revealing grain boundaries in brass and bronze alloys. Produces good contrast (2g K₂Cr₂O₇, 8ml H₂SO₄, 4ml NaCl sat., 100ml H₂O).</li>
+                <li><strong>Potassium Dichromate:</strong> For revealing grain boundaries in brass and bronze alloys. Produces good contrast (2g K₂Cr₂O₇, 8ml H₂SO₄, 4ml NaCl sat., 100ml H₂O). Effective for bronze alloys like <MaterialTooltip materialName="C95400 Aluminum Bronze">aluminum bronze</MaterialTooltip>.</li>
                 <li><strong>Dichromate Etchant:</strong> For Cu-Sn (tin bronze) alloys. Reveals grain boundaries and tin phase (36ml H₂SO₄, 445ml H₂O, 18ml NaCl sat., 8.9g K₂Cr₂O₇).</li>
               </ul>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
@@ -406,7 +429,8 @@ export default function CopperAlloysGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

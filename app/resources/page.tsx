@@ -3,11 +3,11 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { Search, FileText, BarChart3, BookOpen, AlertCircle, ChevronRight, Scale, Shield, Eye } from 'lucide-react'
+import { Search, FileText, BarChart3, BookOpen, AlertCircle, ChevronRight, Scale, Shield, Eye, PlayCircle } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
 
 // Resource categories in order
-const categoryOrder = ['Checklists & Quick References', 'Reference Charts', 'Preparation Guides', 'Troubleshooting']
+const categoryOrder = ['Checklists & Quick References', 'Reference Charts', 'Preparation Guides', 'Video Resources', 'Troubleshooting']
 
 const resources = [
   {
@@ -99,6 +99,25 @@ const resources = [
     type: 'Guide',
     icon: BookOpen,
     order: 2,
+  },
+  {
+    title: 'Metallography Glossary',
+    slug: 'glossary',
+    description: 'Comprehensive dictionary of metallography terms, definitions, and concepts. Search and browse technical terminology used in sample preparation, microstructure analysis, and materials science.',
+    category: 'Reference Charts',
+    type: 'Reference',
+    icon: BookOpen,
+    order: 6,
+    externalUrl: '/glossary',
+  },
+  {
+    title: 'PACE Technologies YouTube Channel',
+    slug: 'pace-youtube-channel',
+    description: 'Free video tutorials by Dr. Donald Zipperian, founder of PACE Technologies. Watch step-by-step demonstrations of sectioning, mounting, grinding, and polishing equipment and techniques.',
+    category: 'Video Resources',
+    type: 'Video',
+    icon: PlayCircle,
+    order: 1,
   },
   {
     title: 'Troubleshooting Quick Reference',
@@ -236,6 +255,11 @@ export default function ResourcesPage() {
                       Comprehensive guides covering material-specific preparation techniques and equipment selection.
                     </p>
                   )}
+                  {category === 'Video Resources' && (
+                    <p className="text-gray-600 mb-6 max-w-3xl">
+                      Free video tutorials and demonstrations to help you learn equipment operation and proper techniques through visual instruction.
+                    </p>
+                  )}
                   {category === 'Troubleshooting' && (
                     <p className="text-gray-600 mb-6 max-w-3xl">
                       Problem-solving resources to help identify and resolve common issues in sample preparation.
@@ -243,8 +267,12 @@ export default function ResourcesPage() {
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categoryResources.map((resource, index) => {
-                      // Standards database links to /standards, not /resources/standards
-                      const href = resource.slug === 'standards' ? '/standards' : `/resources/${resource.slug}`
+                      // Handle special cases: standards, glossary (externalUrl)
+                      const href = (resource as any).externalUrl 
+                        ? (resource as any).externalUrl 
+                        : resource.slug === 'standards' 
+                          ? '/standards' 
+                          : `/resources/${resource.slug}`
                       return (
                       <AnimatedCard key={resource.slug} index={index} animation="fadeInUp" duration={500}>
                         <Link 
@@ -285,8 +313,12 @@ export default function ResourcesPage() {
           // Show filtered resources in grid when a specific category is selected
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {filteredResources.map((resource, index) => {
-              // Standards database links to /standards, not /resources/standards
-              const href = resource.slug === 'standards' ? '/standards' : `/resources/${resource.slug}`
+              // Handle special cases: standards, glossary (externalUrl)
+              const href = (resource as any).externalUrl 
+                ? (resource as any).externalUrl 
+                : resource.slug === 'standards' 
+                  ? '/standards' 
+                  : `/resources/${resource.slug}`
               return (
               <AnimatedCard key={resource.slug} index={index} animation="fadeInUp" duration={500}>
                 <Link 

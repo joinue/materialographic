@@ -2,12 +2,13 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
+import MaterialTooltip from '@/components/MaterialTooltip'
 import Link from 'next/link'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Titanium Sample Preparation Guide | Metallography.org',
-  description: 'Complete step-by-step guide to preparing titanium samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
-}
+const guide = getGuideBySlug('titanium-preparation')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -20,8 +21,23 @@ const sections = [
 ]
 
 export default function TitaniumGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -68,6 +84,9 @@ export default function TitaniumGuide() {
                 This guide will walk you through the complete preparation process.
               </p>
               <p>
+                Common titanium alloys include <MaterialTooltip materialName="Ti-6Al-4V">Ti-6Al-4V (Grade 5)</MaterialTooltip>, 
+                the most widely used titanium alloy, as well as <MaterialTooltip materialName="Commercially Pure Titanium (Grade 2)">commercially pure titanium (Grade 2)</MaterialTooltip> 
+                and various alpha-beta alloys like <MaterialTooltip materialName="Ti-3Al-2.5V">Ti-3Al-2.5V (Grade 9)</MaterialTooltip>. 
                 Titanium can be challenging due to its reactivity with oxygen and tendency to form 
                 surface contamination. The key is to use appropriate abrasives, maintain consistent 
                 pressure, and avoid contamination throughout the process. Titanium alloys vary in 
@@ -80,7 +99,8 @@ export default function TitaniumGuide() {
               <p>
                 When sectioning titanium samples, use a slow cutting speed to minimize heat generation 
                 and deformation. A cutting speed of 100-200 RPM is typically appropriate for most 
-                titanium alloys. Titanium's reactivity requires careful handling to prevent contamination.
+                titanium alloys, though harder alloys like <MaterialTooltip materialName="Ti-6Al-4V">Ti-6Al-4V</MaterialTooltip> 
+                may require slightly slower speeds. Titanium's reactivity requires careful handling to prevent contamination.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -271,10 +291,10 @@ export default function TitaniumGuide() {
               </p>
               <h3>Common Etchants for Titanium</h3>
               <ul>
-                <li><strong>Kroll's Reagent:</strong> General purpose, most commonly used for titanium. Reveals grain boundaries and alpha/beta structure (2-3ml HF, 5-6ml HNO₃, 100ml H₂O)</li>
-                <li><strong>Modified Kroll's:</strong> For alpha-beta titanium alloys. More aggressive (1-2ml HF, 2-3ml HNO₃, 100ml H₂O)</li>
-                <li><strong>Weck's Reagent:</strong> For revealing grain boundaries in alpha titanium (100ml H₂O, 4g NaOH, 4g KMnO₄)</li>
-                <li><strong>Electrolytic Etching:</strong> For sensitive microstructures. Use appropriate voltage and time settings</li>
+                <li><strong>Kroll's Reagent:</strong> General purpose, most commonly used for titanium. Reveals grain boundaries and alpha/beta structure (2-3ml HF, 5-6ml HNO₃, 100ml H₂O). Works well for <MaterialTooltip materialName="Ti-6Al-4V">Ti-6Al-4V</MaterialTooltip> and most alpha-beta alloys.</li>
+                <li><strong>Modified Kroll's:</strong> For alpha-beta titanium alloys. More aggressive (1-2ml HF, 2-3ml HNO₃, 100ml H₂O). Useful for harder alloys that require more aggressive etching.</li>
+                <li><strong>Weck's Reagent:</strong> For revealing grain boundaries in alpha titanium (100ml H₂O, 4g NaOH, 4g KMnO₄). Particularly effective for <MaterialTooltip materialName="Commercially Pure Titanium (Grade 2)">commercially pure titanium (Grade 2)</MaterialTooltip> and other alpha-phase materials.</li>
+                <li><strong>Electrolytic Etching:</strong> For sensitive microstructures. Use appropriate voltage and time settings. Can be useful for <MaterialTooltip materialName="Ti-3Al-2.5V">Ti-3Al-2.5V</MaterialTooltip> and other alloys where chemical etching may be too aggressive.</li>
                 <li><strong>Hydrofluoric Acid (HF):</strong> Dilute solutions (0.5-2%) for general etching</li>
               </ul>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
@@ -393,7 +413,8 @@ export default function TitaniumGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

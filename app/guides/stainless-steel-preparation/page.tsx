@@ -3,10 +3,46 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import MaterialTooltip from '@/components/MaterialTooltip'
 
 export const metadata: Metadata = {
   title: 'Stainless Steel Sample Preparation Guide | Metallography.org',
-  description: 'Complete step-by-step guide to preparing stainless steel samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
+  description: 'Complete step-by-step guide to preparing stainless steel samples for metallographic analysis. Learn grinding, polishing, and etching techniques for stainless steel microstructural analysis.',
+  keywords: [
+    'stainless steel preparation',
+    'stainless steel metallography',
+    'stainless steel sample preparation',
+    'stainless steel grinding',
+    'stainless steel polishing',
+    'stainless steel etching',
+    'metallographic analysis',
+    'microstructure analysis',
+  ],
+  openGraph: {
+    title: 'Stainless Steel Sample Preparation Guide | Metallography.org',
+    description: 'Complete step-by-step guide to preparing stainless steel samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
+    url: 'https://metallography.org/guides/stainless-steel-preparation',
+    siteName: 'Metallography.org',
+    images: [
+      {
+        url: '/images/microstructures/431 Stainless steel, Kallings no. 2, 400X.JPG',
+        width: 600,
+        height: 450,
+        alt: 'Stainless steel microstructure at 400X magnification',
+      },
+    ],
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Stainless Steel Sample Preparation Guide',
+    description: 'Complete step-by-step guide to preparing stainless steel samples for metallographic analysis.',
+    images: ['/images/microstructures/431 Stainless steel, Kallings no. 2, 400X.JPG'],
+  },
+  alternates: {
+    canonical: 'https://metallography.org/guides/stainless-steel-preparation',
+  },
 }
 
 const sections = [
@@ -20,8 +56,158 @@ const sections = [
 ]
 
 export default function StainlessSteelGuide() {
+  // Article structured data
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Stainless Steel Sample Preparation Guide',
+    description: 'Complete step-by-step guide to preparing stainless steel samples for metallographic analysis, including sectioning, mounting, grinding, polishing, and etching techniques.',
+    image: 'https://metallography.org/images/microstructures/431 Stainless steel, Kallings no. 2, 400X.JPG',
+    author: {
+      '@type': 'Organization',
+      name: 'Metallography.org',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Metallography.org',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://metallography.org/logo.png',
+      },
+    },
+    datePublished: '2024-01-01',
+    dateModified: '2024-01-01',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://metallography.org/guides/stainless-steel-preparation',
+    },
+    articleSection: 'Material-Specific',
+    about: {
+      '@type': 'Thing',
+      name: 'Stainless Steel Metallography',
+    },
+  }
+
+  // HowTo structured data for step-by-step process
+  const howToStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Prepare Stainless Steel Samples for Metallographic Analysis',
+    description: 'Step-by-step guide to preparing stainless steel samples for metallographic analysis',
+    image: 'https://metallography.org/images/microstructures/431 Stainless steel, Kallings no. 2, 400X.JPG',
+    totalTime: 'PT45M',
+    tool: [
+      {
+        '@type': 'HowToTool',
+        name: 'Abrasive cutting saw',
+      },
+      {
+        '@type': 'HowToTool',
+        name: 'Mounting press',
+      },
+      {
+        '@type': 'HowToTool',
+        name: 'Grinding papers',
+      },
+      {
+        '@type': 'HowToTool',
+        name: 'Polishing equipment',
+      },
+    ],
+    step: [
+      {
+        '@type': 'HowToStep',
+        name: 'Sectioning',
+        text: 'Use a slow cutting speed (100-200 RPM) to minimize heat generation and deformation. Use MAX-VHS or MAX-D series blades.',
+        position: 1,
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Mounting',
+        text: 'Mount using compression mounting with phenolic or epoxy resins at 3000-4000 psi for phenolic, 2000-3000 psi for epoxy.',
+        position: 2,
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Grinding',
+        text: 'Progressive grinding sequence: 120, 240, 400, 600 grit. Rotate sample 90° between each grit.',
+        position: 3,
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Polishing',
+        text: 'Diamond polishing: 9 μm, 3 μm, 1 μm. Final polish with 0.05 μm colloidal silica.',
+        position: 4,
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Etching',
+        text: 'Apply etchant (Vilella\'s Reagent, Aqua Regia, or electrolytic) for 5-30 seconds. Rinse and dry.',
+        position: 5,
+      },
+    ],
+  }
+
+  // Course structured data
+  const courseStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Stainless Steel Sample Preparation Guide',
+    description: 'Complete in-depth guide to preparing stainless steel samples for metallographic analysis',
+    provider: {
+      '@type': 'Organization',
+      name: 'Metallography.org',
+    },
+    educationalLevel: 'Intermediate',
+    timeRequired: 'PT15M',
+    courseCode: 'MET-STAINLESS-STEEL',
+  }
+
+  // Breadcrumb structured data
+  const breadcrumbStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://metallography.org',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guides',
+        item: 'https://metallography.org/guides',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Stainless Steel Preparation',
+        item: 'https://metallography.org/guides/stainless-steel-preparation',
+      },
+    ],
+  }
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -62,9 +248,10 @@ export default function StainlessSteelGuide() {
               <h2>Introduction</h2>
               <p>
                 Stainless steel is one of the most commonly analyzed materials in metallography. 
-                Proper preparation is essential to reveal the true microstructure without introducing 
-                artifacts such as deformation, scratches, or contamination. This guide will walk you 
-                through the complete preparation process.
+                From common austenitic grades like <MaterialTooltip materialName="304">304 Stainless Steel</MaterialTooltip> to 
+                high-strength precipitation-hardening alloys, proper preparation is essential to reveal 
+                the true microstructure without introducing artifacts such as deformation, scratches, or 
+                contamination. This guide will walk you through the complete preparation process.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
                 <Image
@@ -73,13 +260,18 @@ export default function StainlessSteelGuide() {
                   width={600}
                   height={450}
                   className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                 />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">431 Stainless steel, Kallings no. 2 etchant, 400X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="431">431 Stainless steel</MaterialTooltip>, Kallings no. 2 etchant, 400X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
               </div>
               <p>
                 Stainless steels can be challenging due to their work-hardening characteristics and 
-                varying hardness depending on the grade. The key is to use appropriate abrasives and 
-                maintain consistent pressure throughout the process.
+                varying hardness depending on the grade. Softer austenitic grades like <MaterialTooltip materialName="304">304</MaterialTooltip> 
+                and <MaterialTooltip materialName="316">316</MaterialTooltip> work-harden during preparation, while harder martensitic 
+                and precipitation-hardening grades like <MaterialTooltip materialName="17-4 PH">17-4 PH</MaterialTooltip> require more 
+                aggressive cutting and grinding. The key is to use appropriate abrasives and maintain 
+                consistent pressure throughout the process.
               </p>
             </section>
 
@@ -88,7 +280,8 @@ export default function StainlessSteelGuide() {
               <p>
                 When sectioning stainless steel samples, use a slow cutting speed to minimize heat 
                 generation and deformation. A cutting speed of 100-200 RPM is typically appropriate 
-                for most stainless steel grades.
+                for most stainless steel grades. Harder grades like <MaterialTooltip materialName="17-4 PH">17-4 PH Stainless Steel</MaterialTooltip> 
+                may require even slower speeds (80-150 RPM) to prevent excessive heat buildup.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -103,6 +296,8 @@ export default function StainlessSteelGuide() {
                     width={500}
                     height={375}
                     className="w-full h-auto"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                   />
                 </Link>
                 <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-VHS abrasive cut-off blades designed for hard and case-hardened stainless steels. For general stainless steel grades, MAX-D series blades are also suitable. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
@@ -163,6 +358,8 @@ export default function StainlessSteelGuide() {
                     width={500}
                     height={375}
                     className="w-full h-auto"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                   />
                 </Link>
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Silicon carbide (SiC) grinding papers in various grit sizes (120, 240, 400, 600) for progressive grinding. Rotate sample 90° between each grit to ensure complete scratch removal.</p>
@@ -205,6 +402,8 @@ export default function StainlessSteelGuide() {
                       width={300}
                       height={225}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Polycrystalline diamond compound provides aggressive cutting action ideal for hard materials like stainless steel.</p>
@@ -222,6 +421,8 @@ export default function StainlessSteelGuide() {
                       width={300}
                       height={225}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                     />
                   </Link>
                   <p className="text-xs text-gray-600 mt-2 italic text-center">Various polishing pads and cloths for different polishing stages. Select pad hardness based on material and polishing stage.</p>
@@ -267,14 +468,16 @@ export default function StainlessSteelGuide() {
                   width={600}
                   height={450}
                   className="w-full h-auto"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                 />
-                <p className="text-sm text-gray-600 mt-2 italic text-center">431 Stainless steel etched with Kallings no. 2, 400X magnification (DIC). Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="431">431 Stainless steel</MaterialTooltip> etched with Kallings no. 2, 400X magnification (DIC). Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
               </div>
               <h3>Common Etchants for Stainless Steel</h3>
               <ul>
-                <li><strong>Vilella's Reagent:</strong> General purpose, reveals grain boundaries</li>
-                <li><strong>Aqua Regia:</strong> For austenitic stainless steels</li>
-                <li><strong>Electrolytic Etching:</strong> For sensitive microstructures</li>
+                <li><strong>Vilella's Reagent:</strong> General purpose, reveals grain boundaries. Works well for martensitic grades like <MaterialTooltip materialName="431">431</MaterialTooltip>.</li>
+                <li><strong>Aqua Regia:</strong> For austenitic stainless steels like <MaterialTooltip materialName="304">304</MaterialTooltip> and <MaterialTooltip materialName="316">316</MaterialTooltip>. Excellent for revealing grain boundaries and phases.</li>
+                <li><strong>Electrolytic Etching:</strong> For sensitive microstructures. Particularly useful for austenitic grades where chemical etching may be too aggressive.</li>
               </ul>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -289,6 +492,8 @@ export default function StainlessSteelGuide() {
                     width={500}
                     height={375}
                     className="w-full h-auto"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                   />
                 </Link>
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for stainless steel. Common etchants include Vilella's Reagent, Aqua Regia, and electrolytic solutions. Etching time typically ranges from 5-30 seconds depending on the etchant and steel grade.</p>
@@ -303,7 +508,9 @@ export default function StainlessSteelGuide() {
               </ol>
               <p>
                 <strong>Tip:</strong> Start with shorter etching times and increase if needed. 
-                Over-etching can obscure fine details.
+                Over-etching can obscure fine details. Austenitic grades like <MaterialTooltip materialName="304">304</MaterialTooltip> 
+                typically require 10-30 seconds, while martensitic grades may need only 5-15 seconds 
+                depending on the etchant used.
               </p>
               <ProductLink 
                 productName="Etchants"
@@ -380,7 +587,8 @@ export default function StainlessSteelGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

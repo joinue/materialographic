@@ -2,11 +2,11 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Metallography Equipment Overview | Metallography.org',
-  description: 'Learn about the essential equipment used in metallography, from sectioning equipment to microscopes. Understand what equipment you need for metallographic sample preparation.',
-}
+const guide = getGuideBySlug('equipment-overview')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -21,8 +21,23 @@ const sections = [
 ]
 
 export default function EquipmentOverviewGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -81,6 +96,22 @@ export default function EquipmentOverviewGuide() {
                   and what to consider when making purchasing decisions.
                 </p>
               </div>
+              <div className="bg-primary-50 border-l-4 border-primary-600 p-4 my-6 rounded">
+                <p className="text-sm text-gray-700 mb-2">
+                  <strong>📹 Video Tutorials:</strong> Dr. Donald Zipperian, founder of PACE Technologies, has created 
+                  instructional videos demonstrating equipment usage. Watch these videos in our process guides:
+                </p>
+                <ul className="text-sm text-gray-700 list-disc list-inside space-y-1 ml-2">
+                  <li><Link href="/guides/sectioning#precision-wafering" className="text-primary-600 hover:underline">Precision Sectioning</Link></li>
+                  <li><Link href="/guides/mounting#compression-mounting" className="text-primary-600 hover:underline">Compression Mounting</Link></li>
+                  <li><Link href="/guides/mounting#castable-mounting" className="text-primary-600 hover:underline">Castable/Cold Mounting</Link></li>
+                  <li><Link href="/guides/grinding-techniques#technique" className="text-primary-600 hover:underline">Manual Grinding & Automated Systems</Link></li>
+                  <li><Link href="/guides/polishing-methods#vibratory-polishing" className="text-primary-600 hover:underline">Vibratory Polishing</Link></li>
+                </ul>
+                <p className="text-xs text-gray-600 mt-2">
+                  Visit the <a href="https://www.youtube.com/@pacetechnologies/videos" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">PACE Technologies YouTube channel</a> for more equipment demonstrations and tutorials.
+                </p>
+              </div>
             </section>
 
             <section id="sectioning-equipment" className="scroll-mt-24">
@@ -112,6 +143,8 @@ export default function EquipmentOverviewGuide() {
                         width={300}
                         height={225}
                         className="max-w-full max-h-full object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 300px"
                       />
                     </Link>
                   </div>
@@ -149,6 +182,8 @@ export default function EquipmentOverviewGuide() {
                         width={300}
                         height={225}
                         className="max-w-full max-h-full object-contain"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 300px"
                       />
                     </Link>
                   </div>
@@ -971,7 +1006,8 @@ export default function EquipmentOverviewGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

@@ -4,11 +4,12 @@ import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
 import AnimateOnScroll from '@/components/AnimateOnScroll'
+import MaterialTooltip from '@/components/MaterialTooltip'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Aluminum Sample Preparation Guide | Metallography.org',
-  description: 'Complete step-by-step guide to preparing aluminum samples for metallographic analysis. Learn grinding, polishing, and etching techniques.',
-}
+const guide = getGuideBySlug('aluminum-sample-preparation')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction' },
@@ -21,8 +22,23 @@ const sections = [
 ]
 
 export default function AluminumGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -64,6 +80,8 @@ export default function AluminumGuide() {
                 <h2>Introduction</h2>
                 <p>
                   Aluminum and its alloys are among the most commonly analyzed materials in metallography. 
+                  Common alloys include <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> (the most widely used aluminum alloy), 
+                  <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> (high-strength aerospace alloy), and many others. 
                   Proper preparation is essential to reveal the true microstructure without introducing 
                   artifacts such as deformation, scratches, or contamination. This guide will walk you 
                   through the complete preparation process.
@@ -76,6 +94,8 @@ export default function AluminumGuide() {
                       width={600}
                       height={450}
                       className="w-full h-auto"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 600px"
                     />
                     <p className="text-sm text-gray-600 mt-2 italic text-center">Aluminum-silicon alloy, Keller's reagent, 400X magnification. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
                   </div>
@@ -94,7 +114,10 @@ export default function AluminumGuide() {
                 <p>
                   When sectioning aluminum samples, use a slow cutting speed to minimize heat generation 
                   and deformation. A cutting speed of 100-200 RPM is typically appropriate for most 
-                  aluminum alloys. Aluminum's softness requires careful handling to prevent deformation.
+                  aluminum alloys. Softer alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> require 
+                  particularly careful handling to prevent deformation, while harder alloys such as 
+                  <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> can tolerate slightly higher cutting speeds. 
+                  Aluminum's softness requires careful handling to prevent deformation.
                 </p>
                 <AnimateOnScroll animation="fadeInUp" delay={100}>
                   <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
@@ -110,6 +133,8 @@ export default function AluminumGuide() {
                         width={500}
                         height={375}
                         className="w-full h-auto"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                       />
                     </Link>
                     <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-E abrasive cut-off blades designed for soft non-ferrous materials like aluminum. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
@@ -184,6 +209,8 @@ export default function AluminumGuide() {
                         width={500}
                         height={375}
                         className="w-full h-auto"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                       />
                     </Link>
                     <p className="text-sm text-gray-600 mt-2 italic text-center">Silicon carbide (SiC) grinding papers in various grit sizes (120, 240, 400, 600) for progressive grinding. Rotate sample 90° between each grit to ensure complete scratch removal.</p>
@@ -199,7 +226,10 @@ export default function AluminumGuide() {
               <p>
                 <strong>Important:</strong> Rotate the sample 90° between each grit to ensure complete 
                 removal of previous scratches. Use water as a lubricant and maintain <strong>light</strong> pressure 
-                to avoid deformation. Aluminum requires less time per step than harder materials.
+                to avoid deformation. Softer alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> require 
+                even lighter pressure and shorter grinding times, while precipitation-hardened alloys 
+                like <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> may need slightly longer times per step. 
+                Aluminum requires less time per step than harder materials.
               </p>
                 <ProductLink 
                   productName="Silicon Carbide Grinding Papers"
@@ -232,6 +262,8 @@ export default function AluminumGuide() {
                           width={300}
                           height={225}
                           className="w-full h-auto"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                         />
                       </Link>
                       <p className="text-xs text-gray-600 mt-2 italic text-center">Polycrystalline diamond compound provides consistent cutting action for aluminum alloys.</p>
@@ -249,6 +281,8 @@ export default function AluminumGuide() {
                           width={300}
                           height={225}
                           className="w-full h-auto"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 300px"
                         />
                       </Link>
                       <p className="text-xs text-gray-600 mt-2 italic text-center">Soft to medium polishing pads are recommended for aluminum to prevent smearing and excessive relief.</p>
@@ -269,7 +303,10 @@ export default function AluminumGuide() {
               <p>
                 <strong>Important:</strong> Use lighter pressure than for steel. Over-polishing can 
                 introduce relief around second phases and inclusions. Monitor the surface frequently 
-                to avoid smearing, which is common with soft materials like aluminum.
+                to avoid smearing, which is common with soft materials like aluminum. This is especially 
+                critical for softer alloys such as <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip>, 
+                while higher-strength alloys like <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> 
+                are slightly more forgiving but still require careful pressure control.
               </p>
               <ProductLink 
                 productName="Diamond Abrasives"
@@ -290,6 +327,8 @@ export default function AluminumGuide() {
               <p>
                 Etching reveals the microstructure by selectively attacking grain boundaries and phases. 
                 The choice of etchant depends on the aluminum alloy and what features you want to reveal. 
+                For common alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> and 
+                <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip>, Keller's reagent is typically the first choice. 
                 Common etchants include Keller's reagent, Weck's reagent, and various electrolytic solutions.
               </p>
                 <AnimateOnScroll animation="fadeInUp" delay={100}>
@@ -325,6 +364,8 @@ export default function AluminumGuide() {
                         width={500}
                         height={375}
                         className="w-full h-auto"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                       />
                     </Link>
                     <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for aluminum. Common etchants include Keller's Reagent, Weck's Reagent, and electrolytic solutions. Etching time typically ranges from 5-30 seconds depending on the etchant and alloy.</p>
@@ -427,7 +468,8 @@ export default function AluminumGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

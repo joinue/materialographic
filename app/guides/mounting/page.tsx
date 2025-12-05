@@ -3,11 +3,12 @@ import Image from 'next/image'
 import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
+import YouTubeVideo from '@/components/YouTubeVideo'
+import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
-export const metadata: Metadata = {
-  title: 'Complete Guide to Metallographic Mounting: Compression vs. Castable Methods | Metallography.org',
-  description: 'Comprehensive guide to metallographic mounting methods. Learn about compression mounting and castable mounting, when to use each method, best practices, and troubleshooting common issues.',
-}
+const guide = getGuideBySlug('mounting')!
+
+export const metadata: Metadata = getGuideMetadata(guide)
 
 const sections = [
   { id: 'introduction', label: 'Introduction to Metallographic Mounting' },
@@ -21,8 +22,29 @@ const sections = [
 ]
 
 export default function MetallographicMountingGuide() {
+  const { articleStructuredData, courseStructuredData, breadcrumbStructuredData, howToStructuredData } = getGuideStructuredData(guide)
+
   return (
-    <article className="py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      {howToStructuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
+        />
+      )}
+      <article className="py-12">
       <GuideSideNav sections={sections} />
       <div className="container-custom lg:pl-0 xl:pl-0">
         <div className="max-w-4xl mx-auto">
@@ -214,6 +236,13 @@ export default function MetallographicMountingGuide() {
                 <li>Applications requiring excellent edge retention</li>
                 <li>Production environments with consistent sample types</li>
               </ul>
+
+              <YouTubeVideo
+                videoId="ghEnwKGf8Nc"
+                title="Compression Mounting Demonstration"
+                description="Learn compression mounting techniques from Dr. Donald Zipperian. This video demonstrates proper sample preparation, resin selection, and the complete compression mounting process using PACE Technologies equipment."
+              />
+
               <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
                 <div className="mb-3 rounded-lg overflow-hidden max-w-xs mx-auto">
                   <Link 
@@ -332,6 +361,13 @@ export default function MetallographicMountingGuide() {
                 <li><strong>Shrinkage:</strong> Some resins shrink during curing, which can affect edge retention</li>
                 <li><strong>Hardness:</strong> Generally softer than compression mounts, may require careful polishing</li>
               </ul>
+
+              <YouTubeVideo
+                videoId="g8QCrWxyRZ4"
+                title="Castable/Cold Mounting with Vacuum Chamber"
+                description="Watch Dr. Donald Zipperian demonstrate castable mounting techniques, including the use of vacuum chambers to eliminate air bubbles and ensure porosity-free mounts for delicate and heat-sensitive samples."
+              />
+
               <div className="bg-gray-50 border-l-4 border-primary-600 p-4 my-4 rounded">
                 <div className="mb-3 rounded-lg overflow-hidden max-w-xs mx-auto">
                   <Link 
@@ -726,7 +762,8 @@ export default function MetallographicMountingGuide() {
           </div>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   )
 }
 

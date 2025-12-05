@@ -9,7 +9,7 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -99,6 +99,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+      <head>
+        {/* Performance: Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for potential external resources */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body className={`${inter.className} font-sans antialiased relative bg-white`}>
         {/* Grain Structure Background Pattern - Full Page */}
         <div className="fixed inset-0 opacity-[0.08] overflow-hidden pointer-events-none z-0">
@@ -112,10 +119,14 @@ export default function RootLayout({
           </svg>
         </div>
         <div className="relative z-10">
-          <Header />
-          <main className="min-h-screen pt-24">{children}</main>
-          <Footer />
-          <ReturnToTop />
+          <div className="build-page-hidden">
+            <Header />
+          </div>
+          <main className="min-h-screen pt-24 build-page-main">{children}</main>
+          <div className="build-page-hidden">
+            <Footer />
+            <ReturnToTop />
+          </div>
         </div>
       </body>
     </html>
