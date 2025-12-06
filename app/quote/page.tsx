@@ -84,7 +84,7 @@ export default function QuotePage() {
                   <h3 className="text-sm font-semibold text-gray-900 mb-3">Before You Submit</h3>
                   <p className="text-gray-600 text-xs leading-relaxed mb-3">
                     We recommend exploring our{' '}
-                    <a href="/build" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                    <a href="/builder" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                       Build Your Lab
                     </a>{' '}
                     tool and{' '}

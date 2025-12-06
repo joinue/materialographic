@@ -95,11 +95,11 @@ export default function SitemapPage() {
                   <p className="text-sm text-gray-600 ml-7">Main landing page with overview of resources</p>
                 </li>
                 <li>
-                  <Link href="/build" className="flex items-center gap-2 text-lg font-semibold text-primary-600 hover:text-primary-700 transition-colors group">
+                  <Link href="/builder" className="flex items-center gap-2 text-lg font-semibold text-primary-600 hover:text-primary-700 transition-colors group">
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    Build
+                    Build Your Lab
                   </Link>
-                  <p className="text-sm text-gray-600 ml-7">Information about building and equipment</p>
+                  <p className="text-sm text-gray-600 ml-7">Get general equipment and consumable recommendations based on your sample specifications and workflow requirements</p>
                 </li>
                 <li>
                   <Link href="/databases" className="flex items-center gap-2 text-lg font-semibold text-primary-600 hover:text-primary-700 transition-colors group">

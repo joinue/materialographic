@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-export default function BuildPageWrapper({ children }: { children: React.ReactNode }) {
+export default function BuilderPageWrapper({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Add class to body to trigger CSS rules
     document.body.classList.add('build-page-active')

@@ -53,7 +53,7 @@ export const glossaryTerms: GlossaryTerm[] = [
   },
   {
     term: 'Cementite',
-    definition: 'A hard, brittle phase of iron carbide (Fe3C) that forms in steel. It appears as white or light-colored regions in etched microstructures.',
+    definition: 'A hard, brittle phase of iron carbide (Fe3C) that forms in steel. Its appearance in etched microstructures depends on the etchant: appears dark with nital, light/white with picral.',
     category: 'Microstructure',
     relatedTerms: ['Phase', 'Ferrite', 'Pearlite'],
     example: 'Cementite provides hardness to steel but reduces ductility.',

@@ -273,7 +273,7 @@ export default function Header() {
               Stock Your Lab
             </Link>
             <Link 
-              href="/build" 
+              href="/builder" 
               className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center space-x-2 text-sm shadow-md hover:shadow-lg"
             >
               <span>Build Your Lab</span>
@@ -445,7 +445,7 @@ export default function Header() {
                 Stock Your Lab
               </Link>
               <Link 
-                href="/build" 
+                href="/builder" 
                 className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center justify-center space-x-2 text-sm shadow-md hover:shadow-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >

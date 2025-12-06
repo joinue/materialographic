@@ -889,7 +889,7 @@ export default function EquipmentOverviewGuide() {
                   and consumable recommendations based on your specific materials, sample requirements, and workflow needs.
                 </p>
                 <Link 
-                  href="/build"
+                  href="/builder"
                   className="inline-block bg-white text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   Build Your Lab →

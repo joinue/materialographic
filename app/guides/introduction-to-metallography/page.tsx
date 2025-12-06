@@ -448,8 +448,8 @@ export default function IntroductionToMetallographyGuide() {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Cementite (Fe₃C)</h4>
                   <p className="text-sm text-gray-700 mb-2">
-                    Iron carbide phase. Very hard and brittle. Appears dark in etched microstructures. Present in 
-                    pearlite, bainite, and as separate particles in some steels.
+                    Iron carbide phase. Very hard and brittle. Appears dark with nital etching, light/white with picral etching. 
+                    Appearance depends on the etchant used. Present in pearlite, bainite, and as separate particles in some steels.
                   </p>
                 </div>
                   </div>
