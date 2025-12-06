@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, Calculator, FlaskConical, Workflow, Layers, Clock, Ruler, Hourglass, Square, ClipboardList, Box } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
@@ -75,7 +75,7 @@ const tools = [
   },
 ]
 
-export default function ToolsPage() {
+function ToolsPageContent() {
   const categories = ['All', ...categoryOrder]
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -342,6 +342,23 @@ export default function ToolsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ToolsPage() {
+  return (
+    <Suspense fallback={
+      <div className="py-4 sm:py-6 md:py-12">
+        <div className="container-custom">
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+            <p className="mt-4 text-gray-600">Loading tools...</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <ToolsPageContent />
+    </Suspense>
   )
 }
 
