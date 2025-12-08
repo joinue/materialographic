@@ -47,8 +47,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = blogPosts[params.slug]
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = blogPosts[slug]
   
   if (!post) {
     return {
@@ -68,7 +69,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://metallography.org/blog/${params.slug}`,
+      url: `https://metallography.org/blog/${slug}`,
       siteName: 'Metallography.org',
       images: [
         {
@@ -91,13 +92,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       images: [post.image],
     },
     alternates: {
-      canonical: `https://metallography.org/blog/${params.slug}`,
+      canonical: `https://metallography.org/blog/${slug}`,
     },
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug]
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = blogPosts[slug]
 
   if (!post) {
     notFound()
@@ -126,7 +128,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://metallography.org/blog/${params.slug}`,
+      '@id': `https://metallography.org/blog/${slug}`,
     },
     articleSection: post.category,
   }
@@ -152,7 +154,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `https://metallography.org/blog/${params.slug}`,
+        item: `https://metallography.org/blog/${slug}`,
       },
     ],
   }

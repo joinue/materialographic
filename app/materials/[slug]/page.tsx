@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 import MaterialTabs from './MaterialTabs'
 
 interface MaterialPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: MaterialPageProps): Promise<Metadata> {
-  const material = await getMaterialBySlug(params.slug)
+  const { slug } = await params
+  const material = await getMaterialBySlug(slug)
   
   if (!material) {
     return {
@@ -40,7 +41,8 @@ export async function generateMetadata({ params }: MaterialPageProps): Promise<M
 }
 
 export default async function MaterialPage({ params }: MaterialPageProps) {
-  const material = await getMaterialBySlug(params.slug)
+  const { slug } = await params
+  const material = await getMaterialBySlug(slug)
 
   if (!material) {
     notFound()

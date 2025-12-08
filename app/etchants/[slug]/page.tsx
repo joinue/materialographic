@@ -6,9 +6,9 @@ import { ExternalLink, AlertTriangle, FlaskConical, Clock, Thermometer, Zap, Shi
 import EtchantTabs from './EtchantTabs'
 
 interface EtchantPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: EtchantPageProps): Promise<Metadata> {
-  const etchant = await getEtchantBySlug(params.slug)
+  const { slug } = await params
+  const etchant = await getEtchantBySlug(slug)
   
   if (!etchant) {
     return {
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: EtchantPageProps): Promise<Me
 }
 
 export default async function EtchantPage({ params }: EtchantPageProps) {
-  const etchant = await getEtchantBySlug(params.slug)
+  const { slug } = await params
+  const etchant = await getEtchantBySlug(slug)
 
   if (!etchant) {
     notFound()

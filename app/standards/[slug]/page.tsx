@@ -5,9 +5,9 @@ import type { Metadata } from 'next'
 import { ExternalLink, BookOpen, FileText, Tag } from 'lucide-react'
 
 interface StandardPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: StandardPageProps): Promise<Metadata> {
-  const standard = await getStandardBySlug(params.slug)
+  const { slug } = await params
+  const standard = await getStandardBySlug(slug)
   
   if (!standard) {
     return {
@@ -57,7 +58,8 @@ const organizationColors: Record<string, string> = {
 }
 
 export default async function StandardPage({ params }: StandardPageProps) {
-  const standard = await getStandardBySlug(params.slug)
+  const { slug } = await params
+  const standard = await getStandardBySlug(slug)
 
   if (!standard) {
     notFound()
