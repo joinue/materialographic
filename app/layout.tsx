@@ -106,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
         <link rel="icon" href="/logo.png" media="(prefers-color-scheme: light)" />

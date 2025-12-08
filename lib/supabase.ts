@@ -7,7 +7,14 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables')
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Create singleton client with a unique storage key to avoid conflicts with SSR clients
+// This client is primarily for server-side use. Client components should use lib/supabase-client.ts
+// Using a unique storage key prevents multiple GoTrueClient instances from conflicting
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    storageKey: 'supabase-legacy-storage',
+  },
+})
 
 // Database types
 export interface Material {

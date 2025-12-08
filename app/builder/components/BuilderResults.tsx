@@ -141,7 +141,7 @@ const getConsumableLink = (stage: string, type: string): { url: string; text: st
 }
 
 export default function BuilderResults({ recommendations, isGenerating, formData, onGetExpertReview }: BuilderResultsProps) {
-  const [openSections, setOpenSections] = useState<Set<string>>(new Set())
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
 
   if (isGenerating) {
     return (
@@ -186,13 +186,10 @@ export default function BuilderResults({ recommendations, isGenerating, formData
     })
 
   const toggleSection = (stage: string) => {
-    const newOpen = new Set(openSections)
-    if (newOpen.has(stage)) {
-      newOpen.delete(stage)
-    } else {
-      newOpen.add(stage)
-    }
-    setOpenSections(newOpen)
+    setOpenSections(prev => ({
+      ...prev,
+      [stage]: !prev[stage]
+    }))
   }
 
   const downloadPDF = async () => {
@@ -425,7 +422,7 @@ export default function BuilderResults({ recommendations, isGenerating, formData
           {organizedByStage.map(({ stage, equipment, consumables }) => {
             const stageInfo = stageLabels[stage] || { label: stage, icon: Package }
             const Icon = stageInfo.icon
-            const isOpen = openSections.has(stage)
+            const isOpen = openSections[stage] || false
 
             return (
               <div key={stage} className="bg-white rounded-lg shadow border border-gray-200 overflow-hidden">

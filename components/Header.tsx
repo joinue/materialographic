@@ -3,14 +3,43 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { ChevronRight, Menu, X, ChevronDown, Search } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { ChevronRight, Menu, X, ChevronDown, Search, LogOut } from 'lucide-react'
 import GlobalSearch from '@/components/GlobalSearch'
+import { createClient } from '@/lib/supabase-client'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [searchOpen, setSearchOpen] = useState(false)
   const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const router = useRouter()
+
+  // Check if user is logged in as admin
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const supabase = createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        setIsAdmin(!!user)
+      } catch (error) {
+        setIsAdmin(false)
+      }
+    }
+
+    checkUser()
+
+    // Listen for auth state changes
+    const supabase = createClient()
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsAdmin(!!session?.user)
+    })
+
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [])
 
   // Keyboard shortcut for search (Cmd/Ctrl + K)
   useEffect(() => {
@@ -24,6 +53,17 @@ export default function Header() {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
+
+  const handleLogout = async () => {
+    try {
+      const supabase = createClient()
+      await supabase.auth.signOut()
+      router.push('/')
+      router.refresh()
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
@@ -265,21 +305,42 @@ export default function Header() {
               <Search className="w-5 h-5" />
               <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-primary-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
             </button>
-            <Link 
-              href="https://shop.metallographic.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-sm shadow-sm hover:shadow-md"
-            >
-              Stock Your Lab
-            </Link>
-            <Link 
-              href="/builder" 
-              className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center space-x-2 text-sm shadow-md hover:shadow-lg"
-            >
-              <span>Build Your Lab</span>
-              <ChevronRight className="w-4 h-4" />
-            </Link>
+            {isAdmin ? (
+              <>
+                <Link 
+                  href="/admin" 
+                  className="px-5 py-2 bg-primary-600 text-white rounded-full font-semibold hover:bg-primary-700 transition-all duration-200 text-sm shadow-md hover:shadow-lg"
+                >
+                  Admin
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="p-2.5 text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-full transition-all duration-200"
+                  aria-label="Logout"
+                  title="Logout"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </>
+            ) : (
+              <>
+                <Link 
+                  href="https://shop.metallographic.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-sm shadow-sm hover:shadow-md"
+                >
+                  Stock Your Lab
+                </Link>
+                <Link 
+                  href="/builder" 
+                  className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center space-x-2 text-sm shadow-md hover:shadow-lg"
+                >
+                  <span>Build Your Lab</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -436,23 +497,47 @@ export default function Header() {
                 <Search className="w-4 h-4" />
                 Search
               </button>
-              <Link 
-                href="https://shop.metallographic.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-center text-sm shadow-sm hover:shadow-md"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Stock Your Lab
-              </Link>
-              <Link 
-                href="/builder" 
-                className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center justify-center space-x-2 text-sm shadow-md hover:shadow-lg"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span>Build Your Lab</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
+              {isAdmin ? (
+                <>
+                  <Link 
+                    href="/admin" 
+                    className="px-5 py-2 bg-primary-600 text-white rounded-full font-semibold hover:bg-primary-700 transition-all duration-200 text-center text-sm shadow-md hover:shadow-lg"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Admin
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      handleLogout()
+                    }}
+                    className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-center text-sm shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link 
+                    href="https://shop.metallographic.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-center text-sm shadow-sm hover:shadow-md"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Stock Your Lab
+                  </Link>
+                  <Link 
+                    href="/builder" 
+                    className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center justify-center space-x-2 text-sm shadow-md hover:shadow-lg"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span>Build Your Lab</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

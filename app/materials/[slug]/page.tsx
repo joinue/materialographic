@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getMaterialBySlug, getAllMaterials } from '@/lib/supabase'
 import type { Metadata } from 'next'
 import MaterialTabs from './MaterialTabs'
+import AdminEditButton from './AdminEditButton'
 
 interface MaterialPageProps {
   params: Promise<{
@@ -58,8 +59,13 @@ export default async function MaterialPage({ params }: MaterialPageProps) {
 
         {/* Header */}
         <header className="mb-6">
-          <h1 className="text-3xl font-bold mb-1">{material.name}</h1>
-          <p className="text-lg text-gray-600">{material.category}</p>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold mb-1">{material.name}</h1>
+              <p className="text-lg text-gray-600">{material.category}</p>
+            </div>
+            <AdminEditButton materialId={material.id} />
+          </div>
         </header>
 
         {/* Tabbed Content */}
