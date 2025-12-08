@@ -6,7 +6,6 @@ const nextConfig = {
   images: {
     // Remove unoptimized for production builds on Vercel
     // Vercel will handle image optimization automatically
-    qualities: [60, 75],
   },
   // Target modern browsers to reduce legacy JavaScript polyfills
   compiler: {
@@ -15,7 +14,13 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // SWC minification is enabled by default in Next.js
+  // Optimize for modern browsers
+  swcMinify: true,
+  // Experimental features for better performance
+  experimental: {
+    // Optimize package imports to reduce bundle size
+    optimizePackageImports: ['lucide-react'],
+  },
 }
 
 module.exports = nextConfig
