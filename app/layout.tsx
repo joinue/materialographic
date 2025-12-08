@@ -108,8 +108,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable}`}>
       <head>
-        {/* Preload critical LCP image for faster rendering */}
-        <link rel="preload" as="image" href="/logo.png" fetchPriority="high" />
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
         <link rel="icon" href="/logo.png" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/logo-white.png" media="(prefers-color-scheme: dark)" />
