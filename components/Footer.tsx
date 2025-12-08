@@ -203,7 +203,7 @@ export default function Footer() {
               <h2 className="text-2xl font-bold text-white tracking-tight mb-6 flex items-center gap-3">
                 <Image 
                   src="/logo-white.png" 
-                  alt="Metallography.org" 
+                  alt="" 
                   width={32} 
                   height={32}
                   className="h-6 w-auto"
@@ -245,7 +245,7 @@ export default function Footer() {
             
             {/* Learn Section */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Learn</h4>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Learn</h3>
               <ul className="space-y-3">
                 <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Guides</Link></li>
                 <li><Link href="/resources" className="text-gray-400 hover:text-white transition-colors text-sm">Resources</Link></li>
@@ -256,7 +256,7 @@ export default function Footer() {
             
             {/* Databases Section */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Databases</h4>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Databases</h3>
               <ul className="space-y-3">
                 <li><Link href="/materials" className="text-gray-400 hover:text-white transition-colors text-sm">Materials</Link></li>
                 <li><Link href="/etchants" className="text-gray-400 hover:text-white transition-colors text-sm">Etchants</Link></li>
@@ -267,7 +267,7 @@ export default function Footer() {
             
             {/* Info Section */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Info</h4>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Info</h3>
               <ul className="space-y-3">
                 <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About</Link></li>
                 <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</Link></li>
@@ -282,7 +282,7 @@ export default function Footer() {
             
             {/* External Sites Section */}
             <div className="md:col-span-2">
-              <h4 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Our Sites</h4>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Our Sites</h3>
               <ul className="space-y-3">
                 <li>
                   <Link href="https://metallographic.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">

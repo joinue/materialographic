@@ -415,7 +415,7 @@ export default function Home() {
                       alt="Metallography guides page preview showing sample preparation guides, material-specific procedures, grinding polishing etching techniques, and metallographic resources"
                       title="Metallography guides page interface preview"
                       width={800}
-                      height={600}
+                      height={475}
                       className="w-full h-auto"
                       priority
                       fetchPriority="high"

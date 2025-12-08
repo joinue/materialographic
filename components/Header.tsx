@@ -40,6 +40,7 @@ export default function Header() {
                   height={50}
                   className="h-10 w-auto"
                   priority
+                  fetchPriority="high"
                 />
               </div>
               <span className="hidden xl:block text-2xl font-bold tracking-tight text-gray-900">

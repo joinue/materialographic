@@ -108,11 +108,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable}`}>
       <head>
-        {/* Performance: Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* DNS prefetch for potential external resources */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
         <link rel="icon" href="/logo.png" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/logo-white.png" media="(prefers-color-scheme: dark)" />
