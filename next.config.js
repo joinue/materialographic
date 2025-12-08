@@ -15,8 +15,7 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // Optimize for modern browsers
-  swcMinify: true,
+  // SWC minification is enabled by default in Next.js
 }
 
 module.exports = nextConfig
