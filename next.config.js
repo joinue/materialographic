@@ -6,7 +6,17 @@ const nextConfig = {
   images: {
     // Remove unoptimized for production builds on Vercel
     // Vercel will handle image optimization automatically
+    qualities: [60, 75],
   },
+  // Target modern browsers to reduce legacy JavaScript polyfills
+  compiler: {
+    // Remove console logs in production (optional, but good for performance)
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+  // Optimize for modern browsers
+  swcMinify: true,
 }
 
 module.exports = nextConfig

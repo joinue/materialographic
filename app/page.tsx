@@ -350,7 +350,7 @@ export default function Home() {
               fill
               className="object-cover object-center"
               priority
-              quality={75}
+              quality={60}
               sizes="100vw"
               style={{ objectPosition: 'center 30%' }}
               fetchPriority="high"

@@ -58,77 +58,86 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
   }, [])
 
   useEffect(() => {
+    let rafId: number | null = null
+    let lastScrollTop = 0
+    
     const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
+      // Cancel any pending frame
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
       
-      // Calculate scroll progress
-      const scrollProgress = (scrollTop / (documentHeight - windowHeight)) * 100
-      setProgress(Math.min(100, Math.max(0, scrollProgress)))
+      // Throttle using requestAnimationFrame to batch layout reads
+      rafId = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY
+        const windowHeight = window.innerHeight
+        const documentHeight = document.documentElement.scrollHeight
+        
+        // Calculate scroll progress (no layout read needed)
+        const scrollProgress = (scrollTop / (documentHeight - windowHeight)) * 100
+        setProgress(Math.min(100, Math.max(0, scrollProgress)))
 
-      // Find footer element to prevent overlap
-      const footer = document.querySelector('footer')
-      if (footer) {
-        const footerRect = footer.getBoundingClientRect()
-        const footerTop = footerRect.top
-        
-        // Calculate when nav should stop (when footer starts to appear in viewport)
-        // Nav should stop when footer top is less than viewport bottom
-        const viewportBottom = windowHeight
-        const navShouldStop = footerTop < viewportBottom
-        
-        if (navShouldStop) {
-          // Calculate bottom offset to prevent overlap
-          // Add padding to ensure nav doesn't touch footer
-          const overlap = viewportBottom - footerTop
-          const bottomOffset = Math.max(0, overlap + 24) // 24px padding
-          setNavBottom(bottomOffset)
+        // Batch all layout reads together to minimize reflows
+        const footer = document.querySelector('footer')
+        let footerTop: number | null = null
+        if (footer) {
+          const footerRect = footer.getBoundingClientRect()
+          footerTop = footerRect.top
+          
+          const viewportBottom = windowHeight
+          const navShouldStop = footerTop < viewportBottom
+          
+          if (navShouldStop) {
+            const overlap = viewportBottom - footerTop
+            const bottomOffset = Math.max(0, overlap + 24)
+            setNavBottom(bottomOffset)
+          } else {
+            setNavBottom(null)
+          }
         } else {
           setNavBottom(null)
         }
-      } else {
-        setNavBottom(null)
-      }
 
-      // Find active section
-      const sectionElements = sections
-        .map(section => {
-          const element = document.getElementById(section.id)
-          if (element) {
-            const rect = element.getBoundingClientRect()
-            return {
-              id: section.id,
-              top: rect.top + scrollTop,
-              bottom: rect.bottom + scrollTop,
+        // Batch all section element reads
+        const sectionElements = sections
+          .map(section => {
+            const element = document.getElementById(section.id)
+            if (element) {
+              const rect = element.getBoundingClientRect()
+              return {
+                id: section.id,
+                top: rect.top + scrollTop,
+                bottom: rect.bottom + scrollTop,
+              }
             }
-          }
-          return null
-        })
-        .filter(Boolean) as Array<{ id: string; top: number; bottom: number }>
+            return null
+          })
+          .filter(Boolean) as Array<{ id: string; top: number; bottom: number }>
 
-      // Determine active section
-      const currentScroll = scrollTop + windowHeight / 3
-      
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const section = sectionElements[i]
-        if (currentScroll >= section.top) {
-          setActiveSection(section.id)
-          // Update URL hash without scrolling
-          if (window.location.hash !== `#${section.id}`) {
-            window.history.replaceState(null, '', `${pathname}#${section.id}`)
+        // Determine active section
+        const currentScroll = scrollTop + windowHeight / 3
+        
+        for (let i = sectionElements.length - 1; i >= 0; i--) {
+          const section = sectionElements[i]
+          if (currentScroll >= section.top) {
+            setActiveSection(section.id)
+            if (window.location.hash !== `#${section.id}`) {
+              window.history.replaceState(null, '', `${pathname}#${section.id}`)
+            }
+            break
           }
-          break
         }
-      }
 
-      // Set first section as active at top
-      if (scrollTop < 100) {
-        setActiveSection(sections[0]?.id || '')
-        if (window.location.hash && sections[0]?.id) {
-          window.history.replaceState(null, '', pathname)
+        // Set first section as active at top
+        if (scrollTop < 100) {
+          setActiveSection(sections[0]?.id || '')
+          if (window.location.hash && sections[0]?.id) {
+            window.history.replaceState(null, '', pathname)
+          }
         }
-      }
+        
+        lastScrollTop = scrollTop
+      })
     }
 
     handleScroll()
@@ -136,6 +145,9 @@ export default function GuideSideNav({ sections }: GuideSideNavProps) {
     window.addEventListener('resize', handleScroll, { passive: true })
 
     return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }

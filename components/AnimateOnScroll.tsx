@@ -57,39 +57,48 @@ export default function AnimateOnScroll({
     const currentElement = elementRef.current
     if (!currentElement) return
 
+    let observer: IntersectionObserver | null = null
+
     // Check if element is already visible on mount (for above-the-fold content)
-    const rect = currentElement.getBoundingClientRect()
-    const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
-    
-    if (isInViewport) {
-      // Use requestAnimationFrame to ensure animation triggers
-      requestAnimationFrame(() => {
+    // Use requestAnimationFrame to batch layout reads and avoid forced reflow
+    requestAnimationFrame(() => {
+      if (!currentElement) return
+      const rect = currentElement.getBoundingClientRect()
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
+      
+      if (isInViewport) {
         setIsVisible(true)
-      })
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Use requestAnimationFrame to ensure animation triggers
-          requestAnimationFrame(() => {
-            setIsVisible(true)
-          })
-          // Disconnect after first animation to improve performance
-          observer.disconnect()
-        }
-      },
-      {
-        threshold,
-        rootMargin: isMobile ? '0px 0px -100px 0px' : '0px 0px -50px 0px',
+        return
       }
-    )
+      
+      // If not visible, set up IntersectionObserver
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            // Use requestAnimationFrame to ensure animation triggers
+            requestAnimationFrame(() => {
+              setIsVisible(true)
+            })
+            // Disconnect after first animation to improve performance
+            if (observer) {
+              observer.disconnect()
+            }
+          }
+        },
+        {
+          threshold,
+          rootMargin: isMobile ? '0px 0px -100px 0px' : '0px 0px -50px 0px',
+        }
+      )
 
-    observer.observe(currentElement)
+      observer.observe(currentElement)
+    })
 
+    // Cleanup function
     return () => {
-      observer.disconnect()
+      if (observer) {
+        observer.disconnect()
+      }
     }
   }, [threshold, isMobile, animation])
 
