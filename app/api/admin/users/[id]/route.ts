@@ -102,6 +102,13 @@ export async function PATCH(
       )
     }
 
+    if (!updatedUser) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      )
+    }
+
     return NextResponse.json({
       user: {
         id: updatedUser.id,
