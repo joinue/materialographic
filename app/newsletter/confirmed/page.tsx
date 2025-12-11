@@ -1,7 +1,4 @@
 import Link from 'next/link'
-import { CheckCircle2 } from 'lucide-react'
-
-import Link from 'next/link'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default async function NewsletterConfirmedPage({
