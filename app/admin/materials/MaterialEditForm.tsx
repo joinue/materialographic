@@ -839,14 +839,9 @@ export default function MaterialEditForm({ material }: MaterialEditFormProps) {
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </button>
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900">
-                    {material ? 'Edit Material' : 'Create New Material'}
-                  </h1>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {material ? `Editing: ${material.name}` : 'Add a new material to the database'}
-                  </p>
-                </div>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  {material ? `Editing ${material.name}` : 'Create New Material'}
+                </h1>
               </div>
             </div>
           </div>

@@ -1,16 +1,104 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { Search, X } from 'lucide-react'
+import { Search, X, ChevronDown, ChevronUp } from 'lucide-react'
 import { glossaryTerms, type GlossaryTerm } from '@/data/glossary'
 
 const categories: GlossaryTerm['category'][] = ['Microstructure', 'Sample Preparation', 'Equipment', 'Material Science', 'Analysis', 'General']
+
+// Component to handle truncation detection and expand/collapse
+function DefinitionText({ 
+  term, 
+  definition, 
+  isExpanded, 
+  onToggle 
+}: { 
+  term: string
+  definition: string
+  isExpanded: boolean
+  onToggle: () => void
+}) {
+  const textRef = useRef<HTMLParagraphElement>(null)
+  const [isTruncated, setIsTruncated] = useState(false)
+
+  useEffect(() => {
+    const checkTruncation = () => {
+      if (!textRef.current || isExpanded) {
+        setIsTruncated(false)
+        return
+      }
+
+      // Create a hidden clone element to measure full text height without line-clamp
+      const clone = textRef.current.cloneNode(true) as HTMLElement
+      clone.style.position = 'absolute'
+      clone.style.visibility = 'hidden'
+      clone.style.height = 'auto'
+      clone.style.maxHeight = 'none'
+      clone.style.overflow = 'visible'
+      clone.style.webkitLineClamp = 'none'
+      clone.style.display = 'block'
+      clone.style.width = textRef.current.offsetWidth + 'px'
+      
+      document.body.appendChild(clone)
+      const fullHeight = clone.offsetHeight
+      document.body.removeChild(clone)
+      
+      // Compare full height to the clamped height
+      const clampedHeight = textRef.current.offsetHeight
+      const isTextTruncated = fullHeight > clampedHeight + 2 // Add 2px tolerance for rounding
+      setIsTruncated(isTextTruncated)
+    }
+
+    // Use requestAnimationFrame to ensure DOM is fully rendered
+    const timeoutId = setTimeout(() => {
+      requestAnimationFrame(checkTruncation)
+    }, 0)
+
+    // Also check on window resize
+    window.addEventListener('resize', checkTruncation)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', checkTruncation)
+    }
+  }, [definition, isExpanded])
+
+  return (
+    <div className="mb-2">
+      <p 
+        ref={textRef}
+        className={`text-sm text-gray-700 leading-relaxed ${isExpanded ? '' : 'line-clamp-3'}`}
+      >
+        {definition}
+      </p>
+      {(isTruncated || isExpanded) && (
+        <button
+          onClick={onToggle}
+          className="mt-1 text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1 transition-colors"
+        >
+          {isExpanded ? (
+            <>
+              <span>Show less</span>
+              <ChevronUp className="w-3 h-3" />
+            </>
+          ) : (
+            <>
+              <span>Read more</span>
+              <ChevronDown className="w-3 h-3" />
+            </>
+          )}
+        </button>
+      )}
+    </div>
+  )
+}
 
 export default function GlossaryPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<GlossaryTerm['category'] | 'All'>('All')
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null)
+  const [expandedTerms, setExpandedTerms] = useState<Set<string>>(new Set())
 
   // Get unique first letters for A-Z navigation
   const letters = useMemo(() => {
@@ -253,9 +341,22 @@ export default function GlossaryPage() {
                         </span>
                       </div>
                       
-                      <p className="text-sm text-gray-700 leading-relaxed mb-2 line-clamp-3">
-                        {term.definition}
-                      </p>
+                      <DefinitionText
+                        term={term.term}
+                        definition={term.definition}
+                        isExpanded={expandedTerms.has(term.term)}
+                        onToggle={() => {
+                          setExpandedTerms(prev => {
+                            const newSet = new Set(prev)
+                            if (newSet.has(term.term)) {
+                              newSet.delete(term.term)
+                            } else {
+                              newSet.add(term.term)
+                            }
+                            return newSet
+                          })
+                        }}
+                      />
 
                       {term.example && (
                         <div className="bg-blue-50 border-l-2 border-blue-500 p-2 rounded mb-2">

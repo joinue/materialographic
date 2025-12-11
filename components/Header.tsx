@@ -292,6 +292,15 @@ export default function Header() {
                   </>
                 )}
               </div>
+              
+              <span className="text-gray-300 mx-1">|</span>
+              
+              <Link 
+                href="/blog" 
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200"
+              >
+                Blog
+              </Link>
             </div>
 
           {/* Action Buttons */}
@@ -484,6 +493,17 @@ export default function Header() {
                   <Link href="/standards" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Standards Database</Link>
                 </div>
               )}
+            </div>
+
+            {/* Blog Section */}
+            <div className="mb-2">
+              <Link 
+                href="/blog" 
+                className="block py-2.5 text-gray-900 hover:text-primary-600 font-semibold border-b border-gray-200"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
             </div>
 
             <div className="flex flex-col space-y-3 mt-4 pt-4 border-t border-gray-200">

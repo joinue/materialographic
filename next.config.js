@@ -14,6 +14,13 @@ const nextConfig = {
     // - Hero image: quality={50} (app/page.tsx:353)
     // - Background: quality={60} (app/page.tsx:847)  
     // - About page: quality={70} (app/about/page.tsx:273)
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
   // Target modern browsers to reduce legacy JavaScript polyfills
   compiler: {

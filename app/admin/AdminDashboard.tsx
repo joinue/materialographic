@@ -1,130 +1,209 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase-client'
 import type { User } from '@supabase/supabase-js'
+import { Package, FlaskConical, FileText, Users, BarChart3, Database } from 'lucide-react'
 
 interface AdminDashboardProps {
   user: User
 }
 
+interface AdminOption {
+  id: string
+  title: string
+  description: string
+  icon: typeof Package
+  color: string
+  href?: string
+  status: 'active' | 'coming-soon'
+}
+
+const adminOptions: AdminOption[] = [
+  {
+    id: 'materials',
+    title: 'Materials',
+    description: 'Create, edit, and manage materials in the database',
+    icon: Package,
+    color: 'blue',
+    href: '/admin/materials',
+    status: 'active',
+  },
+  {
+    id: 'blog',
+    title: 'Blog Posts',
+    description: 'Create, edit, and manage blog posts',
+    icon: FileText,
+    color: 'purple',
+    href: '/admin/blog',
+    status: 'active',
+  },
+  {
+    id: 'etchants',
+    title: 'Etchants',
+    description: 'Manage etchants and their properties',
+    icon: FlaskConical,
+    color: 'green',
+    href: '/admin/etchants',
+    status: 'active',
+  },
+  {
+    id: 'standards',
+    title: 'Standards',
+    description: 'Manage ASTM and ISO standards',
+    icon: Database,
+    color: 'indigo',
+    href: '/admin/standards',
+    status: 'active',
+  },
+  {
+    id: 'users',
+    title: 'User Management',
+    description: 'View and manage user accounts',
+    icon: Users,
+    color: 'orange',
+    href: '/admin/users',
+    status: 'active',
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics',
+    description: 'View site analytics and metrics',
+    icon: BarChart3,
+    color: 'pink',
+    href: '/admin/analytics',
+    status: 'active',
+  },
+]
+
 export default function AdminDashboard({ user }: AdminDashboardProps) {
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
 
-  const handleLogout = async () => {
-    setLoading(true)
-    try {
-      const supabase = createClient()
-      await supabase.auth.signOut()
-      router.push('/admin/login')
-      router.refresh()
-    } catch (error) {
-      console.error('Logout error:', error)
-      setLoading(false)
+  const handleCardClick = (option: AdminOption) => {
+    if (option.status === 'active' && option.href) {
+      router.push(option.href)
     }
+  }
+
+  const getColorClasses = (color: string, status: 'active' | 'coming-soon') => {
+    if (status === 'coming-soon') {
+      return {
+        bg: 'bg-gray-50',
+        hover: 'hover:bg-gray-100',
+        icon: 'text-gray-400',
+        title: 'text-gray-500',
+        description: 'text-gray-400',
+        border: 'border-gray-200',
+      }
+    }
+
+    const colors: Record<string, any> = {
+      blue: {
+        bg: 'bg-blue-50',
+        hover: 'hover:bg-blue-100',
+        icon: 'text-blue-600',
+        title: 'text-blue-900',
+        description: 'text-blue-700',
+        border: 'border-blue-200',
+      },
+      purple: {
+        bg: 'bg-purple-50',
+        hover: 'hover:bg-purple-100',
+        icon: 'text-purple-600',
+        title: 'text-purple-900',
+        description: 'text-purple-700',
+        border: 'border-purple-200',
+      },
+      green: {
+        bg: 'bg-green-50',
+        hover: 'hover:bg-green-100',
+        icon: 'text-green-600',
+        title: 'text-green-900',
+        description: 'text-green-700',
+        border: 'border-green-200',
+      },
+      indigo: {
+        bg: 'bg-indigo-50',
+        hover: 'hover:bg-indigo-100',
+        icon: 'text-indigo-600',
+        title: 'text-indigo-900',
+        description: 'text-indigo-700',
+        border: 'border-indigo-200',
+      },
+      orange: {
+        bg: 'bg-orange-50',
+        hover: 'hover:bg-orange-100',
+        icon: 'text-orange-600',
+        title: 'text-orange-900',
+        description: 'text-orange-700',
+        border: 'border-orange-200',
+      },
+      pink: {
+        bg: 'bg-pink-50',
+        hover: 'hover:bg-pink-100',
+        icon: 'text-pink-600',
+        title: 'text-pink-900',
+        description: 'text-pink-700',
+        border: 'border-pink-200',
+      },
+    }
+
+    return colors[color] || colors.blue
   }
 
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="bg-white shadow rounded-lg mb-6">
-          <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-              <p className="text-sm text-gray-600 mt-1">
-                Welcome, {user.email}
-              </p>
-            </div>
-            <button
-              onClick={handleLogout}
-              disabled={loading}
-              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Logging out...' : 'Logout'}
-            </button>
-          </div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+          <p className="text-gray-600">Manage your site content and settings</p>
         </div>
 
-        {/* Dashboard Content */}
-        <div className="bg-white shadow rounded-lg p-6">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              Quick Actions
-            </h2>
-            <p className="text-gray-600">
-              Admin functionality will be added here. This is a protected route that requires authentication.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {adminOptions.map((option) => {
+            const Icon = option.icon
+            const colors = getColorClasses(option.color, option.status)
+            const isActive = option.status === 'active'
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <button
-              onClick={() => router.push('/admin/materials')}
-              className="bg-blue-50 rounded-lg p-4 hover:bg-blue-100 transition-colors text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <h3 className="text-sm font-medium text-blue-900 mb-1">Materials</h3>
-              <p className="text-2xl font-bold text-blue-600">Manage</p>
-              <p className="text-xs text-blue-700 mt-2">Click to manage materials →</p>
-            </button>
-            <div className="bg-green-50 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-green-900 mb-1">Etchants</h3>
-              <p className="text-2xl font-bold text-green-600">Coming Soon</p>
-            </div>
-            <div className="bg-purple-50 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-purple-900 mb-1">Standards</h3>
-              <p className="text-2xl font-bold text-purple-600">Coming Soon</p>
-            </div>
-          </div>
-
-          {/* Admin Features */}
-          <div className="border-t border-gray-200 pt-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              Admin Features
-            </h3>
-            <div className="space-y-3">
-              <button
-                onClick={() => router.push('/admin/materials')}
-                className="w-full flex items-center justify-between p-3 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-primary-500"
+            return (
+              <div
+                key={option.id}
+                onClick={() => handleCardClick(option)}
+                className={`
+                  ${colors.bg} ${isActive ? colors.hover : ''} ${colors.border}
+                  border-2 rounded-xl p-6 transition-all duration-200
+                  ${isActive ? 'cursor-pointer shadow-sm hover:shadow-md' : 'cursor-not-allowed opacity-60'}
+                  ${isActive ? 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500' : ''}
+                `}
               >
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">Materials Management</p>
-                  <p className="text-sm text-gray-600">Create, edit, and manage materials in the database</p>
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`p-3 rounded-lg ${colors.bg} ${colors.border} border`}>
+                    <Icon className={`w-6 h-6 ${colors.icon}`} />
+                  </div>
+                  {option.status === 'coming-soon' && (
+                    <span className="text-xs font-medium text-gray-500 bg-gray-200 px-2 py-1 rounded">
+                      Coming Soon
+                    </span>
+                  )}
+                  {option.status === 'active' && (
+                    <span className="text-xs font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded">
+                      Active
+                    </span>
+                  )}
                 </div>
-                <span className="text-xs text-primary-600 bg-primary-100 px-2 py-1 rounded font-medium">Active</span>
-              </button>
-              <div className="flex items-center p-3 bg-gray-50 rounded-md">
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">Etchants Management</p>
-                  <p className="text-sm text-gray-600">Manage etchants and their properties</p>
-                </div>
-                <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">Coming Soon</span>
+                <h3 className={`text-xl font-bold ${colors.title} mb-2`}>
+                  {option.title}
+                </h3>
+                <p className={`text-sm ${colors.description} leading-relaxed`}>
+                  {option.description}
+                </p>
+                {isActive && (
+                  <div className="mt-4 flex items-center text-sm font-medium text-gray-600">
+                    <span>Manage →</span>
+                  </div>
+                )}
               </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded-md">
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">Standards Management</p>
-                  <p className="text-sm text-gray-600">Manage ASTM and ISO standards</p>
-                </div>
-                <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">Coming Soon</span>
-              </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded-md">
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">User Management</p>
-                  <p className="text-sm text-gray-600">View and manage user accounts</p>
-                </div>
-                <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">Coming Soon</span>
-              </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded-md">
-                <div className="flex-1">
-                  <p className="font-medium text-gray-900">Analytics</p>
-                  <p className="text-sm text-gray-600">View site analytics and metrics</p>
-                </div>
-                <span className="text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">Coming Soon</span>
-              </div>
-            </div>
-          </div>
+            )
+          })}
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ReturnToTop from '@/components/ReturnToTop'
+import PageViewTracker from '@/components/PageViewTracker'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -125,6 +126,7 @@ export default function RootLayout({
           </svg>
         </div>
         <div className="relative z-10">
+          <PageViewTracker />
           <div className="build-page-hidden">
             <Header />
           </div>

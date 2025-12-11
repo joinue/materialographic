@@ -23,6 +23,8 @@ export default function GlossaryTermTooltip({
 }: GlossaryTermTooltipProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [position, setPosition] = useState<'top' | 'bottom'>('top')
+  const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({})
+  const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({})
   const tooltipRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLSpanElement>(null)
   const termKey = term.toLowerCase()
@@ -47,9 +49,12 @@ export default function GlossaryTermTooltip({
       requestAnimationFrame(() => {
         if (tooltipRef.current && triggerRef.current) {
           const tooltipRect = tooltipRef.current.getBoundingClientRect()
+          const viewportWidth = window.innerWidth
+          const viewportHeight = window.innerHeight
+          const padding = 16 // 1rem padding from viewport edges
           
-          // Check if tooltip would go off screen
-          const spaceBelow = window.innerHeight - rect.bottom
+          // Check if tooltip would go off screen vertically
+          const spaceBelow = viewportHeight - rect.bottom
           const spaceAbove = rect.top
           
           const newPosition = spaceBelow < tooltipRect.height + 10 && spaceAbove > spaceBelow
@@ -58,12 +63,63 @@ export default function GlossaryTermTooltip({
           
           setPosition(newPosition)
 
+          // Center tooltip horizontally on the viewport
+          const tooltipWidth = tooltipRect.width
+          const viewportCenter = viewportWidth / 2
+          const tooltipHalfWidth = tooltipWidth / 2
+          const triggerCenterX = rect.left + rect.width / 2
+          
+          // Calculate where tooltip should be to be centered on viewport
+          const targetLeft = viewportCenter - tooltipHalfWidth
+          const targetRight = viewportCenter + tooltipHalfWidth
+          
+          // Constrain to viewport with padding
+          const minLeft = padding
+          const maxRight = viewportWidth - padding
+          
+          let newTooltipStyle: React.CSSProperties = {}
+          let newArrowStyle: React.CSSProperties = {}
+          
+          // Position tooltip centered on viewport, but constrain if it would overflow
+          let actualTooltipLeft: number
+          if (targetLeft < minLeft) {
+            // Would overflow left - constrain to left edge
+            actualTooltipLeft = padding
+            newTooltipStyle = {
+              left: `${padding - rect.left}px`,
+              transform: 'none'
+            }
+          } else if (targetRight > maxRight) {
+            // Would overflow right - constrain to right edge
+            actualTooltipLeft = viewportWidth - padding - tooltipWidth
+            newTooltipStyle = {
+              left: `${actualTooltipLeft - rect.left}px`,
+              transform: 'none'
+            }
+          } else {
+            // Center on viewport
+            actualTooltipLeft = targetLeft
+            newTooltipStyle = {
+              left: `${targetLeft - rect.left}px`,
+              transform: 'none'
+            }
+          }
+          
+          // Position arrow to point to trigger center
+          const arrowOffset = triggerCenterX - actualTooltipLeft
+          newArrowStyle = {
+            left: `${Math.max(16, Math.min(arrowOffset, tooltipWidth - 16))}px`,
+            transform: 'translateX(-50%)'
+          }
+          
+          setTooltipStyle(newTooltipStyle)
+          setArrowStyle(newArrowStyle)
+
           // Wait for position to update, then scroll to ensure tooltip is visible
           setTimeout(() => {
             if (tooltipRef.current) {
               const tooltipElement = tooltipRef.current
               const tooltipRect = tooltipElement.getBoundingClientRect()
-              const viewportHeight = window.innerHeight
               const headerHeight = 80 // Approximate header height
               const scrollY = window.scrollY
 
@@ -154,7 +210,8 @@ export default function GlossaryTermTooltip({
           ref={tooltipRef}
           className={`absolute z-[9999] w-80 max-w-[calc(100vw-2rem)] sm:max-w-[90vw] ${
             position === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
-          } left-1/2 -translate-x-1/2`}
+          }`}
+          style={tooltipStyle}
         >
           <div className="bg-gray-900 text-white rounded-lg shadow-xl border border-gray-700 p-4 animate-fadeIn">
             <div className="flex items-start justify-between gap-2 mb-2">
@@ -202,11 +259,12 @@ export default function GlossaryTermTooltip({
             
             {/* Arrow */}
             <div
-              className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 ${
+              className={`absolute w-0 h-0 ${
                 position === 'top'
                   ? 'top-full border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900'
                   : 'bottom-full border-l-4 border-r-4 border-b-4 border-transparent border-b-gray-900'
               }`}
+              style={arrowStyle}
             />
           </div>
         </div>

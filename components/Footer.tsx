@@ -214,33 +214,6 @@ export default function Footer() {
                 Free educational resources and guides for metallographic sample preparation. 
                 Expert techniques, best practices, and comprehensive guides.
               </p>
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 relative z-20">
-                <Link 
-                  href="https://www.metallographic.com" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-tertiary text-center whitespace-nowrap"
-                >
-                  Metallographic.com
-                </Link>
-                <Link 
-                  href="https://shop.metallographic.com" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-center whitespace-nowrap"
-                >
-                  Shop Consumables
-                </Link>
-                <Link 
-                  href="https://metallographic.com/equipment" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-center whitespace-nowrap"
-                >
-                  Browse Equipment
-                </Link>
-              </div>
             </div>
             
             {/* Learn Section */}
@@ -250,6 +223,7 @@ export default function Footer() {
                 <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Guides</Link></li>
                 <li><Link href="/resources" className="text-gray-400 hover:text-white transition-colors text-sm">Resources</Link></li>
                 <li><Link href="/tools" className="text-gray-400 hover:text-white transition-colors text-sm">Tools</Link></li>
+                <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link></li>
                 <li><Link href="/glossary" className="text-gray-400 hover:text-white transition-colors text-sm">Glossary</Link></li>
               </ul>
             </div>
@@ -301,6 +275,34 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+          </div>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+            <Link 
+              href="https://www.metallographic.com" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-tertiary text-center whitespace-nowrap"
+            >
+              Metallographic.com
+            </Link>
+            <Link 
+              href="https://shop.metallographic.com" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-center whitespace-nowrap"
+            >
+              Shop Consumables
+            </Link>
+            <Link 
+              href="https://metallographic.com/equipment" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-center whitespace-nowrap"
+            >
+              Browse Equipment
+            </Link>
           </div>
           
           {/* Bottom Bar */}

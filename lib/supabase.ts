@@ -234,6 +234,28 @@ export interface Consumable {
   updated_at?: string
 }
 
+export interface BlogPost {
+  id: string
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  category: string
+  tags?: string[] | null
+  image?: string | null
+  author?: string | null
+  read_time?: string | null
+  status?: 'draft' | 'published' | 'archived' | null
+  featured?: boolean | null
+  sort_order?: number | null
+  view_count?: number | null
+  published_at?: string | null
+  created_at?: string
+  updated_at?: string
+  created_by?: string | null
+  updated_by?: string | null
+}
+
 export interface MaterialInsert {
   name: string
   category: string
@@ -883,5 +905,130 @@ export async function getRecommendedConsumables(params: {
 
     return true
   })
+}
+
+// Blog Post functions
+export async function getAllBlogPosts(status?: 'draft' | 'published' | 'archived'): Promise<BlogPost[]> {
+  try {
+    let query = supabase
+      .from('blog_posts')
+      .select('*')
+      .order('published_at', { ascending: false, nullsFirst: false })
+      .order('created_at', { ascending: false })
+
+    if (status) {
+      query = query.eq('status', status)
+    }
+
+    const { data, error } = await query
+
+    if (error) {
+      // If table doesn't exist, return empty array instead of throwing
+      if (error.code === '42P01' || error.message?.includes('does not exist') || error.message?.includes('relation')) {
+        console.warn('Blog posts table does not exist yet. Please run the migration.')
+        return []
+      }
+      console.error('Error fetching blog posts:', error)
+      throw error
+    }
+
+    return data || []
+  } catch (error: any) {
+    // Handle any other errors gracefully
+    if (error?.code === '42P01' || error?.message?.includes('does not exist') || error?.message?.includes('relation')) {
+      console.warn('Blog posts table does not exist yet. Please run the migration.')
+      return []
+    }
+    throw error
+  }
+}
+
+export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
+  return getAllBlogPosts('published')
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return null
+      }
+      // If table doesn't exist, return null instead of throwing
+      if (error.code === '42P01' || error.message?.includes('does not exist') || error.message?.includes('relation')) {
+        console.warn('Blog posts table does not exist yet. Please run the migration.')
+        return null
+      }
+      console.error('Error fetching blog post by slug:', error)
+      throw error
+    }
+
+    return data
+  } catch (error: any) {
+    // Handle any other errors gracefully
+    if (error?.code === '42P01' || error?.message?.includes('does not exist') || error?.message?.includes('relation')) {
+      console.warn('Blog posts table does not exist yet. Please run the migration.')
+      return null
+    }
+    throw error
+  }
+}
+
+export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('category', category)
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching blog posts by category:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getBlogPostsByTag(tag: string): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('status', 'published')
+    .contains('tags', [tag])
+    .order('published_at', { ascending: false })
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Error fetching blog posts by tag:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function searchBlogPosts(query: string): Promise<BlogPost[]> {
+  const searchTerm = `%${query}%`
+  
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('status', 'published')
+    .or(`title.ilike.${searchTerm},excerpt.ilike.${searchTerm},content.ilike.${searchTerm}`)
+    .order('published_at', { ascending: false })
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Error searching blog posts:', error)
+    throw error
+  }
+
+  return data || []
 }
 

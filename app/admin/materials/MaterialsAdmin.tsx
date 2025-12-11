@@ -165,100 +165,102 @@ export default function MaterialsAdmin() {
 
         {/* Materials Table */}
         <div className="bg-white shadow rounded-lg overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Category
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Slug
-                  </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {filteredMaterials.length === 0 ? (
+          <div className="relative">
+            <div className="overflow-x-auto custom-scrollbar" style={{ scrollbarWidth: 'thin', scrollbarColor: '#9ca3af #f3f4f6' }}>
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
                   <tr>
-                    <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
-                      {searchQuery ? 'No materials found matching your search.' : 'No materials found.'}
-                    </td>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Category
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      Slug
+                    </th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap sticky right-0 bg-gray-50 z-10 shadow-[2px_0_4px_rgba(0,0,0,0.05)]">
+                      Actions
+                    </th>
                   </tr>
-                ) : (
-                  filteredMaterials.map((material) => (
-                    <tr key={material.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{material.name}</div>
-                        {material.material_type && (
-                          <div className="text-sm text-gray-500">{material.material_type}</div>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">
-                          {material.category}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={`px-2 py-1 text-xs font-medium rounded ${
-                              material.status === 'published'
-                                ? 'bg-green-100 text-green-800'
-                                : material.status === 'draft'
-                                ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-gray-100 text-gray-800'
-                            }`}
-                          >
-                            {material.status || 'draft'}
-                          </span>
-                          <button
-                            onClick={() => handleToggleStatus(material)}
-                            className="text-gray-400 hover:text-gray-600 transition-colors"
-                            title={material.status === 'published' ? 'Unpublish' : 'Publish'}
-                          >
-                            {material.status === 'published' ? (
-                              <EyeOff className="w-4 h-4" />
-                            ) : (
-                              <Eye className="w-4 h-4" />
-                            )}
-                          </button>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-500">{material.slug || '-'}</div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <div className="flex items-center justify-end gap-2">
-                          <button
-                            onClick={() => router.push(`/admin/materials/${material.id}`)}
-                            className="text-primary-600 hover:text-primary-900 transition-colors"
-                            title="Edit"
-                          >
-                            <Edit className="w-5 h-5" />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(material.id, material.name)}
-                            className="text-red-600 hover:text-red-900 transition-colors"
-                            title="Delete"
-                          >
-                            <Trash2 className="w-5 h-5" />
-                          </button>
-                        </div>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {filteredMaterials.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                        {searchQuery ? 'No materials found matching your search.' : 'No materials found.'}
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  ) : (
+                    filteredMaterials.map((material) => (
+                      <tr key={material.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm font-medium text-gray-900">{material.name}</div>
+                          {material.material_type && (
+                            <div className="text-sm text-gray-500">{material.material_type}</div>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded">
+                            {material.category}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className={`px-2 py-1 text-xs font-medium rounded ${
+                                material.status === 'published'
+                                  ? 'bg-green-100 text-green-800'
+                                  : material.status === 'draft'
+                                  ? 'bg-yellow-100 text-yellow-800'
+                                  : 'bg-gray-100 text-gray-800'
+                              }`}
+                            >
+                              {material.status || 'draft'}
+                            </span>
+                            <button
+                              onClick={() => handleToggleStatus(material)}
+                              className="text-gray-400 hover:text-gray-600 transition-colors"
+                              title={material.status === 'published' ? 'Unpublish' : 'Publish'}
+                            >
+                              {material.status === 'published' ? (
+                                <EyeOff className="w-4 h-4" />
+                              ) : (
+                                <Eye className="w-4 h-4" />
+                              )}
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="text-sm text-gray-500">{material.slug || '-'}</div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium sticky right-0 bg-white z-10 shadow-[2px_0_4px_rgba(0,0,0,0.05)]">
+                          <div className="flex items-center justify-end gap-2">
+                            <button
+                              onClick={() => router.push(`/admin/materials/${material.id}`)}
+                              className="text-primary-600 hover:text-primary-900 transition-colors"
+                              title="Edit"
+                            >
+                              <Edit className="w-5 h-5" />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(material.id, material.name)}
+                              className="text-red-600 hover:text-red-900 transition-colors"
+                              title="Delete"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Summary */}
