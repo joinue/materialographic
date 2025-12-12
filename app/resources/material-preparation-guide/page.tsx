@@ -74,31 +74,31 @@ export default function MaterialPreparationGuidePage() {
     const materials = [
       {
         name: 'Carbon Steel / Low Alloy Steel',
-        grinding: 'Start with 120-240 grit SiC, progress through 320, 400, 600, 800, 1200',
-        polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
+        grinding: 'Start with 120 grit SiC, progress through 240, 400, 600 (800 and 1200 optional for high-quality work or high-magnification analysis)',
+        polishing: '9 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
         etching: '2-5% Nital or Picral, depending on structure to reveal',
-        notes: 'Standard preparation sequence, adjust grits based on hardness',
+        notes: 'Standard preparation sequence, adjust grits based on hardness. Use 800/1200 grit for very fine finishes or when preparing for high-magnification analysis.',
       },
       {
         name: 'Stainless Steel',
-        grinding: 'Start with 240-320 grit, progress through 400, 600, 800, 1200',
+        grinding: 'Start with 120 grit, progress through 240, 400, 600 (800 and 1200 optional for high-quality work or high-magnification analysis)',
         polishing: '9 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
         etching: "Vilella's Reagent, Adler's, or Kallings No. 2 depending on grade",
-        notes: 'Work-hardening material, use consistent moderate pressure',
+        notes: 'Work-hardening material, use consistent moderate pressure. Use 800/1200 grit for very fine finishes or high-magnification analysis.',
       },
       {
         name: 'Aluminum & Aluminum Alloys',
-        grinding: 'Start with 240-320 grit (softer), progress through finer grits',
-        polishing: '6 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
+        grinding: 'Start with 120 grit, progress through 240, 400, 600',
+        polishing: '9 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
         etching: "Keller's Reagent or Al-NaOH etchant",
         notes: 'Soft material, use shorter times and lighter pressure to avoid smearing',
       },
       {
         name: 'Titanium & Titanium Alloys',
-        grinding: 'Start with 180-240 grit, progress through standard sequence',
+        grinding: 'Start with 180-240 grit, progress through standard sequence (800 and 1200 optional for high-quality work)',
         polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm',
         etching: "Kroll's Reagent or Weck's Etch for color etching",
-        notes: 'Reactive material, handle carefully, very short etching times',
+        notes: 'Reactive material, handle carefully, very short etching times. Use 800/1200 grit for very fine finishes.',
       },
       {
         name: 'Copper & Brass',
@@ -109,24 +109,24 @@ export default function MaterialPreparationGuidePage() {
       },
       {
         name: 'Nickel Alloys',
-        grinding: 'Start with 180-240 grit, progress through standard sequence',
+        grinding: 'Start with 180-240 grit, progress through standard sequence (800 optional for superalloys, 1200 for very high-quality work)',
         polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm',
         etching: 'Aqua Regia, Glyceregia, or Inconel Etchant',
-        notes: 'May require electrolytic etching for sensitive structures',
+        notes: 'May require electrolytic etching for sensitive structures. For superalloys, consider using SiC papers up to 1200 grit for best results.',
       },
       {
         name: 'Cast Iron',
-        grinding: 'Start with 120-180 grit, progress through standard sequence',
-        polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm',
+        grinding: 'Start with 120 grit, progress through 240, 400, 600',
+        polishing: '9 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
         etching: '2-5% Nital, Picral, or Stead\'s Reagent for graphite',
-        notes: 'Graphite appears as dark areas, use appropriate etchants',
+        notes: 'Use lighter pressure than steel to preserve graphite structure',
       },
       {
         name: 'Tool Steel',
-        grinding: 'Start with 120-180 grit, progress through standard sequence',
-        polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm',
+        grinding: 'Start with 120 grit, progress through 240, 320, 400, 600 (800 and 1200 optional for high-quality work)',
+        polishing: '9 μm → 6 μm → 3 μm → 1 μm diamond, final with 0.05 μm colloidal silica',
         etching: '2-5% Nital, Picral, or Murakami\'s for carbides',
-        notes: 'Hard material, can tolerate longer polishing times',
+        notes: 'Very hard material, use extended polishing times (5-8 minutes per step)',
       },
     ]
 
@@ -230,28 +230,28 @@ export default function MaterialPreparationGuidePage() {
               <section>
                 <h3 className="text-lg font-semibold mb-3 text-primary-600">Carbon Steel / Low Alloy Steel</h3>
                 <div className="bg-gray-50 p-4 rounded space-y-2">
-                  <p><strong>Grinding:</strong> Start with 120-240 grit SiC, progress through 320, 400, 600, 800, 1200</p>
-                  <p><strong>Polishing:</strong> 9μm → 6μm → 3μm → 1μm diamond, final with 0.05μm colloidal silica</p>
+                  <p><strong>Grinding:</strong> Start with 120 grit SiC, progress through 240, 400, 600 (800 and 1200 optional for high-quality work or high-magnification analysis)</p>
+                  <p><strong>Polishing:</strong> 9μm → 3μm → 1μm diamond, final with 0.05μm colloidal silica</p>
                   <p><strong>Etching:</strong> 2-5% Nital or Picral, depending on structure to reveal</p>
-                  <p><strong>Notes:</strong> Standard preparation sequence, adjust grits based on hardness</p>
+                  <p><strong>Notes:</strong> Standard preparation sequence, adjust grits based on hardness. Use 800/1200 grit for very fine finishes or when preparing for high-magnification analysis.</p>
                 </div>
               </section>
 
               <section>
                 <h3 className="text-lg font-semibold mb-3 text-primary-600">Stainless Steel</h3>
                 <div className="bg-gray-50 p-4 rounded space-y-2">
-                  <p><strong>Grinding:</strong> Start with 240-320 grit, progress through 400, 600, 800, 1200</p>
+                  <p><strong>Grinding:</strong> Start with 120 grit, progress through 240, 400, 600 (800 and 1200 optional for high-quality work or high-magnification analysis)</p>
                   <p><strong>Polishing:</strong> 9μm → 3μm → 1μm diamond, final with 0.05μm colloidal silica</p>
                   <p><strong>Etching:</strong> Vilella's Reagent, Adler's, or Kallings No. 2 depending on grade</p>
-                  <p><strong>Notes:</strong> Work-hardening material, use consistent moderate pressure</p>
+                  <p><strong>Notes:</strong> Work-hardening material, use consistent moderate pressure. Use 800/1200 grit for very fine finishes or high-magnification analysis.</p>
                 </div>
               </section>
 
               <section>
                 <h3 className="text-lg font-semibold mb-3 text-primary-600">Aluminum & Aluminum Alloys</h3>
                 <div className="bg-gray-50 p-4 rounded space-y-2">
-                  <p><strong>Grinding:</strong> Start with 240-320 grit (softer), progress through finer grits</p>
-                  <p><strong>Polishing:</strong> 6μm → 3μm → 1μm diamond, final with 0.05μm colloidal silica</p>
+                  <p><strong>Grinding:</strong> Start with 120 grit, progress through 240, 400, 600</p>
+                  <p><strong>Polishing:</strong> 9μm → 3μm → 1μm diamond, final with 0.05μm colloidal silica</p>
                   <p><strong>Etching:</strong> Keller's Reagent or Al-NaOH etchant</p>
                   <p><strong>Notes:</strong> Soft material, use shorter times and lighter pressure to avoid smearing</p>
                 </div>

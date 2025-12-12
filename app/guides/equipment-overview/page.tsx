@@ -105,7 +105,7 @@ export default function EquipmentOverviewGuide() {
                   <li><Link href="/guides/sectioning#precision-sectioning-video" className="text-primary-600 hover:underline">Precision Sectioning</Link></li>
                   <li><Link href="/guides/mounting#compression-mounting-video" className="text-primary-600 hover:underline">Compression Mounting</Link></li>
                   <li><Link href="/guides/mounting#castable-mounting-video" className="text-primary-600 hover:underline">Castable/Cold Mounting</Link></li>
-                  <li><Link href="/guides/grinding-techniques#manual-grinding-video" className="text-primary-600 hover:underline">Manual Grinding & Automated Systems</Link></li>
+                  <li><Link href="/guides/grinding-techniques#manual-grinding-video" className="text-primary-600 hover:underline">Manual Grinding</Link> and <Link href="/guides/grinding-techniques#automated-grinding-video" className="text-primary-600 hover:underline">Automated Systems</Link></li>
                   <li><Link href="/guides/polishing-methods#vibratory-polishing-video" className="text-primary-600 hover:underline">Vibratory Polishing</Link></li>
                 </ul>
                 <p className="text-xs text-gray-600 mt-2">

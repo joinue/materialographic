@@ -115,7 +115,7 @@ export default function CommonEtchantsGuidePage() {
 
     pdf.setFontSize(10)
     pdf.setFont('helvetica', 'normal')
-    const introText = 'Etching is a critical step in metallographic specimen preparation used to reveal microstructural features. This guide provides quick reference for common etchants organized by material type. Etchants marked as "Available from PACE Technologies" are available as pre-mixed solutions. Other etchants are commonly used in practice and can be prepared in-house.'
+    const introText = 'Etching is a critical step in metallographic specimen preparation used to reveal microstructural features. This guide provides quick reference for common etchants organized by material type. Etchants marked as "Available as pre-mixed solution" are available commercially. Other etchants are commonly used in practice and can be prepared in-house.'
     const introLines = pdf.splitTextToSize(introText, rightMargin - leftMargin)
     pdf.text(introLines, leftMargin, yPos)
     yPos += introLines.length * lineHeight + 3
@@ -163,7 +163,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -226,7 +226,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -287,7 +287,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -350,7 +350,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -410,7 +410,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -471,7 +471,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -532,7 +532,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -593,7 +593,7 @@ export default function CommonEtchantsGuidePage() {
       if (etchant.pace) {
         pdf.setFontSize(8)
         pdf.setTextColor(37, 99, 235)
-        pdf.text('(Available from PACE Technologies)', leftMargin + 40, yPos)
+        pdf.text('(Available as pre-mixed solution)', leftMargin + 40, yPos)
         pdf.setTextColor(0, 0, 0)
         pdf.setFontSize(10)
       }
@@ -675,7 +675,7 @@ export default function CommonEtchantsGuidePage() {
             <h1 className="text-4xl font-bold mb-4 text-gray-900">Common Etchants Reference Guide</h1>
             <p className="text-xl text-gray-600">
               Comprehensive quick reference guide to common etching reagents and their applications for metallographic sample preparation. 
-              Includes both PACE Technologies pre-mixed solutions and other commonly used etchants in practice.
+              Includes both commercially available pre-mixed solutions and other commonly used etchants that can be prepared in-house.
             </p>
           </div>
 
@@ -686,7 +686,7 @@ export default function CommonEtchantsGuidePage() {
                 <h2 className="text-xl font-semibold mb-2">Download PDF Guide</h2>
                 <p className="text-gray-600 text-sm">
                   Get a comprehensive printable reference guide with common etchants organized by material type, including compositions, applications, and etching times. 
-                  Includes both PACE Technologies products and other widely used etchants.
+                  Includes both commercially available pre-mixed solutions and other widely used etchants.
                 </p>
               </div>
               <button
@@ -706,7 +706,7 @@ export default function CommonEtchantsGuidePage() {
             <div className="space-y-6">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                 <p className="text-sm text-gray-700">
-                  <strong>Note:</strong> Etchants marked with <span className="text-primary-600 font-semibold">(Available from PACE Technologies)</span> are available as pre-mixed solutions. 
+                  <strong>Note:</strong> Etchants marked with <span className="text-primary-600 font-semibold">(Available as pre-mixed solution)</span> are available commercially as pre-mixed solutions. 
                   Other etchants are commonly used in practice and can be prepared in-house.
                 </p>
               </div>
@@ -717,7 +717,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">2% Nital</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl('2% Nital') && (
                       <a 
@@ -726,7 +726,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Ethanol, HNO₃ (2%)</p>
@@ -736,7 +736,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">3% Nital</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Ethanol, HNO₃ (3%)</p>
                     <p className="text-sm text-gray-600"><strong>Application:</strong> Standard concentration for most carbon steels. Most commonly used.</p>
@@ -745,7 +745,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">Picral</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl('Picral Etchant') && (
                       <a 
@@ -754,7 +754,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Ethanol, Picric acid (2-4g/100ml)</p>
@@ -776,7 +776,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">Vilella's Reagent</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl("Vilella's Reagent") && (
                       <a 
@@ -785,7 +785,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Picric Acid (1g), HCl (5ml), Ethanol (100ml)</p>
@@ -795,7 +795,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">Adler's Etchant</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl("Adler's Etchant") && (
                       <a 
@@ -804,7 +804,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Cu(NH₄)Cl₂ (9g), HCl (150ml), FeCl₃ (45g), DI Water (75ml)</p>
@@ -826,7 +826,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">Keller's Reagent</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl("Keller's Reagent") && (
                       <a 
@@ -835,7 +835,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> DI Water (190ml), HNO₃ (5ml), HCl (3ml), HF (2ml)</p>
@@ -857,7 +857,7 @@ export default function CommonEtchantsGuidePage() {
                   <div className="border-l-4 border-primary-500 pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">Inconel Etchant</h4>
-                      <span className="text-xs text-primary-600 font-semibold">(Available from PACE Technologies)</span>
+                      <span className="text-xs text-primary-600 font-semibold">(Available as pre-mixed solution)</span>
                     </div>
                     {getEtchantShopUrl("Inconel Etchant") && (
                       <a 
@@ -866,7 +866,7 @@ export default function CommonEtchantsGuidePage() {
                         rel="noopener noreferrer"
                         className="text-xs text-primary-600 hover:underline mb-2 inline-block"
                       >
-                        Shop Product →
+                        View Product Details →
                       </a>
                     )}
                     <p className="text-sm text-gray-600"><strong>Composition:</strong> Multiple Solutions (HNO₃, HCl, H₂O₂)</p>

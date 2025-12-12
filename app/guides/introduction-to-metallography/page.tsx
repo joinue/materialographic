@@ -1219,15 +1219,15 @@ export default function IntroductionToMetallographyGuide() {
                 Equipment and consumable manufacturers provide valuable application notes and technical resources:
               </p>
               <ul>
-                <li><strong>Struers:</strong> Application notes and technical guides on sample preparation for various 
-                materials. Comprehensive online resources and literature.</li>
-                <li><strong>Buehler:</strong> Technical guides, application notes, and educational resources covering 
-                metallographic preparation techniques.</li>
-                <li><strong>PACE Technologies:</strong> Application notes and guides on sample preparation, particularly 
-                for advanced materials and challenging applications.</li>
-                <li><strong>LECO:</strong> Technical resources and application notes on metallographic equipment and 
-                preparation methods.</li>
+                <li><strong><a href="https://www.buehler.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Buehler</a>:</strong> Technical guides, application notes, and educational resources covering metallographic preparation techniques.</li>
+                <li><strong><a href="https://www.leco.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">LECO</a>:</strong> Technical resources and application notes on metallographic equipment and preparation methods.</li>
+                <li><strong><a href="https://metallographic.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">PACE Technologies</a>:</strong> Application notes and guides on sample preparation techniques and material-specific procedures.</li>
+                <li><strong><a href="https://www.qatm.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">QATM</a>:</strong> Technical documentation and application guides on sample preparation equipment and techniques.</li>
+                <li><strong><a href="https://www.struers.com" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Struers</a>:</strong> Application notes and technical guides on sample preparation for various materials. Comprehensive online resources and literature.</li>
               </ul>
+              <p className="text-sm text-gray-600 italic mt-4">
+                <strong>Note:</strong> Metallography.org is supported by PACE Technologies. You may notice links to PACE Technologies products throughout our guides.
+              </p>
 
               <h3>Professional Organizations</h3>
               <ul>
@@ -1258,7 +1258,10 @@ export default function IntroductionToMetallographyGuide() {
                 <li><strong>Workshops and Courses:</strong> Many organizations offer hands-on workshops and courses on 
                 metallographic techniques</li>
                 <li><strong>Conferences:</strong> Attend metallography and materials science conferences to learn about 
-                new techniques and network with other professionals</li>
+                new techniques and network with other professionals, including the <a href="https://www.asminternational.org/ims" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">International Metallographic Society (IMS) Annual Conference</a>, 
+                <a href="https://www.tms.org/MST/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Materials Science & Technology (MS&T)</a>, 
+                <a href="https://www.tms.org/annual-meeting" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">TMS Annual Meeting</a>, and 
+                <a href="https://www.asminternational.org/events" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">ASM International events</a></li>
                 <li><strong>Webinars:</strong> Online webinars from equipment manufacturers and professional organizations</li>
                 <li><strong>Certification Programs:</strong> Some organizations offer certification programs for 
                 metallographers</li>

@@ -243,23 +243,22 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold mb-4 text-gray-900">Rooted in Experience</h2>
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                   <p className="mb-4">
-                    Metallography.org is supported by PACE Technologies, a family-owned and operated 
-                    company founded in 1997 by Dr. Donald and Cathy Zipperian. What began as a small 
-                    project in the Zipperian family's home (with an office in the basement and warehouse 
-                    in the garage) has grown into a trusted name in metallographic equipment and consumables.
+                    Metallography.org is supported by PACE Technologies, a family-owned company founded 
+                    in 1997 by Dr. Donald and Cathy Zipperian. With decades of combined experience in 
+                    metallographic sample preparation, PACE Technologies has established itself as a trusted 
+                    provider of equipment and consumables used in laboratories worldwide.
                   </p>
                   <p className="mb-4">
-                    Driven by a passion for advancing metallographic sample preparation after years in 
-                    the industry, PACE Technologies has dedicated itself to designing and manufacturing 
-                    reliable, high-quality equipment that supports laboratories and researchers worldwide. 
-                    This commitment to quality and service earned PACE Technologies the prestigious 
-                    Presidential "E" Award in 2015 for contributing to the growth of U.S. exports.
+                    PACE Technologies' commitment to advancing the field was recognized in 2015 when the 
+                    company received the Presidential "E" Award for excellence in exporting U.S. products 
+                    and services. This award reflects their dedication to supporting the global metallography 
+                    community through quality equipment and technical expertise.
                   </p>
                   <p>
-                    Building on this foundation of expertise and dedication, Metallography.org extends 
-                    PACE Technologies' commitment to the community by providing free educational resources 
-                    that help practitioners achieve consistent, accurate results in metallography and 
-                    microstructural analysis.
+                    Metallography.org represents the next step in this commitment: sharing knowledge freely 
+                    with the community. By providing comprehensive educational resources at no cost, we aim 
+                    to help metallographers everywhere improve their techniques and achieve better results, 
+                    regardless of their location or resources.
                   </p>
                 </div>
               </div>
