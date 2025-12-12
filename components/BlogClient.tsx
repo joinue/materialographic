@@ -143,7 +143,7 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
   }
 
   const formatDate = (dateString: string | null | undefined) => {
-    if (!dateString) return new Date()
+    if (!dateString) return new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   }
