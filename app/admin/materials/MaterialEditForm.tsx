@@ -552,45 +552,49 @@ export default function MaterialEditForm({ material }: MaterialEditFormProps) {
     <div className="space-y-6">
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">General Preparation Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="preparation_notes"
-          rows={4}
+          rows={8}
           value={formData.preparation_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Sectioning Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="sectioning_notes"
-          rows={4}
+          rows={8}
           value={formData.sectioning_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Mounting Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="mounting_notes"
-          rows={4}
+          rows={8}
           value={formData.mounting_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Grinding Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="grinding_notes"
-          rows={4}
+          rows={12}
           value={formData.grinding_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
         <div className="mt-2">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">Recommended Grinding Sequence</label>
@@ -607,12 +611,13 @@ export default function MaterialEditForm({ material }: MaterialEditFormProps) {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Polishing Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="polishing_notes"
-          rows={4}
+          rows={12}
           value={formData.polishing_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
         <div className="mt-2">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">Recommended Polishing Sequence</label>
@@ -629,12 +634,13 @@ export default function MaterialEditForm({ material }: MaterialEditFormProps) {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1.5">Etching Notes</label>
+        <p className="text-xs text-gray-500 mb-1">HTML supported: Use &lt;strong&gt;, &lt;br /&gt;, &lt;ul&gt;&lt;li&gt; for formatting</p>
         <textarea
           name="etching_notes"
-          rows={4}
+          rows={16}
           value={formData.etching_notes}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm"
         />
         <div className="mt-2">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">Common Etchants</label>

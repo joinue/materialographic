@@ -412,7 +412,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             General Preparation Notes
           </h2>
           <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.preparation_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.preparation_notes }} />
           </div>
         </div>
       )}
@@ -425,7 +425,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             Sectioning
           </h2>
           <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.sectioning_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.sectioning_notes }} />
             {(() => {
               const links = getRelevantPaceLinks(material.sectioning_notes || '')
               return links.length > 0 && (
@@ -460,7 +460,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             Mounting
           </h2>
           <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.mounting_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.mounting_notes }} />
             {(() => {
               const links = getRelevantPaceLinks(material.mounting_notes)
               return links.length > 0 && (
@@ -495,7 +495,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             Grinding
           </h2>
           <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.grinding_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.grinding_notes }} />
             {material.recommended_grinding_sequence && material.recommended_grinding_sequence.length > 0 && (
               <div>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Sequence: </span>
@@ -574,7 +574,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             Polishing
           </h2>
           <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.polishing_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.polishing_notes }} />
             {material.recommended_polishing_sequence && material.recommended_polishing_sequence.length > 0 && (
               <div>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Sequence: </span>
@@ -645,7 +645,7 @@ export default function MaterialTabs({ material }: MaterialTabsProps) {
             Etching
           </h2>
           <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-            <p className="text-sm text-gray-900 leading-relaxed">{material.etching_notes}</p>
+            <div className="text-sm text-gray-900 leading-relaxed prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: material.etching_notes }} />
             {material.common_etchants && material.common_etchants.length > 0 && (
               <div>
                 <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Common Etchants: </span>
