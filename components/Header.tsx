@@ -160,7 +160,7 @@ export default function Header() {
                       <div className="border-t border-gray-200 my-2 mx-2"></div>
                       <div className="px-2">
                         <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Categories</p>
-                        <Link href="/resources?category=Checklists & Quick References" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                        <Link href="/resources?category=Checklists%20%26%20Quick%20References" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Checklists & Quick References
                         </Link>
                         <Link href="/resources?category=Reference Charts" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
@@ -426,7 +426,7 @@ export default function Header() {
               {mobileExpandedSection === 'resources' && (
                 <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
                   <Link href="/glossary" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Glossary</Link>
-                  <Link href="/resources?category=Checklists & Quick References" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Checklists & Quick References</Link>
+                  <Link href="/resources?category=Checklists%20%26%20Quick%20References" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Checklists & Quick References</Link>
                   <Link href="/resources?category=Reference Charts" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Reference Charts</Link>
                   <Link href="/resources?category=Preparation Guides" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Preparation Guides</Link>
                   <Link href="/resources?category=Video Resources" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Video Resources</Link>

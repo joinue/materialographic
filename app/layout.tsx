@@ -128,7 +128,7 @@ export default function RootLayout({
         </div>
         <div className="relative z-10">
           <Suspense fallback={null}>
-            <PageViewTracker />
+          <PageViewTracker />
           </Suspense>
           <div className="build-page-hidden">
             <Header />

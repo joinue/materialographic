@@ -99,7 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: safeDate(standard.updated_at || standard.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
-    }))
+  }))
   
   return [
     {
