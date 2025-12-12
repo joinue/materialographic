@@ -54,7 +54,7 @@ export default async function RelatedPosts({ currentPost, limit = 3 }: RelatedPo
   if (related.length === 0) return null
 
   const formatDate = (dateString: string | null | undefined) => {
-    if (!dateString) return new Date()
+    if (!dateString) return new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   }
