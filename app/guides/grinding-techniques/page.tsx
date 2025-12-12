@@ -249,12 +249,14 @@ export default function GrindingTechniquesGuide() {
               </ul>
 
               <YouTubeVideo
+                id="manual-grinding-video"
                 videoId="oFQoUkcwTMc"
                 title="Manual Grinding with PENTA 7500S & PENTA 5000A"
                 description="Learn proper manual grinding techniques from Dr. Donald Zipperian. This video demonstrates correct sample orientation, grinding motion, pressure control, and proper use of the PENTA manual grinding systems."
               />
 
               <YouTubeVideo
+                id="automated-grinding-video"
                 videoId="PT2fRdSvhDM"
                 title="Automated Grinding & Polishing with NANO 1000S & FEMTO 1100S"
                 description="Watch Dr. Donald Zipperian demonstrate automated grinding and polishing using the NANO 1000S and FEMTO 1100S systems. Learn how to program and operate these automated systems for consistent, high-quality results."

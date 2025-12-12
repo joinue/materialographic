@@ -536,6 +536,7 @@ export default function PolishingMethodsGuide() {
               </ul>
 
               <YouTubeVideo
+                id="vibratory-polishing-video"
                 videoId="cPkzthQbLcM"
                 title="Vibratory Polishing with the GIGA S"
                 description="Learn vibratory polishing techniques from Dr. Donald Zipperian. This video demonstrates how to use the GIGA S vibratory polisher for final polishing, including setup, parameter selection, and achieving superior surface finishes for EBSD and high-quality microstructural analysis."

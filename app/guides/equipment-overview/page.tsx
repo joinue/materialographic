@@ -102,11 +102,11 @@ export default function EquipmentOverviewGuide() {
                   instructional videos demonstrating equipment usage. Watch these videos in our process guides:
                 </p>
                 <ul className="text-sm text-gray-700 list-disc list-inside space-y-1 ml-2">
-                  <li><Link href="/guides/sectioning#precision-wafering" className="text-primary-600 hover:underline">Precision Sectioning</Link></li>
-                  <li><Link href="/guides/mounting#compression-mounting" className="text-primary-600 hover:underline">Compression Mounting</Link></li>
-                  <li><Link href="/guides/mounting#castable-mounting" className="text-primary-600 hover:underline">Castable/Cold Mounting</Link></li>
-                  <li><Link href="/guides/grinding-techniques#technique" className="text-primary-600 hover:underline">Manual Grinding & Automated Systems</Link></li>
-                  <li><Link href="/guides/polishing-methods#vibratory-polishing" className="text-primary-600 hover:underline">Vibratory Polishing</Link></li>
+                  <li><Link href="/guides/sectioning#precision-sectioning-video" className="text-primary-600 hover:underline">Precision Sectioning</Link></li>
+                  <li><Link href="/guides/mounting#compression-mounting-video" className="text-primary-600 hover:underline">Compression Mounting</Link></li>
+                  <li><Link href="/guides/mounting#castable-mounting-video" className="text-primary-600 hover:underline">Castable/Cold Mounting</Link></li>
+                  <li><Link href="/guides/grinding-techniques#manual-grinding-video" className="text-primary-600 hover:underline">Manual Grinding & Automated Systems</Link></li>
+                  <li><Link href="/guides/polishing-methods#vibratory-polishing-video" className="text-primary-600 hover:underline">Vibratory Polishing</Link></li>
                 </ul>
                 <p className="text-xs text-gray-600 mt-2">
                   Visit the <a href="https://www.youtube.com/@pacetechnologies/videos" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">PACE Technologies YouTube channel</a> for more equipment demonstrations and tutorials.

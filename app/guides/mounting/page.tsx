@@ -238,6 +238,7 @@ export default function MetallographicMountingGuide() {
               </ul>
 
               <YouTubeVideo
+                id="compression-mounting-video"
                 videoId="ghEnwKGf8Nc"
                 title="Compression Mounting Demonstration"
                 description="Learn compression mounting techniques from Dr. Donald Zipperian. This video demonstrates proper sample preparation, resin selection, and the complete compression mounting process using PACE Technologies equipment."
@@ -363,6 +364,7 @@ export default function MetallographicMountingGuide() {
               </ul>
 
               <YouTubeVideo
+                id="castable-mounting-video"
                 videoId="g8QCrWxyRZ4"
                 title="Castable/Cold Mounting with Vacuum Chamber"
                 description="Watch Dr. Donald Zipperian demonstrate castable mounting techniques, including the use of vacuum chambers to eliminate air bubbles and ensure porosity-free mounts for delicate and heat-sensitive samples."

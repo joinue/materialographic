@@ -357,6 +357,7 @@ export default function SectioningGuide() {
               </ul>
 
               <YouTubeVideo
+                id="precision-sectioning-video"
                 videoId="nQ7nM3VhWEU"
                 title="Precision Sectioning Demonstration"
                 description="Watch Dr. Donald Zipperian demonstrate precision sectioning techniques using PACE Technologies equipment. Learn proper setup, blade selection, and cutting parameters for optimal results."

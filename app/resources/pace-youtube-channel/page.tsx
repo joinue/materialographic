@@ -93,7 +93,7 @@ export default function PACEYouTubeChannelPage() {
                     <li>• Cutting parameters</li>
                   </ul>
                   <Link 
-                    href="/guides/sectioning#precision-wafering"
+                    href="/guides/sectioning#precision-sectioning-video"
                     className="text-primary-600 hover:text-primary-700 text-sm font-medium mt-3 inline-block"
                   >
                     Watch in Sectioning Guide →
@@ -108,7 +108,7 @@ export default function PACEYouTubeChannelPage() {
                     <li>• Resin selection and techniques</li>
                   </ul>
                   <Link 
-                    href="/guides/mounting#compression-mounting"
+                    href="/guides/mounting#compression-mounting-video"
                     className="text-primary-600 hover:text-primary-700 text-sm font-medium mt-3 inline-block"
                   >
                     Watch in Mounting Guide →
@@ -123,7 +123,7 @@ export default function PACEYouTubeChannelPage() {
                     <li>• Proper sample orientation</li>
                   </ul>
                   <Link 
-                    href="/guides/grinding-techniques#technique"
+                    href="/guides/grinding-techniques#manual-grinding-video"
                     className="text-primary-600 hover:text-primary-700 text-sm font-medium mt-3 inline-block"
                   >
                     Watch in Grinding Guide →
@@ -138,7 +138,7 @@ export default function PACEYouTubeChannelPage() {
                     <li>• Final polishing procedures</li>
                   </ul>
                   <Link 
-                    href="/guides/polishing-methods#vibratory-polishing"
+                    href="/guides/polishing-methods#vibratory-polishing-video"
                     className="text-primary-600 hover:text-primary-700 text-sm font-medium mt-3 inline-block"
                   >
                     Watch in Polishing Guide →

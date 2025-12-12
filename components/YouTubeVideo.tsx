@@ -3,11 +3,12 @@ interface YouTubeVideoProps {
   title: string
   description?: string
   className?: string
+  id?: string
 }
 
-export default function YouTubeVideo({ videoId, title, description, className = '' }: YouTubeVideoProps) {
+export default function YouTubeVideo({ videoId, title, description, className = '', id }: YouTubeVideoProps) {
   return (
-    <div className={`my-8 ${className}`}>
+    <div id={id} className={`my-8 scroll-mt-24 ${className}`}>
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 md:p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
         {description && (
