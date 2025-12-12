@@ -254,16 +254,18 @@ export default function EtchantsDatabasePage() {
                       {etchant.name}
                     </h3>
                     {paceUrl && (
-                      <Link
-                        href={paceUrl}
-                        onClick={(e) => e.stopPropagation()}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          e.preventDefault()
+                          window.open(paceUrl, '_blank', 'noopener,noreferrer')
+                        }}
                         className="ml-2 p-1.5 text-primary-600 hover:bg-primary-50 rounded transition-colors"
                         title="Available from PACE"
+                        type="button"
                       >
                         <ExternalLink className="w-4 h-4" />
-                      </Link>
+                      </button>
                     )}
                   </div>
                   

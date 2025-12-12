@@ -864,7 +864,7 @@ export default function PCBChipPreparationGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Shop Consumables
+                  View Example Products
                 </Link>
                 <Link 
                   href="/guides?category=Material-Specific"

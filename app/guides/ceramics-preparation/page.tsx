@@ -687,7 +687,7 @@ export default function CeramicsGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Shop Consumables
+                  View Example Products
                 </Link>
                 <Link 
                   href="https://metallographic.com/equipment"
@@ -695,7 +695,7 @@ export default function CeramicsGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Browse Equipment
+                  Browse Equipment Examples
                 </Link>
               </div>
               </div>

@@ -150,7 +150,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       <article className="min-h-screen bg-white">
-        <div className="container-custom max-w-5xl mx-auto py-6 md:py-16 px-4 sm:px-6">
+        <div className="container-custom py-6 md:py-16">
           {/* Back Button */}
           <Link
             href="/blog"
@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             {/* Header */}
             <header className="mb-6 md:mb-12">
-              <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">
                 {post.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 md:gap-6 text-xs md:text-base text-gray-500">

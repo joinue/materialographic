@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo } from 'react'
-import { Search, X, BookOpen, FileText, Calculator, ChevronRight, Hash, Database } from 'lucide-react'
+import { Search, X, BookOpen, FileText, Calculator, ChevronRight, Hash, Database, Newspaper } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { getAllMaterials, type Material } from '@/lib/supabase'
+import { getAllMaterials, getPublishedBlogPosts, type Material, type BlogPost } from '@/lib/supabase'
 
 // Search data structure
 interface SearchItem {
@@ -12,7 +12,7 @@ interface SearchItem {
   title: string
   description?: string
   url: string
-  type: 'guide' | 'guide-section' | 'resource' | 'tool' | 'material'
+  type: 'guide' | 'guide-section' | 'resource' | 'tool' | 'material' | 'blog'
   category?: string
   guideSlug?: string
   alternativeNames?: string[] // For materials with alternative names
@@ -339,6 +339,10 @@ const baseSearchIndex = buildSearchIndex()
 const MATERIALS_CACHE_KEY = 'global-search-materials'
 const MATERIALS_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
 
+// Cache key for blog posts
+const BLOG_POSTS_CACHE_KEY = 'global-search-blog-posts'
+const BLOG_POSTS_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
+
 interface GlobalSearchProps {
   isOpen: boolean
   onClose: () => void
@@ -349,12 +353,14 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   const [results, setResults] = useState<SearchItem[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [materials, setMaterials] = useState<Material[]>([])
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [searchIndex, setSearchIndex] = useState<SearchItem[]>(baseSearchIndex)
   const [isLoadingMaterials, setIsLoadingMaterials] = useState(false)
+  const [isLoadingBlogPosts, setIsLoadingBlogPosts] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
-  // Load materials with caching
+  // Load materials and blog posts with caching
   useEffect(() => {
     async function loadMaterials() {
       // Check cache first
@@ -394,6 +400,47 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         // Continue with base search index if materials fail to load
       } finally {
         setIsLoadingMaterials(false)
+      }
+    }
+
+    async function loadBlogPosts() {
+      // Check cache first
+      try {
+        const cached = sessionStorage.getItem(BLOG_POSTS_CACHE_KEY)
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached)
+          const age = Date.now() - timestamp
+          if (age < BLOG_POSTS_CACHE_EXPIRY) {
+            setBlogPosts(data)
+            buildBlogSearchIndex(data)
+            return
+          }
+        }
+      } catch (e) {
+        // Cache invalid, continue to fetch
+      }
+
+      setIsLoadingBlogPosts(true)
+      try {
+        const publishedPosts = await getPublishedBlogPosts()
+        setBlogPosts(publishedPosts)
+        
+        // Cache the blog posts
+        try {
+          sessionStorage.setItem(BLOG_POSTS_CACHE_KEY, JSON.stringify({
+            data: publishedPosts,
+            timestamp: Date.now(),
+          }))
+        } catch (e) {
+          // SessionStorage might be disabled, continue without cache
+        }
+        
+        buildBlogSearchIndex(publishedPosts)
+      } catch (error) {
+        console.error('Error loading blog posts for search:', error)
+        // Continue without blog posts if they fail to load
+      } finally {
+        setIsLoadingBlogPosts(false)
       }
     }
 
@@ -439,11 +486,34 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         })
       })
       
-      setSearchIndex([...baseSearchIndex, ...materialItems])
+      // Update search index with materials, preserving blog posts if they exist
+      setSearchIndex(prev => {
+        const existingBlogPosts = prev.filter(item => item.type === 'blog')
+        return [...baseSearchIndex, ...existingBlogPosts, ...materialItems]
+      })
+    }
+
+    function buildBlogSearchIndex(allBlogPosts: BlogPost[]) {
+      // Add blog posts to search index
+      const blogItems: SearchItem[] = allBlogPosts.map(post => ({
+        id: `blog-${post.id}`,
+        title: post.title,
+        description: post.excerpt,
+        url: `/blog/${post.slug}`,
+        type: 'blog',
+        category: post.category,
+      }))
+      
+      // Update search index with blog posts, preserving materials if they exist
+      setSearchIndex(prev => {
+        const existingMaterials = prev.filter(item => item.type === 'material')
+        return [...baseSearchIndex, ...blogItems, ...existingMaterials]
+      })
     }
     
     if (isOpen) {
       loadMaterials()
+      loadBlogPosts()
     }
   }, [isOpen])
 
@@ -544,18 +614,19 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       // First priority: type (differentiated priorities)
       const typePriority: Record<SearchItem['type'], number> = {
         'guide': 1,        // Highest priority
-        'resource': 2,    // Second priority
-        'tool': 3,        // Third priority
-        'material': 4,    // Fourth priority (main entries only, tabs filtered below)
-        'guide-section': 5, // Lowest priority
+        'blog': 2,        // Second priority (blog posts)
+        'resource': 3,    // Third priority
+        'tool': 4,        // Fourth priority
+        'material': 5,    // Fifth priority (main entries only, tabs filtered below)
+        'guide-section': 6, // Lowest priority
       }
       
       // Separate main material entries from tab entries
       const aIsMaterialTab = a.type === 'material' && a.title.includes(' - ')
       const bIsMaterialTab = b.type === 'material' && b.title.includes(' - ')
       
-      const aPriority = aIsMaterialTab ? 6 : typePriority[a.type] // Material tabs lowest
-      const bPriority = bIsMaterialTab ? 6 : typePriority[b.type]
+      const aPriority = aIsMaterialTab ? 7 : typePriority[a.type] // Material tabs lowest
+      const bPriority = bIsMaterialTab ? 7 : typePriority[b.type]
       
       if (aPriority !== bPriority) {
         return aPriority - bPriority
@@ -617,6 +688,8 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return <Calculator className="w-4 h-4" />
       case 'material':
         return <Database className="w-4 h-4" />
+      case 'blog':
+        return <Newspaper className="w-4 h-4" />
     }
   }
 
@@ -632,6 +705,8 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return 'Tool'
       case 'material':
         return 'Material'
+      case 'blog':
+        return 'Blog'
     }
   }
 
@@ -647,6 +722,8 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return 'bg-orange-100 text-orange-700 border-orange-200'
       case 'material':
         return 'bg-indigo-100 text-indigo-700 border-indigo-200'
+      case 'blog':
+        return 'bg-pink-100 text-pink-700 border-pink-200'
     }
   }
 
@@ -654,6 +731,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   const groupedResults = useMemo(() => {
     const groups: Record<string, SearchItem[]> = {
       'guide': [],
+      'blog': [],
       'resource': [],
       'tool': [],
       'material': [],
@@ -674,9 +752,10 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   }, [results])
 
   // Type order for display
-  const typeOrder: SearchItem['type'][] = ['guide', 'resource', 'tool', 'material', 'guide-section']
+  const typeOrder: SearchItem['type'][] = ['guide', 'blog', 'resource', 'tool', 'material', 'guide-section']
   const typeLabels: Record<SearchItem['type'], string> = {
     'guide': 'Guides',
+    'blog': 'Blog Posts',
     'resource': 'Resources',
     'tool': 'Tools',
     'material': 'Materials',
@@ -712,7 +791,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Search guides, resources, tools, materials..."
+              placeholder="Search guides, blog posts, resources, tools, materials..."
               className="flex-1 outline-none text-gray-900 placeholder-gray-400 text-base sm:text-base bg-transparent"
               style={{ fontSize: '16px' }}
             />
@@ -738,9 +817,9 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             {/* Results - Grouped by Type */}
             {results.length > 0 && (
               <div className="border-t border-gray-200 flex-1 overflow-y-auto">
-                {isLoadingMaterials && (
+                {(isLoadingMaterials || isLoadingBlogPosts) && (
                   <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
-                    Loading materials...
+                    Loading...
                   </div>
                 )}
                 {typeOrder.map(type => {
@@ -804,7 +883,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             )}
 
             {/* No Results */}
-            {query && results.length === 0 && !isLoadingMaterials && (
+            {query && results.length === 0 && !isLoadingMaterials && !isLoadingBlogPosts && (
               <div className="border-t border-gray-200 px-4 sm:px-6 py-8 sm:py-12 text-center">
                 <p className="text-gray-500">No results found for "{query}"</p>
                 <p className="text-sm text-gray-400 mt-2">Try a different search term</p>
@@ -818,6 +897,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               <p className="text-sm text-gray-500 mb-3 sm:mb-4">Start typing to search...</p>
               <div className="flex flex-wrap gap-2 justify-center px-2">
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Guides</span>
+                <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Blog</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Resources</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Tools</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Materials</span>

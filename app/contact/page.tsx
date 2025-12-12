@@ -38,10 +38,10 @@ export default function ContactPage() {
                       Send us an email and we'll get back to you within 24 hours.
                     </p>
                     <a 
-                      href="mailto:marcs@metallographic.com" 
+                      href="mailto:info@metallographic.com?subject=Metallography.org%20Inquiry" 
                       className="text-primary-600 hover:text-primary-700 font-medium text-sm"
                     >
-                      marcs@metallographic.com
+                      info@metallographic.com
                     </a>
                   </div>
                 </div>

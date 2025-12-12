@@ -301,7 +301,7 @@ export default function SectioningGuide() {
               <ProductLink 
                 productName="Abrasive Cut-Off Blades"
                 href="https://shop.metallographic.com/collections/abrasive-blades"
-                description="High-quality abrasive blades for all material types and applications"
+                description="Abrasive blades suitable for all material types and applications"
               />
               
               <p className="mt-4">
@@ -598,7 +598,7 @@ export default function SectioningGuide() {
               <ProductLink 
                 productName="Diamond and CBN Blades"
                 href="https://shop.metallographic.com/collections/precision-cutting-blades"
-                description="High-quality diamond and CBN blades for precision wafering applications"
+                description="Diamond and CBN blades for precision wafering applications"
               />
               
               <p className="mt-4">
@@ -1006,7 +1006,7 @@ export default function SectioningGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Shop Sectioning Blades
+                  View Example Products
                 </Link>
                 <Link 
                   href="https://metallographic.com/equipment"
@@ -1014,7 +1014,7 @@ export default function SectioningGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Browse Equipment
+                  Browse Equipment Examples
                 </Link>
               </div>
             </div>

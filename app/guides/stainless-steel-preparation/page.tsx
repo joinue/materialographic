@@ -291,7 +291,7 @@ export default function StainlessSteelGuide() {
               <ProductLink 
                 productName="Silicon Carbide Grinding Papers"
                 href="https://shop.metallographic.com/collections/sic-grinding"
-                description="Premium SiC papers in all grit sizes for consistent grinding"
+                description="SiC papers in all grit sizes for consistent grinding"
               />
             </section>
 
@@ -359,12 +359,12 @@ export default function StainlessSteelGuide() {
               <ProductLink 
                 productName="Diamond Abrasives"
                 href="https://shop.metallographic.com/collections/diamond-abrasives"
-                description="High-quality diamond polishing compounds in various particle sizes"
+                description="Diamond polishing compounds in various particle sizes"
               />
               <ProductLink 
                 productName="Polishing Pads"
                 href="https://shop.metallographic.com/collections/polishing-pads"
-                description="Premium polishing pads for different polishing stages"
+                description="Polishing pads for different polishing stages"
               />
             </section>
 
@@ -463,7 +463,7 @@ export default function StainlessSteelGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Shop Consumables
+                  View Example Products
                 </Link>
                 <Link 
                   href="https://metallographic.com/equipment"
@@ -471,7 +471,7 @@ export default function StainlessSteelGuide() {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Browse Equipment
+                  Browse Equipment Examples
                 </Link>
               </div>
             </div>
