@@ -2,6 +2,10 @@ import { MetadataRoute } from 'next'
 import { guides } from '@/data/guides'
 import { getAllMaterials, getAllEtchants, getAllStandards, getPublishedBlogPosts } from '@/lib/supabase'
 
+// Force dynamic rendering to ensure database queries work
+export const dynamic = 'force-dynamic'
+export const revalidate = 3600 // Revalidate every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://metallography.org'
   const now = new Date()
@@ -46,40 +50,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching standards for sitemap:', error)
   }
 
+  // Helper function to safely parse dates
+  const safeDate = (dateString: string | null | undefined): Date => {
+    if (!dateString) return now
+    try {
+      const date = new Date(dateString)
+      return isNaN(date.getTime()) ? now : date
+    } catch {
+      return now
+    }
+  }
+
   // Generate blog post URLs
-  const blogPostUrls = blogPosts.map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.updated_at ? new Date(post.updated_at) : post.published_at ? new Date(post.published_at) : now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const blogPostUrls = blogPosts
+    .filter(post => post.slug && typeof post.slug === 'string' && post.slug.trim().length > 0)
+    .map(post => ({
+      url: `${baseUrl}/blog/${encodeURIComponent(post.slug!)}`,
+      lastModified: safeDate(post.updated_at || post.published_at),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
 
   // Generate material URLs
   const materialUrls = materials
-    .filter(material => material.slug) // Only include materials with slugs
+    .filter(material => material.slug && typeof material.slug === 'string' && material.slug.trim().length > 0)
     .map(material => ({
-      url: `${baseUrl}/materials/${material.slug}`,
-      lastModified: material.updated_at ? new Date(material.updated_at) : material.created_at ? new Date(material.created_at) : now,
+      url: `${baseUrl}/materials/${encodeURIComponent(material.slug!)}`,
+      lastModified: safeDate(material.updated_at || material.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }))
 
   // Generate etchant URLs
   const etchantUrls = etchants
-    .filter(etchant => etchant.status === 'published' && etchant.slug)
+    .filter(etchant => etchant.status === 'published' && etchant.slug && typeof etchant.slug === 'string' && etchant.slug.trim().length > 0)
     .map(etchant => ({
-      url: `${baseUrl}/etchants/${etchant.slug}`,
-      lastModified: etchant.updated_at ? new Date(etchant.updated_at) : etchant.created_at ? new Date(etchant.created_at) : now,
+      url: `${baseUrl}/etchants/${encodeURIComponent(etchant.slug!)}`,
+      lastModified: safeDate(etchant.updated_at || etchant.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }))
 
   // Generate standard URLs
   const standardUrls = standards
-    .filter(standard => standard.status === 'published' && standard.slug)
+    .filter(standard => standard.status === 'published' && standard.slug && typeof standard.slug === 'string' && standard.slug.trim().length > 0)
     .map(standard => ({
-      url: `${baseUrl}/standards/${standard.slug}`,
-      lastModified: standard.updated_at ? new Date(standard.updated_at) : standard.created_at ? new Date(standard.created_at) : now,
+      url: `${baseUrl}/standards/${encodeURIComponent(standard.slug!)}`,
+      lastModified: safeDate(standard.updated_at || standard.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }))
