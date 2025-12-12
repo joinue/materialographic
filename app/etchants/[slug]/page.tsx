@@ -35,9 +35,48 @@ export async function generateMetadata({ params }: EtchantPageProps): Promise<Me
     }
   }
 
+  const title = `${etchant.name} - Etchants Database | Metallography.org`
+  const description = `${etchant.name}: ${etchant.composition}. ${etchant.reveals || 'Metallographic etchant'}. ${etchant.application_method ? `Application: ${etchant.application_method}` : ''}`
+  const url = `https://metallography.org/etchants/${slug}`
+  const imageUrl = 'https://metallography.org/logo.png'
+
   return {
-    title: `${etchant.name} - Etchants Database | Metallography.org`,
-    description: `${etchant.name}: ${etchant.composition}. ${etchant.reveals || 'Metallographic etchant'}. ${etchant.application_method ? `Application: ${etchant.application_method}` : ''}`,
+    title,
+    description,
+    keywords: [
+      'metallography',
+      'etching',
+      'metallographic etchant',
+      etchant.name.toLowerCase(),
+      etchant.composition.toLowerCase(),
+      ...(etchant.category ? [etchant.category.toLowerCase()] : []),
+      ...(etchant.tags || []),
+    ],
+    openGraph: {
+      title: `${etchant.name} - Etchants Database`,
+      description,
+      url,
+      siteName: 'Metallography.org',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${etchant.name} - Metallography Etchant Information`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${etchant.name} - Etchants Database`,
+      description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: url,
+    },
   }
 }
 

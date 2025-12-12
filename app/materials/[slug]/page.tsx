@@ -35,9 +35,48 @@ export async function generateMetadata({ params }: MaterialPageProps): Promise<M
     }
   }
 
+  const title = `${material.name} - Materials Database | Metallography.org`
+  const description = `Material properties and preparation information for ${material.name}. ${material.category} with ${material.microstructure} microstructure.`
+  const url = `https://metallography.org/materials/${slug}`
+  const imageUrl = 'https://metallography.org/logo.png'
+
   return {
-    title: `${material.name} - Materials Database | Metallography.org`,
-    description: `Material properties and preparation information for ${material.name}. ${material.category} with ${material.microstructure} microstructure.`,
+    title,
+    description,
+    keywords: [
+      'metallography',
+      'sample preparation',
+      'metallographic analysis',
+      material.name.toLowerCase(),
+      material.category.toLowerCase(),
+      material.microstructure.toLowerCase(),
+      ...(material.tags || []),
+    ],
+    openGraph: {
+      title: `${material.name} - Materials Database`,
+      description,
+      url,
+      siteName: 'Metallography.org',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${material.name} - Metallography Material Information`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${material.name} - Materials Database`,
+      description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: url,
+    },
   }
 }
 

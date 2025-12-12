@@ -34,9 +34,49 @@ export async function generateMetadata({ params }: StandardPageProps): Promise<M
     }
   }
 
+  const title = `${standard.standard} - ${standard.title} | Standards Database | Metallography.org`
+  const description = standard.description || `${standard.standard}: ${standard.title}. ${standard.category} standard for metallography.`
+  const url = `https://metallography.org/standards/${slug}`
+  const imageUrl = 'https://metallography.org/logo.png'
+
   return {
-    title: `${standard.standard} - ${standard.title} | Standards Database | Metallography.org`,
-    description: standard.description,
+    title,
+    description,
+    keywords: [
+      'metallography',
+      'standards',
+      'ASTM',
+      'ISO',
+      standard.standard,
+      standard.category.toLowerCase(),
+      ...(standard.organization ? [standard.organization.toLowerCase()] : []),
+      ...(standard.tags || []),
+    ],
+    openGraph: {
+      title: `${standard.standard} - ${standard.title}`,
+      description,
+      url,
+      siteName: 'Metallography.org',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${standard.standard} - Metallography Standard Information`,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${standard.standard} - ${standard.title}`,
+      description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: url,
+    },
   }
 }
 
