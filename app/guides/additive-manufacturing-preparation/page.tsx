@@ -448,7 +448,7 @@ export default function AdditiveManufacturingGuide() {
               <h2>Etching</h2>
               <p>
                 <GlossaryTermTooltip term="Etching">Etching</GlossaryTermTooltip> AM samples reveals the <GlossaryTermTooltip term="Microstructure">microstructure</GlossaryTermTooltip>, layer boundaries, and process <GlossaryTermTooltip term="Defect">defects</GlossaryTermTooltip>. The choice 
-                of <GlossaryTermTooltip term="Etchant">etchant</GlossaryTermTooltip> depends on the base material (<MaterialTooltip materialName="304">stainless steel</MaterialTooltip>, <MaterialTooltip materialName="Ti-6Al-4V">titanium</MaterialTooltip>, <MaterialTooltip materialName="Inconel">nickel alloys</MaterialTooltip>, etc.) and 
+                of <GlossaryTermTooltip term="Etchant">etchant</GlossaryTermTooltip> depends on the base material (<MaterialTooltip materialName="304 Stainless Steel">stainless steel</MaterialTooltip>, <MaterialTooltip materialName="Ti-6Al-4V">titanium</MaterialTooltip>, <MaterialTooltip materialName="Inconel 718">nickel alloys</MaterialTooltip>, etc.) and 
                 the features you want to reveal.
               </p>
 

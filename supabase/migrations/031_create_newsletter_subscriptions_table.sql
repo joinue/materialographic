@@ -31,14 +31,18 @@ CREATE INDEX IF NOT EXISTS idx_newsletter_subscriptions_created_at ON newsletter
 
 -- Function to automatically update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_newsletter_subscriptions_updated_at()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
 BEGIN
   NEW.updated_at = TIMEZONE('utc', NOW());
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$;
 
 -- Trigger to update updated_at on row update
+DROP TRIGGER IF EXISTS update_newsletter_subscriptions_updated_at ON newsletter_subscriptions;
 CREATE TRIGGER update_newsletter_subscriptions_updated_at
   BEFORE UPDATE ON newsletter_subscriptions
   FOR EACH ROW

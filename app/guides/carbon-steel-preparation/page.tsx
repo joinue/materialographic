@@ -43,7 +43,7 @@ export default function CarbonSteelGuide() {
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
-            <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Carbon Steel Preparation
+            <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Carbon and Low Alloy Steels Preparation
           </nav>
 
           {/* Header */}
@@ -51,10 +51,10 @@ export default function CarbonSteelGuide() {
             <span className="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2 block">
               Material-Specific Guide
             </span>
-            <h1 className="text-4xl font-bold mb-4">Carbon Steel Sample Preparation</h1>
+            <h1 className="text-4xl font-bold mb-4">Carbon and Low Alloy Steels Sample Preparation</h1>
             <p className="text-xl text-gray-600">
-              A comprehensive guide to preparing carbon steel samples for metallographic analysis, 
-              covering sectioning, mounting, grinding, polishing, and etching techniques.
+              A comprehensive guide to preparing carbon steel and low alloy steel samples for metallographic analysis, 
+              covering sectioning, mounting, grinding, polishing, and etching techniques for steels like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip>, <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>, <MaterialTooltip materialName="AISI 4140 Chromium-Molybdenum Steel">4140</MaterialTooltip>, <MaterialTooltip materialName="AISI 4340 Nickel-Chromium-Molybdenum Steel">4340</MaterialTooltip>, <MaterialTooltip materialName="5160 Spring Steel">5160</MaterialTooltip>, and <MaterialTooltip materialName="52100 Bearing Steel">52100</MaterialTooltip>.
             </p>
           </header>
 
@@ -77,10 +77,14 @@ export default function CarbonSteelGuide() {
             <section id="introduction" className="scroll-mt-24">
               <h2>Introduction</h2>
               <p>
-                Carbon steel is one of the most commonly analyzed materials in metallography. 
-                Proper preparation is essential to reveal the true microstructure without introducing 
-                artifacts such as deformation, scratches, or contamination. This guide will walk you 
-                through the complete preparation process.
+                Carbon steel and low alloy steel are among the most commonly analyzed materials in metallography. 
+                Low alloy steels (such as <MaterialTooltip materialName="AISI 4140 Chromium-Molybdenum Steel">4140</MaterialTooltip>, <MaterialTooltip materialName="AISI 4340 Nickel-Chromium-Molybdenum Steel">4340</MaterialTooltip>, 
+                <MaterialTooltip materialName="5160 Spring Steel">5160</MaterialTooltip>, and <MaterialTooltip materialName="52100 Bearing Steel">52100</MaterialTooltip>) are essentially carbon steels with 
+                alloying additions that enhance properties like hardenability, strength, and toughness. The preparation 
+                techniques are identical to carbon steels - same grinding sequences, same etchants, same challenges. 
+                Proper preparation is essential to reveal the true microstructure without introducing artifacts such 
+                as deformation, scratches, or contamination. This guide will walk you through the complete preparation 
+                process for both carbon steels and low alloy steels.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-2xl mx-auto">
                 <Image
@@ -93,23 +97,28 @@ export default function CarbonSteelGuide() {
                 <p className="text-sm text-gray-600 mt-2 italic text-center">Carbon steel microstructure showing ferrite and pearlite, properly prepared and etched. This image demonstrates the proper microstructure revealed through correct preparation techniques.</p>
               </div>
               <p>
-                Carbon steels can vary significantly in hardness depending on carbon content and heat 
-                treatment. For example, <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> is a low-carbon steel 
+                Carbon steels and low alloy steels can vary significantly in hardness depending on carbon content, 
+                alloying elements, and heat treatment. For example, <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> is a low-carbon steel 
                 (typically 126 HB) that requires lighter pressure during preparation, while 
                 <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip> is a medium-carbon steel (around 170 HB) that can 
-                tolerate more aggressive preparation. The key is to use appropriate abrasives and maintain 
-                consistent pressure throughout the process based on the specific steel grade and its hardness.
+                tolerate more aggressive preparation. Low alloy steels like <MaterialTooltip materialName="AISI 4140 Chromium-Molybdenum Steel">4140</MaterialTooltip> and 
+                <MaterialTooltip materialName="AISI 4340 Nickel-Chromium-Molybdenum Steel">4340</MaterialTooltip> typically have similar hardness ranges (197-217 HB) and use the same preparation 
+                techniques as carbon steels. The key is to use appropriate abrasives and maintain consistent pressure 
+                throughout the process based on the specific steel grade and its hardness, regardless of whether it's 
+                a carbon steel or low alloy steel.
               </p>
             </section>
 
             <section id="sectioning" className="scroll-mt-24">
               <h2>Sectioning</h2>
               <p>
-                When sectioning carbon steel samples, use a slow cutting speed to minimize heat 
+                When sectioning carbon steel and low alloy steel samples, use a slow cutting speed to minimize heat 
                 generation and deformation. A cutting speed of 100-200 RPM is typically appropriate 
                 for most carbon steel grades like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> and 
-                <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>. For hardened or high-carbon steels such as 
-                <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, use slower speeds to prevent phase transformation.
+                <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>, as well as low alloy steels like 
+                <MaterialTooltip materialName="AISI 4140 Chromium-Molybdenum Steel">4140</MaterialTooltip> and <MaterialTooltip materialName="AISI 4340 Nickel-Chromium-Molybdenum Steel">4340</MaterialTooltip>. 
+                For hardened or high-carbon steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, or hardened alloy steels 
+                like <MaterialTooltip materialName="5160 Spring Steel">5160</MaterialTooltip> and <MaterialTooltip materialName="52100 Bearing Steel">52100</MaterialTooltip>, use slower speeds to prevent phase transformation.
               </p>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -126,10 +135,10 @@ export default function CarbonSteelGuide() {
                     className="w-full h-auto"
                   />
                 </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-D abrasive cut-off blades designed for general steels and ferrous metals like carbon steel. For hard or case-hardened carbon steels, MAX-VHS series blades may be more appropriate. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center">MAX-D abrasive cut-off blades designed for general steels and ferrous metals like carbon steel and low alloy steel. For hard or case-hardened steels, MAX-VHS series blades may be more appropriate. Thin blades (0.5-1.0 mm) minimize heat generation and deformation.</p>
               </div>
               <ul>
-                <li>Use MAX-D series blades for general carbon steel grades, or MAX-VHS series for hard/case-hardened carbon steels</li>
+                <li>Use MAX-D series blades for general carbon steel and low alloy steel grades, or MAX-VHS series for hard/case-hardened steels</li>
                 <li>Use a thin abrasive cut-off wheel (0.5-1.0 mm thickness)</li>
                 <li>Apply steady, moderate pressure</li>
                 <li>Use adequate coolant to prevent overheating and phase transformation</li>
@@ -138,7 +147,7 @@ export default function CarbonSteelGuide() {
               <ProductLink 
                 productName="MAX-D and MAX-VHS Abrasive Blades"
                 href="https://shop.metallographic.com/collections/abrasive-blades"
-                description="MAX-D blades for general carbon steel, MAX-VHS blades for hard/case-hardened carbon steel"
+                description="MAX-D blades for general carbon steel and low alloy steel, MAX-VHS blades for hard/case-hardened steels"
               />
             </section>
 
@@ -296,13 +305,13 @@ export default function CarbonSteelGuide() {
                 />
                 <p className="text-sm text-gray-600 mt-2 italic text-center"><MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip> Carbon steel etched with 2% Nital, magnification (DIC). Proper etching reveals grain boundaries and phase structure without over-etching artifacts.</p>
               </div>
-              <h3>Common Etchants for Carbon Steel</h3>
+              <h3>Common Etchants for Carbon Steel and Low Alloy Steel</h3>
               <ul>
                 <li><strong>2% Nital:</strong> General purpose for softer, low-carbon steels like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip>. Reveals ferrite grain boundaries and pearlite structure (2% HNO₃ in ethanol)</li>
-                <li><strong>3% Nital:</strong> Standard concentration for most carbon steels including <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>. Most commonly used (3% HNO₃ in ethanol)</li>
-                <li><strong>5% Nital:</strong> For harder carbon steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>. More aggressive etching (5% HNO₃ in ethanol)</li>
-                <li><strong>Picral:</strong> Excellent for revealing pearlite and cementite without attacking ferrite boundaries (2-4g picric acid per 100ml ethanol)</li>
-                <li><strong>Vilella's Reagent:</strong> For ferrite-carbide structures. Also useful for revealing prior austenite grain boundaries</li>
+                <li><strong>3% Nital:</strong> Standard concentration for most carbon steels including <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>, and low alloy steels like <MaterialTooltip materialName="AISI 4140 Chromium-Molybdenum Steel">4140</MaterialTooltip> and <MaterialTooltip materialName="AISI 4340 Nickel-Chromium-Molybdenum Steel">4340</MaterialTooltip>. Most commonly used (3% HNO₃ in ethanol)</li>
+                <li><strong>5% Nital:</strong> For harder carbon steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, or hardened alloy steels. More aggressive etching (5% HNO₃ in ethanol)</li>
+                <li><strong>Picral:</strong> Excellent for revealing pearlite and cementite without attacking ferrite boundaries. Also works well for alloy steels like <MaterialTooltip materialName="52100 Bearing Steel">52100</MaterialTooltip> (2-4g picric acid per 100ml ethanol)</li>
+                <li><strong>Vilella's Reagent:</strong> For ferrite-carbide structures. Also useful for revealing prior austenite grain boundaries in alloy steels</li>
               </ul>
               <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                 <Link 
@@ -319,7 +328,7 @@ export default function CarbonSteelGuide() {
                     className="w-full h-auto"
                   />
                 </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for carbon steel. Common etchants include Nital (2%, 3%, 5%), Picral, and Vilella's Reagent. Etching time typically ranges from 5-30 seconds depending on the etchant and steel grade.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center">Etching solutions and reagents for carbon steel and low alloy steel. Common etchants include Nital (2%, 3%, 5%), Picral, and Vilella's Reagent. The same etchants work for both carbon steels and low alloy steels. Etching time typically ranges from 5-30 seconds depending on the etchant and steel grade.</p>
               </div>
               <h3>Etching Procedure</h3>
               <ol>
@@ -332,14 +341,15 @@ export default function CarbonSteelGuide() {
               <p>
                 <strong>Tip:</strong> Start with shorter etching times (5-10 seconds) and increase if needed. 
                 Over-etching can obscure fine details. For softer steels like <MaterialTooltip materialName="AISI 1018 Carbon Steel">1018</MaterialTooltip>, 
-                use lower Nital concentrations (2-3%). For hardened steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip>, 
+                use lower Nital concentrations (2-3%). For hardened steels such as <MaterialTooltip materialName="AISI 1095 High Carbon Steel">1095</MaterialTooltip> 
+                or hardened alloy steels like <MaterialTooltip materialName="5160 Spring Steel">5160</MaterialTooltip> and <MaterialTooltip materialName="52100 Bearing Steel">52100</MaterialTooltip>, 
                 higher concentrations (5%) may be needed. Picral is particularly useful for revealing pearlite 
-                structures in medium-carbon steels like <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip>.
+                structures in medium-carbon steels like <MaterialTooltip materialName="AISI 1045 Carbon Steel">1045</MaterialTooltip> and for alloy steels with carbides.
               </p>
               <ProductLink 
                 productName="Etchants"
                 href="https://shop.metallographic.com/collections/etchants"
-                description="Pre-mixed and custom etching solutions for carbon steel, including Nital and Picral"
+                description="Pre-mixed and custom etching solutions for carbon steel and low alloy steel, including Nital and Picral"
               />
             </section>
 

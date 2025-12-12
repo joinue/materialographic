@@ -257,7 +257,7 @@ export default function AerospaceApplicationsGuide() {
                 <h4 className="font-semibold mb-3 mt-4">Nickel-Based Superalloys</h4>
                 <ul className="space-y-2">
                   <li><strong><MaterialTooltip materialName="Inconel 718">Inconel 718</MaterialTooltip>:</strong> Precipitation-hardened superalloy for turbine discs and blades</li>
-                  <li><strong>Inconel 625:</strong> Solid-solution strengthened, used in exhaust systems</li>
+                  <li><strong><MaterialTooltip materialName="Inconel 625">Inconel 625</MaterialTooltip>:</strong> Solid-solution strengthened, used in exhaust systems</li>
                   <li><strong>Waspaloy:</strong> Used in high-temperature turbine components</li>
                   <li><strong>René 41:</strong> High-strength superalloy for turbine blades</li>
                   <li><strong><MaterialTooltip materialName="Hastelloy C-276">Hastelloy X</MaterialTooltip>:</strong> Used in combustion chambers and afterburners</li>
@@ -621,8 +621,8 @@ export default function AerospaceApplicationsGuide() {
 
               <h4>Superalloys</h4>
               <ul>
-                <li><strong>AMS 5662:</strong> Nickel Alloy, Corrosion and Heat-Resistant, Bars, Wire, and Forgings (Inconel 718)</li>
-                <li><strong>AMS 5708:</strong> Nickel Alloy, Corrosion and Heat-Resistant, Sheet, Strip, and Plate (Inconel 625)</li>
+                <li><strong>AMS 5662:</strong> Nickel Alloy, Corrosion and Heat-Resistant, Bars, Wire, and Forgings (<MaterialTooltip materialName="Inconel 718">Inconel 718</MaterialTooltip>)</li>
+                <li><strong>AMS 5708:</strong> Nickel Alloy, Corrosion and Heat-Resistant, Sheet, Strip, and Plate (<MaterialTooltip materialName="Inconel 625">Inconel 625</MaterialTooltip>)</li>
                 <li>Gamma prime (γ') size and distribution requirements</li>
                 <li>Grain size specifications</li>
                 <li>Carbide distribution evaluation</li>

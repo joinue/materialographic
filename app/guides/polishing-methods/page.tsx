@@ -426,7 +426,7 @@ export default function PolishingMethodsGuide() {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-xs text-gray-600 mt-2 italic text-center">Result of proper final polishing - 431 Stainless steel, 400X. The mirror-like surface reveals true microstructure without artifacts.</p>
+                  <p className="text-xs text-gray-600 mt-2 italic text-center">Result of proper final polishing - <MaterialTooltip materialName="431">431 Stainless steel</MaterialTooltip>, 400X. The mirror-like surface reveals true microstructure without artifacts.</p>
                 </div>
               </div>
               <h3>Final Polishing Techniques</h3>

@@ -80,8 +80,8 @@ export default function AluminumGuide() {
                 <h2>Introduction</h2>
                 <p>
                   Aluminum and its alloys are among the most commonly analyzed materials in metallography. 
-                  Common alloys include <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> (the most widely used aluminum alloy), 
-                  <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> (high-strength aerospace alloy), and many others. 
+                  Common alloys include <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip> (the most widely used aluminum alloy), 
+                  <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip> (high-strength aerospace alloy), and many others. 
                   Proper preparation is essential to reveal the true microstructure without introducing 
                   artifacts such as deformation, scratches, or contamination. This guide will walk you 
                   through the complete preparation process.
@@ -114,9 +114,9 @@ export default function AluminumGuide() {
                 <p>
                   When sectioning aluminum samples, use a slow cutting speed to minimize heat generation 
                   and deformation. A cutting speed of 100-200 RPM is typically appropriate for most 
-                  aluminum alloys. Softer alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> require 
+                  aluminum alloys. Softer alloys like <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip> require 
                   particularly careful handling to prevent deformation, while harder alloys such as 
-                  <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> can tolerate slightly higher cutting speeds. 
+                  <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip> can tolerate slightly higher cutting speeds. 
                   Aluminum's softness requires careful handling to prevent deformation.
                 </p>
                 <AnimateOnScroll animation="fadeInUp" delay={100}>
@@ -226,9 +226,9 @@ export default function AluminumGuide() {
               <p>
                 <strong>Important:</strong> Rotate the sample 90° between each grit to ensure complete 
                 removal of previous scratches. Use water as a lubricant and maintain <strong>light</strong> pressure 
-                to avoid deformation. Softer alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> require 
+                to avoid deformation. Softer alloys like <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip> require 
                 even lighter pressure and shorter grinding times, while precipitation-hardened alloys 
-                like <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> may need slightly longer times per step. 
+                like <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip> may need slightly longer times per step. 
                 Aluminum requires less time per step than harder materials.
               </p>
                 <ProductLink 
@@ -304,8 +304,8 @@ export default function AluminumGuide() {
                 <strong>Important:</strong> Use lighter pressure than for steel. Over-polishing can 
                 introduce relief around second phases and inclusions. Monitor the surface frequently 
                 to avoid smearing, which is common with soft materials like aluminum. This is especially 
-                critical for softer alloys such as <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip>, 
-                while higher-strength alloys like <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip> 
+                critical for softer alloys such as <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip>, 
+                while higher-strength alloys like <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip> 
                 are slightly more forgiving but still require careful pressure control.
               </p>
               <ProductLink 
@@ -327,8 +327,8 @@ export default function AluminumGuide() {
               <p>
                 Etching reveals the microstructure by selectively attacking grain boundaries and phases. 
                 The choice of etchant depends on the aluminum alloy and what features you want to reveal. 
-                For common alloys like <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> and 
-                <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip>, Keller's reagent is typically the first choice. 
+                For common alloys like <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip> and 
+                <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip>, Keller's reagent is typically the first choice. 
                 Common etchants include Keller's reagent, Weck's reagent, and various electrolytic solutions.
               </p>
                 <AnimateOnScroll animation="fadeInUp" delay={100}>

@@ -201,7 +201,7 @@ export default function NickelAlloysGuide() {
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-600 mb-6">
-            <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Nickel Alloys Preparation
+            <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Nickel and Cobalt Superalloys Preparation
           </nav>
 
           {/* Header */}
@@ -209,10 +209,10 @@ export default function NickelAlloysGuide() {
             <span className="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2 block">
               Material-Specific Guide
             </span>
-            <h1 className="text-4xl font-bold mb-4">Nickel Alloys Sample Preparation</h1>
+            <h1 className="text-4xl font-bold mb-4">Nickel and Cobalt Superalloys Sample Preparation</h1>
             <p className="text-xl text-gray-600">
-              A comprehensive guide to preparing nickel and nickel-based superalloy samples for metallographic analysis, 
-              covering specialized techniques for high-temperature alloys including Inconel, Hastelloy, and other superalloys.
+              A comprehensive guide to preparing nickel and cobalt superalloy samples for metallographic analysis, 
+              covering specialized techniques for high-temperature alloys including <MaterialTooltip materialName="Inconel 718">Inconel</MaterialTooltip>, <MaterialTooltip materialName="Hastelloy C-276">Hastelloy</MaterialTooltip>, <MaterialTooltip materialName="Cobalt-Chromium Alloy (Stellite 6)">Stellite</MaterialTooltip>, and other superalloys.
             </p>
           </header>
 
@@ -235,21 +235,24 @@ export default function NickelAlloysGuide() {
             <section id="introduction" className="scroll-mt-24">
               <h2>Introduction</h2>
               <p>
-                Nickel alloys and nickel-based superalloys are among the most challenging materials to prepare for 
-                metallographic analysis. These materials are used in high-temperature applications, aerospace, and 
-                chemical processing industries due to their excellent corrosion resistance, high strength, and 
-                temperature stability.
+                Nickel and cobalt superalloys are among the most challenging materials to prepare for 
+                metallographic analysis. These materials are used in high-temperature applications, aerospace, 
+                chemical processing, and wear-resistant applications due to their excellent corrosion resistance, 
+                high strength, temperature stability, and hardness.
               </p>
               <p>
                 Common nickel alloys include <MaterialTooltip materialName="Inconel 718">Inconel</MaterialTooltip> (600, 625, 718, 738), <MaterialTooltip materialName="Hastelloy C-276">Hastelloy</MaterialTooltip> (C-276, X), Monel, and various 
-                superalloys. These materials often contain complex microstructures with multiple phases including 
-                gamma prime (γ'), carbides, and other precipitates that require careful preparation to reveal.
+                superalloys. Cobalt alloys like <MaterialTooltip materialName="Cobalt-Chromium Alloy (Stellite 6)">Stellite</MaterialTooltip> are also high-temperature, 
+                wear-resistant materials with similar preparation challenges. These materials often contain complex 
+                microstructures with multiple phases including gamma prime (γ'), carbides, and other precipitates 
+                that require careful preparation to reveal.
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-6 rounded">
                 <p className="text-sm text-blue-900">
-                  <strong>Key Challenge:</strong> Nickel alloys are typically very hard and work-harden easily. 
+                  <strong>Key Challenge:</strong> Nickel and cobalt superalloys are typically very hard and work-harden easily. 
                   They require slow cutting speeds, careful grinding, and extended polishing times to avoid 
-                  introducing deformation artifacts.
+                  introducing deformation artifacts. Cobalt alloys like <MaterialTooltip materialName="Cobalt-Chromium Alloy (Stellite 6)">Stellite</MaterialTooltip> are particularly hard (450+ HB) 
+                  and contain carbides that must be preserved.
                 </p>
               </div>
             </section>
@@ -257,14 +260,15 @@ export default function NickelAlloysGuide() {
             <section id="sectioning" className="scroll-mt-24">
               <h2>Sectioning</h2>
               <p>
-                Nickel alloys are extremely hard and work-harden rapidly during cutting. Proper sectioning is 
-                critical to minimize deformation and heat generation.
+                Nickel and cobalt superalloys are extremely hard and work-harden rapidly during cutting. Proper sectioning is 
+                critical to minimize deformation and heat generation. Cobalt alloys like <MaterialTooltip materialName="Cobalt-Chromium Alloy (Stellite 6)">Stellite</MaterialTooltip> are particularly hard 
+                (450+ HB) and require careful cutting techniques.
               </p>
               
               <h3>Cutting Parameters</h3>
               <ul>
                 <li><strong>Cutting Speed:</strong> 80-150 RPM (very slow to minimize heat and deformation)</li>
-                <li><strong>Blade Selection:</strong> MAX-C series blades (silicon carbide/resin-rubber bond) - designed for hard non-ferrous metals like nickel alloys</li>
+                <li><strong>Blade Selection:</strong> MAX-C series blades (silicon carbide/resin-rubber bond) - designed for hard non-ferrous metals like nickel and cobalt superalloys</li>
                 <li><strong>Cooling:</strong> Continuous cooling with cutting fluid is essential</li>
                 <li><strong>Feed Rate:</strong> Slow, steady feed to avoid excessive pressure</li>
               </ul>
@@ -273,7 +277,7 @@ export default function NickelAlloysGuide() {
                 <ProductLink
                   productName="MAX-C Abrasive Blades"
                   href="https://shop.metallographic.com/collections/abrasive-blades"
-                  description="Silicon carbide/resin-rubber bond blades optimized for hard non-ferrous metals like nickel alloys, titanium, and zirconium. Provides aggressive cutting with controlled wear."
+                  description="Silicon carbide/resin-rubber bond blades optimized for hard non-ferrous metals like nickel and cobalt superalloys, titanium, and zirconium. Provides aggressive cutting with controlled wear."
                 />
               </div>
 
@@ -294,7 +298,7 @@ export default function NickelAlloysGuide() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 500px"
                   />
                 </Link>
-                <p className="text-sm text-gray-600 mt-2 italic text-center">Cutting fluids are essential for nickel alloy sectioning to prevent overheating and minimize deformation. Continuous cooling throughout the cut is critical.</p>
+                <p className="text-sm text-gray-600 mt-2 italic text-center">Cutting fluids are essential for nickel and cobalt superalloy sectioning to prevent overheating and minimize deformation. Continuous cooling throughout the cut is critical.</p>
               </div>
 
               <h3>Best Practices</h3>
@@ -564,7 +568,7 @@ export default function NickelAlloysGuide() {
                     <tr>
                       <td className="border border-gray-300 px-4 py-2"><strong>Aqua Regia</strong></td>
                       <td className="border border-gray-300 px-4 py-2">3 parts HCl, 1 part HNO₃</td>
-                      <td className="border border-gray-300 px-4 py-2">Inconel, Hastelloy</td>
+                      <td className="border border-gray-300 px-4 py-2"><MaterialTooltip materialName="Inconel 718">Inconel</MaterialTooltip>, <MaterialTooltip materialName="Hastelloy C-276">Hastelloy</MaterialTooltip></td>
                       <td className="border border-gray-300 px-4 py-2">5-15 sec</td>
                     </tr>
                     <tr>

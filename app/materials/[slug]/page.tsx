@@ -138,7 +138,42 @@ export default async function MaterialPage({ params }: MaterialPageProps) {
             )}
             {material.category.includes('Carbon Steel') && (
               <Link href="/guides/carbon-steel-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
-                → Carbon Steel Preparation Guide
+                → Carbon and Low Alloy Steels Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Alloy Steel') && (
+              <Link href="/guides/carbon-steel-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Carbon and Low Alloy Steels Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Cast Iron') && (
+              <Link href="/guides/cast-iron-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Cast Iron Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Tool Steel') && (
+              <Link href="/guides/tool-steel-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Tool Steel and Hardened Steel Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Nickel Alloy') && (
+              <Link href="/guides/nickel-alloys-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Nickel and Cobalt Superalloys Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Cobalt Alloy') && (
+              <Link href="/guides/nickel-alloys-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Nickel and Cobalt Superalloys Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Magnesium') && (
+              <Link href="/guides/magnesium-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Magnesium Preparation Guide
+              </Link>
+            )}
+            {material.category.includes('Refractory Metal') && (
+              <Link href="/guides/tool-steel-preparation" className="block text-primary-600 hover:text-primary-700 hover:underline">
+                → Tool Steel and Hardened Steel Preparation Guide
               </Link>
             )}
             <Link href="/guides" className="block text-primary-600 hover:text-primary-700 hover:underline">

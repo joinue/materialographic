@@ -86,7 +86,7 @@ export default function MagnesiumGuide() {
                 <p>
                   Common magnesium alloys include <MaterialTooltip materialName="AZ31">AZ31</MaterialTooltip>, <MaterialTooltip materialName="AZ91">AZ91</MaterialTooltip>, <MaterialTooltip materialName="AM60">AM60</MaterialTooltip>, and <MaterialTooltip materialName="WE43">WE43</MaterialTooltip>. These materials are used in aerospace, 
                   automotive, and electronics applications due to their light weight and good mechanical properties. 
-                  While similar lightweight materials like <MaterialTooltip materialName="6061">6061 aluminum</MaterialTooltip> and <MaterialTooltip materialName="7075">7075 aluminum</MaterialTooltip> are also used in these applications, 
+                  While similar lightweight materials like <MaterialTooltip materialName="6061 Aluminum">6061 aluminum</MaterialTooltip> and <MaterialTooltip materialName="7075 Aluminum">7075 aluminum</MaterialTooltip> are also used in these applications, 
                   magnesium's extreme reactivity requires special handling throughout the entire preparation process.
                 </p>
                 <div className="bg-red-50 border-l-4 border-red-500 p-4 my-6 rounded">

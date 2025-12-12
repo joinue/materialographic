@@ -44,6 +44,7 @@ type PurposeFilter =
   | 'pearlite'
   | 'ferrite'
   | 'austenite'
+  | 'nodularity'
   | 'general'
 
 type ApplicationContext = 
@@ -85,6 +86,7 @@ const purposeIcons: Record<PurposeFilter, typeof Grid3x3> = {
   'pearlite': Waves,
   'ferrite': Circle,
   'austenite': Circle,
+  'nodularity': Circle,
   'general': BarChart3
 }
 
@@ -345,6 +347,7 @@ export default function EtchantSelector() {
           'pearlite': ['pearlite', 'pearlitic', 'lamellar'],
           'ferrite': ['ferrite', 'ferritic', 'delta ferrite'],
           'austenite': ['austenite', 'austenitic', 'retained austenite'],
+          'nodularity': ['nodularity', 'nodular', 'graphite', 'graphite shape', 'graphite distribution', 'ductile iron', 'nodular iron', 'spheroidal graphite'],
           'general': []
         }
         
@@ -367,6 +370,25 @@ export default function EtchantSelector() {
             reasons.push(`✓ Reveals ${purposeFilter.replace('-', ' ')}`)
           }
         }
+        
+        // Special handling for nodularity - cast iron specific
+        if (purposeFilter === 'nodularity') {
+          // Stead's reagent is specifically for revealing graphite in cast iron
+          if (etchantName.includes('stead')) {
+            score += 80
+            reasons.push('✓ Stead\'s reagent - specifically for graphite/nodularity')
+            expertTips.push('Stead\'s reagent is the standard etchant for revealing graphite shape and nodularity in cast iron')
+          }
+          // Cast iron materials should prioritize etchants that reveal graphite
+          if (materialCategory === 'cast-iron' || selectedMaterial.name.toLowerCase().includes('cast iron') ||
+              selectedMaterial.name.toLowerCase().includes('ductile') || selectedMaterial.name.toLowerCase().includes('nodular')) {
+            if (reveals.includes('graphite') || etchantName.includes('stead') || etchantName.includes('picral')) {
+              score += 60
+              reasons.push('✓ Good for cast iron nodularity analysis')
+            }
+          }
+        }
+        
         // Note: We don't penalize non-matching etchants here because material compatibility
         // is still important. The higher bonus for matching purposes will naturally rank them higher.
       }
@@ -800,6 +822,7 @@ export default function EtchantSelector() {
     { value: 'pearlite', label: 'Pearlite', description: 'Reveal pearlitic structures' },
     { value: 'ferrite', label: 'Ferrite', description: 'Distinguish ferrite phase' },
     { value: 'austenite', label: 'Austenite', description: 'Distinguish austenite phase' },
+    { value: 'nodularity', label: 'Nodularity', description: 'Reveal graphite shape in cast iron' },
     { value: 'general', label: 'General Purpose', description: 'General microstructure examination' }
   ]
 

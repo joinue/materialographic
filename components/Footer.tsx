@@ -314,7 +314,15 @@ export default function Footer() {
                 </span>
                 <span className="hidden md:inline text-gray-600">•</span>
                 <span className="text-sm text-gray-500">
-                  Owned and operated by <span className="text-gray-400">PACE Technologies Corporation</span>
+                  Owned and operated by{' '}
+                  <Link 
+                    href="https://metallographic.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    PACE Technologies Corporation
+                  </Link>
                 </span>
               </div>
               <div className="flex items-center gap-6 text-sm">

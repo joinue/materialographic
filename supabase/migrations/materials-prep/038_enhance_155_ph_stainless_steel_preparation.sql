@@ -2,6 +2,11 @@
 -- Add comprehensive expert-level preparation guidance
 -- Migration: 038
 -- Date: 2025-01-XX
+--
+-- IMPORTANT: When running this migration manually in Supabase SQL Editor:
+-- 1. Use the "Service Role" connection (bypasses RLS) OR
+-- 2. Ensure you are authenticated as a user with UPDATE permissions
+-- The materials table has RLS enabled, so anonymous users cannot UPDATE
 
 -- ============================================================================
 -- UPDATE 15-5 PH STAINLESS STEEL PREPARATION PROCEDURES
@@ -35,6 +40,20 @@ WHERE (id = 'f95d7dfe-2136-4aae-a9a3-969bb917ac69'::uuid
    OR (slug = '155-ph-stainless-steel' AND name = '15-5 PH Stainless Steel'))
   AND (grinding_notes IS NULL OR grinding_notes LIKE '%Start with 120 grit%' OR grinding_notes LIKE '%363 HB%');
 
+-- Fix polishing sequence: Update to full sequence for very-hard materials
+-- Standard for very-hard materials should be: 9μm, 3μm, 1μm, 0.05μm colloidal silica (4 steps)
+UPDATE materials
+SET recommended_polishing_sequence = ARRAY['9μm diamond', '3μm diamond', '1μm diamond', '0.05μm colloidal silica']
+WHERE (id = 'f95d7dfe-2136-4aae-a9a3-969bb917ac69'::uuid
+   OR (slug = '155-ph-stainless-steel' AND name = '15-5 PH Stainless Steel'))
+  AND (
+    -- Only update if current sequence is incorrect (simplified to avoid array indexing issues with RLS)
+    recommended_polishing_sequence IS NULL OR
+    array_length(recommended_polishing_sequence, 1) != 4 OR
+    (array_length(recommended_polishing_sequence, 1) >= 1 AND recommended_polishing_sequence[1] != '9μm diamond') OR
+    (array_length(recommended_polishing_sequence, 1) >= 4 AND recommended_polishing_sequence[4] != '0.05μm colloidal silica')
+  );
+
 -- Enhance polishing notes
 UPDATE materials
 SET polishing_notes = 'The high hardness allows for more aggressive polishing than softer materials. Use diamond polishing with appropriate polishing pads for each stage.<br /><br /><strong>Diamond polishing sequence:</strong><ul style="margin-top: 0.5rem; margin-bottom: 0.5rem; padding-left: 1.5rem;"><li><strong>9μm diamond:</strong> 3-5 minutes on a metal mesh pad (e.g., CERMESH) with moderate pressure (30-50 N per 30 mm sample). Metal mesh pads are excellent for initial removal of damage from sectioning and hard materials. The hard material can tolerate firm pressure and longer times.</li><li><strong>3μm diamond:</strong> 3-5 minutes on a non-woven intermediate pad (e.g., TEXPAN) or porometric polymer pad (e.g., Black CHEM 2) with moderate pressure.</li><li><strong>1μm diamond:</strong> 2-3 minutes on a low-napped pad designed for fine polishing (e.g., GOLD PAD) with lighter pressure (20-30 N). These pads provide consistent material removal and flatness control.</li></ul><strong>Final polishing:</strong><ul style="margin-top: 0.5rem; margin-bottom: 0.5rem; padding-left: 1.5rem;"><li><strong>0.05μm colloidal silica:</strong> 1-2 minutes on a high-napped final polishing pad (e.g., MICROPAD) with light pressure. High-napped pads are recommended for colloidal silica and produce a mirror finish. This removes any remaining fine scratches and prepares the surface for etching.</li></ul>Use appropriate polishing lubricants. The high hardness means polishing times can be longer than for softer materials - ensure complete scratch removal at each step. Monitor for relief around precipitates or inclusions - reduce polishing time if excessive relief develops.'
@@ -67,11 +86,14 @@ DECLARE
   v_polishing_notes TEXT;
   v_etching_notes TEXT;
   v_prep_difficulty TEXT;
+  v_polishing_seq TEXT[];
 BEGIN
   SELECT name, preparation_notes, sectioning_notes, mounting_notes, 
-         grinding_notes, polishing_notes, etching_notes, preparation_difficulty
+         grinding_notes, polishing_notes, etching_notes, preparation_difficulty,
+         recommended_polishing_sequence
   INTO v_material_name, v_prep_notes, v_sectioning_notes, v_mounting_notes,
-       v_grinding_notes, v_polishing_notes, v_etching_notes, v_prep_difficulty
+       v_grinding_notes, v_polishing_notes, v_etching_notes, v_prep_difficulty,
+       v_polishing_seq
   FROM materials
   WHERE id = 'f95d7dfe-2136-4aae-a9a3-969bb917ac69'::uuid
      OR (slug = '155-ph-stainless-steel' AND name = '15-5 PH Stainless Steel')
@@ -110,9 +132,19 @@ BEGIN
     RAISE EXCEPTION 'Preparation difficulty not set correctly (got: %)', v_prep_difficulty;
   END IF;
   
+  -- Verify polishing sequence
+  IF v_polishing_seq IS NULL OR array_length(v_polishing_seq, 1) != 4 THEN
+    RAISE EXCEPTION 'Polishing sequence incorrect: expected 4 steps, got %', array_length(v_polishing_seq, 1);
+  END IF;
+  
+  IF v_polishing_seq[1] != '9μm diamond' OR v_polishing_seq[4] != '0.05μm colloidal silica' THEN
+    RAISE EXCEPTION 'Polishing sequence incorrect: expected [9μm diamond, 3μm diamond, 1μm diamond, 0.05μm colloidal silica], got %', v_polishing_seq;
+  END IF;
+  
   RAISE NOTICE 'Successfully updated 15-5 PH Stainless Steel preparation procedures';
   RAISE NOTICE 'Material: %', v_material_name;
   RAISE NOTICE 'Preparation difficulty: %', v_prep_difficulty;
+  RAISE NOTICE 'Polishing sequence: %', v_polishing_seq;
   RAISE NOTICE 'All preparation notes have been enhanced';
 END $$;
 

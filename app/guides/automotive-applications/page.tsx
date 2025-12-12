@@ -170,8 +170,8 @@ export default function AutomotiveApplicationsPage() {
 
                 <h3>Aluminum Processing Verification</h3>
                 <p>
-                  <MaterialTooltip materialName="Aluminum 6061">Aluminum</MaterialTooltip> alloys are increasingly used in automotive applications for weight reduction. 
-                  Common automotive alloys include <MaterialTooltip materialName="Aluminum 6061">6061</MaterialTooltip> and <MaterialTooltip materialName="Aluminum 7075">7075</MaterialTooltip>. 
+                  <MaterialTooltip materialName="6061 Aluminum">Aluminum</MaterialTooltip> alloys are increasingly used in automotive applications for weight reduction. 
+                  Common automotive alloys include <MaterialTooltip materialName="6061 Aluminum">6061</MaterialTooltip> and <MaterialTooltip materialName="7075 Aluminum">7075</MaterialTooltip>. 
                   Verification focuses on:
                 </p>
                 <AnimateOnScroll animation="fadeInUp" delay={150}>

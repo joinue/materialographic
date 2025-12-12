@@ -228,7 +228,7 @@ export default function MaterialTooltip({
             <div className="flex items-start justify-between gap-2 mb-2">
               <div className="flex items-start gap-2 flex-1">
                 <Info className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" />
-                <h4 className="font-semibold text-base text-white">{material.name}</h4>
+                <div className="font-semibold text-base text-white">{material.name}</div>
               </div>
               <button
                 onClick={(e) => {
