@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import GuidesClient from '@/components/GuidesClient'
 import { guides } from '@/data/guides'
 
@@ -119,7 +120,9 @@ export default async function GuidesPage({
             </p>
           </div>
 
-          <GuidesClient initialCategory={params.category} />
+          <Suspense fallback={<div className="py-8">Loading guides...</div>}>
+            <GuidesClient initialCategory={params.category} />
+          </Suspense>
 
           {/* CTA Section */}
           <div className="mt-8 sm:mt-12 md:mt-20">

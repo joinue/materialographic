@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { getPublishedBlogPosts } from '@/lib/supabase'
 import BlogClient from '@/components/BlogClient'
 import NewsletterSubscription from '@/components/NewsletterSubscription'
@@ -126,7 +127,9 @@ export default async function BlogPage() {
 
           {/* Blog Client Component with Search, Filtering, and Pagination */}
           {blogPosts.length > 0 ? (
-            <BlogClient initialPosts={blogPosts} />
+            <Suspense fallback={<div className="py-8">Loading blog posts...</div>}>
+              <BlogClient initialPosts={blogPosts} />
+            </Suspense>
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-600 mb-4">No blog posts yet. Check back soon!</p>

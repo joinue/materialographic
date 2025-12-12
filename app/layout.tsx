@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -126,7 +127,9 @@ export default function RootLayout({
           </svg>
         </div>
         <div className="relative z-10">
-          <PageViewTracker />
+          <Suspense fallback={null}>
+            <PageViewTracker />
+          </Suspense>
           <div className="build-page-hidden">
             <Header />
           </div>
