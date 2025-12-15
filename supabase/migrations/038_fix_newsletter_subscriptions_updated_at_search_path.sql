@@ -23,3 +23,5 @@ CREATE TRIGGER update_newsletter_subscriptions_updated_at
   FOR EACH ROW
   EXECUTE FUNCTION update_newsletter_subscriptions_updated_at();
 
+
+

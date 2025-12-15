@@ -16,3 +16,5 @@ CREATE POLICY "Anyone can read published blog posts"
   TO anon
   USING (status = 'published');
 
+
+
