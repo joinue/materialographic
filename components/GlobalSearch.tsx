@@ -547,6 +547,9 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
     const searchTerm = query.toLowerCase().trim()
     const searchTerms = expandSearchTerm(searchTerm)
     
+    // Split search query into individual words for flexible word-order matching
+    const searchWords = searchTerm.split(/\s+/).filter(w => w.length > 0)
+    
     // If no search index items yet, return empty (materials might still be loading)
     if (searchIndex.length === 0) {
       setResults([])
@@ -559,6 +562,17 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       const lowerTitle = item.title.toLowerCase()
       const lowerDesc = item.description?.toLowerCase() || ''
       const lowerCategory = item.category?.toLowerCase() || ''
+      
+      // Combine all searchable text for word-order-flexible matching
+      const allSearchableText = `${lowerTitle} ${lowerDesc} ${lowerCategory} ${item.alternativeNames?.join(' ').toLowerCase() || ''}`
+      
+      // Check if all words from the search query appear (word order flexible)
+      const allWordsMatch = searchWords.length > 0 && searchWords.every(word => allSearchableText.includes(word))
+      
+      // If all words don't match, skip this item (unless exact phrase matches)
+      if (!allWordsMatch && !lowerTitle.includes(searchTerm) && !lowerDesc.includes(searchTerm)) {
+        return { ...item, score: 0 }
+      }
       
       // Check all search terms (including synonyms)
       for (const term of searchTerms) {
@@ -601,6 +615,11 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             }
           }
         }
+      }
+      
+      // Bonus for word-order-flexible matches (all words found in any order)
+      if (allWordsMatch && searchWords.length > 1) {
+        score += 15 // Small bonus for flexible word order matching
       }
       
       return {
