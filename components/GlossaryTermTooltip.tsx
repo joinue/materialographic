@@ -25,9 +25,20 @@ export default function GlossaryTermTooltip({
   const [position, setPosition] = useState<'top' | 'bottom'>('top')
   const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({})
   const [arrowStyle, setArrowStyle] = useState<React.CSSProperties>({})
+  const [isMobile, setIsMobile] = useState(false)
   const tooltipRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLSpanElement>(null)
   const termKey = term.toLowerCase()
+
+  // Detect mobile vs desktop
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // md breakpoint
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Find the glossary term
   const glossaryTerm = glossaryTerms.find(
@@ -63,97 +74,128 @@ export default function GlossaryTermTooltip({
           
           setPosition(newPosition)
 
-          // Center tooltip horizontally on the viewport
-          const tooltipWidth = tooltipRect.width
-          const viewportCenter = viewportWidth / 2
-          const tooltipHalfWidth = tooltipWidth / 2
-          const triggerCenterX = rect.left + rect.width / 2
-          
-          // Calculate where tooltip should be to be centered on viewport
-          const targetLeft = viewportCenter - tooltipHalfWidth
-          const targetRight = viewportCenter + tooltipHalfWidth
-          
-          // Constrain to viewport with padding
-          const minLeft = padding
-          const maxRight = viewportWidth - padding
-          
           let newTooltipStyle: React.CSSProperties = {}
           let newArrowStyle: React.CSSProperties = {}
-          
-          // Position tooltip centered on viewport, but constrain if it would overflow
-          let actualTooltipLeft: number
-          if (targetLeft < minLeft) {
-            // Would overflow left - constrain to left edge
-            actualTooltipLeft = padding
-            newTooltipStyle = {
-              left: `${padding - rect.left}px`,
-              transform: 'none'
+
+          if (isMobile) {
+            // Mobile: Center tooltip horizontally on the viewport
+            const tooltipWidth = tooltipRect.width
+            const viewportCenter = viewportWidth / 2
+            const tooltipHalfWidth = tooltipWidth / 2
+            const triggerCenterX = rect.left + rect.width / 2
+            
+            // Calculate where tooltip should be to be centered on viewport
+            const targetLeft = viewportCenter - tooltipHalfWidth
+            const targetRight = viewportCenter + tooltipHalfWidth
+            
+            // Constrain to viewport with padding
+            const minLeft = padding
+            const maxRight = viewportWidth - padding
+            
+            // Position tooltip centered on viewport, but constrain if it would overflow
+            let actualTooltipLeft: number
+            if (targetLeft < minLeft) {
+              // Would overflow left - constrain to left edge
+              actualTooltipLeft = padding
+              newTooltipStyle = {
+                left: `${padding - rect.left}px`,
+                transform: 'none'
+              }
+            } else if (targetRight > maxRight) {
+              // Would overflow right - constrain to right edge
+              actualTooltipLeft = viewportWidth - padding - tooltipWidth
+              newTooltipStyle = {
+                left: `${actualTooltipLeft - rect.left}px`,
+                transform: 'none'
+              }
+            } else {
+              // Center on viewport
+              actualTooltipLeft = targetLeft
+              newTooltipStyle = {
+                left: `${targetLeft - rect.left}px`,
+                transform: 'none'
+              }
             }
-          } else if (targetRight > maxRight) {
-            // Would overflow right - constrain to right edge
-            actualTooltipLeft = viewportWidth - padding - tooltipWidth
-            newTooltipStyle = {
-              left: `${actualTooltipLeft - rect.left}px`,
-              transform: 'none'
+            
+            // Position arrow to point to trigger center
+            const arrowOffset = triggerCenterX - actualTooltipLeft
+            newArrowStyle = {
+              left: `${Math.max(16, Math.min(arrowOffset, tooltipWidth - 16))}px`,
+              transform: 'translateX(-50%)'
             }
+
+            // Scroll to ensure tooltip is visible on mobile
+            setTimeout(() => {
+              if (tooltipRef.current) {
+                const tooltipElement = tooltipRef.current
+                const tooltipRect = tooltipElement.getBoundingClientRect()
+                const headerHeight = 80
+                const scrollY = window.scrollY
+
+                const tooltipTop = tooltipRect.top + scrollY
+                const tooltipBottom = tooltipRect.bottom + scrollY
+                const viewportTop = scrollY + headerHeight
+                const viewportBottom = scrollY + viewportHeight
+
+                if (tooltipRect.top < headerHeight) {
+                  const scrollAmount = tooltipTop - viewportTop - 10
+                  window.scrollTo({
+                    top: Math.max(0, scrollY + scrollAmount),
+                    behavior: 'smooth'
+                  })
+                } else if (tooltipRect.bottom > viewportHeight) {
+                  const scrollAmount = tooltipBottom - viewportBottom + 10
+                  window.scrollTo({
+                    top: scrollY + scrollAmount,
+                    behavior: 'smooth'
+                  })
+                }
+              }
+            }, 100)
           } else {
-            // Center on viewport
-            actualTooltipLeft = targetLeft
+            // Desktop: Position relative to trigger word (standard tooltip behavior)
+            // Center tooltip on trigger, but keep within viewport
+            const tooltipWidth = tooltipRect.width
+            const triggerCenterX = rect.left + rect.width / 2
+            const tooltipHalfWidth = tooltipWidth / 2
+            
+            // Calculate ideal position (centered on trigger)
+            let targetLeft = triggerCenterX - tooltipHalfWidth
+            
+            // Constrain to viewport with padding
+            const minLeft = padding
+            const maxRight = viewportWidth - padding
+            
+            if (targetLeft < minLeft) {
+              targetLeft = minLeft
+            } else if (targetLeft + tooltipWidth > maxRight) {
+              targetLeft = maxRight - tooltipWidth
+            }
+            
             newTooltipStyle = {
               left: `${targetLeft - rect.left}px`,
               transform: 'none'
             }
-          }
-          
-          // Position arrow to point to trigger center
-          const arrowOffset = triggerCenterX - actualTooltipLeft
-          newArrowStyle = {
-            left: `${Math.max(16, Math.min(arrowOffset, tooltipWidth - 16))}px`,
-            transform: 'translateX(-50%)'
+            
+            // Position arrow to point to trigger center
+            const arrowOffset = triggerCenterX - targetLeft
+            newArrowStyle = {
+              left: `${Math.max(16, Math.min(arrowOffset, tooltipWidth - 16))}px`,
+              transform: 'translateX(-50%)'
+            }
           }
           
           setTooltipStyle(newTooltipStyle)
           setArrowStyle(newArrowStyle)
-
-          // Wait for position to update, then scroll to ensure tooltip is visible
-          setTimeout(() => {
-            if (tooltipRef.current) {
-              const tooltipElement = tooltipRef.current
-              const tooltipRect = tooltipElement.getBoundingClientRect()
-              const headerHeight = 80 // Approximate header height
-              const scrollY = window.scrollY
-
-              // Calculate if tooltip is cut off
-              const tooltipTop = tooltipRect.top + scrollY
-              const tooltipBottom = tooltipRect.bottom + scrollY
-              const viewportTop = scrollY + headerHeight
-              const viewportBottom = scrollY + viewportHeight
-
-              // If tooltip is above viewport (below header), scroll up
-              if (tooltipRect.top < headerHeight) {
-                const scrollAmount = tooltipTop - viewportTop - 10
-                window.scrollTo({
-                  top: Math.max(0, scrollY + scrollAmount),
-                  behavior: 'smooth'
-                })
-              }
-              // If tooltip is below viewport, scroll down
-              else if (tooltipRect.bottom > viewportHeight) {
-                const scrollAmount = tooltipBottom - viewportBottom + 10
-                window.scrollTo({
-                  top: scrollY + scrollAmount,
-                  behavior: 'smooth'
-                })
-              }
-            }
-          }, 100)
         }
       })
     }
-  }, [isVisible])
+  }, [isVisible, isMobile])
 
-  // Handle click to toggle tooltip
+  // Handle click to toggle tooltip (mobile only)
   const handleClick = (e: React.MouseEvent) => {
+    if (!isMobile) return // Desktop uses hover, ignore clicks
+    
     e.preventDefault()
     e.stopPropagation()
     
@@ -171,8 +213,23 @@ export default function GlossaryTermTooltip({
     }
   }
 
-  // Close tooltip when clicking outside
+  // Handle hover for desktop
+  const handleMouseEnter = () => {
+    if (!isMobile && !isVisible) {
+      setIsVisible(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (!isMobile && isVisible) {
+      setIsVisible(false)
+    }
+  }
+
+  // Close tooltip when clicking outside (mobile only)
   useEffect(() => {
+    if (!isMobile) return // Desktop uses hover, no need for click-outside handler
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (
         isVisible &&
@@ -191,7 +248,7 @@ export default function GlossaryTermTooltip({
         document.removeEventListener('mousedown', handleClickOutside)
       }
     }
-  }, [isVisible])
+  }, [isVisible, isMobile])
 
   return (
     <span 
@@ -200,6 +257,8 @@ export default function GlossaryTermTooltip({
     >
       <span 
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className="border-b border-dotted border-primary-400 text-primary-700 cursor-pointer font-medium hover:border-primary-600 hover:text-primary-800 transition-colors active:text-primary-800"
       >
         {children}
@@ -208,6 +267,8 @@ export default function GlossaryTermTooltip({
       {isVisible && (
         <div
           ref={tooltipRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           className={`absolute z-[9999] w-80 max-w-[calc(100vw-2rem)] sm:max-w-[90vw] ${
             position === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
           }`}

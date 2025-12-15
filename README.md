@@ -31,6 +31,11 @@ Create a `.env.local` file in the root directory with the following variables:
 # Supabase (required)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Supabase Admin (required for admin operations like user management)
+# Find this in Supabase Dashboard > Settings > API > service_role key
+# WARNING: Never expose this key to the client side!
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
 ### Development

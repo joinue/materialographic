@@ -25,9 +25,20 @@ export default function MaterialTooltip({
   const [position, setPosition] = useState<'top' | 'bottom'>('top')
   const [material, setMaterial] = useState<Material | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const tooltipRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLSpanElement>(null)
   const materialKey = materialName.toLowerCase()
+
+  // Detect mobile vs desktop
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // md breakpoint
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Search for material on mount
   useEffect(() => {
@@ -108,56 +119,67 @@ export default function MaterialTooltip({
         if (tooltipRef.current && triggerRef.current) {
           const tooltipRect = tooltipRef.current.getBoundingClientRect()
           
-          // Check if tooltip would go off screen
-          const spaceBelow = window.innerHeight - rect.bottom
-          const spaceAbove = rect.top
-          
-          const newPosition = spaceBelow < tooltipRect.height + 10 && spaceAbove > spaceBelow
-            ? 'bottom'
-            : 'top'
-          
-          setPosition(newPosition)
+          if (isMobile) {
+            // Mobile: Center on viewport (existing behavior)
+            // Position is already handled by CSS classes
+            const spaceBelow = window.innerHeight - rect.bottom
+            const spaceAbove = rect.top
+            
+            const newPosition = spaceBelow < tooltipRect.height + 10 && spaceAbove > spaceBelow
+              ? 'bottom'
+              : 'top'
+            
+            setPosition(newPosition)
 
-          // Wait for position to update, then scroll to ensure tooltip is visible
-          setTimeout(() => {
-            if (tooltipRef.current) {
-              const tooltipElement = tooltipRef.current
-              const tooltipRect = tooltipElement.getBoundingClientRect()
-              const viewportHeight = window.innerHeight
-              const headerHeight = 80 // Approximate header height
-              const scrollY = window.scrollY
+            // Scroll to ensure tooltip is visible on mobile
+            setTimeout(() => {
+              if (tooltipRef.current) {
+                const tooltipElement = tooltipRef.current
+                const tooltipRect = tooltipElement.getBoundingClientRect()
+                const viewportHeight = window.innerHeight
+                const headerHeight = 80
+                const scrollY = window.scrollY
 
-              // Calculate if tooltip is cut off
-              const tooltipTop = tooltipRect.top + scrollY
-              const tooltipBottom = tooltipRect.bottom + scrollY
-              const viewportTop = scrollY + headerHeight
-              const viewportBottom = scrollY + viewportHeight
+                const tooltipTop = tooltipRect.top + scrollY
+                const tooltipBottom = tooltipRect.bottom + scrollY
+                const viewportTop = scrollY + headerHeight
+                const viewportBottom = scrollY + viewportHeight
 
-              // If tooltip is above viewport (below header), scroll up
-              if (tooltipRect.top < headerHeight) {
-                const scrollAmount = tooltipTop - viewportTop - 10
-                window.scrollTo({
-                  top: Math.max(0, scrollY + scrollAmount),
-                  behavior: 'smooth'
-                })
+                if (tooltipRect.top < headerHeight) {
+                  const scrollAmount = tooltipTop - viewportTop - 10
+                  window.scrollTo({
+                    top: Math.max(0, scrollY + scrollAmount),
+                    behavior: 'smooth'
+                  })
+                } else if (tooltipRect.bottom > viewportHeight) {
+                  const scrollAmount = tooltipBottom - viewportBottom + 10
+                  window.scrollTo({
+                    top: scrollY + scrollAmount,
+                    behavior: 'smooth'
+                  })
+                }
               }
-              // If tooltip is below viewport, scroll down
-              else if (tooltipRect.bottom > viewportHeight) {
-                const scrollAmount = tooltipBottom - viewportBottom + 10
-                window.scrollTo({
-                  top: scrollY + scrollAmount,
-                  behavior: 'smooth'
-                })
-              }
-            }
-          }, 100)
+            }, 100)
+          } else {
+            // Desktop: Position relative to trigger word (standard tooltip behavior)
+            const spaceBelow = window.innerHeight - rect.bottom
+            const spaceAbove = rect.top
+            
+            const newPosition = spaceBelow < tooltipRect.height + 10 && spaceAbove > spaceBelow
+              ? 'bottom'
+              : 'top'
+            
+            setPosition(newPosition)
+          }
         }
       })
     }
-  }, [isVisible, material])
+  }, [isVisible, material, isMobile])
 
-  // Close tooltip when clicking outside
+  // Close tooltip when clicking outside (mobile only)
   useEffect(() => {
+    if (!isMobile) return // Desktop uses hover, no need for click-outside handler
+    
     const handleClickOutside = (event: MouseEvent) => {
       if (
         isVisible &&
@@ -176,10 +198,12 @@ export default function MaterialTooltip({
         document.removeEventListener('mousedown', handleClickOutside)
       }
     }
-  }, [isVisible])
+  }, [isVisible, isMobile])
 
-  // Handle click to toggle tooltip
+  // Handle click to toggle tooltip (mobile only)
   const handleClick = (e: React.MouseEvent) => {
+    if (!isMobile) return // Desktop uses hover, ignore clicks
+    
     e.preventDefault()
     e.stopPropagation()
     
@@ -194,6 +218,19 @@ export default function MaterialTooltip({
       } else {
         setIsVisible(true)
       }
+    }
+  }
+
+  // Handle hover for desktop
+  const handleMouseEnter = () => {
+    if (!isMobile && !isVisible) {
+      setIsVisible(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (!isMobile && isVisible) {
+      setIsVisible(false)
     }
   }
 
@@ -212,6 +249,8 @@ export default function MaterialTooltip({
     >
       <span 
         onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className="border-b border-dotted border-primary-400 text-primary-700 cursor-pointer font-medium hover:border-primary-600 hover:text-primary-800 transition-colors active:text-primary-800"
       >
         {children}
@@ -220,9 +259,11 @@ export default function MaterialTooltip({
       {isVisible && (
         <div
           ref={tooltipRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           className={`absolute z-[9999] w-80 max-w-[calc(100vw-2rem)] sm:max-w-[90vw] ${
             position === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
-          } left-1/2 -translate-x-1/2`}
+          } ${isMobile ? 'left-1/2 -translate-x-1/2' : 'left-0'}`}
         >
           <div className="bg-gray-900 text-white rounded-lg shadow-xl border border-gray-700 p-4 animate-fadeIn">
             <div className="flex items-start justify-between gap-2 mb-2">
