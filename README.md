@@ -1,12 +1,12 @@
-# Metallography.org
+# Materialographic.com
 
-Free educational resources and guides for metallographic sample preparation. This site serves as a content hub and lead generation funnel for metallographic.com and shop.metallographic.com.
+Experimental website showcasing next-generation UI/UX improvements for metallographic sample preparation resources. This site is developed by PACE Technologies as a testing ground for innovative interface designs and user experience enhancements.
 
 ## Purpose
 
-- **Educational Content Hub**: Provide free, comprehensive guides and resources
-- **SEO & Lead Generation**: Attract organic traffic through valuable content
-- **Conversion Funnel**: Guide users to materialsprep.com, shop.metallographic.com, and metallographic.com
+- **Experimental Platform**: Test next-generation UI/UX improvements
+- **Innovation Showcase**: Demonstrate new approaches to presenting technical information
+- **PACE Technologies**: Developed by PACE Technologies (primary business site: metallographic.com)
 
 ## Tech Stack
 

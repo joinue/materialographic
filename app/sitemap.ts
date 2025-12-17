@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://metallography.org'
+  const baseUrl = 'https://materialographic.com'
   const now = new Date()
   
   // Generate guide URLs

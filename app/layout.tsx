@@ -15,16 +15,16 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://metallography.org'),
+  metadataBase: new URL('https://materialographic.com'),
   title: {
-    default: 'Metallography.org - Free Metallographic Sample Preparation Guides & Resources',
-    template: '%s | Metallography.org',
+    default: 'Materialographic.com - Metallographic Sample Preparation Resources',
+    template: '%s | Materialographic.com',
   },
-  description: 'Free educational resources, guides, and best practices for metallographic sample preparation. Learn techniques, troubleshooting tips, and access expert knowledge.',
-  keywords: ['metallography', 'sample preparation', 'metallographic', 'grinding', 'polishing', 'etching', 'microscopy', 'metallurgical analysis', 'material science', 'microstructure'],
-  authors: [{ name: 'Metallography.org' }],
-  creator: 'Metallography.org',
-  publisher: 'Metallography.org',
+  description: 'Comprehensive metallographic sample preparation resources and tools. Expert guides, databases, and knowledge for metallography from PACE Technologies.',
+  keywords: ['metallography', 'sample preparation', 'metallographic', 'grinding', 'polishing', 'etching', 'microscopy', 'metallurgical analysis', 'material science', 'microstructure', 'PACE Technologies', 'materialographic'],
+  authors: [{ name: 'PACE Technologies' }],
+  creator: 'PACE Technologies',
+  publisher: 'PACE Technologies',
   formatDetection: {
     email: false,
     address: false,
@@ -32,42 +32,42 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/logo.png', sizes: 'any', media: '(prefers-color-scheme: light)' },
-      { url: '/logo-white.png', sizes: 'any', media: '(prefers-color-scheme: dark)' },
-      { url: '/logo.png', type: 'image/png' },
+      { url: '/images/pace/tri-structure.png', sizes: 'any', media: '(prefers-color-scheme: light)' },
+      { url: '/images/pace/tri-structure.png', sizes: 'any', media: '(prefers-color-scheme: dark)' },
+      { url: '/images/pace/tri-structure.png', type: 'image/png' },
     ],
     apple: [
-      { url: '/logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/pace/tri-structure.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://metallography.org',
-    siteName: 'Metallography.org',
-    title: 'Metallography.org - Free Metallographic Sample Preparation Guides & Resources',
-    description: 'Free educational resources, guides, and best practices for metallographic sample preparation. Learn techniques, troubleshooting tips, and access expert knowledge.',
+    url: 'https://materialographic.com',
+    siteName: 'Materialographic.com',
+    title: 'Materialographic.com - Metallographic Sample Preparation Resources',
+    description: 'Comprehensive metallographic sample preparation resources and tools. Expert guides, databases, and knowledge for metallography from PACE Technologies.',
     images: [
       {
-        url: '/logo.png',
+        url: '/images/pace/materialographic-logo.png',
         width: 1200,
         height: 630,
-        alt: 'Metallography.org - Free Metallographic Sample Preparation Resources',
+        alt: 'Materialographic.com - PACE Technologies Metallographic Resources',
       },
       // White logo variant for dark backgrounds (platforms may choose based on context)
       {
-        url: '/logo-white.png',
+        url: '/images/pace/materialographic-logo-white.png',
         width: 1200,
         height: 630,
-        alt: 'Metallography.org - Free Metallographic Sample Preparation Resources',
+        alt: 'Materialographic.com - PACE Technologies Metallographic Resources',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Metallography.org - Free Metallographic Sample Preparation Guides',
-    description: 'Free educational resources, guides, and best practices for metallographic sample preparation.',
-    images: ['/logo.png'],
+    title: 'Materialographic.com - Metallographic Sample Preparation Resources',
+    description: 'Comprehensive metallographic sample preparation resources and tools from PACE Technologies.',
+    images: ['/images/pace/materialographic-logo.png'],
   },
   robots: {
     index: true,
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     // bing: 'your-bing-verification-code',
   },
   alternates: {
-    canonical: 'https://metallography.org',
+    canonical: 'https://materialographic.com',
   },
 }
 
@@ -111,8 +111,8 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
-        <link rel="icon" href="/logo.png" media="(prefers-color-scheme: light)" />
-        <link rel="icon" href="/logo-white.png" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: dark)" />
       </head>
       <body className={`${inter.className} font-sans antialiased relative bg-white`}>
         {/* Grain Structure Background Pattern - Full Page */}
@@ -133,7 +133,7 @@ export default function RootLayout({
           <div className="build-page-hidden">
             <Header />
           </div>
-          <main className="min-h-screen pt-24 build-page-main">{children}</main>
+          <main className="min-h-screen pt-24 lg:pt-28 build-page-main">{children}</main>
           <div className="build-page-hidden">
             <Footer />
             <ReturnToTop />

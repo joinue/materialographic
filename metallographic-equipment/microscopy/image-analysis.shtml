@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis Software | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> 
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> 
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" />
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Metallographic Image Analysis, Image Analysis Software, Metallography, PACE Technologies, Microstructure Documentation, ASTM Standards">
+    <meta name="description" content="Explore PACE Technologies' Metallographic Image Analysis software for precise and efficient microstructure documentation and analysis in metallography, compliant with ASTM standards.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Metallographic Image Analysis Software",
+          "image": "https://www.metallographic.com/Images/image-analysis-software.webp",
+          "description": "Our Image Analysis software modules offer precise and automated image processing for metallographic sample analysis, compliant with ASTM standards.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/microscopy/image-analysis",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Metallographic Image Analysis Software</h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+  <!-- Introduction Section -->
+  <section class="introduction">
+      <h2 class="equipment-header">Metallographic Image Analysis Modules</h2>
+      <p>
+        Our Metallographic Image Analysis software offers an integrated solution for studying and documenting microstructures with advanced image processing. Built to meet ASTM standards, it supports phase quantification, inclusion analysis, grain size measurement, nodularity assessment, porosity evaluation, decarburization detection, and coating thickness measurement. High-resolution images are captured via a digital microscope camera and imported for detailed analysis and storage.
+      </p>
+      <div class="feature-buttons-top">
+        <a href="#materials-plus" class="feature-button-top">Materials Plus</a>
+        <a href="#weld" class="feature-button-top">WELD CHECK Module</a>
+        <a href="#hardness-pro" class="feature-button-top">Hardness PRO Module</a>
+    </div>
+  </section>
+
+  <!-- Image Analysis Software Section -->
+  <h3>Materials Plus Image Analysis</h3>
+  <section class="carousel-features" id="materials-plus">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+          <div class="carousel-container">
+              <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-content">
+                  <div class="carousel-item" data-description="Material Plus Software Interface">
+                      <img src="/images/equipment/microscopy/image analysis/material-plus-cover.webp" alt="Image of the Material Plus Software Interface">
+                  </div>
+                  <div class="carousel-item" data-description="Navigate the tools with ease through an intuitive and user-friendly interface.">
+                    <img src="/images/equipment/microscopy/image analysis/material-plus-interface.webp" alt="Image of a circuit board with tools displayed alongside, highlighting the ease of navigation and user-friendly interface.">
+                </div>
+                  <div class="carousel-item" data-description="Reports can be easily exported to Excel, allowing for data manipulation, analysis, and customization to meet your specific needs.">
+                      <img src="/images/equipment/microscopy/image analysis/material-plus-report-excel.webp" alt="Image of the report exported to Excel">
+                  </div>
+                  <!--<div class="carousel-item" data-description="Image Analysis Software Video">
+                      <video controls>
+                          <source src="/images/equipment/microscopy/image analysis/image-analysis-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>-->
+              </div>
+              <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-description">
+              <p></p>
+          </div>
+      </div>
+      
+
+      <!-- Features Section -->
+      <div class="features">
+          <h3>Features</h3>
+          <ul>
+              <li><strong>Comprehensive Analysis:</strong> Offers a wide range of metallographic analysis tools, including phase quantification, grain size measurement, and coating thickness evaluation.</li>
+              <li><strong>Automated Processing:</strong> Fast and accurate image processing techniques for consistent and reliable results.</li>
+              <li><strong>ASTM Standards Compliance:</strong> Designed to meet ASTM standards for various metallographic measurements.</li>
+              <li><strong>Integrated Reporting:</strong> Generate detailed reports directly from the analysis software for easy documentation.</li>
+          </ul>
+          <br>
+          <div class="feature-buttons">
+              <!--<a href="/content/brochures/image-analysis/image-analysis.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+              <a href="/consumables/image-analysis.html" class="feature-button" target="_blank" rel="noopener noreferrer">Consumables</a>-->
+              <a href="https://www.youtube.com/watch?v=ZXAIT512s64&list=PLmrJyMFKYGR7YhfuhRgLRoPpt6biL2cp2&index=9" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+              <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+          </div>
+      </div>
+  </section>
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+  <!-- Weld Check Software Section -->
+  <h3>WELD CHECK Module</h3>
+  <section class="carousel-features" id="weld">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+          <div class="carousel-container">
+              <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-content">
+                  <div class="carousel-item" data-description="Weld Check Software Interface">
+                      <img src="/images/equipment/microscopy/image analysis/weld-check-module-cover.webp" alt="Weld Check Software Interface">
+                  </div>
+                  <!--<div class="carousel-item" data-description="Weld Check Software Interface">
+                      <img src="/images/equipment/microscopy/image analysis/weld-check-module-image.webp" alt="Weld Check Software Interface">
+                  </div>-->
+                  <!--<div class="carousel-item" data-description="Weld Check Software Video">
+                      <video controls>
+                          <source src="/images/equipment/microscopy/image analysis/weld-check-module-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>-->
+              </div>
+              <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-description">
+              <p></p>
+          </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="features">
+          <h3>Features</h3>
+          <ul>
+              <li><strong>Comprehensive Weld Analysis:</strong> Measure critical weld features such as leg lengths, throat height, penetration depth, and root size with precision.</li>
+              <li><strong>Automated Calculations:</strong> Quickly and efficiently assess welding characteristics using automated tools.</li>
+              <li><strong>High Accuracy:</strong> Provides accurate and reliable results for assessing weld quality and integrity.</li>
+              <li><strong>ASTM Standards Compliance:</strong> Complies with ASTM standards for weld analysis and measurement.</li>
+          </ul>
+          <br>
+          <div class="feature-buttons">
+              <!--<a href="/content/brochures/weld-check/weld-check.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+              <a href="/consumables/weld-check.html" class="feature-button" target="_blank" rel="noopener noreferrer">Consumables</a>-->
+              <!--<a href="/../videos/weld-check-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+              <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+          </div>
+      </div>
+  </section>
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+  <!-- Hardness Pro Software Section -->
+  <h3>Hardness PRO Module</h3>
+  <section class="carousel-features" id="hardness-pro">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+          <div class="carousel-container">
+              <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-content">
+                  <div class="carousel-item" data-description="Hardness Pro Software Interface">
+                      <img src="/images/equipment/microscopy/image analysis/hardness-pro-cover.webp" alt="Hardness Pro Software">
+                  </div>
+                  <!--<div class="carousel-item" data-description="Hardness Pro Software Interface">
+                    <img src="/images/equipment/microscopy/image analysis/hardness-pro-cover.webp" alt="Hardness Pro Software">
+                </div>-->
+                  <!--<div class="carousel-item" data-description="Hardness Pro Software Video">
+                      <video controls>
+                          <source src="/images/equipment/microscopy/image analysis/hardness-pro-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>-->
+              </div>
+              <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-description">
+              <p></p>
+          </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="features">
+          <h3>Features</h3>
+          <ul>
+              <li><strong>Automated Hardness Measurement:</strong> Supports automated measurement of Vickers, Knoop, and Brinell indents for accurate hardness determination.</li>
+              <li><strong>ASTM Compliance:</strong> Designed to meet ASTM standards for hardness testing across different scales.</li>
+              <li><strong>Multi-Field Analysis:</strong> Enables analysis across multiple fields, offering a comprehensive view of material properties.</li>
+              <li><strong>CHD Measurement:</strong> Automates the measurement of Case Hardness Depth (CHD) for consistent results.</li>
+          </ul>
+          <br>
+          <div class="feature-buttons">
+              <!--<a href="/content/brochures/hardness-pro/hardness-pro.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+              <a href="/consumables/hardness-pro.html" class="feature-button" target="_blank" rel="noopener noreferrer">Consumables</a>-->
+              <!--<a href="/../videos/hardness-pro-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+              <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+          </div>
+      </div>
+  </section>
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+
+
+
+</div>
+  
+<br><br>
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+  <!-- SCRIPTS -->
+  <script src="/../js/scripts.js"></script>
+  <script src="/../js/carousel.js"></script>
+
+  <script>
+  
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+          const offset = 175; // Adjust this value for your header's height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+          });
+      }
+  });
+});
+
+</script>
+
+</body>
+</html>
+

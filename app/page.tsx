@@ -7,8 +7,8 @@ import { ChevronRight } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Metallography Resources: Sample Preparation Guides, Procedures & Reference Materials',
-  description: 'Comprehensive metallography resources for sample preparation. Technical guides covering sectioning, mounting, grinding, polishing, and etching procedures. Material-specific protocols for carbon steel, stainless steel, aluminum, titanium, nickel alloys, copper, ceramics, composites, and more. Free metallographic analysis resources, ASTM standards, troubleshooting guides, and preparation checklists.',
+  title: 'Materialographic.com - Metallographic Sample Preparation Resources',
+  description: 'Comprehensive metallography resources for sample preparation. Technical guides covering sectioning, mounting, grinding, polishing, and etching procedures. Material-specific protocols for carbon steel, stainless steel, aluminum, titanium, nickel alloys, copper, ceramics, composites, and more. Expert metallographic analysis resources, ASTM standards, troubleshooting guides, and preparation tools from PACE Technologies.',
   keywords: [
     'metallography', 'metallographic sample preparation', 'metallurgical analysis', 'microstructural analysis',
     'sample preparation', 'metallographic techniques', 'grinding techniques', 'polishing methods', 'etching procedures',
@@ -16,26 +16,27 @@ export const metadata: Metadata = {
     'nickel alloy preparation', 'ceramic preparation', 'composite preparation', 'metallographic mounting',
     'sectioning techniques', 'metallographic polishing', 'metallographic etching', 'ASTM metallography standards',
     'metallographic consumables', 'metallographic equipment', 'grain size analysis', 'microstructure examination',
-    'metallographic troubleshooting', 'sample preparation guide', 'metallography procedures', 'metallographic best practices'
+    'metallographic troubleshooting', 'sample preparation guide', 'metallography procedures', 'metallographic best practices',
+    'PACE Technologies', 'materialographic'
   ],
   openGraph: {
-    title: 'Metallography Resources: Sample Preparation Guides, Procedures & Reference Materials',
+    title: 'Materialographic.com - Metallographic Sample Preparation Resources',
     description: 'Comprehensive metallography resources for sample preparation. Technical guides covering sectioning, mounting, grinding, polishing, and etching procedures. Material-specific protocols for steels, aluminum, titanium, ceramics, and composites.',
-    url: 'https://metallography.org',
-    siteName: 'Metallography.org',
+    url: 'https://materialographic.com',
+    siteName: 'Materialographic.com',
     images: [
       {
-        url: '/logo.png',
+        url: '/images/pace/materialographic-logo.png',
         width: 1200,
         height: 630,
-        alt: 'Metallography.org - Free Metallographic Sample Preparation Resources',
+        alt: 'Materialographic.com - PACE Technologies Metallographic Resources',
       },
       // White logo variant for dark backgrounds (platforms may choose based on context)
       {
-        url: '/logo-white.png',
+        url: '/images/pace/materialographic-logo-white.png',
         width: 1200,
         height: 630,
-        alt: 'Metallography.org - Free Metallographic Sample Preparation Resources',
+        alt: 'Materialographic.com - PACE Technologies Metallographic Resources',
       },
     ],
     locale: 'en_US',
@@ -43,42 +44,39 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Metallography Resources: Sample Preparation Guides & Procedures',
-    description: 'Technical guides and procedures for metallographic sample preparation. Material-specific protocols, ASTM standards, and troubleshooting resources.',
-    images: ['/logo.png'],
+    title: 'Materialographic.com - Metallographic Sample Preparation Resources',
+    description: 'Comprehensive technical guides and procedures for metallographic sample preparation. Material-specific protocols, ASTM standards, and troubleshooting resources from PACE Technologies.',
+    images: ['/images/pace/materialographic-logo.png'],
   },
   alternates: {
-    canonical: 'https://metallography.org',
+    canonical: 'https://materialographic.com',
   },
 }
 
 export default function Home() {
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    name: 'Metallography.org',
-    url: 'https://metallography.org',
-    description: 'Free educational resources, guides, and best practices for metallographic sample preparation',
+    '@type': 'WebSite',
+    name: 'Materialographic.com',
+    url: 'https://materialographic.com',
+    description: 'Comprehensive metallographic sample preparation resources. Expert guides, databases, and knowledge from PACE Technologies.',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://metallography.org/logo.png',
-      contentUrl: 'https://metallography.org/logo.png',
+      url: 'https://materialographic.com/images/pace/materialographic-logo.png',
+      contentUrl: 'https://materialographic.com/images/pace/materialographic-logo.png',
       width: 512,
       height: 512,
     },
-    founder: {
+    publisher: {
       '@type': 'Organization',
-      name: 'Metallography.org',
+      name: 'PACE Technologies',
+      url: 'https://metallographic.com',
     },
     sameAs: [
+      'https://metallographic.com',
       'https://shop.metallographic.com',
       'https://metallographic.com/equipment',
     ],
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Metallographic Sample Preparation Resources',
@@ -88,7 +86,7 @@ export default function Home() {
           itemOffered: {
             '@type': 'Course',
             name: 'Stainless Steel Preparation Guide',
-            url: 'https://metallography.org/guides/stainless-steel-preparation',
+            url: 'https://materialographic.com/guides/stainless-steel-preparation',
           },
         },
         {
@@ -96,7 +94,7 @@ export default function Home() {
           itemOffered: {
             '@type': 'Course',
             name: 'Aluminum Sample Preparation Guide',
-            url: 'https://metallography.org/guides/aluminum-sample-preparation',
+            url: 'https://materialographic.com/guides/aluminum-sample-preparation',
           },
         },
         {
@@ -104,7 +102,7 @@ export default function Home() {
           itemOffered: {
             '@type': 'Course',
             name: 'Grinding Techniques Guide',
-            url: 'https://metallography.org/guides/grinding-techniques',
+            url: 'https://materialographic.com/guides/grinding-techniques',
           },
         },
         {
@@ -112,7 +110,7 @@ export default function Home() {
           itemOffered: {
             '@type': 'Course',
             name: 'Polishing Methods Guide',
-            url: 'https://metallography.org/guides/polishing-methods',
+            url: 'https://materialographic.com/guides/polishing-methods',
           },
         },
         {
@@ -120,7 +118,7 @@ export default function Home() {
           itemOffered: {
             '@type': 'Course',
             name: 'Etching Procedures Guide',
-            url: 'https://metallography.org/guides/etching-procedures',
+            url: 'https://materialographic.com/guides/etching-procedures',
           },
         },
       ],
@@ -135,7 +133,7 @@ export default function Home() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://metallography.org',
+        item: 'https://materialographic.com',
       },
     ],
   }
@@ -143,14 +141,14 @@ export default function Home() {
   const websiteStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Metallography.org',
-    url: 'https://metallography.org',
-    description: 'Free metallography resources, guides, and reference materials for sample preparation and microstructural analysis',
+    name: 'Materialographic.com',
+    url: 'https://materialographic.com',
+    description: 'Next-generation UI/UX for metallography resources, guides, and reference materials for sample preparation and microstructural analysis from PACE Technologies',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://metallography.org/search?q={search_term_string}',
+        urlTemplate: 'https://materialographic.com/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -238,35 +236,35 @@ export default function Home() {
         position: 1,
         name: 'Sectioning',
         text: 'Cut the sample to appropriate size using abrasive cut-off wheels or precision saws while minimizing thermal and mechanical damage. Use proper cooling and cutting speeds to prevent sample alteration.',
-        image: 'https://metallography.org/images/consumables/grinding & lapping-cover.webp',
+        image: 'https://materialographic.com/images/consumables/grinding & lapping-cover.webp',
       },
       {
         '@type': 'HowToStep',
         position: 2,
         name: 'Mounting',
         text: 'Embed samples in thermosetting or thermoplastic resins for handling, edge retention, and protection of delicate features. Hot mounting provides better edge retention, while cold mounting is suitable for temperature-sensitive materials.',
-        image: 'https://metallography.org/images/consumables/grinding & lapping-cover.webp',
+        image: 'https://materialographic.com/images/consumables/grinding & lapping-cover.webp',
       },
       {
         '@type': 'HowToStep',
         position: 3,
         name: 'Grinding',
         text: 'Remove sectioning damage and achieve flatness using progressively finer silicon carbide or aluminum oxide abrasives, typically starting at 120 grit and progressing through 240, 320, 400, 600, and 1200 grit. Ensure uniform scratch pattern in one direction before proceeding.',
-        image: 'https://metallography.org/images/consumables/grinding & lapping-cover.webp',
+        image: 'https://materialographic.com/images/consumables/grinding & lapping-cover.webp',
       },
       {
         '@type': 'HowToStep',
         position: 4,
         name: 'Polishing',
         text: 'Eliminate scratches and achieve a mirror-like surface using diamond abrasives (6μm to 0.25μm) or colloidal silica on appropriate polishing cloths. Use progressively finer abrasives and ensure complete removal of previous step scratches.',
-        image: 'https://metallography.org/images/consumables/rough polishing-cover.png',
+        image: 'https://materialographic.com/images/consumables/rough polishing-cover.png',
       },
       {
         '@type': 'HowToStep',
         position: 5,
         name: 'Etching',
         text: 'Apply chemical reagents (such as nital, picral, or material-specific etchants) to reveal grain boundaries, phases, and microstructural features through selective attack. Etching time varies by material and etchant concentration.',
-        image: 'https://metallography.org/images/consumables/etching.webp',
+        image: 'https://materialographic.com/images/consumables/etching.webp',
       },
     ],
   }
@@ -276,7 +274,7 @@ export default function Home() {
     '@type': 'CollectionPage',
     name: 'Metallography Resources',
     description: 'Comprehensive collection of metallographic sample preparation guides, procedures, tools, and reference materials',
-    url: 'https://metallography.org',
+    url: 'https://materialographic.com',
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: [
@@ -286,7 +284,7 @@ export default function Home() {
           item: {
             '@type': 'Course',
             name: 'Metallographic Sample Preparation Guides',
-            url: 'https://metallography.org/guides',
+            url: 'https://materialographic.com/guides',
           },
         },
         {
@@ -295,7 +293,7 @@ export default function Home() {
           item: {
             '@type': 'SoftwareApplication',
             name: 'Metallography Tools and Calculators',
-            url: 'https://metallography.org/tools',
+            url: 'https://materialographic.com/tools',
           },
         },
         {
@@ -304,7 +302,7 @@ export default function Home() {
           item: {
             '@type': 'Article',
             name: 'Metallography Reference Materials',
-            url: 'https://metallography.org/resources',
+            url: 'https://materialographic.com/resources',
           },
         },
       ],
@@ -341,23 +339,25 @@ export default function Home() {
       {/* Hero Section with Background */}
       <section className="relative min-h-[100vh] sm:min-h-[100vh] flex items-center pt-24 pb-12 sm:pb-20 overflow-hidden">
         {/* Background Image with Overlay - extends to cover header area */}
-        <div className="absolute -top-24 left-0 right-0 bottom-0 z-0">
+        <div className="absolute -top-24 left-0 right-0 bottom-0 z-0 bg-gray-900">
           <div className="relative w-full h-full">
             <Image
-              src="/images/microstructures/AlON, as-polished, sputter coated, 200X.JPG"
-              alt="AlON aluminum oxynitride ceramic microstructure at 200X magnification showing metallographic sample preparation results, sputter coated, as-polished surface"
-              title="AlON ceramic microstructure - metallographic sample preparation background"
+              src="/images/pace/equipment.webp"
+              alt="PACE Technologies metallography equipment including precision cutter, hydraulic press, and polishing system"
+              title="PACE Technologies metallography equipment for sample preparation"
               fill
               className="object-cover object-center"
               priority
-              quality={50}
+              quality={90}
               sizes="100vw"
-              style={{ objectPosition: 'center 30%' }}
+              style={{ 
+                filter: 'grayscale(60%)'
+              }}
               fetchPriority="high"
             />
-            {/* Shadow Overlay for Text Visibility - very subtle fade at bottom */}
+            {/* Overlay for Text Visibility */}
             <div className="absolute inset-0" style={{ 
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 75%, rgba(0,0,0,0.55) 85%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.30) 96%, rgba(0,0,0,0.15) 98%, transparent 100%)'
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.1) 100%)'
             }}></div>
             {/* Fade background image to white at bottom */}
             <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none" style={{ 
@@ -366,62 +366,36 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="container-custom relative z-10 w-full flex items-center min-h-[calc(100vh-6rem)] pt-12 pb-16 sm:pt-16 sm:pb-24" style={{ marginTop: '-2rem' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start w-full">
+        <div className="container-custom relative z-10 w-full flex items-center min-h-[calc(100vh-6rem)] pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-12 md:pb-24 px-4 sm:px-6" style={{ marginTop: '-4rem' }}>
+          <div className="max-w-3xl w-full">
             <AnimateOnScroll animation="fadeInUp" duration={800} threshold={0}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-white drop-shadow-lg">
-                Metallography: Sample Preparation Guides & Procedures
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-8 sm:mb-12 leading-relaxed drop-shadow-md">
-                Technical guides, procedures, and reference materials for metallographic sample preparation. 
-                From sectioning and mounting to polishing and etching.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
-                <CTA href="/guides" variant="primary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                  Browse Guides
-                </CTA>
-                <CTA href="/resources" variant="secondary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                  View Resources
-                </CTA>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" duration={800} className="hidden lg:block">
-              <div className="relative w-full">
-                {/* Browser Window Frame */}
-                <div className="bg-gray-100 rounded-t-lg border border-gray-300 shadow-2xl overflow-hidden">
-                  {/* Browser Title Bar */}
-                  <div className="bg-white border-b border-gray-200 px-4 py-2.5 flex items-center gap-2">
-                    {/* Traffic Light Dots (macOS style) */}
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    {/* Address Bar */}
-                    <div className="flex-1 mx-4 bg-gray-50 rounded-md px-4 py-1.5 border border-gray-200 flex items-center gap-2">
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                      </svg>
-                      <span className="text-xs text-gray-600 font-medium flex-1">metallography.org/guides</span>
-                      <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  </div>
-                  {/* Browser Content */}
-                  <div className="relative bg-white">
-                    <Image
-                      src="/images/webpage-snaps/guides-page.png"
-                      alt="Metallography guides page preview showing sample preparation guides, material-specific procedures, grinding polishing etching techniques, and metallographic resources"
-                      title="Metallography guides page interface preview"
-                      width={800}
-                      height={475}
-                      className="w-full h-auto"
-                      priority
-                      fetchPriority="high"
-                      sizes="(max-width: 1024px) 0px, (max-width: 1280px) 600px, 800px"
-                    />
-                  </div>
+              <div 
+                className="rounded-2xl p-5 sm:p-7 md:p-10 border border-white/30 shadow-2xl w-full"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.2)',
+                }}
+              >
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-white" style={{ 
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                }}>
+                  Build Your Sample Preparation Lab
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 md:mb-12 leading-relaxed" style={{ 
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                }}>
+                  Quality control, failure analysis, research and development, and material characterization. 
+                  Complete solutions for every metallography application.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
+                  <CTA href="/quote" variant="primary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Request Quote
+                  </CTA>
+                  <CTA href="https://shop.metallographic.com" variant="secondary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" target="_blank" rel="noopener noreferrer">
+                    Shop Equipment
+                  </CTA>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -429,20 +403,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What is Metallography Section - SEO & AI Training */}
+      {/* How PACE can help Section */}
       <article className="py-12 sm:py-20">
         <div className="container-custom">
           <div className="max-w-6xl mx-auto">
             <AnimateOnScroll animation="fadeInUp" duration={700} className="mb-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
                 <div>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What is Metallography?</h2>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How PACE can help</h2>
                   <p className="text-lg leading-relaxed text-gray-700 mb-4">
-                    <strong>Metallography</strong> is the scientific study and analysis of the <strong>microstructure</strong> of metals, alloys, ceramics, and composite materials. 
-                    Through systematic sample preparation and microscopic examination, it reveals grain boundaries, phases, inclusions, and defects that determine material properties.
+                    PACE Technologies provides everything your lab needs for metallographic sample preparation. 
+                    Equipment and consumables for sectioning, mounting, grinding, polishing, and etching, backed by expert guidance and support.
                   </p>
                   <p className="text-base text-gray-600">
-                    Essential for quality control, failure analysis, and materials research across aerospace, automotive, medical devices, energy, and additive manufacturing industries.
+                    Whether you're building a new lab or improving existing workflows, our solutions deliver consistent, 
+                    reliable results for quality control, failure analysis, and materials research.
                   </p>
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg">
@@ -460,43 +435,43 @@ export default function Home() {
               </div>
             </AnimateOnScroll>
 
-            {/* Sample Preparation Steps - Visual Cards */}
+            {/* Sample Preparation Steps - PACE Solutions */}
             <AnimateOnScroll animation="fadeInUp" delay={100} duration={600} className="mb-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">The Five-Step Preparation Process</h3>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Complete Solutions for Every Step</h3>
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <AnimateOnScroll animation="scaleIn" delay={50} duration={500}>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">1</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Sectioning</h4>
-                    <p className="text-sm text-gray-600">Cut sample to size with minimal damage</p>
+                    <p className="text-sm text-gray-600">Precision cutters, abrasive saws, and cutting fluids for clean, damage-free cuts</p>
                   </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll animation="scaleIn" delay={100} duration={500}>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">2</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Mounting</h4>
-                    <p className="text-sm text-gray-600">Embed in resin for handling</p>
+                    <p className="text-sm text-gray-600">Compression and castable mounting presses with a full range of mounting materials</p>
                   </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll animation="scaleIn" delay={150} duration={500}>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">3</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Grinding</h4>
-                    <p className="text-sm text-gray-600">Remove damage with progressive abrasives</p>
+                    <p className="text-sm text-gray-600">Grinder-polishers, papers, and SiC powders for progressive material removal</p>
                   </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll animation="scaleIn" delay={200} duration={500}>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">4</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Polishing</h4>
-                    <p className="text-sm text-gray-600">Achieve scratch-free mirror surface</p>
+                    <p className="text-sm text-gray-600">Diamond compounds, polishing pads, and slurries for mirror-finish surfaces</p>
                   </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll animation="scaleIn" delay={250} duration={500}>
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">5</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Etching</h4>
-                    <p className="text-sm text-gray-600">Reveal microstructure with reagents</p>
+                    <p className="text-sm text-gray-600">Etchants, cleaning solutions, and application tools for microstructure revelation</p>
                   </div>
                 </AnimateOnScroll>
               </div>
@@ -504,10 +479,10 @@ export default function Home() {
 
             <AnimateOnScroll animation="fadeIn" delay={300} duration={500} className="text-center">
               <p className="text-base text-gray-700 mb-4">
-                Explore our <Link href="/guides" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">preparation guides</Link>, 
-                <Link href="/tools" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> reference tools</Link>, 
-                <Link href="/standards" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> ASTM and ISO standards</Link>, and 
-                <Link href="/resources" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> reference materials</Link> for detailed procedures.
+                Browse our <Link href="/equipment" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">equipment catalog</Link>, 
+                <Link href="/consumables" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> consumables</Link>, 
+                <Link href="/quote" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> request a quote</Link>, or 
+                <Link href="/guides" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> explore our preparation guides</Link>.
               </p>
             </AnimateOnScroll>
           </div>

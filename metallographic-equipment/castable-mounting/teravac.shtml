@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeraVAC Vacuum Mounting Chambers | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> 
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> 
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" />
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="TeraVAC, TeraVAC Pro, vacuum mounting chamber, metallographic mounting, PACE Technologies, sample preparation, castable mounting chamber, cold mounting">
+    <meta name="description" content="The TeraVAC Vacuum Mounting Chambers by PACE Technologies offer enhanced mounting precision by effectively eliminating air bubbles during the sample preparation process.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "TeraVAC Vacuum Mounting Chamber",
+          "image": "https://www.metallographic.com/Images/teravac.webp",
+          "description": "The TeraVAC Vacuum Mounting Chambers ensure optimal sample mounting by removing air bubbles and enhancing the quality of metallographic analysis.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/castable-mounting/teravac",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>       
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Metallographic Castable Vacuum Impregnation Chambers
+          </h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+  <!-- Introduction Section -->
+  <section class="introduction">
+      <h2 class="equipment-header">Castable Vacuum Impregnation Chambers</h2>
+      <p>
+        The TeraVAC and TeraVAC Pro vacuum impregnation systems are designed to improve resin penetration in samples with voids and porosity. The TeraVAC offers a simple, economical solution with vacuum pouring, room-pressure curing, and a tilting, retractable pouring arm for ease of use and reliable results. The TeraVAC Pro builds on this capability with programmable, automated control of vacuum and cycle parameters, a larger chamber capacity, an integrated rotating table for efficient mold positioning, and a user-friendly, low-noise design suited for higher-throughput laboratory environments.
+      </p>
+      <div class="feature-buttons-top">
+        <a href="#TeraVAC" class="feature-button-top">TeraVAC</a>
+        <a href="#TeraVAC-Pro" class="feature-button-top">TeraVAC Pro (NEW)</a>
+    </div>
+  </section>
+
+  <h3>TeraVAC Castable Vacuum Impregnation Chamber</h3>
+  <section class="carousel-features" id="TeraVAC">
+      <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                    <div class="carousel-item" data-description="TeraVAC Vacuum Mounting System">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-cover.webp" alt="Image of the TeraVAC Vacuum Mounting System">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Front View">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-front.webp" alt="TeraVAC Front View">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Pump">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-pump.webp" alt="TeraVAC Pump">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Chamber">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-chamber.webp" alt="TeraVAC Chamber">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Features">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-features.webp" alt="Image of the TeraVAC with arrows pointing to key features such as vacuum release valve, pump, gauge, and chamber">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Chamber Dimensions">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC-dimensions.webp" alt="Image of the TeraVAC chamber with key dimensions, such as width, depth, and length">
+                    </div>
+                     <!-- <div class="carousel-item" data-description="TeraVAC Video">
+                        <video controls>
+                            <source src="/images/equipment/castable mounting/vacuum mounting system/TeraVAC-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>-->
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+  
+      <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Vacuum Pouring:</strong> Ensures air bubble-free mounting by pouring under vacuum conditions.</li>
+                  <li><strong>Tilting, Retractable Pouring Arm:</strong> Allows for precise and controlled pouring.</li>
+                  <li><strong>Room-Pressure Curing:</strong> Simplifies the curing process with room-pressure conditions.</li>
+                  <li><strong>Easy to Use:</strong> User-friendly design for efficient operation.</li>
+              </ul>
+             
+            <br>
+                <div class="feature-buttons">
+                  <a href="/content/brochures/castable/teraVAC.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                  <a href="https://shop.metallographic.com/collections/castable-mounting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                    <a href="https://www.youtube.com/watch?v=g8QCrWxyRZ4&t=12s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+                    <a href="/metallographic-consumables/mounting/castable.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                </div>
+            </div>
+        </section>
+
+<!-- Technical Specifications Section for TeraVAC -->
+<section class="specifications" id="castable-specifications">
+  <h3>Technical Specifications - TeraVAC</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Bell Jar</td>
+          <td>Tilting, retractable pouring arm</td>
+      </tr>
+      <tr>
+          <td>Mount Sizes</td>
+          <td>1, 1.25, 1.5, and 2-inch (25, 30, 40, and 50 mm)</td>
+      </tr>
+      <tr>
+          <td>Vacuum</td>
+          <td>Vacuum pump (sold separately)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>12 x 12 x 12 inches (300 x 300 x 300 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>2.2 lbs (1 kg)</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>TeraVAC</td>
+      </tr>
+  </table>
+</section>
+
+  <h3>TeraVAC PRO Programmable Castable Vacuum Impregnation Chamber</h3>
+<section class="carousel-features" id="TeraVAC-Pro">
+    <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                    <div class="carousel-item" data-description="TeraVAC Pro Vacuum Mounting System">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC Pro-cover.webp" alt="Image of the TeraVAC Pro Vacuum Mounting System">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Pro Chamber">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC Pro-chamber.webp" alt="Image of the TeraVAC Pro Chamber">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Pro Features">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC Pro-features.webp" alt="Image of the TeraVAC Pro with arrows pointing to key features such as touch screen control panel, resin release handle, and chamber">
+                    </div>
+                    <div class="carousel-item" data-description="TeraVAC Pro Chamber Dimensions">
+                        <img src="/images/equipment/castable mounting/vacuum mounting system/teraVAC Pro-dimensions.webp" alt="Image of the TeraVAC Pro chamber with key dimensions, such as width, depth, and length">
+                    </div>
+                     <!-- <div class="carousel-item" data-description="TeraVAC Pro Video">
+                        <video controls>
+                            <source src="/images/equipment/castable mounting/vacuum mounting system/TeraVAC Pro-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>-->
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+
+    <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Vacuum Pouring:</strong> Ensures air bubble-free mounting by pouring under vacuum conditions.</li>
+                  <li><strong>Programmable Operation:</strong> Vacuum level, cycle count, and timing parameters.</li>
+                  <li><strong>Large Vacuum Chamber Capacity:</strong> Up to 12 samples - 1.5-inch (40 mm) diameter.</li>
+                  <li><strong>Built-in Rotating Table:</strong> Ideal for efficient mold location.</li>
+              </ul>
+             
+            <br>
+                <div class="feature-buttons">
+                  <a href="/content/brochures/castable/teraVACPro.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a> 
+                  <a href="https://shop.metallographic.com/collections/castable-mounting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                    <!--<a href="https://www.youtube.com/watch?v=g8QCrWxyRZ4&t=12s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                    <a href="/metallographic-consumables/mounting/castable.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                </div>
+            </div>
+        </section>
+
+<!-- Technical Specifications Section for TeraVAC Pro -->
+<section class="specifications" id="castable-specifications">
+  <h3>Technical Specifications - TeraVAC Pro</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Control Interface</td>
+          <td>5-inch touch screen</td>
+      </tr>
+      <tr>
+          <td>Chamber Capacity</td>
+          <td>Up to 12 samples - 1.5-inch (40 mm) diameter</td>
+      </tr>
+      <tr>
+          <td>Vacuum Range</td>
+          <td>0-90 kPa</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>Open: 20 x 18 x 25-inch (507 x 464 x 300 mm) / Closed: 20 x 18 x 10.5-inch (507 x 646 x 267 mm)
+          </td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>40 lbs (18 kg)</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>TeraVAC Pro</td>
+      </tr>
+  </table>
+</section>
+  
+</section>
+
+
+
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+
+  <!-- Related Consumables Section -->
+<section class="related-products">
+    <h3>Related Consumables</h3>
+    <ul>
+        <li><a href="https://shop.metallographic.com/collections/castable-mounting-acrylic" target="_blank" rel="noopener noreferrer">Acrylic Resin</a></li>
+              <li><a href="https://shop.metallographic.com/collections/castable-mounting-epoxy" target="_blank" rel="noopener noreferrer">Epoxy Resin</a></li>
+              <li><a href="https://shop.metallographic.com/collections/castable-mounting-polyester" target="_blank" rel="noopener noreferrer">Polyester Resin</a></li>
+              <li><a href="https://shop.metallographic.com/collections/castable-mounting-accessories" target="_blank" rel="noopener noreferrer">Accessories</a></li>
+          </ul>
+    <br>
+  </section>
+
+</div>
+  
+<br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+  <!-- SCRIPTS -->
+  <script src="/../js/scripts.js"></script>
+  <script src="/../js/carousel.js"></script>
+
+  <script>
+  
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+          const offset = 175; // Adjust this value for your header's height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+          });
+      }
+  });
+});
+
+</script>
+
+</body>
+</html>
+

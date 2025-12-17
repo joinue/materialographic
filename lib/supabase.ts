@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { createClient as createBrowserClient } from '@/lib/supabase-client'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -230,6 +231,22 @@ export interface Consumable {
   is_active?: boolean | null
   status?: 'active' | 'discontinued' | 'draft' | null
   sort_order?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface SubcategoryMetadata {
+  id: string
+  entity_type: 'equipment' | 'consumables'
+  category: string
+  subcategory_key: string
+  subcategory_label: string
+  display_order?: number | null
+  description?: string | null
+  cover_image_url?: string | null
+  meta_title?: string | null
+  meta_description?: string | null
+  is_active?: boolean | null
   created_at?: string
   updated_at?: string
 }
@@ -749,6 +766,189 @@ export async function getConsumablesByItemId(itemId: string): Promise<Consumable
   }
 
   return data
+}
+
+// Subcategory Metadata functions
+export async function getSubcategoriesForCategory(
+  category: string,
+  entityType: 'equipment' | 'consumables'
+): Promise<SubcategoryMetadata[]> {
+  // Use browser client for client-side calls (all current usages are from client components)
+  const client = createBrowserClient()
+  
+  const { data, error } = await client
+    .from('subcategory_metadata')
+    .select('*')
+    .eq('entity_type', entityType)
+    .eq('category', category)
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+    .order('subcategory_label', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching subcategories:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getSubcategoryMetadata(
+  category: string,
+  subcategoryKey: string,
+  entityType: 'equipment' | 'consumables'
+): Promise<SubcategoryMetadata | null> {
+  // Use browser client for client-side calls (all current usages are from client components)
+  const client = createBrowserClient()
+  
+  const { data, error } = await client
+    .from('subcategory_metadata')
+    .select('*')
+    .eq('entity_type', entityType)
+    .eq('category', category)
+    .eq('subcategory_key', subcategoryKey)
+    .eq('is_active', true)
+    .single()
+
+  if (error) {
+    if (error.code === 'PGRST116') {
+      return null
+    }
+    console.error('Error fetching subcategory metadata:', error)
+    throw error
+  }
+
+  return data
+}
+
+// Equipment by subcategory
+export async function getEquipmentBySubcategory(
+  category: string,
+  subcategory: string
+): Promise<Equipment[]> {
+  // Map navigation category to database categories
+  let dbCategories: string[] = []
+  if (category === 'sectioning') dbCategories = ['sectioning']
+  else if (category === 'mounting') dbCategories = ['mounting']
+  else if (category === 'grinding-polishing') dbCategories = ['grinding', 'polishing']
+  else if (category === 'microscopy') dbCategories = ['microscopy']
+  else if (category === 'hardness-testing') dbCategories = ['hardness']
+  else if (category === 'lab-furniture') dbCategories = ['cleaning', 'lab-furniture']
+
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .in('category', dbCategories)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching equipment by subcategory:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getFeaturedEquipmentBySubcategory(
+  category: string,
+  subcategory: string,
+  limit: number = 6
+): Promise<Equipment[]> {
+  // Map navigation category to database categories
+  let dbCategories: string[] = []
+  if (category === 'sectioning') dbCategories = ['sectioning']
+  else if (category === 'mounting') dbCategories = ['mounting']
+  else if (category === 'grinding-polishing') dbCategories = ['grinding', 'polishing']
+  else if (category === 'microscopy') dbCategories = ['microscopy']
+  else if (category === 'hardness-testing') dbCategories = ['hardness']
+  else if (category === 'lab-furniture') dbCategories = ['cleaning', 'lab-furniture']
+
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .in('category', dbCategories)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+    .limit(limit)
+
+  if (error) {
+    console.error('Error fetching featured equipment:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+// Consumables by subcategory
+export async function getConsumablesBySubcategory(
+  category: string,
+  subcategory: string
+): Promise<Consumable[]> {
+  // Map navigation category to database categories
+  let dbCategories: string[] = []
+  if (category === 'sectioning') dbCategories = ['sectioning']
+  else if (category === 'mounting') dbCategories = ['mounting']
+  else if (category === 'grinding-lapping') dbCategories = ['grinding', 'grinding & polishing']
+  else if (category === 'polishing') dbCategories = ['polishing']
+  else if (category === 'etching') dbCategories = ['etching']
+  else if (category === 'cleaning') dbCategories = ['cleaning']
+  else if (category === 'hardness-testing') dbCategories = ['hardness', 'hardness testing']
+
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .in('category', dbCategories)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching consumables by subcategory:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getFeaturedConsumablesBySubcategory(
+  category: string,
+  subcategory: string,
+  limit: number = 6
+): Promise<Consumable[]> {
+  // Map navigation category to database categories
+  let dbCategories: string[] = []
+  if (category === 'sectioning') dbCategories = ['sectioning']
+  else if (category === 'mounting') dbCategories = ['mounting']
+  else if (category === 'grinding-lapping') dbCategories = ['grinding', 'grinding & polishing']
+  else if (category === 'polishing') dbCategories = ['polishing']
+  else if (category === 'etching') dbCategories = ['etching']
+  else if (category === 'cleaning') dbCategories = ['cleaning']
+  else if (category === 'hardness-testing') dbCategories = ['hardness', 'hardness testing']
+
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .in('category', dbCategories)
+    .eq('subcategory', subcategory)
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+    .limit(limit)
+
+  if (error) {
+    console.error('Error fetching featured consumables:', error)
+    throw error
+  }
+
+  return data || []
 }
 
 // Smart recommendation functions that use suitability attributes

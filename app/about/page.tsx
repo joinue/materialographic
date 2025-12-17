@@ -5,34 +5,31 @@ import Link from 'next/link'
 import { ChevronRight, Award, Users, BookOpen, Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About Metallography.org - Free Educational Resources for Sample Preparation',
-  description: 'Learn about Metallography.org, a free educational service dedicated to advancing metallographic sample preparation. Founded by PACE Technologies, we provide comprehensive guides, tools, and expert knowledge to help laboratories, researchers, and students achieve consistent, accurate results in metallography and microstructural analysis.',
+  title: 'About PACE Technologies - Metallographic Equipment & Sample Preparation',
+  description: 'Learn about PACE Technologies, a family-owned company founded in 1997 by Dr. Donald and Cathy Zipperian. We provide metallographic equipment, consumables, and expert knowledge to laboratories worldwide. Recipient of the Presidential "E" Award for excellence in exporting.',
   keywords: [
-    'about metallography.org',
-    'metallography education',
     'PACE Technologies',
-    'metallographic resources',
-    'sample preparation education',
-    'free metallography guides',
-    'metallographic sample preparation',
-    'microstructural analysis education',
-    'metallography community',
+    'about PACE Technologies',
+    'metallographic equipment',
+    'metallographic consumables',
+    'sample preparation equipment',
     'Donald Zipperian',
     'Cathy Zipperian',
-    'metallography training',
-    'metallurgical analysis resources',
+    'metallography company',
+    'Presidential E Award',
+    'metallographic laboratory equipment',
   ],
   openGraph: {
-    title: 'About Metallography.org - Free Educational Resources for Sample Preparation',
-    description: 'Learn about Metallography.org, a free educational service dedicated to advancing metallographic sample preparation. Founded by PACE Technologies, we provide comprehensive guides, tools, and expert knowledge.',
-    url: 'https://metallography.org/about',
-    siteName: 'Metallography.org',
+    title: 'About PACE Technologies - Metallographic Equipment & Sample Preparation',
+    description: 'Learn about PACE Technologies, a family-owned company providing metallographic equipment and consumables to laboratories worldwide since 1997.',
+    url: 'https://materialographic.com/about',
+    siteName: 'Materialographic.com',
     images: [
       {
-        url: '/logo.png',
+        url: '/images/pace/materialographic-logo.png',
         width: 1200,
         height: 630,
-        alt: 'Metallography.org - Free Educational Resources for Metallographic Sample Preparation',
+        alt: 'PACE Technologies - Metallographic Equipment and Consumables',
       },
     ],
     locale: 'en_US',
@@ -40,12 +37,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Metallography.org - Free Educational Resources',
-    description: 'Learn about Metallography.org, a free educational service dedicated to advancing metallographic sample preparation.',
-    images: ['/logo.png'],
+    title: 'About PACE Technologies',
+    description: 'Learn about PACE Technologies, a family-owned company providing metallographic equipment and consumables since 1997.',
+    images: ['/images/pace/materialographic-logo.png'],
   },
   alternates: {
-    canonical: 'https://metallography.org/about',
+    canonical: 'https://materialographic.com/about',
   },
   robots: {
     index: true,
@@ -64,51 +61,38 @@ export default function AboutPage() {
   // Structured Data for SEO
   const organizationStructuredData = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    name: 'Metallography.org',
-    url: 'https://metallography.org',
-    description: 'Free educational resources, guides, and best practices for metallographic sample preparation. Learn techniques, troubleshooting tips, and access expert knowledge.',
+    '@type': 'Organization',
+    name: 'PACE Technologies',
+    url: 'https://metallographic.com',
+    description: 'PACE Technologies is a family-owned company providing metallographic equipment and consumables to laboratories worldwide. Founded in 1997, we specialize in sample preparation equipment, consumables, and expert technical support.',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://metallography.org/logo.png',
-      contentUrl: 'https://metallography.org/logo.png',
+      url: 'https://materialographic.com/images/pace/materialographic-logo.png',
+      contentUrl: 'https://materialographic.com/images/pace/materialographic-logo.png',
       width: 512,
       height: 512,
     },
-    founder: {
-      '@type': 'Person',
-      name: 'Marc Salerno',
-      jobTitle: 'President',
-      memberOf: {
-        '@type': 'Organization',
-        name: 'PACE Technologies',
+    founder: [
+      {
+        '@type': 'Person',
+        name: 'Donald Zipperian',
+        honorificSuffix: 'PhD',
+        jobTitle: 'Co-Founder',
       },
-    },
+      {
+        '@type': 'Person',
+        name: 'Cathy Zipperian',
+        jobTitle: 'Co-Founder',
+      },
+    ],
     foundingDate: '1997',
-    parentOrganization: {
-      '@type': 'Organization',
-      name: 'PACE Technologies',
-      founder: [
-        {
-          '@type': 'Person',
-          name: 'Donald Zipperian',
-          honorificSuffix: 'PhD',
-        },
-        {
-          '@type': 'Person',
-          name: 'Cathy Zipperian',
-        },
-      ],
-      foundingDate: '1997',
-      award: 'Presidential "E" Award (2015)',
-    },
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-      description: 'Free educational resources for metallographic sample preparation',
+    award: 'Presidential "E" Award (2015)',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'US',
     },
     sameAs: [
+      'https://metallographic.com',
       'https://shop.metallographic.com',
       'https://metallographic.com/equipment',
     ],
@@ -122,13 +106,13 @@ export default function AboutPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://metallography.org',
+        item: 'https://materialographic.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'About',
-        item: 'https://metallography.org/about',
+        item: 'https://materialographic.com/about',
       },
     ],
   }
@@ -137,9 +121,9 @@ export default function AboutPage() {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     mainEntity: {
-      '@type': 'EducationalOrganization',
-      name: 'Metallography.org',
-      description: 'A free educational service dedicated to advancing metallographic sample preparation and helping the global metallography community achieve consistent, accurate results.',
+      '@type': 'Organization',
+      name: 'PACE Technologies',
+      description: 'PACE Technologies is a family-owned company founded in 1997, providing metallographic equipment and consumables to laboratories worldwide.',
     },
   }
 
@@ -161,10 +145,10 @@ export default function AboutPage() {
         <div className="container-custom">
         {/* Header Section */}
         <AnimateOnScroll animation="fadeInUp" duration={500} className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">About Metallography.org</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">About PACE Technologies</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A free educational service dedicated to advancing metallographic sample preparation 
-            and helping the global metallography community achieve consistent, accurate results.
+            A family-owned company providing metallographic equipment and consumables to laboratories worldwide 
+            since 1997. Committed to advancing the field of metallographic sample preparation.
           </p>
         </AnimateOnScroll>
 
@@ -173,30 +157,22 @@ export default function AboutPage() {
           <div className="lg:col-span-2">
             <AnimateOnScroll animation="fadeInUp" delay={50} duration={500}>
               <div className="card">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Mission</h2>
+                <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Story</h2>
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                   <p className="mb-4">
-                    Metallography.org was created as a service to the metallography community, 
-                    driven by a passion for advancing metallographic sample preparation and helping 
-                    spread good information throughout the field.
+                    Founded in 1997 by Dr. Donald and Cathy Zipperian, PACE Technologies began as a small project 
+                    in the Zipperian family's home (office in the basement, warehouse in the garage!). They were 
+                    driven by a passion for advancing metallographic sample preparation after years in the industry.
                   </p>
                   <p className="mb-4">
-                    Our mission is to provide free, detailed, and reliable educational resources 
-                    that support laboratories, researchers, and students around the world. We believe 
-                    that access to quality information should be freely available to everyone working 
-                    in metallography and microstructural analysis.
-                  </p>
-                  <p className="mb-4">
-                    Through detailed guides, practical tools, reference materials, and expert knowledge, 
-                    we aim to help practitioners at all levels achieve consistent, accurate results in 
-                    their metallographic work. Whether you're preparing samples for quality control, 
-                    research, or failure analysis, our resources are designed to support your success.
+                    Over the years, our dedication to quality and service became growth, helping us earn the 
+                    Presidential "E" Award in 2015 for contributing to the growth of U.S. exports.
                   </p>
                   <p>
-                    This platform is the brainchild of PACE Technologies President Marc Salerno, 
-                    who envisioned a complete resource that would serve the entire metallography 
-                    community, from students just getting started to experienced professionals 
-                    seeking to refine their techniques.
+                    As a fully family-owned and operated company, we continue to provide reliable, 
+                    high-quality metallographic equipment and consumables that support laboratories and researchers 
+                    around the world. Our commitment remains rooted in helping customers achieve consistent, 
+                    accurate results in metallography and microstructural analysis.
                   </p>
                 </div>
               </div>
@@ -209,24 +185,24 @@ export default function AboutPage() {
                 <h3 className="text-xl font-bold mb-4 text-gray-900">Quick Facts</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                    <Award className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-gray-900">Free Resources</p>
-                      <p className="text-sm text-gray-600">All guides, tools, and materials are completely free to use</p>
+                      <p className="font-semibold text-gray-900">Presidential "E" Award</p>
+                      <p className="text-sm text-gray-600">Recognized for excellence in exporting (2015)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Users className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-gray-900">Community Focused</p>
-                      <p className="text-sm text-gray-600">Designed to serve the global metallography community</p>
+                      <p className="font-semibold text-gray-900">Family Owned</p>
+                      <p className="text-sm text-gray-600">Founded in 1997 by Dr. Donald and Cathy Zipperian</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Heart className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-gray-900">Expert Knowledge</p>
-                      <p className="text-sm text-gray-600">Content created by industry professionals with years of experience</p>
+                      <p className="font-semibold text-gray-900">Global Reach</p>
+                      <p className="text-sm text-gray-600">Serving laboratories worldwide with quality equipment</p>
                     </div>
                   </div>
                 </div>
@@ -235,30 +211,24 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* PACE Technologies Connection Section */}
+        {/* Founders Section */}
         <AnimateOnScroll animation="fadeInUp" delay={150} duration={500} className="mb-16">
           <div className="card bg-gray-50 border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-4 text-gray-900">Rooted in Experience</h2>
+                <h2 className="text-3xl font-bold mb-4 text-gray-900">Our Founders</h2>
                 <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                   <p className="mb-4">
-                    Metallography.org is supported by PACE Technologies, a family-owned company founded 
-                    in 1997 by Dr. Donald and Cathy Zipperian. With decades of combined experience in 
-                    metallographic sample preparation, PACE Technologies has established itself as a trusted 
-                    provider of equipment and consumables used in laboratories worldwide.
-                  </p>
-                  <p className="mb-4">
-                    PACE Technologies' commitment to advancing the field was recognized in 2015 when the 
-                    company received the Presidential "E" Award for excellence in exporting U.S. products 
-                    and services. This award reflects their dedication to supporting the global metallography 
-                    community through quality equipment and technical expertise.
+                    Dr. Donald Zipperian brings extensive experience in metallography, having worked with 
+                    industry leaders like Buehler before founding PACE Technologies. Together with Cathy 
+                    Zipperian, they built the company on a foundation of technical expertise, quality, 
+                    and commitment to the metallography community.
                   </p>
                   <p>
-                    Metallography.org represents the next step in this commitment: sharing knowledge freely 
-                    with the community. By providing comprehensive educational resources at no cost, we aim 
-                    to help metallographers everywhere improve their techniques and achieve better results, 
-                    regardless of their location or resources.
+                    Their vision was to create a company that not only provided high-quality equipment 
+                    and consumables but also supported laboratories with expert knowledge and technical 
+                    guidance. This commitment to excellence has been the driving force behind PACE 
+                    Technologies' growth and success.
                   </p>
                 </div>
               </div>
@@ -277,8 +247,32 @@ export default function AboutPage() {
           </div>
         </AnimateOnScroll>
 
-        {/* Values Section */}
+        {/* Location Section */}
         <AnimateOnScroll animation="fadeInUp" delay={200} duration={500} className="mb-16">
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold text-gray-900">Based in Tucson, Arizona</h2>
+            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl">
+              PACE Technologies is proudly based in Tucson, Arizona. From our facility in the heart of the 
+              Sonoran Desert, we serve laboratories and researchers around the world. As a family-owned 
+              and operated company, we're deeply rooted in the Tucson community and committed to 
+              supporting the local economy while serving the international metallography community.
+            </p>
+            <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/images/pace/building banner.jpg"
+                alt="PACE Technologies facility in Tucson, Arizona"
+                fill
+                className="object-cover object-center"
+                loading="lazy"
+                quality={80}
+                sizes="100vw"
+              />
+            </div>
+          </div>
+        </AnimateOnScroll>
+
+        {/* Values Section */}
+        <AnimateOnScroll animation="fadeInUp" delay={250} duration={500} className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-gray-900">What We Stand For</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -288,23 +282,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="card text-center">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="w-8 h-8 text-primary-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Education First</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We believe knowledge should be freely accessible. Our detailed guides and resources 
-                are designed to help everyone, from beginners to experts, improve their metallographic skills.
-              </p>
-            </div>
-
-            <div className="card text-center">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Quality & Accuracy</h3>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Quality & Excellence</h3>
               <p className="text-gray-600 leading-relaxed">
-                Every resource is crafted with attention to detail and accuracy. We draw from industry 
-                standards, best practices, and years of hands-on experience to provide reliable information.
+                We maintain the highest standards in our equipment and consumables, ensuring that every 
+                product meets rigorous quality requirements. Our commitment to excellence has been 
+                recognized through industry awards and customer trust.
               </p>
             </div>
 
@@ -312,36 +296,51 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Community Support</h3>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Customer Support</h3>
               <p className="text-gray-600 leading-relaxed">
-                We're here to support the global metallography community. Whether you're troubleshooting 
-                a problem or learning a new technique, we're committed to helping you succeed.
+                We're committed to supporting our customers with expert technical guidance, comprehensive 
+                resources, and responsive service. Whether you're setting up a new lab or need troubleshooting 
+                assistance, we're here to help.
+              </p>
+            </div>
+
+            <div className="card text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Community Commitment</h3>
+              <p className="text-gray-600 leading-relaxed">
+                As a family-owned business, we understand the importance of building lasting relationships 
+                with the global metallography community. We're dedicated to advancing the field and 
+                supporting practitioners at all levels.
               </p>
             </div>
           </div>
         </AnimateOnScroll>
 
         {/* Call to Action Section */}
-        <AnimateOnScroll animation="fadeInUp" delay={250} duration={500}>
+        <AnimateOnScroll animation="fadeInUp" delay={300} duration={500}>
           <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg p-8 md:p-12 text-center border border-primary-200">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to Explore Our Resources?</h2>
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to Work With Us?</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Discover detailed guides, practical tools, and expert knowledge to help you master 
-              metallographic sample preparation.
+              Explore our equipment and consumables, or get in touch to discuss your laboratory needs. 
+              We're here to help you achieve consistent, accurate results in metallographic sample preparation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                href="/guides" 
+                href="https://metallographic.com" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center justify-center gap-2"
               >
-                Browse Guides
+                Visit Our Main Site
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link 
-                href="/resources" 
+                href="/quote" 
                 className="btn-secondary inline-flex items-center justify-center gap-2"
               >
-                View Resources
+                Request a Quote
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link 

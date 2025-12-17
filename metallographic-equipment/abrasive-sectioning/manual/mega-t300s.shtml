@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGA-T300S Manual Abrasive Sectioning Saw | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="MEGA-T300S, manual abrasive cutter, metallographic sectioning, PACE Technologies, sample preparation, metallurgical equipment, failure analysis">
+    <meta name="description" content="Discover the MEGA-T300S Manual Abrasive Sectioning Saw by PACE Technologies, designed for precise and efficient material analysis and sample preparation.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "MEGA-T300S Abrasive Cutter",
+          "image": "https://www.metallographic.com/Images/mega-t300s.webp",
+          "description": "The MEGA-T300S is a high-performance manual abrasive cutter designed for precision cutting in metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/abrasive-sectioning/manual/mega-t300s",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Manual Abrasive Sectioning - MEGA-T300S</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2>MEGA-T300S Manual Abrasive Cutter</h2>
+            <p>
+                The MEGA-T300S Abrasive Cutter by PACE Technologies offers precise manual cutting with a 12-inch blade and powerful servo motor. Its manual controls allow fine adjustments for detailed sample preparation. A T-slotted table and adjustable cutting forces ensure stability and accuracy.
+            </p>
+            <div class="feature-buttons-top">
+                <a href="#mega-features" class="feature-button-top">Features</a>
+                <a href="#mega-specifications" class="feature-button-top">Technical Specifications</a>
+                <a href="#mega-consumables" class="feature-button-top">Related Consumables</a>
+            </div>
+        </section>
+
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features" id="mega-features">
+        <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                    <div class="carousel-item" data-description="MEGA-T300S Manual Abrasive Cutter shown with hood open.">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-cover.webp" alt="Image of the MEGA-T300S with the hood open">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-T300S Front View">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-front.webp" alt="MEGA-T300S Front View">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-T300S Side View">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-side.webp" alt="MEGA-M250S Side View">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-T300S Features">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-specs.webp" alt="Image of the MEGA-T300S with arrows pointing to key features such as safety lockout, control screen, control knobs, emergency stop, and cutting chamber">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-T300S Dimensions">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-dimensions.webp" alt="Image of the MEGA-T300S with key dimensions, such as width, depth, and length">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-T300S Accessories">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-accessories.webp" alt="Image of the MEGA-T300S accessories">
+                    </div>
+                    <div class="carousel-item" data-description="The MEGA-T300S includes all of these abrasive blades. For more details on their specifications, click on 'Consumables Guide' button on the right.">
+                        <img src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-blades.webp" alt="Image of the abrasive blades that are part of the MEGA package">
+                    </div>
+                    <!--<div class="carousel-item" data-description="MEGA-T300S Video">
+                        <video controls>
+                            <source src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-t300s/mega-t300s-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>-->
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li>Manual operation for precise control over cutting</li>
+                  <li>Equipped with a 12-inch (305 mm) blade for versatile cutting applications</li>
+                  <li>Powerful 4.5 kW variable speed servo motor for efficient performance</li>
+                  <li>Manual table and wheel feed for customizable cutting processes</li>
+                  <li>Stable T-slotted table for secure material placement</li>
+              </ul>
+            <br>
+                <div class="feature-buttons">
+                    <a href="/content/brochures/mega/mega-t300s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                    <a href="https://shop.metallographic.com/collections/abrasive-cutting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                    <a href="https://www.youtube.com/watch?v=d4DU9RgsQp0&t=317s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+                    <a href="/consumables/sectioning/abrasive-cutting.shtml" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                </div>
+            </div>
+        </section>
+
+<!-- Technical Specifications Section for MEGA-T300S -->
+<section class="specifications" mega="mega-specifications">
+  <h3>Technical Specifications - MEGA-T300S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Cut-off Blade Size</td>
+          <td>12-inch (305 mm)</td>
+      </tr>
+      <tr>
+          <td>Operation</td>
+          <td>Manual</td>
+      </tr>
+      <tr>
+          <td>Screen</td>
+          <td>Non-touch</td>
+      </tr>
+      <tr>
+          <td>Arbor Size</td>
+          <td>32 mm</td>
+      </tr>
+      <tr>
+          <td>Cutting Capacity (H x D)</td>
+          <td>Maximum 3 x 8-inch (70 x 200 mm)</td>
+      </tr>
+      <tr>
+          <td>Max Cutting Diameter</td>
+          <td>4-inch (100 mm)</td>
+      </tr>
+      <tr>
+          <td>Wheel Feed</td>
+          <td>Manual</td>
+      </tr>
+      <tr>
+          <td>Table Feed</td>
+          <td>Manual</td>
+      </tr>
+      <tr>
+          <td>Y Pulse Feed</td>
+          <td>Manual</td>
+      </tr>
+      <tr>
+          <td>Y-axis Table Feed Range</td>
+          <td>7-inch (180 mm)</td>
+      </tr>
+      <tr>
+          <td>Vertical Movement (Z-axis)</td>
+          <td>7-inch (175 mm)</td>
+      </tr>
+      <tr>
+          <td>T-slotted Table Dimensions</td>
+          <td>11 x 18.25-inch (280 x 470 mm)</td>
+      </tr>
+      <tr>
+          <td>T-slotted Width</td>
+          <td>0.5-inch (50 mm)</td>
+      </tr>
+      <tr>
+          <td>Cooling Unit</td>
+          <td>14 gallons (53 liters)</td>
+      </tr>
+      <tr>
+          <td>Motor Power</td>
+          <td>4.5 kW (5.8 hp) Variable Speed Servo Motor</td>
+      </tr>
+      <tr>
+          <td>Motor Speed</td>
+          <td>Variable (1500-3500 rpm)</td>
+      </tr>
+      <tr>
+          <td>Cutting Force (Current Settings)</td>
+          <td>3-15 amps (208Y/380V), 5-25 amps (480V)</td>
+      </tr>
+      <tr>
+          <td>Electrical Specification</td>
+          <td>208Y / 380V or 480V 3-phase (50/60 Hz)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Closed</td>
+          <td>42 x 42 x 30-inch (1070 x 1070 x 760 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Open</td>
+          <td>42 x 42 x 36-inch (1070 x 1070 x 930 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>500-550 lbs (230-250 kg)</td>
+      </tr>
+      <tr>
+          <td>Cutter Support Bench (Optional)</td>
+          <td>MEGA-T3-BENCH</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>MEGA-T300S</td>
+      </tr>
+  </table>
+</section>
+
+
+        <!-- Related Products Section -->
+        <section class="related-products" id="mega-consumables">
+            <h3>Related Consumables</h3>
+            <ul>
+                <li><a href="https://shop.metallographic.com/collections/abrasive-blades" target="_blank" rel="noopener noreferrer">Abrasive Cutting Blades (All Sizes)</a></li>
+                <li><a href="https://shop.metallographic.com/collections/12-inch-abrasive-blades" target="_blank" rel="noopener noreferrer">12-Inch Abrasive Cutting Blades</a></li>
+                <li><a href="https://shop.metallographic.com/collections/abrasive-cutting-fluids" target="_blank" rel="noopener noreferrer">Abrasive Cutting Fluid / Coolant</a></li>
+            </ul>
+            <br>
+        </section>
+    </div>
+
+
+</main>
+
+<a href="#top" class="return-to-top" aria-label="Return to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="white" aria-hidden="true">
+      <path d="M12 4l-8 8h16z"></path>
+  </svg>
+</a>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+        // Smooth Scroll with Offset
+          // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+          // It prevents the default jump behavior and scrolls smoothly to the target section,
+          // applying an offset to account for fixed headers. Adjust the 'offset' variable
+          // to ensure the target section is fully visible below any fixed header.
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                  e.preventDefault();
+          
+                  const targetId = this.getAttribute('href');
+                  const targetElement = document.querySelector(targetId);
+          
+                  if (targetElement) {
+                      const offset = 175; // Adjust this value for your header's height
+                      const elementPosition = targetElement.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+                      window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                      });
+                  }
+              });
+          });
+          </script>
+
+</body>
+</html>
+

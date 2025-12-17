@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICO-155S Precision Wafering Saw | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="PICO-155S, precision wafering saw, precision sectioning, digital controls, metallographic equipment, PACE Technologies">
+    <meta name="description" content="Explore the PICO-155S Precision Wafering Saw by PACE Technologies, featuring digital controls for precise sectioning in metallographic applications.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "PICO-155S Precision Wafering Saw",
+          "image": "https://www.metallographic.com/Images/pico-155s.webp",
+          "description": "The PICO-155S is a high-precision wafering saw with analog controls, designed for precise sectioning in metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/precision-wafering/pico-155s",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+  
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Precision Wafering</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>PICO-155S Precision Wafering Saw</h2>
+      <p>
+        The PICO-155S Precision Wafering Saw combines advanced digital controls with robust design, featuring a 5-inch touchscreen for intuitive operation. It offers a 2-inch cutting capacity and dual nozzle cooling to optimize cutting conditions. With a variable speed range of 200-1500 rpm displayed digitally, it provides flexibility for various materials. The micrometer feed accuracy of 2 microns ensures precision, making the PICO-155S ideal for labs focused on accuracy and efficiency in sectioning.
+      </p>
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div
+              class="carousel-item"
+              data-description="PICO-155S"
+            >
+              <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-cover.webp" alt="PICO-155S rendering" />
+            </div>
+            <div class="carousel-item" data-description="PICO-155S Front View">
+              <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-front.webp" alt="PICO-155S front view with lid closed" />
+            </div>
+            <div class="carousel-item" data-description="PICO-155S Coolant">
+              <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-coolant.webp" alt="PICO-155S coolant" />
+            </div>
+              <div class="carousel-item" data-description="PICO-155S Top View">
+                <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-above.webp" alt="PICO-155S top view with lid closed" />
+              </div>
+              <div class="carousel-item" data-description="PICO-155S Features">
+                <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-specs.webp" alt="Image of the PICO-155S with arrows pointing to key features such as protective cover, magnetic switch, and touchscreen" />
+              </div>
+              <div class="carousel-item" data-description="PICO-155S Dimensions">
+                <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-dimensions.webp" alt="Image of the PICO-155S highlighting key dimensions such as width, depth, and lenght" />
+              </div>
+              <div class="carousel-item" data-description="PICO-155S Accessories">
+                <img src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-accessories.webp" alt="PICO-155S vises and attachments" />
+              </div>
+            <div class="carousel-item" data-description="PICO-155S Video">
+              <video controls>
+                <source src="/../images/equipment/precision wafering/gravity feed precision cutters/pico-155s/pico-155s-video.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Advanced Controls:</strong> 5-inch touchscreen with digital interface for easy operation</li>
+          <li><strong>Sturdy Design:</strong> Ensures consistent performance in industrial settings</li>
+          <li><strong>Optimal Cooling:</strong> Dual nozzle system for maintaining cutting conditions</li>
+          <li><strong>Adjustable Speed:</strong> Continuously variable (200-1500 rpm) with digital display</li>
+          <li><strong>High Precision:</strong> Micrometer feed accuracy of 2 microns for precision cutting</li>
+      </ul>
+      <br>
+       <div class="feature-buttons">
+        <a href="/content/brochures/pico/pico-155s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+        <a href="https://shop.metallographic.com/collections/precision-cutting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+        <a href="https://www.youtube.com/watch?v=nQ7nM3VhWEU" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+        <a href="/metallographic-consumables/sectioning/precision-wafering.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+      </div>
+      </div>
+    </section>
+  
+<!-- Technical Specifications Section for PICO-155S -->
+<section class="specifications">
+  <h3>Technical Specifications - PICO-155S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Control</td>
+          <td>5-inch Touchscreen with Digital LED Display</td>
+      </tr>
+      <tr>
+          <td>Cutting Capacity</td>
+          <td>Max. diameter 50 mm (2 inches)</td>
+      </tr>
+      <tr>
+          <td>Coolant System</td>
+          <td>Dual nozzle with pump</td>
+      </tr>
+      <tr>
+          <td>Table Feed</td>
+          <td>75 mm to 175 mm (3 to 7 inches)</td>
+      </tr>
+      <tr>
+          <td>Arbor Size</td>
+          <td>12.7 mm (0.5 inches)</td>
+      </tr>
+      <tr>
+          <td>Variable Speed (RPM)</td>
+          <td>200-1500 rpm continuously adjustable with digital speed display</td>
+      </tr>
+      <tr>
+          <td>Cutting Load</td>
+          <td>0-1500 gram load</td>
+      </tr>
+      <tr>
+          <td>Micrometer Feed Distance</td>
+          <td>0 to 25 mm (0 to 1 inch)</td>
+      </tr>
+      <tr>
+          <td>Micrometer Accuracy</td>
+          <td>2 microns</td>
+      </tr>
+      <tr>
+          <td>Electrical Specification</td>
+          <td>110V/220V (50/60 Hz) single phase</td>
+      </tr>
+      <tr>
+          <td>Motor Power</td>
+          <td>125W (24V)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Closed</td>
+          <td>480 x 580 x 370 mm (19 x 23 x 14 inches)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Open</td>
+          <td>480 x 740 x 480 mm (19 x 29 x 19 inches)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>30 kg (66 lbs)</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>PICO-155S</td>
+      </tr>
+  </table>
+</section>
+
+        <!-- Related Products Section -->
+        <section class="related-products">
+          <h3>Related Consumables</h3>
+          <ul>
+            <li><a href="https://shop.metallographic.com/collections/precision-cutting-blades" target="_blank" rel="noopener noreferrer">Precision Wafering Blades (All Sizes)</a></li>
+            <li><a href="https://shop.metallographic.com/collections/abrasive-cutting-fluid?filter.p.product_type=Cutting+Fluids+-+DIACUT" target="_blank" rel="noopener noreferrer">Precision Cutting Fluid / Coolant</a></li>
+        </ul>
+          <br>
+      </section>
+
+</div>
+
+<br><br> 
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+
+</body>
+</html>

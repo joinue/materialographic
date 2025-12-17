@@ -2,13 +2,13 @@ import { Metadata } from 'next'
 import { guides, type Guide, type GuideCategory } from '@/data/guides'
 
 export function getGuideMetadata(guide: Guide): Metadata {
-  const url = `https://metallography.org/guides/${guide.slug}`
+  const url = `https://materialographic.com/guides/${guide.slug}`
   const imageUrl = guide.microstructureImage 
-    ? `https://metallography.org${guide.microstructureImage}`
-    : 'https://metallography.org/logo.png'
+    ? `https://materialographic.com${guide.microstructureImage}`
+    : 'https://materialographic.com/images/pace/materialographic-logo.png'
 
   return {
-    title: `${guide.title} | Metallography.org`,
+    title: `${guide.title} | Materialographic.com`,
     description: guide.description,
     keywords: [
       guide.title.toLowerCase(),
@@ -17,14 +17,16 @@ export function getGuideMetadata(guide: Guide): Metadata {
       'sample preparation',
       'metallographic analysis',
       'microstructure analysis',
+      'PACE Technologies',
+      'materialographic',
       ...(guide.category === 'Material-Specific' ? [guide.title.split(' ')[0].toLowerCase() + ' preparation'] : []),
       ...(guide.category === 'Process' ? ['grinding', 'polishing', 'etching', 'mounting', 'sectioning'] : []),
     ],
     openGraph: {
-      title: `${guide.title} | Metallography.org`,
+      title: `${guide.title} | Materialographic.com`,
       description: guide.description,
       url,
-      siteName: 'Metallography.org',
+      siteName: 'Materialographic.com',
       images: [
         {
           url: imageUrl,
@@ -49,10 +51,10 @@ export function getGuideMetadata(guide: Guide): Metadata {
 }
 
 export function getGuideStructuredData(guide: Guide) {
-  const url = `https://metallography.org/guides/${guide.slug}`
+  const url = `https://materialographic.com/guides/${guide.slug}`
   const imageUrl = guide.microstructureImage 
-    ? `https://metallography.org${guide.microstructureImage}`
-    : 'https://metallography.org/logo.png'
+    ? `https://materialographic.com${guide.microstructureImage}`
+    : 'https://materialographic.com/images/pace/materialographic-logo.png'
 
   // Use current date for freshness signal (update when content is actually modified)
   // Published date: Set to when guide was first created (or 1-2 months ago if new)
@@ -76,19 +78,19 @@ export function getGuideStructuredData(guide: Guide) {
           name: 'PACE Technologies',
         },
         knowsAbout: ['Metallography', 'Sample Preparation', 'Materials Science'],
-        url: 'https://metallography.org/about',
+        url: 'https://materialographic.com/about',
       },
       {
         '@type': 'Organization',
-        name: 'Metallography.org',
+        name: 'PACE Technologies',
       },
     ],
     publisher: {
       '@type': 'Organization',
-      name: 'Metallography.org',
+      name: 'PACE Technologies',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://metallography.org/logo.png',
+        url: 'https://materialographic.com/images/pace/materialographic-logo.png',
       },
     },
     datePublished,
@@ -112,7 +114,7 @@ export function getGuideStructuredData(guide: Guide) {
     description: guide.description,
     provider: {
       '@type': 'Organization',
-      name: 'Metallography.org',
+      name: 'PACE Technologies',
     },
     educationalLevel: guide.difficulty,
     timeRequired: `PT${guide.readTime.match(/\d+/)?.[0] || '15'}M`,
@@ -128,13 +130,13 @@ export function getGuideStructuredData(guide: Guide) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://metallography.org',
+        item: 'https://materialographic.com',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Guides',
-        item: 'https://metallography.org/guides',
+        item: 'https://materialographic.com/guides',
       },
       {
         '@type': 'ListItem',
@@ -518,7 +520,7 @@ export function getVideoSchema(videoId: string, title: string, description: stri
       name: 'PACE Technologies',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://metallography.org/logo.png',
+        url: 'https://materialographic.com/images/pace/materialographic-logo.png',
       },
     },
   }

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Title -->
+  <title>Abrasive Sectioning Equipment | MEGA Series | PACE Technologies</title>
+
+  <!-- Basic Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.metallographic.com/metallographic-equipment/abrasive-sectioning.html">
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Explore PACE Technologies' MEGA abrasive sectioning machines—manual and automated cutters designed for precision sample preparation in metallography.">
+  <meta name="keywords" content="abrasive cutters, metallographic sectioning, MEGA series, metallography equipment, MEGA-M250S, MEGA-T400A, sample preparation, abrasive cutting, metallographic saw, precision cutter">
+
+  <!-- Open Graph (Facebook & LinkedIn) -->
+  <meta property="og:title" content="MEGA Abrasive Cutters | Metallographic Equipment - PACE Technologies">
+  <meta property="og:description" content="Discover our MEGA abrasive cutters for metallographic sectioning—trusted by labs in aerospace, biomedical, and materials research.">
+  <meta property="og:url" content="https://www.metallographic.com/metallographic-equipment/abrasive-sectioning.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.metallographic.com/Images/mega-t400a.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MEGA Abrasive Cutters | PACE Technologies">
+  <meta name="twitter:description" content="Browse MEGA abrasive cutters for metallographic sectioning. Trusted by industry professionals.">
+  <meta name="twitter:image" content="https://www.metallographic.com/Images/mega-t400a.webp">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PACE Technologies",
+    "url": "https://www.metallographic.com",
+    "logo": "https://www.metallographic.com/images/logo-microstructure-transparent.webp",
+    "sameAs": [
+      "https://www.facebook.com/PaceTechnologies",
+      "https://www.linkedin.com/company/metallographic",
+      "https://www.instagram.com/pace_technologies/",
+      "https://www.youtube.com/@pacetechnologies"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-520-882-6598",
+      "contactType": "Customer Service"
+    }
+  }
+  </script>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pt-favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pt-favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pt-favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/pt-favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/machinepage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-1066794256');
+  </script>
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Abrasive Sectioning</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>MEGA Series Abrasive Cutting</h2>
+      <p>
+        Our abrasive sectioning equipment is designed for precision and efficiency, providing clean cuts that
+        preserve the integrity of your samples. With options for both manual and automated models, these machines
+        cater to various materials, including metals and ceramics, ensuring minimal damage to the microstructure.
+      </p>
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div class="carousel-item" data-description="MEGA-S Series Manual Abrasive Cutting">
+              <img src="/images/manual-megas.webp" alt="Image of the MEGA-S Series Manual Abrasive Cutters" />
+            </div>
+            <div class="carousel-item" data-description="MEGA-A Series Automated Abrasive Cutting">
+              <img src="/images/automated-megas.webp" alt="Image of the MEGA-A Series Automated Abrasive Cutters" />
+            </div>
+            <!-- <div class="carousel-item" data-description="Watch the MEGA T400A in action demonstrating automated sequential cuts.">
+              <video controls>
+                <source src="/videos/MEGA T400-A SAW RUNNING 2.MP4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>-->
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Optimized Cutting Efficiency:</strong> Available in manual or automated options, our machines feature variable speed control for optimized cutting across various materials.</li>
+          <li><strong>Versatile Material Compatibility:</strong> Designed to handle a wide range of materials, including metals and ceramics, making them ideal for diverse laboratory applications.</li>
+          <li><strong>Advanced Safety Features:</strong> All machines include emergency stop functions and safety lockouts to ensure a secure working environment.</li>
+      </ul>
+
+        <p><strong>Choose Type:</strong></p>
+        <div class="feature-buttons">
+          <a href="#manual" class="feature-button">Manual</a>
+          <a href="#automated" class="feature-button">Automated</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Equipment Series Section -->
+    <div class="section-anchor" id="manual"></div>
+
+    <section class="product-series">
+      <h2>Manual Abrasive Cutters</h2>
+      <p>
+        Manual abrasive cutting provides precise control and flexibility, ideal for small batches and custom cuts. Operators can adjust feed rates and positioning, making it suitable for metals, ceramics, and composites. Its simplicity and lower costs make it a practical choice for highly customized applications.
+      </p>
+      <br>
+      <div class="product-cards">
+          <!-- Machine Card 1 -->
+          <article class="product">
+              <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-m250s.html" class="product-image">
+                  <img src="/images/mega-m250s.webp" alt="Abrasive Cutting Equipment" />
+              </a>
+              <div class="product-info">
+                  <h3>MEGA-M250S Manual Abrasive Cutter</h3>
+                  <p>
+                      The MEGA-M250S is an economical manual 250mm wheel feed for hands-on control. It efficiently handles a variety of materials, providing versatile cutting capabilities. 
+                  </p>
+                  <ul>
+                      <li><strong>Maximum Cut-Off Blade Diameter:</strong> 250 mm (~10 inches)</li>
+                      <li><strong>Cutting Capacity:</strong>
+                          <ul>
+                              <li>Diameter: Up to 2.5 inches (65 mm)</li>
+                              <li>Height x Depth: 3 x 7 inches (75 x 175 mm)</li>
+                          </ul>
+                      </li>
+                      <li><strong>Z-Axis Wheel Feed Range:</strong> 3.25 inches (82 mm)</li>
+                  </ul>
+                  <p>
+                      The t-slotted stainless steel table, measuring 9.75 x 9 inches (250 x 230 mm), offers a stable platform for cutting. To maintain optimal performance, the MEGA-M250S includes a robust 14-gallon (53 liters) cooling unit. Its 3 hp (2.2 kW) asynchronous motor runs at variable speeds from 300 to 3000 rpm and is adaptable to cutting forces of 3-15 amps.
+                  </p>
+                  <div class="button-container">
+                  <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-m250s.html" class="product-details-button">Learn More</a>
+                  </div>
+                </div>
+          </article>
+  
+          <!-- Machine Card 2 -->
+          <article class="product">
+              <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t250s.html" class="product-image">
+                  <img src="/images/mega-t250s.webp" alt="Abrasive Cutting Equipment" />
+              </a>
+              <div class="product-info">
+                  <h3>MEGA-T250S</h3>
+                  <p>
+                      The MEGA-T250S is designed for precision and versatility, featuring both manual wheel (250mm) and table feeds for enhanced control.
+                  </p>
+                  <ul>
+                      <li><strong>Maximum Cut-Off Blade Diameter:</strong> 250 mm (~10 inches)</li>
+                      <li><strong>Cutting Capacity:</strong>
+                          <ul>
+                              <li>Diameter: Up to 3 inches (75 mm)</li>
+                              <li>Height x Depth: 2 x 8 inches (50 x 200 mm)</li>
+                          </ul>
+                      </li>
+                      <li><strong>Z-Axis Wheel Feed Range:</strong> 3.9 inches (100 mm)</li>
+                      <li><strong>Y-Axis Table Feed Range:</strong> 3.3 inches (84 mm)</li>
+                  </ul>
+                  <p>
+                      The spacious t-slotted stainless steel table, measuring 11 x 18.25 inches (280 x 470 mm), provides a stable and durable platform for precise cuts. The MEGA-T250S is built to deliver reliable performance in demanding applications, ensuring accuracy and efficiency in every operation.
+                  </p>
+                  <div class="button-container">
+                  <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t250s.html" class="product-details-button">Learn More</a>
+                  </div>
+              </div>
+          </article>
+  
+          <!-- Machine Card 3 -->
+          <article class="product">
+              <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t300s.html" class="product-image">
+                  <img src="/images/mega-t300s.webp" alt="Abrasive Cutting Equipment" />
+              </a>
+              <div class="product-info">
+                  <h3>MEGA-T300S</h3>
+                  <p>
+                      The MEGA-T300S offers reliable precision and control for various cutting applications using up to a 300mm wheel. It is designed for versatility and ease of use, featuring both manual wheel and table feeds.
+                  </p>
+                  <ul>
+                      <li><strong>Maximum Cut-Off Blade Diameter:</strong> 300 mm (~12 inches)</li>
+                      <li><strong>Cutting Capacity:</strong>
+                          <ul>
+                              <li>Diameter: Up to 4 inches (100 mm)</li>
+                              <li>Height x Depth: 3 x 8 inches (75 x 200 mm)</li>
+                          </ul>
+                      </li>
+                      <li><strong>Z-Axis Wheel Feed Range:</strong> 3.9 inches (100 mm)</li>
+                      <li><strong>Y-Axis Table Feed Range:</strong> 7 inches (175 mm)</li>
+                  </ul>
+                  <p>
+                      The sturdy t-slotted stainless steel table, measuring 11 x 18.25 inches (280 x 470 mm), provides a stable platform for accurate cuts. The MEGA-T300S accommodates a wide range of cutting configurations, ensuring precise performance in demanding applications.
+                  </p>
+                  <div class="button-container">
+                  <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t300s.html" class="product-details-button">Learn More</a>
+                  </div>
+              </div>
+          </article>
+  
+          <!-- Machine Card 4 -->
+          <article class="product">
+              <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t350s.html" class="product-image">
+                  <img src="/images/mega-t350s.webp" alt="Abrasive Cutting Equipment" />
+              </a>
+              <div class="product-info">
+                  <h3>MEGA-T350S</h3>
+                  <p>
+                      The MEGA-T350S is standalone machine designed to provide reliable precision and control for various cutting applications. It features manual wheel (350mm) and table feeds for versatility and ease of use.
+                  </p>
+                  <ul>
+                      <li><strong>Maximum Cut-Off Blade Diameter:</strong> 350 mm (~14 inches)</li>
+                      <li><strong>Cutting Capacity:</strong>
+                          <ul>
+                              <li>Diameter: Up to 4.5 inches (115 mm)</li>
+                              <li>Height x Depth: 3 x 6 inches (75 x 150 mm)</li>
+                          </ul>
+                      </li>
+                      <li><strong>Z-Axis Wheel Feed Range:</strong> 3 inches (75 mm)</li>
+                      <li><strong>Y-Axis Table Feed Range:</strong> 5.9 inches (150 mm)</li>
+                  </ul>
+                  <p>
+                      The sturdy t-slotted stainless steel table, measuring 28 x 16 inches (710 x 400 mm), provides a stable platform for accurate cuts. The MEGA-T350S accommodates a wide range of cutting configurations, ensuring precise performance in demanding applications.
+                  </p>
+                  <div class="button-container">
+                  <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t350s.html" class="product-details-button">Learn More</a>
+                  </div>
+              </div>
+          </article>
+  
+          <!-- Machine Card 5 -->
+          <article class="product">
+              <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t400s.html" class="product-image">
+                  <img src="/images/mega-t400s.webp" alt="Abrasive Cutting Equipment" />
+              </a>
+              <div class="product-info">
+                  <h3>MEGA-T400S</h3>
+                  <p>
+                      The MEGA-T400S is our most advanced manual abrasive cutting machine designed to meet the demands of abrasive cutting with its robust features and user-friendly interface. It is equipped with both manual wheel (400mm) and table feeds, including a touch screen for enhanced control and ease of operation.
+                  </p>
+                  <ul>
+                      <li><strong>Maximum Cut-Off Blade Diameter:</strong> 400 mm (~16 inches)</li>
+                      <li><strong>Cutting Capacity:</strong>
+                          <ul>
+                              <li>Diameter: Up to 6 inches (150 mm)</li>
+                              <li>Height x Depth: 3 x 6 inches (70 x 150 mm)</li>
+                          </ul>
+                      </li>
+                      <li><strong>Z-Axis Wheel Feed Range:</strong> 5 inches (125 mm)</li>
+                      <li><strong>Y-Axis Table Feed Range:</strong> 5.9 inches (150 mm)</li>
+                  </ul>
+                  <p>
+                      The t-slotted stainless steel table, measuring 28 x 15.75 inches (710 x 400 mm), provides a stable and durable platform for accurate cuts. The MEGA-T400S offers flexibility for a variety of cutting configurations, ensuring precise performance in demanding applications.
+                  </p>
+                  <div class="button-container">
+                  <a href="/metallographic-equipment/abrasive-sectioning/manual/mega-t400s.html" class="product-details-button">Learn More</a>
+                  </div>
+              </div>
+          </article>
+  <br>
+          <div class="section-anchor" id="automated"></div>
+          <h2>Automated Abrasive Cutters</h2>
+          <p>
+            Automated abrasive cutting enhances your overall precision and efficiency, ideal for high throughput labs. With programmable controls, our machines ensure consistent cuts across materials while minimizing operator error. Their advanced features make them perfect for applications demanding precision, speed, and scalability.
+          </p>
+          <div class="product-cards">
+              <!-- Machine Card 1 -->
+              <article class="product">
+                  <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t300a.html" class="product-image">
+                      <img src="/images/mega-t300a.webp" alt="Abrasive Cutting Equipment" />
+                  </a>
+                  <div class="product-info">
+                      <h3>MEGA-T300A</h3>
+                      <p>
+                          The MEGA-T300A Automated Cutter is our only table-top automated abrasive cutting machine. It combines precision and automation for efficient cutting applications. It features both automated and manual table feeds with a manual wheel feed (300mm), offering flexibility and control in various operations.
+                      </p>
+                      <ul>
+                          <li><strong>Maximum Cut-Off Blade Diameter:</strong> 300 mm (~12 inches)</li>
+                          <li><strong>Cutting Capacity:</strong>
+                              <ul>
+                                  <li>Diameter: Up to 4 inches (100 mm)</li>
+                                  <li>Height x Depth: 3 x 8 inches (75 x 200 mm)</li>
+                              </ul>
+                          </li>
+                          <li><strong>Z-Axis Wheel Feed Range:</strong> 3.9 inches (100 mm)</li>
+                          <li><strong>Y-Axis Table Feed:</strong> 7 inches (175 mm) with a feed rate of 0.04-0.20 inches/sec (0.1 - 5 mm/sec)</li>
+                          <li><strong>X-Axis Table Feed:</strong> 1.8 inches (45 mm) with a feed rate of 0.04-0.40 inches/sec (0.1 - 10 mm/sec)</li>
+                          <li><strong>Pulse Mode:</strong> 0.5-5A</li>
+                      </ul>
+                      <p>
+                          The t-slotted stainless steel table, measuring 11 x 18.25 inches (280 x 470 mm), provides a stable platform for accurate cuts. The MEGA-T300A's automated and manual capabilities ensure precise performance in demanding applications, making it ideal for high-precision tasks.
+                      </p>
+                      <div class="button-container">
+                      <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t300a.html" class="product-details-button">Learn More</a>
+                      </div>
+                  </div>
+              </article>
+  
+              <!-- Machine Card 2 -->
+              <article class="product">
+                  <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t350a.html" class="product-image">
+                      <img src="/images/mega-t350a.webp" alt="Abrasive Cutting Equipment" />
+                  </a>
+                  <div class="product-info">
+                      <h3>MEGA-T350A</h3>
+                      <p>
+                          The MEGA-T350A is a standalone Automated Abrasive Cutter. It delivers precision and versatility for efficient cutting operations. It features both automated and manual table feeds combined with a manual wheel feed (350mm), providing flexible control for diverse applications.
+                      </p>
+                      <ul>
+                          <li><strong>Maximum Cut-Off Blade Diameter:</strong> 350 mm (~14 inches)</li>
+                          <li><strong>Cutting Capacity:</strong>
+                              <ul>
+                                  <li>Diameter: Up to 4.5 inches (115 mm)</li>
+                                  <li>Height x Depth: 3 x 6 inches (75 x 150 mm)</li>
+                              </ul>
+                          </li>
+                          <li><strong>Z-Axis Wheel Feed Range:</strong> 3 inches (75 mm)</li>
+                          <li><strong>Y-Axis Table Feed:</strong> 7 inches (175 mm) with a feed rate of 0.04-0.20 inches/sec (0.1 - 5 mm/sec)</li>
+                          <li><strong>X-Axis Table Feed:</strong> 1.8 inches (45 mm) with a feed rate of 0.04-0.40 inches/sec (0.1 - 10 mm/sec)</li>
+                          <li><strong>Pulse Mode:</strong> 0.5-5A</li>
+                      </ul>
+                      <p>
+                          The t-slotted stainless steel table, measuring 11 x 18.25 inches (280 x 470 mm), provides a stable platform for precise cuts. The MEGA-T350A's advanced features ensure accurate performance in demanding environments, making it ideal for a wide range of cutting tasks.
+                      </p>
+                      <div class="button-container">
+                      <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t350a.html" class="product-details-button">Learn More</a>
+                      </div>
+                  </div>
+              </article>
+  
+              <!-- Machine Card 3 -->
+              <article class="product">
+                  <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t400a.html" class="product-image">
+                      <img src="/images/mega-t400a.webp" alt="Abrasive Cutting Equipment" />
+                  </a>
+                  <div class="product-info">
+                      <h3>MEGA-T400A</h3>
+                      <p>
+                          The MEGA-T400A is our most advanced Automated Abrasive Cutter. It combines advanced technology with user-friendly design to meet the demands of abrasive cutting. It features both automated and manual table feeds with a manual wheel feed (400mm) and includes a touch screen for enhanced control and ease of operation.
+                      </p>
+                      <ul>
+                          <li><strong>Maximum Cut-Off Blade Diameter:</strong> 400 mm (~16 inches)</li>
+                          <li><strong>Cutting Capacity:</strong>
+                              <ul>
+                                  <li>Diameter: Up to 6 inches (150 mm)</li>
+                                  <li>Height x Depth: 3 x 6 inches (70 x 150 mm)</li>
+                              </ul>
+                          </li>
+                          <li><strong>Z-Axis Wheel Feed Range:</strong> 5 inches (125 mm)</li>
+                          <li><strong>Y-Axis Table Feed:</strong> 5.9 inches (150 mm) with a feed rate of 0.04-0.20 inches/sec (0.1 - 5 mm/sec)</li>
+                          <li><strong>X-Axis Table Feed:</strong> 1.8 inches (45 mm) with a feed rate of 0.04-0.40 inches/sec (0.1 - 10 mm/sec)</li>
+                          <li><strong>Pulse Mode:</strong> 0.5-5A</li>
+                      </ul>
+                      <p>
+                          The t-slotted stainless steel table, measuring 28 x 15.75 inches (710 x 400 mm), provides a stable and durable platform for precise cuts. The MEGA-T400A's touch screen interface and automated features ensure efficient and accurate performance for a variety of cutting tasks.
+                      </p>
+                      <div class="button-container">
+                      <a href="/metallographic-equipment/abrasive-sectioning/automated/mega-t400a.html" class="product-details-button">Learn More</a>
+                      </div>
+                  </div>
+              </article>
+          </div>
+  </section>
+  
+  </div>
+  
+<br><br>
+
+<a href="#top" class="return-to-top" aria-label="Return to top">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="white" aria-hidden="true">
+        <path d="M12 4l-8 8h16z"></path>
+    </svg>
+</a>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+<!-- SCRIPTS -->
+<script src="/js/scripts.js"></script>
+<script src="/js/carousel.js"></script>
+
+<script>
+    
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offset = 125; // Adjust this value for your header's height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+  
+</script>
+
+</body>
+</html>
+

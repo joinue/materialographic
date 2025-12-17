@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACE Technologies Metallographic Products - Castable Mounting</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport settings -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="PACE Technologies, metallographic equipment, castable mounting, sample preparation, metallography, microstructural analysis, cold mounting, mounting systems, aerospace, biomedical, materials testing">
+    <meta name="description" content="Explore PACE Technologies' castable mounting systems for precise sample preparation, ideal for preserving the microstructure of delicate specimens. Trusted by professionals in aerospace, biomedical, and materials testing industries.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "PACE Technologies",
+          "url": "https://www.metallographic.com",
+          "logo": "https://www.metallographic.com/images/logo-microstructure-transparent.webp",
+          "sameAs": [
+          "https://www.facebook.com/PaceTechnologies",
+          "https://www.linkedin.com/company/metallographic"
+          "https://www.instagram.com/pace_technologies/"
+          "https://www.youtube.com/@pacetechnologies/videos"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-520-882-6598",
+            "contactType": "Customer Service"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Castable Mounting</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>Castable Mounting Systems</h2>
+      <p>
+        Castable mounting, or cold mounting, embeds specimens in resin for metallographic analysis, ideal for complex samples. Vacuum, pressure mounting, and UV curing improve resin infiltration, eliminate defects, and ensure rapid, uniform results. These methods enable precise, efficient sample preparation for accurate analysis across industries.
+
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div
+              class="carousel-item"
+              data-description="UV Curing System"
+            >
+            <img src="/images/uvmount.webp" alt="Image of the UV Curing System" />
+          </div>
+          <div class="carousel-item" data-description="ThetaMount Pressure Mounting">
+            <img src="/images/thetamount.webp" alt="Image of the ThetaMount Pressure Mounting" />
+          </div>
+          <div class="carousel-item" data-description="LSSA-011 Vacuum Mounting">
+              <img src="/images/lssa-011.webp" alt="Image of the LSSA-011 Vacuum Mounting" />
+            </div>
+           <!--  <div class="carousel-item" data-description="Watch the MEGA T400A in action demonstrating automated sequential cuts.">
+              <video controls>
+                <source src="/videos/MEGA T400-A SAW RUNNING 2.MP4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>-->
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Versatile Mounting Techniques:</strong> Includes UV, vacuum, and pressure options for diverse resin mounting methods.</li>
+          <li><strong>Enhanced Resin Penetration:</strong> Vacuum and pressure chambers improve resin infiltration by reducing air bubbles.</li>
+          <li><strong>Efficient Curing Processes:</strong> Features a UVmount chamber for rapid, uniform resin curing with one-key start.</li>
+          <li><strong>Multiple Sample Capacity:</strong> Designed to handle multiple samples at once, increasing laboratory throughput.</li>
+          <li><strong>Compact Designs:</strong> Space-efficient chambers fit well in diverse lab environments.</li>
+      </ul>
+        
+
+        <p><strong>Choose Type:</strong></p>
+        <div class="feature-buttons">
+          <a href="#vacuum" class="feature-button">Vacuum Mounting</a>
+          <a href="#pressure" class="feature-button">Pressure Mounting</a>
+          <a href="#uvmount" class="feature-button">UV Curing System</a>        
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Equipment Series Section -->
+    <div class="section-anchor" id="vacuum"></div>
+
+    <section class="product-series">
+      <h3>Vacuum & Pressure Mounting</h3>
+      <p>
+        Vacuum and pressure mounting are key in metallography for embedding specimens in resin. Vacuum mounting removes air bubbles for complete resin penetration, while pressure mounting enhances infiltration and minimizes defects. Combined, they produce high-quality mounts with clear surfaces, crucial for accurate analysis in industries like aerospace and materials science.        <br>
+      <div class="product-cards">
+          <!-- Machine Card 1 -->
+          <article class="product">
+              <a href="/equipment/castable-mounting/lssa-011.shtml" class="product-image">
+                  <img src="/images/lssa-011.webp" alt="Castable Mounting Equipment" />
+              </a>
+              <div class="product-info">
+                <h3>LSSA-011 - Vacuum Mounting</h3>
+                <p>
+                  
+The LSSA-011 Vacuum Mounting Chamber enhances resin infiltration with precise vacuum and pressure control, filling voids and cracks efficiently. Durable and user-friendly, it’s ideal for labs needing high-quality metallographic preparation.
+                </p>
+                <ul>
+                  <li><strong>Bell Jar:</strong> Tilting, retractable pouring arm</li>
+                  <li><strong>Mount Sizes:</strong> 1 to 2-inch (25-50 mm)</li>
+                  <li><strong>Vacuum:</strong> Vacuum pump (sold separately)</li>
+                  <li><strong>Dimensions:
+                  <ul>
+                      <li>Bell Jar: 12 x 12 x 12-inch (300 x 300 x 300 mm)</li>
+                      <li>Pump: 5 x 12.2 x 9.6-inch (127 mm x 310 mm x 245 mm)</li>
+                  </ul>
+                  <li><strong>Flow Rate:</strong> 2 CFM (48 liters / minute)</li>
+                  <li><strong>Ultimate Vacuum:</strong> 50 micron</li>
+              </ul>
+              <p>
+                    Equipped with a 1600-watt heater and a manual cooling system, the TP-7500S is designed to maintain optimal conditions for precise mounting. Its hydraulic pressure application offers powerful performance suitable for various high-precision applications.
+                </p>
+                <div class="button-container">
+                    <a href="/equipment/castable-mounting/lssa-011.html" class="product-details-button">Learn More</a>
+                </div>
+            </div>
+            
+          </article>
+
+          <div class="section-anchor" id="pressure"></div>
+
+  
+          <!-- Machine Card 2 -->
+          <article class="product">
+            <a href="/equipment/castable-mounting/thetamount.shtml" class="product-image">
+                <img src="/images/thetamount.webp" alt="Castable Mounting Equipment" />
+            </a>
+            <div class="product-info">
+              <h3>ThetaMount - Pressure Mounting</h3>
+              <p>
+                  The ThetaMount Pressure Mounting uses advanced pressure technology, achieving up to2 bar. This ensures bubble-free specimens, maintaining the original properties of the resin and curing agent. 
+              </p>
+              <ul>
+                  <li><strong>Operating Pressure:</strong> 2.0 bar (29 psi)</li>
+                  <li><strong>Mount Sizes:</strong> 1 to 2-inch (25-50 mm)</li>
+                  <li><strong>Safety Valve Overflow Pressure:</strong> 2.8-3.3bar (40.6~48 psi)</li>
+                  <li><strong>Chamber Diameter:</strong> 9.3 x 6.7-inch (235 x 170mm)
+              </ul>
+              <p>
+                  Its compact design, odor-free curing, and efficient operation make it ideal for laboratories focused on precision and consistent results.​
+              </p>
+              <div class="button-container">
+                  <a href="/equipment/castable-mounting/thetamount.html" class="product-details-button">Learn More</a>
+              </div>
+            </div>          
+            </div>
+          </article>
+          <br>
+          <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+          </a>
+          
+  <br>
+          <div class="section-anchor" id="uvmount"></div>
+          <h3>UV Curing System</h3>
+          <p>
+            UV curing rapidly solidifies polymers using ultraviolet light, making it ideal for hardening adhesives, coatings, and resins in metallography. This process reduces processing time, lowers energy use, and minimizes thermal stress on samples. With precise control over curing conditions, it ensures consistent, high-quality results, benefiting industries like electronics and biomedical manufacturing.
+          </p>
+          <div class="product-cards">
+              <!-- Machine Card 1 -->
+              <article class="product">
+                <a href="/equipment/castable-mounting/uvmount.html" class="product-image">
+                    <img src="/images/uvmount.webp" alt="Abrasive Cutting Equipment" />
+                </a>
+                <div class="product-info">
+                  <h3>UVmount</h3>
+                  <p>
+                      The UVmount cold mounting machine cures resin in 60 seconds using UV light, delivering bubble-free, high-quality samples with minimal effort. Its automated system simplifies operation, ensuring consistent and efficient results.
+                  </p>
+                  <ul>
+                      <li><strong>Sample Surface:</strong> 10.2 x 7.9-inch (260 x 200 mm)</li>
+                      <li><strong>Sample Max. Height:</strong> 2-inch (50 mm)</li>
+                      <li><strong>UV Curing Time:</strong> 0-100 minutes</li>
+                      <li><strong>UV Wavelength:</strong> Main 365 nm</li>
+                      <li><strong>Weight:</strong> 15 kg (33 lbs)</li>
+                  </ul>
+                  <p>
+                      With a 4.3-inch touchscreen, adjustable curing times, and dual light sources for uniform curing, the UVmount offers precision and speed. Its low-heat operation, cooling system, and optional air purification create a safe, odor-free workspace, ideal for rapid sample preparation.
+                  </p>
+                  <div class="button-container">
+                      <a href="/equipment/castable-mounting/uvmount.html" class="product-details-button">Learn More</a>
+                  </div>
+                </div>
+              </article>
+          </div>
+  </section>
+
+  
+  
+  </div>
+  
+  <br>  <br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/carousel.js"></script>
+
+    <script>
+    
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offset = 125; // Adjust this value for your header's height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+  
+  </script>
+
+</body>
+</html>

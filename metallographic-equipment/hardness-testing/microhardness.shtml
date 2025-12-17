@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microhardness Testers | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Microhardness Testers, Vickers Testers, Knoop Testers, metallographic equipment, PACE Technologies, hardness testing, sample preparation, failure analysis">
+    <meta name="description" content="Explore the range of Microhardness Testers by PACE Technologies, engineered for precise and reliable hardness testing in metallographic applications, ideal for coatings, films, and microstructures.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Microhardness Testers",
+          "image": "https://www.metallographic.com/Images/alpha-mht-1000z.webp",
+          "description": "The Microhardness Testers offered by PACE Technologies are designed for accurate hardness measurements on coatings, films, and microstructures, suitable for a variety of metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/hardness-testing/microhardness",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Microhardness Testers</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+          <!-- Introduction -->
+          <h2 class="equipment-header">Microhardness Testers</h2>
+          <p>
+            Microhardness Testers from PACE Technologies deliver precision and reliability for evaluating the hardness of thin films, coatings, and microstructures in metallographic applications. Engineered for accuracy and consistency, these testers offer versatile testing capabilities with Vickers and Knoop methods, making them ideal for both routine quality control and advanced research environments. With our range of microhardness testers, you can ensure detailed analysis and compliance with industry standards.
+          </p>
+          <div class="feature-buttons-top">
+            <a href="#alpha-mht-1000z" class="feature-button-top">ALPHA-MHT-1000Z Digital Tester</a>
+            <a href="#alpha-mht-2000z2" class="feature-button-top">ALPHA-MHT-2000Z2 Touchscreen Tester</a>
+            <a href="#alpha-mht-auto" class="feature-button-top">ALPHA-MHT-AUTO Automated Tester</a>
+            <a href="#alpha-mht-1000vk" class="feature-button-top">ALPHA-MHT-1000VK Dual Indenter Tester</a>
+          </div>
+        </section>
+      
+
+        <div id="alpha-mht-1000z"></div>
+        <h3>ALPHA-MHT-1000Z Digital Microhardness Tester</h3>
+        <section class="carousel-features">
+            <!-- Carousel Section -->
+            <div class="carousel" aria-label="Product Images and Video">
+                <div class="carousel-container">
+                    <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-content">
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Digital Microhardness Tester">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-cover.webp" alt="Image of the ALPHA-MHT-1000Z Digital Microhardness Tester">
+                        </div>
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Side View">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-side.webp" alt="ALPHA-MHT-1000Z Side View">
+                        </div>
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Closeup">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-closeup.webp" alt="ALPHA-MHT-1000Z Closeup">
+                        </div>
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Display">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-display.webp" alt="ALPHA-MHT-1000Z Display">
+                        </div>
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Features">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-features.webp" alt="Image of the ALPHA-MHT-1000Z with arrows pointing to key features such as ocular measurement, indenter, and LED screen">
+                        </div>
+                        <div class="carousel-item" data-description="ALPHA-MHT-1000Z Dimensions">
+                            <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-dimensions.webp" alt="Image of the ALPHA-MHT-1000Z highlighting key dimensions such as width, depth, and lenght">
+                        </div>
+                        <!--<div class="carousel-item" data-description="ALPHA-MHT-1000Z Video">
+                            <video controls>
+                                <source src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000z/alpha-mht-1000z-video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>-->
+                    </div>
+                    <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="carousel-description">
+                    <p>ALPHA-MHT-1000Z - Digital Microhardness Tester</p>
+                </div>
+            </div>
+        
+            <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Test Force Range:</strong> 10gf to 1000gf for a variety of microhardness applications.</li>
+                  <li><strong>Precision Optics:</strong> Equipped with 10X and 40X objectives for accurate indent measurement.</li>
+                  <li><strong>Auto Turret:</strong> Automatic switching between indenter and objective for streamlined testing.</li>
+                </ul>
+                <br>
+                <div class="feature-buttons">
+                  <a href="/content/brochures/alpha/alpha-mht-1000z.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                  <a href="https://shop.metallographic.com/collections/microhardness-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                  <!--<a href="/../videos/alpha-mht-1000z-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                  <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technical Specifications Section for ALPHA-MHT-1000Z -->
+        <section class="specifications">
+          <h3>Technical Specifications - ALPHA-MHT-1000Z</h3>
+          <table>
+              <tr>
+                  <th>Parameter</th>
+                  <th>Specification</th>
+              </tr>
+              <tr>
+                  <td>Test Force Range</td>
+                  <td>10gf to 1000gf</td>
+              </tr>
+              <tr>
+                  <td>Optical Magnification</td>
+                  <td>100X, 400X (10X and 40X objectives)</td>
+              </tr>
+              <tr>
+                  <td>Auto Turret</td>
+                  <td>Included</td>
+              </tr>
+              <tr>
+                  <td>Dwell Time</td>
+                  <td>Adjustable 5-60 seconds</td>
+              </tr>
+              <tr>
+                  <td>Resolution</td>
+                  <td>0.1µm</td>
+              </tr>
+              <tr>
+                  <td>Construction</td>
+                  <td>Aluminum and stainless steel</td>
+              </tr>
+              <tr>
+                  <td>Dimensions (WxDxH)</td>
+                  <td>12.8 x 19 x 21.5 inches (325 x 480 x 545 mm)</td>
+              </tr>
+              <tr>
+                  <td>Weight</td>
+                  <td>68 lbs (31 kg)</td>
+              </tr>
+              <tr>
+                  <td>Part Number</td>
+                  <td>ALPHA-MHT-1000Z</td>
+              </tr>
+          </table>
+        </section>
+        
+        <a href="/quote.html" class="quote-btn-link">
+          <button class="quote-btn-midpage">Request a Quote</button>
+        </a><br><br>
+
+        <div id="alpha-mht-2000z2"></div>
+<h3>ALPHA-MHT-2000Z2 Touchscreen Microhardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="ALPHA-MHT-2000Z2 Touchscreen Microhardness Tester">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-2000z2/alpha-mht-2000z2-cover.webp" alt="Image of the ALPHA-MHT-2000Z2 Touchscreen Microhardness Tester">
+                </div>
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-2000Z2 Features">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-2000z2/alpha-mht-2000z2-features.webp" alt="Image of the ALPHA-MHT-2000Z2 with arrows pointing to key features">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-2000Z2 Dimensions">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-2000z2/alpha-mht-2000z2-dimensions.webp" alt="Image of the ALPHA-MHT-2000Z2 highlighting key dimensions">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-2000Z2 Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-2000z2/alpha-mht-2000z2-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>ALPHA-MHT-2000Z2 - Touchscreen Microhardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Test Force Range:</strong> 10gf to 2000gf for comprehensive microhardness testing.</li>
+          <li><strong>Digital Display:</strong> Features a touch screen with intuitive controls for easy operation.</li>
+          <li><strong>Auto Hardness Conversion:</strong> Automatically converts to common scales including HRA, HRB, and HV.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/alpha/alpha-mht-2000z2.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/microhardness-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/alpha-mht-2000z2-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for ALPHA-MHT-2000Z2 -->
+<section class="specifications">
+  <h3>Technical Specifications - ALPHA-MHT-2000Z2</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Test Force Range</td>
+          <td>10gf to 2000gf</td>
+      </tr>
+      <tr>
+          <td>Optical Magnification</td>
+          <td>100X, 400X (10X and 40X objectives)</td>
+      </tr>
+      <tr>
+          <td>Digital Display</td>
+          <td>Touchscreen</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>Adjustable 5-60 seconds</td>
+      </tr>
+      <tr>
+          <td>Auto Hardness Conversion</td>
+          <td>HRA, HRB, HV</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Maximum Sample Height</td>
+          <td>3.5-inches (90 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>12.8 x 19 x 21.5-inch (325 x 480 x 545 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>70 lbs (32 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>ALPHA-MHT-2000Z2</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<div id="alpha-mht-auto"></div>
+<h3>ALPHA-MHT-AUTO Automated Microhardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="ALPHA-MHT-AUTO Automated Microhardness Tester">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-auto/alpha-mht-auto-cover.webp" alt="Image of the ALPHA-MHT-AUTO Automated Microhardness Tester">
+                </div>
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-AUTO Features">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-auto/alpha-mht-auto-features.webp" alt="Image of the ALPHA-MHT-AUTO with arrows pointing to key features">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-AUTO Dimensions">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-auto/alpha-mht-auto-dimensions.webp" alt="Image of the ALPHA-MHT-AUTO highlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-AUTO Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-auto/alpha-mht-auto-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>ALPHA-MHT-AUTO - Automated Microhardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Fully Automated:</strong> Automatic load, dwell, and unload cycles for consistent testing.</li>
+          <li><strong>Test Force Range:</strong> 10gf to 1000gf covering a broad range of applications.</li>
+          <li><strong>Precision Indentation Measurement:</strong> High-resolution optics ensure accurate hardness readings.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/alpha/alpha-mht-auto.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/microhardness-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/alpha-auto-mht-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for ALPHA-MHT-AUTO -->
+<section class="specifications">
+  <h3>Technical Specifications - ALPHA-MHT-AUTO</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Test Force Range</td>
+          <td>10gf to 1000gf</td>
+      </tr>
+      <tr>
+          <td>Optical Magnification</td>
+          <td>100X, 400X (10X and 40X objectives)</td>
+      </tr>
+      <tr>
+          <td>Automation</td>
+          <td>Fully Automated</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>Adjustable 5-60 seconds</td>
+      </tr>
+      <tr>
+          <td>Resolution</td>
+          <td>0.1µm</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Maximum Sample Height</td>
+          <td>6.7 inches (170 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>13.2 x 22 x 26.6-inch (335 x 560 x 675 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>115 lbs (52 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>ALPHA-MHT-AUTO</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<div id="alpha-mht-1000vk"></div>
+<h3>ALPHA-MHT-1000VK Dual Indenter Microhardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="ALPHA-MHT-1000VK Dual Indenter Microhardness Tester">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000vk/alpha-mht-1000vk-cover.webp" alt="Image of the ALPHA-MHT-1000VK Dual Indenter Microhardness Tester">
+                </div>
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-1000VK Features">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000vk/alpha-mht-1000vk-features.webp" alt="Image of the ALPHA-MHT-1000VK with arrows pointing to key features">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-1000VK Dimensions">
+                    <img src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000vk/alpha-mht-1000vk-dimensions.webp" alt="Image of the ALPHA-MHT-1000VK highlighting key dimensions such as width, depth, and height">
+                </div>-->
+                <!--<div class="carousel-item" data-description="ALPHA-MHT-1000VK Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/microhardness tester/alpha-mht-1000vk/alpha-mht-1000vk-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>ALPHA-MHT-1000VK - Dual Indenter Microhardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Dual Indenter Capability:</strong> Supports both Vickers and Knoop indenters for flexible testing.</li>
+          <li><strong>Test Force Range:</strong> 10gf to 1000gf for accurate microhardness measurements.</li>
+          <li><strong>High Precision Optics:</strong> Features 10X and 40X objectives for detailed indent observation.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/alpha/alpha-mht-1000vk.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/microhardness-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/alpha-mht-1000vk-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for ALPHA-MHT-1000VK -->
+<section class="specifications">
+  <h3>Technical Specifications - ALPHA-MHT-1000VK</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Test Force Range</td>
+          <td>10gf to 1000gf</td>
+      </tr>
+      <tr>
+          <td>Optical Magnification</td>
+          <td>100X, 400X (10X and 40X objectives)</td>
+      </tr>
+      <tr>
+          <td>Indenter Types</td>
+          <td>Vickers, Knoop</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>0.95 seconds</td>
+      </tr>
+      <tr>
+          <td>Resolution</td>
+          <td>0.1µm</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Maximum Sample Height</td>
+          <td>3.5 inches (90 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>17 x 19 x 17 inches (425 x 490 x 425 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>77 lbs (35 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>ALPHA-MHT-1000VK</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+
+<section class="related-products">
+  <h3>Hardness Testing Consumables</h3>
+  <ul>
+      <li><a href="https://shop.metallographic.com/collections/microhardness-hardness-testing" target="_blank" rel="noopener noreferrer">Microhardness Test Accessories</a></li>
+      <li><a href="https://shop.metallographic.com/collections/microhardness-hardness-testing/products/p1120" target="_blank" rel="noopener noreferrer">Knoop Penetrator</a></li>
+      <li><a href="https://shop.metallographic.com/collections/microhardness-hardness-testing/products/p1110" target="_blank" rel="noopener noreferrer">Vickers Penetrator</a></li>
+  </ul>
+  <br>
+</section>
+
+
+</div>
+
+
+</main>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+    // Smooth Scroll with Offset
+      // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+      // It prevents the default jump behavior and scrolls smoothly to the target section,
+      // applying an offset to account for fixed headers. Adjust the 'offset' variable
+      // to ensure the target section is fully visible below any fixed header.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+      
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+      
+              if (targetElement) {
+                  const offset = 175; // Adjust this value for your header's height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+      </script>
+
+</body>
+</html>

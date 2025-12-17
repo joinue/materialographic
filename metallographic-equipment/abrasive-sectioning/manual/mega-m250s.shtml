@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Essential Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGA-M250S Manual Abrasive Sectioning Saw | PACE Technologies</title>
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO Meta -->
+    <meta name="keywords" content="MEGA-M250S, manual abrasive cutter, abrasive sectioning, metallographic equipment, sample preparation, metallurgical equipment, PACE Technologies">
+    <meta name="description" content="Discover the MEGA-M250S Manual Abrasive Sectioning Saw by PACE Technologies, offering reliable and precise manual cutting for metallographic sample preparation.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MEGA-M250S Manual Abrasive Sectioning Saw | PACE Technologies">
+    <meta property="og:description" content="The MEGA-M250S manual abrasive cutter provides precision cutting for metallographic sample preparation.">
+    <meta property="og:url" content="https://www.metallographic.com/equipment/abrasive-sectioning/manual/mega-m250s">
+    <meta property="og:image" content="https://www.metallographic.com/Images/pace-shortlogo-white.webp">
+    <meta property="og:type" content="product">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MEGA-M250S Manual Abrasive Sectioning Saw | PACE Technologies">
+    <meta name="twitter:description" content="Explore the MEGA-M250S manual abrasive cutter designed for reliable and efficient metallographic sample preparation.">
+    <meta name="twitter:image" content="https://www.metallographic.com/Images/pace-shortlogo-white.webp">
+
+    <!-- Verification Tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs">
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5hb7x1l5b6ASoD7Y6Mgg7k+RCUty7k3y9iO6F0"
+          crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Preconnects -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Schema Markup (no offers block) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "MEGA-M250S Manual Abrasive Sectioning Saw",
+      "image": "https://www.metallographic.com/Images/mega-m250s.webp",
+      "description": "The MEGA-M250S is a reliable manual abrasive cutter designed for metallographic sample preparation and efficient sectioning.",
+      "brand": {
+        "@type": "Brand",
+        "name": "PACE Technologies"
+      },
+      "url": "https://www.metallographic.com/equipment/abrasive-sectioning/manual/mega-m250s",
+      "logo": "https://www.metallographic.com/Images/logo-microstructure-transparent.webp",
+      "sameAs": [
+        "https://www.facebook.com/PaceTechnologies",
+        "https://www.linkedin.com/company/metallographic",
+        "https://www.instagram.com/pace_technologies/",
+        "https://www.youtube.com/@pacetechnologies/videos"
+      ]
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Manual Abrasive Sectioning - MEGA-M250S</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<main>
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2>MEGA-M250S Manual Abrasive Cutter</h2>
+            <p>
+                The MEGA-M250S Abrasive Cutter by PACE Technologies offers precise manual cutting at an economical price. Its robust motor supports variable speeds and multiple power phases for versatile material cutting. A T-slot table ensures stable fixturing for accurate sample preparation.
+            </p>
+            <div class="feature-buttons-top">
+                <a href="#mega-features" class="feature-button-top">Features</a>
+                <a href="#mega-specifications" class="feature-button-top">Technical Specifications</a>
+                <a href="#mega-consumables" class="feature-button-top">Related Consumables</a>
+            </div>
+        </section>
+
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features" id="mega-features">
+        <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                    <div class="carousel-item" data-description="MEGA-M250S Manual Abrasive Cutter shown with hood open.">
+                        <img src="/images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-m250s-cover.webp" alt="Image of the MEGA-M250S with the hood open">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-M250S Features">
+                        <img src="/images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-m250s-specs.webp" alt="Image of the MEGA-M250S with arrows pointing to key features such as safety lockout, t-slot vises, blade speed LED, manual wheel feed, and cutting chamber">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-M250S Dimensions">
+                        <img src="/images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-m250s-dimensions.webp" alt="Image of the MEGA-M250S with key dimensions, such as width, depth, and length">
+                    </div>
+                    <div class="carousel-item" data-description="MEGA-M250S Accessories">
+                        <img src="/images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-accessories.webp" alt="Image of the MEGA-M250S accessories">
+                    </div>
+                    <div class="carousel-item" data-description="The MEGA-M250S includes all of these abrasive blades. For more details on their specifications, click on 'Consumables Guide' button on the right.">
+                        <img src="/images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-blades.webp" alt="Image of the abrasive blades that are part of the MEGA package">
+                    </div>
+                    <!--<div class="carousel-item" data-description="MEGA-M250S Video">
+                        <video controls>
+                            <source src="/../images/equipment/abrasive sectioning/manual abrasive cutters/mega-m250s/mega-m250s-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>-->
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li>Economical manual cutting with variable speed control</li>
+                  <li>Powerful 3-phase asynchronous motor for efficient operation</li>
+                  <li>Versatile power options: 220V single-phase or 208Y/380V/480V, 3-phase</li>
+                  <li>Precise wheel feed cutting for enhanced accuracy</li>
+                  <li>Stable T-slot table fixturing for secure material placement</li>
+              </ul>
+            <br>
+                <div class="feature-buttons">
+                    <a href="/content/brochures/mega/mega-m250s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                    <a href="https://shop.metallographic.com/collections/abrasive-cutting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                    <a href="https://www.youtube.com/watch?v=RMHKVE5zwBc" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+                    <a href="/metallographic-consumables/abrasive-cutting.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                </div>
+            </div>
+        </section>
+
+<!-- Technical Specifications Section for MEGA-M250S -->
+<section class="specifications" id="mega-specifications">
+  <h3>Technical Specifications - MEGA-M250S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Cutting Wheel Diameter</td>
+          <td>250 mm (~10 inches)</td>
+      </tr>
+      <tr>
+          <td>Arbor Size</td>
+          <td>32 mm</td>
+      </tr>
+      <tr>
+          <td>Cutting Capacity (H x D)</td>
+          <td>Maximum 50 x 100 mm (2 x 4 inches)</td>
+      </tr>
+      <tr>
+          <td>Max Cutting Diameter</td>
+          <td>65 mm (2.5 inches)</td>
+      </tr>
+      <tr>
+          <td>Wheel Feed</td>
+          <td>Manual</td>
+      </tr>
+      <tr>
+          <td>Vertical Movement (Z-axis)</td>
+          <td>82 mm (3.25 inches)</td>
+      </tr>
+      <tr>
+          <td>T-slotted Table Dimensions</td>
+          <td>250 x 230 mm (9.75 x 9 inches)</td>
+      </tr>
+      <tr>
+          <td>Motor Power</td>
+          <td>2.2 kW (3 hp)</td>
+      </tr>
+      <tr>
+          <td>Motor Speed</td>
+          <td>Variable (1000-3000 rpm)</td>
+      </tr>
+      <tr>
+          <td>Electrical Specification</td>
+          <td>220V single phase, 380V or 480V, 3φ (50/60 Hz)</td>
+      </tr>
+      <tr>
+          <td>Cutting Force (Current Settings)</td>
+          <td>15 amps (max)</td>
+      </tr>
+      <tr>
+          <td>Cooling Unit</td>
+          <td>53 liters (14 gallons)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Closed</td>
+          <td>750 x 685 x 720 mm (29.5 x 27 x 28 inches)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH) - Hood Open</td>
+          <td>750 x 685 x 990 mm (29.5 x 27 x 39 inches)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>110 kg (240 lbs)</td>
+      </tr>
+      <tr>
+          <td>Cutter Support Bench (Optional)</td>
+          <td>MEGA-T2-BENCH</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>MEGA-M250S</td>
+      </tr>
+  </table>
+</section>
+
+
+        <!-- Related Products Section -->
+        <section class="related-products" id="mega-consumables">
+            <h3>Related Consumables</h3>
+            <ul>
+                <li><a href="https://shop.metallographic.com/collections/abrasive-blades" target="_blank" rel="noopener noreferrer">Abrasive Cutting Blades (All Sizes)</a></li>
+                <li><a href="https://shop.metallographic.com/collections/10-inch-abrasive-blades" target="_blank" rel="noopener noreferrer">10-Inch Abrasive Cutting Blades</a></li>
+                <li><a href="https://shop.metallographic.com/collections/abrasive-cutting-fluids" target="_blank" rel="noopener noreferrer">Abrasive Cutting Fluid / Coolant</a></li>
+            </ul>
+            <br>
+        </section>
+    </div>
+
+</main>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+        // Smooth Scroll with Offset
+          // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+          // It prevents the default jump behavior and scrolls smoothly to the target section,
+          // applying an offset to account for fixed headers. Adjust the 'offset' variable
+          // to ensure the target section is fully visible below any fixed header.
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                  e.preventDefault();
+          
+                  const targetId = this.getAttribute('href');
+                  const targetElement = document.querySelector(targetId);
+          
+                  if (targetElement) {
+                      const offset = 175; // Adjust this value for your header's height
+                      const elementPosition = targetElement.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - offset;
+          
+                      window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                      });
+                  }
+              });
+          });
+          </script>
+
+</body>
+</html>
+

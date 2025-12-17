@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP-7100S Pneumatic Compression Mounting Press | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="TP-7100S, pneumatic mounting press, compression mounting, PACE Technologies, metallographic sample preparation, metallurgical equipment, failure analysis">
+    <meta name="description" content="Discover the TP-7100S Pneumatic Compression Mounting Press by PACE Technologies for efficient and precise metallographic sample preparation.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "TP-7100S Pneumatic Compression Mounting Press",
+          "image": "https://www.metallographic.com/Images/tp-7100s.webp",
+          "description": "The TP-7100S is a high-performance pneumatic compression mounting press designed for efficient sample preparation in metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/compression-mounting/tp-7100s",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Pneumatic Compression Mounting - TP-7100S</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2>TP-7100S Pneumatic Compression Mounting Press</h2>
+            <p>
+                The TP-7100S Pneumatic Compression Mounting Press applies precise, consistent force for metallographic sample preparation. With a 1600-watt heater and manual cooling, it ensures accurate temperature control for uniform mounts. Designed for reliability and repeatability, it is essential for labs needing high-quality and consistent results.
+            </p>
+            <div class="feature-buttons-top">
+              <a href="#tp-features" class="feature-button-top">Features</a>
+              <a href="#tp-specifications" class="feature-button-top">Technical Specifications</a>
+              <a href="#tp-consumables" class="feature-button-top">Related Consumables</a>
+          </div>
+        </section>
+
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features" id="tp-features">
+        <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                    <div class="carousel-item" data-description="TP-7100S Pneumatic Mounting Press">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-cover.webp" alt="Image of the TP-7100S Pneumatic Mounting Press">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Top View">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-above.webp" alt="TP-7100S Top View">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Bayonet">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-bayonet.webp" alt="TP-7100S Bayonet">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Locking Mechanism">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-locking-mechanism.webp" alt="TP-7100S Locking Mechanism">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Features">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-specs.webp" alt="Image of the TP-7100S with arrows pointing to key features such as interchangeable molds, bayonet holder, and touchscreen">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Dimensions">
+                        <img src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-dimensions.webp" alt="Image of the TP-7100S highlighting key dimensions such as width, depth, and length">
+                    </div>
+                    <div class="carousel-item" data-description="TP-7100S Video">
+                        <video controls>
+                            <source src="/images/equipment/compression mounting/pneumatic mounting press/tp-7100s/tp-7100s-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Consistent Force Application:</strong> Utilizes pneumatic air pressure for uniform mounting results.</li>
+                  <li><strong>Flexible Mount Sizes:</strong> Accommodates 1 to 2-inch (25-50 mm) molds with interchangeable cylinders.</li>
+                  <li><strong>High-Efficiency Heating:</strong> Equipped with a 1600-watt heater available in 110V or 220V options.</li>
+                  <li><strong>Precise Temperature Control:</strong> Features a thermostat range up to 392°F (200°C) with manual cooling control.</li>
+                  <li><strong>Durable and Reliable:</strong> Designed to handle incoming pressures up to 95 psi for robust operation.</li>
+              </ul>
+             
+            <br>
+            <div class="feature-buttons">
+                <a href="/content/brochures/terapress/tp-7100s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                <a href="https://shop.metallographic.com/collections/compression-mounting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                  <!--<a href="/../catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                  <a href="/consumables/mounting/compression.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+              </div>
+            </div>
+        </section>
+
+<!-- Technical Specifications Section for TP-7100S -->
+<section class="specifications"id="tp-specifications">
+  <h3>Technical Specifications - TP-7100S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Control</td>
+          <td>Touch screen</td>
+      </tr>
+      <tr>
+          <td>Mount Sizes</td>
+          <td>1, 1.25, 1.5, and 2-inch (25, 30, 40 mm)</td>
+      </tr>
+      <tr>
+          <td>Mold Cylinders</td>
+          <td>Single</td>
+      </tr>
+      <tr>
+          <td>Force</td>
+          <td>Pneumatic</td>
+      </tr>
+      <tr>
+          <td>Incoming Pressure</td>
+          <td>Max. 95 psi</td>
+      </tr>
+      <tr>
+          <td>Heater Specification</td>
+          <td>1000 Watts (110V 15 amp) or 2000 Watts (220V 10 amp)</td>
+      </tr>
+      <tr>
+          <td>Maximum Temperature</td>
+          <td>392°F (200°C)</td>
+      </tr>
+      <tr>
+          <td>Cooling System</td>
+          <td>Water with manual, temperature, or time control</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>21 x 19 x 19 inches (530 x 480 x 480 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>69 lbs (32 kg)</td>
+      </tr>
+      <tr>
+          <td>Optional Accessory</td>
+          <td>TP-TANK Recirculating/Cooling Tank (14 gallon) with pump</td>
+      </tr>
+      <tr>
+          <td>Catalog Number</td>
+          <td>TP-7100S-110V & TP-7100S-220V</td>
+      </tr>
+  </table>
+</section>
+
+
+
+        <!-- Related Products Section -->
+        <section class="related-products"id="tp-consumables">
+          <h3>Related Consumables</h3>
+          <ul>
+            <li><a href="https://shop.metallographic.com/collections/phenolic-powder" target="_blank" rel="noopener noreferrer">Phenolic Powder</a></li>
+            <li><a href="https://shop.metallographic.com/collections/transacrylic" target="_blank" rel="noopener noreferrer">Acrylic Powder</a></li>
+            <li><a href="https://shop.metallographic.com/collections/epoxy-glass-reinforced" target="_blank" rel="noopener noreferrer">Epoxy Resin</a></li>
+            <li><a href="https://shop.metallographic.com/collections/diallyl-phthalate-compression-mounting-resin" target="_blank" rel="noopener noreferrer">Diallyl Phthalate</a></li>
+            <li><a href="https://shop.metallographic.com/collections/conductive-compression-mounting-resin" target="_blank" rel="noopener noreferrer">Conductive Resins</a></li>
+            <li><a href="https://shop.metallographic.com/collections/miscellaneous-mounting-accessories" target="_blank" rel="noopener noreferrer">Accessories</a></li>
+        </ul>
+            <br>
+        </section>
+    </div>
+
+
+</main>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+      // Smooth Scroll with Offset
+        // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+        // It prevents the default jump behavior and scrolls smoothly to the target section,
+        // applying an offset to account for fixed headers. Adjust the 'offset' variable
+        // to ensure the target section is fully visible below any fixed header.
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+        
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+        
+                if (targetElement) {
+                    const offset = 175; // Adjust this value for your header's height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        </script>
+
+</body>
+</html>
+

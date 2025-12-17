@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://metallography.org/sitemap.xml',
+    sitemap: 'https://materialographic.com/sitemap.xml',
   }
 }
 

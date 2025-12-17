@@ -202,17 +202,17 @@ export default function Footer() {
             <div className="md:col-span-4">
               <h2 className="text-2xl font-bold text-white tracking-tight mb-6 flex items-center gap-3">
                 <Image 
-                  src="/logo-white.png" 
+                  src="/images/pace/tri-structure.png" 
                   alt="" 
                   width={32} 
                   height={32}
                   className="h-6 w-auto"
                 />
-                Metallography.org
+                Materialographic.com
               </h2>
               <p className="text-base text-gray-300 leading-relaxed mb-6 max-w-md">
-                Free educational resources and guides for metallographic sample preparation. 
-                Expert techniques, best practices, and comprehensive guides.
+                Comprehensive metallographic sample preparation resources. 
+                Expert guides, databases, and knowledge from PACE Technologies.
               </p>
             </div>
             
@@ -310,7 +310,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-3">
                 <span className="text-sm text-gray-500">
-                  &copy; {new Date().getFullYear()} Metallography.org. All rights reserved.
+                  &copy; {new Date().getFullYear()} Materialographic.com. All rights reserved.
                 </span>
                 <span className="hidden md:inline text-gray-600">•</span>
                 <span className="text-sm text-gray-500">

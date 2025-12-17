@@ -5,9 +5,11 @@ interface CTAProps {
   href?: string
   children: React.ReactNode
   className?: string
+  target?: string
+  rel?: string
 }
 
-export default function CTA({ variant = 'primary', href = '#', children, className = '' }: CTAProps) {
+export default function CTA({ variant = 'primary', href = '#', children, className = '', target, rel }: CTAProps) {
   const baseClasses = variant === 'primary' 
     ? 'btn-primary' 
     : variant === 'secondary'
@@ -15,7 +17,7 @@ export default function CTA({ variant = 'primary', href = '#', children, classNa
     : 'text-primary-600 hover:text-primary-700 font-semibold'
   
   return (
-    <Link href={href} className={`${baseClasses} ${className}`}>
+    <Link href={href} className={`${baseClasses} ${className}`} target={target} rel={rel}>
       {children}
     </Link>
   )

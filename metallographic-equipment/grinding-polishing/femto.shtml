@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEMTO Series Autopolisher Heads | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="FEMTO Series, Autopolisher Heads, metallographic equipment, PACE Technologies, sample preparation">
+    <meta name="description" content="Discover the FEMTO Series Autopolisher Heads by PACE Technologies, designed for precise and consistent polishing in metallographic sample preparation.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "FEMTO Series Autopolisher Heads",
+          "image": "https://www.metallographic.com/Images/femto-1100s.webp",
+          "description": "The FEMTO Series Autopolisher Heads are engineered for high-precision polishing and sample preparation in metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/grinding-polishing/femto",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Autopolisher Heads - FEMTO</h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+  <div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <!-- Introduction -->
+      <h2 class="equipment-header">FEMTO Series Autopolisher Heads</h2>
+      <p>
+        The FEMTO Series Autopolisher Heads deliver precise and consistent polishing for metallographic sample preparation, featuring dynamic torque servo motors and variable speed control for exceptional accuracy. Available in various configurations, they suit different sample types and work seamlessly with NANO polishers—essential for labs needing reliable, high-quality results.
+      </p>
+      <div class="feature-buttons-top">
+          <a href="#femto-1100s" class="feature-button-top">FEMTO-1100S Individual Force</a>
+          <a href="#femto-1500s" class="feature-button-top">FEMTO-1500S Central/Individual Force</a>
+          <a href="#femto-2200s" class="feature-button-top">FEMTO-2200S Individual Force</a>
+          <a href="#femto-2500s" class="feature-button-top">FEMTO-2500S Central/Individual Force</a>
+      </div>
+  </section>
+      
+<!-- Carousel and Features Section -->
+<div id="femto-1100s"></div>
+<h3>FEMTO-1100S Individual Force Autopolishing Head</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="FEMTO-1100S Individual Force Autopolishing Head">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-cover.webp" alt="Image of the FEMTO-1100S Individual Force Autopolishing Head">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1100S Front">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-front.webp" alt="FEMTO-1100S Front">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1100S Display">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-display.webp" alt="FEMTO-1100S Display">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1100S Features">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-features.webp" alt="Image of the FEMTO-1100S with arrows pointing to key features such as touchscreen, sample holder, and auto-polishing mechanism">
+                </div>
+                <!-- <div class="carousel-item" data-description="FEMTO-1100S Dimensions (NEED TO CONFIRM DIMENSIONS)">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-dimensions.webp" alt="Image of the FEMTO-1100S highlighting key dimensions such as width, depth, and lenght">
+                </div>--> 
+                <div class="carousel-item" data-description="FEMTO-1100S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1100s/femto-1100s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>FEMTO-1100S - Individual Force Autopolishing Head</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Application of Force:</strong> Individual pistons (1-6 samples).</li>
+          <li><strong>Head Speed:</strong> 0-300 rpm (variable).</li>
+          <li><strong>Motor:</strong> 0.54 hp (400 W) dynamic torque servo motor.</li>
+          <li><strong>Compatibility:</strong> NANO-1000S / NANO-2000S polishers.</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/femto/femto-1100s-femto-1500s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <a href="https://www.youtube.com/watch?v=PT2fRdSvhDM&t=8s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for FEMTO-1100S -->
+<section class="specifications">
+  <h3>Technical Specifications - FEMTO-1100S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Application of Force</td>
+          <td>Individual pistons (1-6 samples)</td>
+      </tr>
+      <tr>
+          <td>Head Speed</td>
+          <td>0-300 rpm (variable)</td>
+      </tr>
+      <tr>
+          <td>Motor</td>
+          <td>0.54 hp (400 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Compatibility</td>
+          <td>NANO-1000S / NANO-2000S polishers</td>
+      </tr>
+      <tr>
+          <td>Electrical Specifications</td>
+          <td>110V or 220V 50/60 Hz</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>FEMTO-1100S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- Carousel and Features Section -->
+<div id="femto-1500s"></div>
+<h3>FEMTO-1500S Individual / Central Force Autopolishing Head</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="FEMTO-1500S Individual / Central Force Autopolishing Head">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-cover.webp" alt="Image of the FEMTO-1500S Individual / Central Force Autopolishing Head">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1500S Front">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-front.webp" alt="FEMTO-1500S Front">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1500S Sample Holder">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-sample-holder.webp" alt="FEMTO-1500S Sample Holder">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-1500S Features">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-features.webp" alt="Image of the FEMTO-1500S with arrows pointing to key features such as touchscreen, sample holder, and auto-polishing mechanism">
+                </div>
+                <!--<div class="carousel-item" data-description="FEMTO-1500S Dimensions (NEED TO CONFIRM DIMENSIONS)">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-dimensions.webp" alt="Image of the FEMTO-1500S highlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!--<div class="carousel-item" data-description="FEMTO-1500S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-1500s/femto-1500s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>FEMTO-1500S - Individual / Central Force Autopolishing Head</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Application of Force:</strong> Individual pistons (1-6 samples), Central force (3-6 samples).</li>
+          <li><strong>Head Speed:</strong> 0-300 rpm (variable).</li>
+          <li><strong>Motor:</strong> 0.54 hp (400 W) dynamic torque servo motor.</li>
+          <li><strong>Compatibility:</strong> NANO-1000S / NANO-2000S polishers.</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/femto/femto-1100s-femto-1500s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/femto-1500s-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for FEMTO-1500S -->
+<section class="specifications">
+  <h3>Technical Specifications - FEMTO-1500S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Application of Force</td>
+          <td>Individual pistons (1-6 samples), Central force (3-6 samples)</td>
+      </tr>
+      <tr>
+          <td>Head Speed</td>
+          <td>0-300 rpm (variable)</td>
+      </tr>
+      <tr>
+          <td>Motor</td>
+          <td>0.54 hp (400 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Compatibility</td>
+          <td>NANO-1000S / NANO-2000S polishers</td>
+      </tr>
+      <tr>
+          <td>Electrical Specifications</td>
+          <td>110V or 220V 50/60 Hz</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>FEMTO-1500S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- Carousel and Features Section -->
+<div id="femto-2200s"></div>
+<h3>FEMTO-2200S Individual Force Autopolishing Head</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="FEMTO-2200S Individual Force Autopolishing Head">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2200s/femto-2200s-cover.webp" alt="Image of the FEMTO-2200S Individual Force Autopolishing Head">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-2200S Features">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2200s/femto-2200s-features.webp" alt="Image of the FEMTO-2200S with arrows pointing to key features such as touchscreen, sample holder, and auto-polishing mechanism">
+                </div>
+                <!--<div class="carousel-item" data-description="FEMTO-2200S Dimensions (NEED TO CONFIRM DIMENSIONS)">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2200s/femto-2200s-dimensions.webp" alt="Image of the FEMTO-2200S highlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!-- <div class="carousel-item" data-description="FEMTO-2200S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2200s/femto-2200s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>FEMTO-2200S - Individual Force Autopolishing Head</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Application of Force:</strong> Individual pistons (1-6 samples).</li>
+          <li><strong>Head Speed:</strong> 0-300 rpm (variable).</li>
+          <li><strong>Motor:</strong> 0.54 hp (400 W) dynamic torque servo motor.</li>
+          <li><strong>Compatibility:</strong> NANO-1200S polisher.</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/femto/femto-2200s-femto-2500s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/femto-2200s-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for FEMTO-2200S -->
+<section class="specifications">
+  <h3>Technical Specifications - FEMTO-2200S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Application of Force</td>
+          <td>Individual pistons (1-6 samples)</td>
+      </tr>
+      <tr>
+          <td>Head Speed</td>
+          <td>0-300 rpm (variable)</td>
+      </tr>
+      <tr>
+          <td>Motor</td>
+          <td>0.54 hp (400 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Compatibility</td>
+          <td>NANO-1200S polisher</td>
+      </tr>
+      <tr>
+          <td>Electrical Specifications</td>
+          <td>110V or 220V 50/60 Hz</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>FEMTO-2200S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- Carousel and Features Section -->
+<div id="femto-2500s"></div>
+<h3>FEMTO-2500S Individual / Central Force Autopolishing Head</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="FEMTO-2500S Individual / Central Force Autopolishing Head">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2500s/femto-2500S-cover.webp" alt="Image of the FEMTO-2500S Individual / Central Force Autopolishing Head">
+                </div>
+                <div class="carousel-item" data-description="FEMTO-2500S Features">
+                    <img src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2500s/femto-2500s-features.webp" alt="Image of the FEMTO-2500S with arrows pointing to key features such as touchscreen, sample holder, and auto-polishing mechanism">
+                </div>
+                <!--<div class="carousel-item" data-description="FEMTO-2500S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/semi-auto grinder polishers/femto-2500s/femto-2500s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>FEMTO-2500S - Individual / Central Force Autopolishing Head</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Application of Force:</strong> Individual pistons (1-6 samples), Central force (3-12 samples).</li>
+          <li><strong>Head Speed:</strong> 0-300 rpm (variable).</li>
+          <li><strong>Motor:</strong> 0.54 hp (400 W) dynamic torque servo motor.</li>
+          <li><strong>Compatibility:</strong> NANO-1200S polisher.</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/femto/femto-2200s-femto-2500s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/femto-2500s-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for FEMTO-2500S -->
+<section class="specifications">
+  <h3>Technical Specifications - FEMTO-2500S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Application of Force</td>
+          <td>Individual pistons (1-6), Central force (3-12 samples)</td>
+      </tr>
+      <tr>
+          <td>Head Speed</td>
+          <td>0-300 rpm (variable)</td>
+      </tr>
+      <tr>
+          <td>Motor</td>
+          <td>0.54 hp (400 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Compatibility</td>
+          <td>NANO-1200S polisher</td>
+      </tr>
+      <tr>
+          <td>Electrical Specifications</td>
+          <td>110V or 220V 50/60 Hz</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>FEMTO-2500S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+<!-- Related Consumables Section -->
+<section class="related-products">
+  <h3>Related Consumables</h3>
+  <ul>
+      <li><a href="https://shop.metallographic.com/collections/sic-grinding" target="_blank" rel="noopener noreferrer">Silicon Carbide Grinding Papers</a></li>
+      <li><a href="https://shop.metallographic.com/collections/diamond-grinding" target="_blank" rel="noopener noreferrer">Diamond Grinding Discs</a></li>
+      <li><a href="https://shop.metallographic.com/collections/alumina-powders" target="_blank" rel="noopener noreferrer">Alumina Polishing Powders</a></li>
+      <li><a href="https://shop.metallographic.com/collections/polishing-pads" target="_blank" rel="noopener noreferrer">Polishing Pads / Cloths</a></li>
+  </ul>
+  <br>
+</section>
+
+
+</div>
+
+
+</main>
+
+<br><br><br>
+
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+    // Smooth Scroll with Offset
+      // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+      // It prevents the default jump behavior and scrolls smoothly to the target section,
+      // applying an offset to account for fixed headers. Adjust the 'offset' variable
+      // to ensure the target section is fully visible below any fixed header.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+      
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+      
+              if (targetElement) {
+                  const offset = 175; // Adjust this value for your header's height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+      </script>
+
+</body>
+</html>

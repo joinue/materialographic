@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIGA-S Vibratory Polisher | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs">
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5">
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="GIGA-S Vibratory Polisher, PACE Technologies, metallographic polisher, vibratory polishing, EBSD, flat planar finishes">
+    <meta name="description" content="The GIGA-S Vibratory Polisher from PACE Technologies ensures superior surface finishes for EBSD sample preparation with its 9-inch and 12-inch interchangeable polishing bowls, PZT motor technology, and leak-free design.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "GIGA-S Vibratory Polisher",
+          "image": "https://www.metallographic.com/images/equipment/grinding & polishing/vibratory polisher/giga-s-cover.webp",
+          "description": "The GIGA-S Vibratory Polisher offers a robust and durable polishing system, featuring a PZT motor, interchangeable bowls, and superior surface finishes for EBSD sample preparation.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/grinding-polishing/giga",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Vibratory Polisher - GIGA-S</h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <!-- Introduction -->
+            <h2>GIGA-S Vibratory Polisher</h2>
+            <p>
+                The GIGA-S Vibratory Polisher by PACE Technologies ensures superior surface finishes and eliminates subsurface damage, perfect for EBSD (Electron Backscatter Diffraction) sample preparation. With a PZT motor for precise vibration control, a leak-free two-part bowl, and interchangeable 9" or 12" polishing bowls, it offers versatile, worry-free polishing with exceptional flatness and planarity.
+            </p>
+            <div class="feature-buttons-top">
+                <a href="#giga-features" class="feature-button-top">Features</a>
+                <a href="#giga-specifications" class="feature-button-top">Technical Specifications</a>
+                <a href="#giga-consumables" class="feature-button-top">Related Consumables</a>
+            </div>
+        </section>
+        
+
+<!-- Carousel and Features Section -->
+<div id="atto-features"></div>
+<h3>GIGA-S Vibratory Polisher</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="GIGA-S Vibratory Polisher">
+                    <img src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-cover.webp" alt="Image of the GIGA-S Vibratory Polisher">
+                </div>
+                <div class="carousel-item" data-description="GIGA-S Display Interface">
+                    <img src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-display.webp" alt="GIGA-S Display Interface">
+                </div>
+                <div class="carousel-item" data-description="GIGA-S Front View with Bowl">
+                    <img src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-front.webp" alt="GIGA-S Front View with Bowl">
+                </div>
+                <div class="carousel-item" data-description="GIGA-S Features">
+                    <img src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-specs.webp" alt="GIGA-S Features">
+                </div>
+                <div class="carousel-item" data-description="GIGA-S Top View of Polishing Bowl">
+                    <img src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-top.webp" alt="GIGA-S Top View of Polishing Bowl">
+                </div>
+                <!--<div class="carousel-item" data-description="UVmount Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/vibratory polisher/giga-s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>GIGA-S Vibratory Polisher</p>
+        </div>
+    </div>
+    
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>Precise Vibration Control:</strong> PZT motor ensures consistent, accurate vibrations for superior surface finishes.</li>
+            <li><strong>Interchangeable Polishing Bowls:</strong> Supports 9-inch and 12-inch polishing bowls for flexible sample preparation.</li>
+            <li><strong>Pulse Mode for Stain-Free Results:</strong> Innovative pulse mode prevents staining by keeping samples dry post-polishing.</li>
+            <li><strong>Durable Two-Part Bowl Design:</strong> Features a leak-free design for mess-free operation and easy cleaning.</li>
+            <li><strong>Robust and Ergonomic Design:</strong> Aluminum casting and SMC cover ensure lab-grade durability.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/giga/giga-s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+            <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <a href="https://www.youtube.com/watch?v=cPkzthQbLcM&t=495s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+            <a href="/consumables/polishing.shtml" class="feature-button" target="_blank" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>    
+</section>
+
+<!-- Technical Specifications Section for ATTO-1000S -->
+<section class="specifications" id="giga-specifications">
+    <h3>Technical Specifications - GIGA-S</h3>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>Polishing Bowl Size</td>
+            <td>9-inch or 12-inch interchangeable bowls</td>
+        </tr>
+        <tr>
+            <td>Drive Mechanism</td>
+            <td>PZT Motor (Piezoelectric Vibration)</td>
+        </tr>
+        <tr>
+            <td>Frequency</td>
+            <td>0-220 Hz</td>
+        </tr>
+        <tr>
+            <td>Power</td>
+            <td>200V (600 W)</td>
+        </tr>
+        <tr>
+            <td>Construction</td>
+            <td>Aluminum casting with SMC injection-molded cover</td>
+        </tr>
+        <tr>
+            <td>Dimensions (WxDxH)</td>
+            <td>16 x 20 x 16 inches (420 x 500 x 410 mm) with hood closed</td>
+        </tr>
+        <tr>
+            <td>Weight</td>
+            <td>135 lbs (62 kg)</td>
+        </tr>
+        <tr>
+            <td>Part Number</td>
+            <td>GIGA-S</td>
+        </tr>
+    </table>
+  </section>
+  
+
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+<!-- Related Consumables Section -->
+<section class="related-products" id="atto-consumables">
+  <h3>Related Consumables</h3>
+  <ul>
+    <li><a href="https://shop.metallographic.com/collections/lapping-films" target="_blank" rel="noopener noreferrer">Lapping Films</a></li>
+    <li><a href="https://shop.metallographic.com/collections/alumina-powder" target="_blank" rel="noopener noreferrer">Diamond Suspension</a></li>
+    <li><a href="https://shop.metallographic.com/collections/colloidal-silica-cmp" target="_blank" rel="noopener noreferrer">Colloidal Silica</a></li>
+    <li><a href="https://shop.metallographic.com/collections/polishing-pads" target="_blank" rel="noopener noreferrer">Polishing Pads</a></li>
+</ul>
+
+  <br>
+</section>
+
+
+    </div>
+
+
+</main>
+  
+
+<br><br> 
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+    // Smooth Scroll with Offset
+      // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+      // It prevents the default jump behavior and scrolls smoothly to the target section,
+      // applying an offset to account for fixed headers. Adjust the 'offset' variable
+      // to ensure the target section is fully visible below any fixed header.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+      
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+      
+              if (targetElement) {
+                  const offset = 175; // Adjust this value for your header's height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+      </script>
+
+</body>
+</html>
+

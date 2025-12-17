@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANO Series Manual Polishers | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="NANO Series, Manual Polisher, metallographic equipment, PACE Technologies, sample preparation, failure analysis, material science">
+    <meta name="description" content="Explore the NANO Series Manual Polishers by PACE Technologies, designed for precision polishing and material removal in metallographic sample preparation.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "NANO Series Manual Polishers",
+            "image": "https://www.metallographic.com/Images/nano-1000s.webp",
+            "description": "The NANO series Manual Polishers are engineered for high-precision material removal and surface preparation in metallographic applications.",
+            "brand": {
+              "@type": "Brand",
+              "name": "PACE Technologies"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.metallographic.com/equipment/grinding-polishing/nano",
+              "priceCurrency": "USD",
+              "price": "Contact for pricing",
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Manual Polishers - NANO</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+          <!-- Introduction -->
+          <h2 class="equipment-header">NANO Series Manual Polishers</h2>
+          <p>
+            The NANO Series Manual Polishers provide precise material removal and surface preparation for metallographic samples. With robust construction and advanced features, they ensure reliable performance across various applications. Available in single, double, or large wheel configurations, offering flexibility and accuracy for high-quality lab work.
+          </p>
+          <div class="feature-buttons-top">
+              <a href="#nano-1000s" class="feature-button-top">NANO-1000S Single Wheel Polisher</a>
+              <a href="#nano-2000s" class="feature-button-top">NANO-2000S Double Wheel Polisher</a>
+              <a href="#nano-1200s" class="feature-button-top">NANO-1200S Large Wheel Polisher</a>
+          </div>
+      </section>
+      
+
+<!-- Carousel and Features Section -->
+<div id="nano-1000s"></div>
+<h3>NANO-1000S Single Wheel Manual Polisher</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="NANO-1000S Single Wheel Manual Polisher">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1000s/nano-1000s-cover.webp" alt="Image of the NANO-1000S Single Wheel Manual Polisher">
+                </div>
+                <div class="carousel-item" data-description="NANO-1000S shown with FEMTO-1100S attachment">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1000s/nano-femto-front.webp" alt="NANO-1000S shown with the FEMTO-1100S attachment">
+                </div>
+                <div class="carousel-item" data-description="NANO-1000S Features">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1000s/nano-1000s-features.webp" alt="Image of the NANO-1000S with arrows pointing to key features such as screen, protective lid, and retractable faucet">
+                </div>
+                <div class="carousel-item" data-description="NANO-1000S Dimensions">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1000s/nano-1000s-dimensions.webp" alt="Image of the NANO-1000S highlighting key dimensions">
+                </div>
+                <div class="carousel-item" data-description="NANO-1000S & FEMTO-1100S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1000s/nano-1000s-femto-1100s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>NANO-1000S - Single Wheel Manual Polisher</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Versatile Wheel Options:</strong> Supports 8 & 10-inch diameter wheels for flexible sample preparation.</li>
+          <li><strong>Precision Control:</strong> Powered by a 1 hp dynamic torque servo motor with variable speed control (100-1000 rpm).</li>
+          <li><strong>Robust Build:</strong> Made from durable materials for long-lasting performance in demanding labs.</li>
+        </ul>
+        <div class="feature-buttons">
+          <a href="/content/brochures/nano/nano-1000s-2000s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <a href="https://www.youtube.com/watch?v=PT2fRdSvhDM&t=11s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+          <a href="/metallographic-consumables/grinding.html" class="feature-button" rel="noopener noreferrer">Grinding Consumables Guide</a>
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Polishing Consumables Guide</a>        </div>
+        
+     <div class="optional">
+        <ul>
+            <li><a href="/metallographic-equipment/grinding-polishing/femto.html" class="feature-link" rel="noopener noreferrer">FEMTO Automated Polishing Head</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/zeta.html" class="feature-link" rel="noopener noreferrer">ZETA-2000S Abrasive Dispenser</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/rc.html" class="feature-link" rel="noopener noreferrer">RC-1000A Recirculating Filtering System</a></li>
+        </ul>
+     </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for NANO-1000S -->
+<section class="specifications">
+  <h3>Technical Specifications - NANO-1000S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Working Wheels</td>
+          <td>8 & 10-inch diameter</td>
+      </tr>
+      <tr>
+          <td>Drive Mechanism</td>
+          <td>1 hp (750 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Variable 100-1000 rpm</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>16 x 15 x 15 inches (420 x 380 x 380 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>63 lbs (29 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>NANO-1000S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+<!-- Carousel and Features Section -->
+<div id="nano-2000s"></div>
+<h3>NANO-2000S Double Wheel Manual Polisher</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="NANO-2000S Double Wheel Manual Polisher">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-cover.webp" alt="NANO-2000S Double Wheel Manual Polisher">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Front View">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-front.webp" alt="NANO-2000S Front View">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Side View">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-side.webp" alt="NANO-2000S Side View">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Display">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-display.webp" alt="NANO-2000S Display">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Back View">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-back.webp" alt="NANO-2000S Back View">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Features">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-features.webp" alt="Image of the NANO-2000S with arrows pointing to key features such as screen, protective lid, and time controls">
+                </div>
+                <div class="carousel-item" data-description="NANO-2000S Dimensions">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-2000s/nano-2000s-dimensions.webp" alt="Image of the NANO-2000S highlighting key dimensions">
+                </div>
+                <!--<div class="carousel-item" data-description="NANO-2000S Video">
+                    <video controls>
+                        <source src="/../videos/nano-2000s-operation.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>NANO-2000S - Double Wheel Manual Polisher</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Dual Wheel Configuration:</strong> Supports 8 & 10-inch wheels for enhanced productivity and flexibility in sample preparation.</li>
+          <li><strong>Reliable Power:</strong> Powered by a 1 hp dynamic torque servo motor with variable speed control (100-1000 rpm) for precise and consistent polishing.</li>
+          <li><strong>Sturdy Design:</strong> Built with high-quality materials for durability and reliable lab performance.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/nano/nano-1000s-2000s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/nano-2000s-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/grinding.html" class="feature-button" rel="noopener noreferrer">Grinding Consumables Guide</a>
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Polishing Consumables Guide</a>        </div>
+     <div class="optional">
+        <ul>
+            <li><a href="/metallographic-equipment/grinding-polishing/femto.html" class="feature-link" rel="noopener noreferrer">FEMTO Automated Polishing Head</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/zeta.html" class="feature-link" rel="noopener noreferrer">ZETA-2000S Abrasive Dispenser</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/rc.html" class="feature-link" rel="noopener noreferrer">RC-1000A Recirculating Filtering System</a></li>
+        </ul>
+     </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for NANO-2000S -->
+<section class="specifications">
+  <h3>Technical Specifications - NANO-2000S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Working Wheels</td>
+          <td>8 & 10-inch diameter (double wheel)</td>
+      </tr>
+      <tr>
+          <td>Drive Mechanism</td>
+          <td>1 hp (750 W) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Variable 100-1000 rpm</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>30 x 22 x 15 inches (750 x 570 x 380 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>80 lbs (36 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>NANO-2000S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- Carousel and Features Section -->
+<div id="nano-1200s"></div>
+<h3>NANO-1200S Large Wheel Manual Polisher</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="NANO-1200S Large Wheel Manual Polisher">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1200s/nano-1200s-cover.webp" alt="NANO-1200S Large Wheel Manual Polisher">
+                </div>
+                <div class="carousel-item" data-description="NANO-1200S Closeup">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1200s/nano-1200s-side.webp" alt="NANO-1200S Closeup">
+                </div>
+                <div class="carousel-item" data-description="NANO-1200S Features">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1200s/nano-1200s-features.webp" alt="Image of the NANO-1200S with arrows pointing to key features">
+                </div>
+                <div class="carousel-item" data-description="NANO-1200S Dimensions">
+                    <img src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1200s/nano-1200s-dimensions.webp" alt="Image of the NANO-1200S highlighting key dimensions">
+                </div>
+                <!--<div class="carousel-item" data-description="NANO-1200S Video">
+                    <video controls>
+                        <source src="/images/equipment/grinding & polishing/manual grinder polishers/nano-1200s/nano-1200s-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>NANO-1200S - Large Wheel Manual Polisher</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Large Wheel Compatibility:</strong> Designed for 12 & 14-inch wheels, allowing for the preparation of larger samples.</li>
+          <li><strong>High Power:</strong> Driven by a 1.3 hp dynamic torque servo motor, providing robust performance for demanding applications.</li>
+          <li><strong>Durable Construction:</strong> Built with high-quality materials, ensuring long-term reliability in a laboratory environment.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/nano/nano-1200s.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/polishing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/nano-1200s-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/grinding.html" class="feature-button" rel="noopener noreferrer">Grinding Consumables Guide</a>
+          <a href="/metallographic-consumables/polishing.html" class="feature-button" rel="noopener noreferrer">Polishing Consumables Guide</a>        </div>
+     <div class="optional">
+        <ul>
+            <li><a href="/metallographic-equipment/grinding-polishing/femto.html" class="feature-link" rel="noopener noreferrer">FEMTO Automated Polishing Head</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/zeta.html" class="feature-link" rel="noopener noreferrer">ZETA-2000S Abrasive Dispenser</a></li>
+            <li><a href="/metallographic-equipment/grinding-polishing/rc.html" class="feature-link" rel="noopener noreferrer">RC-1000A Recirculating Filtering System</a></li>
+        </ul>
+     </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for NANO-1200S -->
+<section class="specifications">
+  <h3>Technical Specifications - NANO-1200S</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Working Wheels</td>
+          <td>12 & 14-inch diameter (single wheel)</td>
+      </tr>
+      <tr>
+          <td>Drive Mechanism</td>
+          <td>1.3 hp (1 KW) dynamic torque servo motor</td>
+      </tr>
+      <tr>
+          <td>Speed</td>
+          <td>Variable 100-1000 rpm</td>
+      </tr>
+      <tr>
+          <td>Construction</td>
+          <td>Aluminum and stainless steel</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>20 x 16 x 25 inches (510 x 420 x 640 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>95 lbs (43 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>NANO-1200S</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+<!-- Related Consumables Section -->
+<section class="related-products">
+  <h3>Related Consumables</h3>
+  <ul>
+      <li><a href="https://shop.metallographic.com/collections/sic-grinding" target="_blank" rel="noopener noreferrer">Silicon Carbide Grinding Papers</a></li>
+      <li><a href="https://shop.metallographic.com/collections/diamond-grinding" target="_blank" rel="noopener noreferrer">Diamond Grinding Discs</a></li>
+      <li><a href="https://shop.metallographic.com/collections/alumina-powders" target="_blank" rel="noopener noreferrer">Alumina Polishing Powders</a></li>
+      <li><a href="https://shop.metallographic.com/collections/polishing-pads" target="_blank" rel="noopener noreferrer">Polishing Pads / Cloths</a></li>
+  </ul>
+  <br>
+</section>
+
+
+</div>
+
+
+</main>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+    // Smooth Scroll with Offset
+      // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+      // It prevents the default jump behavior and scrolls smoothly to the target section,
+      // applying an offset to account for fixed headers. Adjust the 'offset' variable
+      // to ensure the target section is fully visible below any fixed header.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+      
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+      
+              if (targetElement) {
+                  const offset = 175; // Adjust this value for your header's height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+      </script>
+
+</body>
+</html>

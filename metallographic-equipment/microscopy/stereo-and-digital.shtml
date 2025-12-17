@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stereo and Digital Microscopes | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> 
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> 
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" />
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Stereo Microscopes, Digital Microscopes, Metallography, PACE Technologies, Sample Analysis, Low Magnification Documentation, Microscopic Imaging">
+    <meta name="description" content="Explore PACE Technologies' range of Stereo and Digital Microscopes designed for detailed metallographic analysis, providing high-quality imaging and versatile magnification options.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Stereo and Digital Microscopes",
+          "image": "https://www.metallographic.com/Images/stereo-digital-microscope.webp",
+          "description": "Our Stereo and Digital Microscopes offer precise and detailed imaging capabilities for metallographic sample analysis, ideal for low magnification documentation and accurate measurements.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/microscopy/stereo-and-digital",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <!-- CONTENT WILL GO HERE -->
+</body>
+
+</html>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Stereo and Digital Microscopes
+          </h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+  <!-- Introduction Section -->
+  <section class="introduction">
+      <h2 class="equipment-header">Stereo and Digital Microscopes</h2>
+      <p>
+        Explore our stereo and digital metallographic microscopes, designed for precision and clarity in analysis. The ZMS0745T excels in low-magnification inspection, while the VM-100 and VM-500-PLUS offer high-resolution imaging, advanced measurements, and auto-focus. Whether for detailed inspection or digital documentation, our microscopes ensure reliable performance for modern laboratories.
+      </p>
+      <div class="feature-buttons-top">
+        <a href="#zms0745t" class="feature-button-top">ZMS0745T Stereo Microscope</a>
+        <a href="#vm-100" class="feature-button-top">VM-100 Digital Stereo Microscope</a>
+        <a href="#vm-500-plus" class="feature-button-top">VM-500-PLUS Digital Stereo Microscope</a>
+    </div>
+  </section>
+
+
+
+  <h3>ZMS0745T Stereo Microscope</h3>
+  <section class="carousel-features" id="zms0745t">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+          <div class="carousel-container">
+              <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-content">
+                  <div class="carousel-item" data-description="ZMS0745T Stereo Microscope">
+                      <img src="/images/equipment/microscopy/stereo microscopes/zms0745t/zms0745t-cover.webp" alt="ZMS0745T Stereo Microscope">
+                  </div>
+                  <!--<div class="carousel-item" data-description="ZMS0745T Stereo Microscope Features">
+                      <img src="/images/equipment/microscopy/stereo microscopes/zms0745t/zms0745t-features.webp" alt="ZMS0745T Stereo Microscope Features">
+                  </div>-->
+                  <!--<div class="carousel-item" data-description="ZMS0745T Stereo Microscope Dimensions">
+                      <img src="/images/equipment/microscopy/stereo microscopes/zms0745t/zms0745t-dimensions.webp" alt="ZMS0745T Stereo Microscope Dimensions">
+                  </div>-->
+                  <!--<div class="carousel-item" data-description="ZMS0745T Video">
+                      <video controls>
+                          <source src="/images/equipment/microscopy/stereo microscopes/zms0745t/zms0745t-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>-->
+              </div>
+              <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-description">
+              <p></p>
+          </div>
+      </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>Wide Magnification Range:</strong> Offers 7X to 45X magnification for detailed stereo imaging.</li>
+            <li><strong>Trinocular Eyepiece Tubes:</strong> Allows for comfortable use with a 45-degree inclination and 360-degree rotation.</li>
+            <li><strong>Precise Focus:</strong> Features a focus range of 3 inches with diopter adjustment.</li>
+            <li><strong>Versatile Accessories:</strong> Compatible with various magnifying objectives and digital camera attachments.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/microscopes/zms0745t.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+            <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <!--<a href="/../videos/zms0745t-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+            <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for ZMS0745T -->
+<section class="specifications">
+    <h3>Technical Specifications - ZMS0745T</h3>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>Eyepiece</td>
+            <td>10X, 15X or 20X</td>
+        </tr>
+        <tr>
+            <td>Total magnification</td>
+            <td>7-45X</td>
+        </tr>
+        <tr>
+            <td>Zoom objective magnification</td>
+            <td>0.7X ~ 4.5X</td>
+        </tr>
+        <tr>
+            <td>Trinocular eyetubes</td>
+            <td>Inclined 45 degrees from main body (360 degree rotation)</td>
+        </tr>
+        <tr>
+            <td>Diopter adjustment</td>
+            <td>+/- 6 degrees</td>
+        </tr>
+        <tr>
+            <td>Interpupillary adjustment</td>
+            <td>2 ~ 3-inch (52 ~ 76 mm)</td>
+        </tr>
+        <tr>
+            <td>Focus range</td>
+            <td>3-inch (76 mm)</td>
+        </tr>
+        <tr>
+            <td>Stage size</td>
+            <td>5-inch (125 mm)</td>
+        </tr>
+        <tr>
+            <td>Catalog Number</td>
+            <td>ZMS0745T</td>
+        </tr>
+    </table>
+  </section>
+
+<h3>VM-100 Digital Stereo Microscope</h3>
+<section class="carousel-features" id="vm-100">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="VM-100 Digital Stereo Microscope">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-100/vm-100-cover.webp" alt="VM-100 Digital Stereo Microscope">
+                </div>
+                <div class="carousel-item" data-description="The VM-100 comes with a 24-inch LED monitor, a wireless keyboard, and an optical wireless mouse, compatible with both Windows and Mac OS.">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-100/vm-100-accessories.webp" alt="Image of the VM-100 microscope along with an LED monitor, wireless keyboard and mouse.">
+                </div>
+                <!--<div class="carousel-item" data-description="VM-100 Features">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-100/vm-100-features.webp" alt="Image of the VM-100 with arrows pointing to key features">
+                </div>-->
+                <!--<div class="carousel-item" data-description="VM-100 Dimensions">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-100/vm-100-features.webp" alt="Image of the VM-100 highlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!--<div class="carousel-item" data-description="VM-100 Video">
+                    <video controls>
+                        <source src="/images/equipment/microscopy/stereo microscopes/vm-100/vm-100-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>High-Resolution Digital Imaging:</strong> Offers a 2 million pixel camera with 1920x1080 resolution for clear and detailed images.</li>
+            <li><strong>Optical Zoom Range:</strong> Provides 0.7X to 4.5X magnification with a 6.5:1 zoom ratio.</li>
+            <li><strong>Built-in Recording Features:</strong> Supports photo and video recording with storage on an SD card.</li>
+            <li><strong>Integrated Measurement Function:</strong> Optional PC system and software allow for precise measurements.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/microscopes/vm-100.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+            <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <!--<a href="/../videos/vm-100-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+            <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for VM-100 -->
+<section class="specifications">
+    <h3>Technical Specifications - VM-100</h3>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>Optical Objective</td>
+            <td>
+              0.7 X ~ 4.5X Horizontal zoom lens<br>
+              Zoom ratio: 6.5:1
+            </td>
+        </tr>
+        <tr>
+            <td>Camera Parameter</td>
+            <td>
+              2 million pixel (1920 x 1080)<br>
+              Image size: 1/2.86-inch<br>
+              Frames per second: 30 fps
+            </td>
+        </tr>
+        <tr>
+            <td>Camera Function</td>
+            <td>
+              White balance, brightness control, digital noise reduction<br>
+              Photograph and video recording<br>
+              VGS/USB Out put, SD card storage<br>
+              OSD: Comprehensive digital UI design, Wireless USB 2.0 mouse operation<br>
+              Cross hairline<br>
+              Picture frozen, 10 X digital magnification
+            </td>
+        </tr>
+        <tr>
+            <td>Measuring Function</td>
+            <td>Optional PC System and measuring software can measure image in field of view</td>
+        </tr>
+        <tr>
+            <td>Interpupillary adjustment</td>
+            <td>2 ~ 3-inch (52 ~ 76 mm)</td>
+        </tr>
+        <tr>
+            <td>Microscope Stand</td>
+            <td>
+              Z-axis Travel: 6-inch (150 mm)<br>
+              Coarse/fine lifting system
+            </td>
+        </tr>
+        <tr>
+            <td>Electrical Parameters</td>
+            <td>90~240 V; 50~60 Hz</td>
+        </tr>
+        <tr>
+            <td>Dimensions (W x D x H)</td>
+            <td>
+              11.4 x 11 x 15.7 inches<br>
+              (290 x 280 x 400 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Gross/ Net Weight</td>
+            <td>10 lbs (4.7 kg)</td>
+        </tr>
+        <tr>
+            <td>Catalog Number</td>
+            <td>VM-100</td>
+        </tr>
+    </table>
+  </section>
+
+<h3>VM-500-PLUS Digital Stereo Microscope</h3>
+<section class="carousel-features" id="vm-500-plus">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="VM-500-PLUS Digital Stereo Microscope">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-500-plus/vm-500-plus-cover.webp" alt="VM-500-PLUS Digital Stereo Microscope">
+                </div>
+                <div class="carousel-item" data-description="The VM-500-PLUS comes with a 24-inch LED monitor, a wireless keyboard, and an optical wireless mouse, compatible with both Windows and Mac OS.">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-500-plus/vm-500-plus-accessories.webp" alt="Image of the VM-500-PLUS microscope along with an LED monitor, wireless keyboard and mouse.">
+                </div>
+                <!--<div class="carousel-item" data-description="Image of the VM-500-PLUS Features">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-500/vm-500-plus-features.webp" alt="Image of the VM-500-PLUS with arrows pointing to key features">
+                </div>-->
+                <!--<div class="carousel-item" data-description="Image of the VM-500-PLUS Dimensions">
+                    <img src="/images/equipment/microscopy/stereo microscopes/vm-500/vm-500-plus-dimensions.webp" alt="Image of the VM-500-PLUS highlighting key dimensions ">
+                </div>-->
+                <!--<div class="carousel-item" data-description="VM-500 Video">
+                    <video controls>
+                        <source src="/images/equipment/microscopy/stereo microscopes/vm-500/vm-500-plus-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>Auto Focus Functionality:</strong> Provides precise focus adjustments for clear imaging.</li>
+            <li><strong>High-Resolution Camera:</strong> Equipped with a 2 million pixel camera for 1080P video and image capture.</li>
+            <li><strong>Comprehensive Measuring Capabilities:</strong> Measures linear dimensions, perimeter, area, angles, and more.</li>
+            <li><strong>Robust Design:</strong> Features a durable Z-axis travel stand with a coarse/fine lifting system.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/microscopes/vm-500-plus.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+            <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <!--<a href="/../videos/vm-500-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+            <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for VM-500-PLUS -->
+<section class="specifications">
+    <h3>Technical Specifications - VM-500-PLUS</h3>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Specifications</th>
+        </tr>
+        <tr>
+            <td>Optical Objective</td>
+            <td>
+              0.7 X ~ 4.5X Horizontal zoom lens<br>
+              Zoom ratio: 6.5:1
+            </td>
+        </tr>
+        <tr>
+            <td>Focus</td>
+            <td>Auto</td>
+        </tr>
+        <tr>
+            <td>Camera Parameter</td>
+            <td>
+              2 million pixel (1920 x 1080)<br>
+              Image size: 1/2.86-inch<br>
+              Frames per second: 1080P@60 fps
+            </td>
+        </tr>
+        <tr>
+            <td>Measuring Function</td>
+            <td>
+              White balance, brightness control, digital noise reduction<br>
+              Photograph and video recording<br>
+              VGS/USB Out put<br>
+              Cross hairline, picture frozen, 10X digital magnification
+            </td>
+        </tr>
+        <tr>
+            <td>Measuring Function</td>
+            <td>
+              Linear dimensions such as distance, perimeter, area, angle, radian, width, height, and radius elements are measured
+            </td>
+        </tr>
+        <tr>
+            <td>Microscope Stand</td>
+            <td>
+              Z-axis Travel: 4-inch (100 mm)<br>
+              Coarse/fine lifting system
+            </td>
+        </tr>
+        <tr>
+            <td>Electrical Parameters</td>
+            <td>90~240 V; 50~60 Hz</td>
+        </tr>
+        <tr>
+            <td>Dimensions (W x D x H)</td>
+            <td>
+              14.8 x 11.2 x 19.7 inches<br>
+              (375 x 285 x 500 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Gross/ Net Weight</td>
+            <td>14 lbs (6.5 kg)</td>
+        </tr>
+        <tr>
+            <td>Catalog Number</td>
+            <td>VM-500-PLUS</td>
+        </tr>
+    </table>
+  </section>
+  
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+   <!-- Related Consumables Section -->
+<section class="related-products">
+    <h3>Related Consumables</h3>
+    <ul>
+        <li><a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" target="_blank" rel="noopener noreferrer">Microscope Slides</a></li>
+    </ul>
+    <br>
+  </section>
+
+</div>
+  
+<br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+  <!-- SCRIPTS -->
+  <script src="/../js/scripts.js"></script>
+  <script src="/../js/carousel.js"></script>
+
+  <script>
+  
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+          const offset = 175; // Adjust this value for your header's height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+          });
+      }
+  });
+});
+
+</script>
+
+</body>
+</html>

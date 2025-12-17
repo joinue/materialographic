@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallographic Microscopes | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> 
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> 
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" />
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Metallographic Microscopes, Inverted Metallurgical Microscope, Metallurgical Microscope, PACE Technologies, Sample Analysis, Metallography">
+    <meta name="description" content="Explore PACE Technologies' range of Metallographic Microscopes designed for accurate and efficient metallographic analysis, including inverted, stereo, and digital microscopes.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Metallurgical Microscopes",
+          "image": "https://www.metallographic.com/Images/metallographic-microscope.webp",
+          "description": "Our Metallurgical Microscopes provide accurate and detailed observation capabilities for metallographic sample analysis, offering a range of features from bright-field to digital imaging.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/microscopy/metallurgical",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+<header class="top-header">
+  <div class="top-header-content">
+      <div class="top-header-inner">
+          <h1 class="page-title">Metallographic Microscopes
+          </h1>
+          <div class="text-content"></div>
+      </div>
+  </div>
+</header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+  <!-- Introduction Section -->
+  <section class="introduction">
+      <h2>Metallurgical Microscopes</h2>
+      <p>
+        Our metallographic microscopes support accurate microstructural evaluation from routine inspection to advanced analysis. The IM-3000B is an economical, durable option for everyday work, offering brightfield and polarized light with reliable plan achromatic optics. The IM-5000 expands capability with darkfield and Differential Interference Contrast (DIC) illumination for improved contrast and feature visibility. The new IM-7000 delivers the highest performance, combining advanced illumination modes with premium long working distance LM Plan S-APO objectives, ultra-wide field eyepieces, and LED illumination for exceptional resolution, color accuracy, and digital imaging performance.
+      <div class="feature-buttons-top">
+        <a href="#im-3000b" class="feature-button-top">IM-3000B Microscope</a>
+        <a href="#im-5000" class="feature-button-top">IM-5000 Microscope</a>
+        <a href="#im-7000" class="feature-button-top">IM-7000 Microscope (NEW)</a>
+    </div>
+  </section>
+
+  <h3>IM-3000B Inverted Metallurgical Microscope</h3>
+  <section class="carousel-features" id="im-3000b">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+          <div class="carousel-container">
+              <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-content">
+                <div class="carousel-item" data-description="IM-3000B Inverted Metallurgical Microscope">
+                      <img src="/images/equipment/microscopy/metallurgical/im-3000b/im-3000b-cover.webp" alt="Image of the IM-3000B Inverted Metallurgical Microscope">
+                  </div>
+                 <div class="carousel-item" data-description="IM-3000B Objectives">
+                      <img src="/images/equipment/microscopy/metallurgical/im-3000b/im-3000b-objectives.webp" alt="Image of the IM-3000B Objectives">
+                  </div>
+                  <!--<div class="carousel-item" data-description="Image of the IM-3000B Microscope Dimensions">
+                    <img src="/images/equipment/microscopy/metallurgical microscopes/im-3000b/im-3000b-dimensions.webp" alt="Image of the IM-3000B Microscope highlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                  <!--<div class="carousel-item" data-description="IM-3000B Video">
+                      <video controls>
+                          <source src="/images/equipment/microscopy/metallurgical microscopes/im-3000b/im-3000b-video.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                      </video>
+                  </div>-->
+              </div>
+              <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-description">
+              <p></p>
+          </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="features">
+          <h3>Features</h3>
+          <ul>
+              <li><strong>Wide Field Eyepiece:</strong> Provides a wide field of view with WF10X eyepiece.</li>
+              <li><strong>High-Quality Objectives:</strong> Equipped with Infinite Plan Achromatic objectives ranging from 5X to 100X.</li>
+              <li><strong>Flexible Trinocular Head:</strong> Inclined 30 degrees for comfortable use.</li>
+              <li><strong>Advanced Illumination:</strong> Features a 12V/50W halogen lamp with color filters for enhanced visibility.</li>
+          </ul>
+          <br>
+          <div class="feature-buttons">
+              <a href="/content/brochures/microscopes/im-3000b.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+              <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+              <a href="https://www.youtube.com/watch?v=RY0KDvyVp08" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+              <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+          </div>
+      </div>
+  </section>
+
+  <!-- Technical Specifications Section for IM-3000B -->
+  <section class="specifications">
+    <h3>Technical Specifications - IM-3000B</h3>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>Eyepiece</td>
+            <td>Wide field WF10X (Field No. 20mm)</td>
+        </tr>
+        <tr>
+            <td>Objectives (Mag/N.A.)</td>
+            <td>
+              Infinite Plan Achromatic 5X/0.12<br>
+              Infinite Plan Achromatic 10X/0.25<br>
+              Infinite Plan Achromatic 20X/0.40<br>
+              Infinite Plan Achromatic 50X/0.80<br>
+              Infinite Plan Achromatic 100X/0.90 (optional)
+            </td>
+        </tr>
+        <tr>
+            <td>Objectives (Mag/Working Distance)</td>
+            <td>
+              PL L5X/0.12 (working distance 10 mm)<br>
+              PL L10X/0.25 (working distance 10 mm)<br>
+              PL L20/0.40 (working distance 5 mm)<br>
+              PL L50X/0.70 (working distance 1.3 mm)<br>
+              PL L100X/0.90 (working distance 0.7 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Trinocular Head</td>
+            <td>Inclined 30 degrees, interpupillary distance 48-75 mm</td>
+        </tr>
+        <tr>
+            <td>Focusing System</td>
+            <td>Coaxial coarse/fine focus</td>
+        </tr>
+        <tr>
+            <td>Nosepiece</td>
+            <td>Quintuple</td>
+        </tr>
+        <tr>
+            <td>Mechanical Stage</td>
+            <td>X-Y mechanical stage</td>
+        </tr>
+        <tr>
+            <td>Illumination</td>
+            <td>6V/30W Halogen Lamp</td>
+        </tr>
+        <tr>
+            <td>Color Filters</td>
+            <td>Grey, Blue, and Green</td>
+        </tr>
+        <tr>
+            <td>Diffuser</td>
+            <td>Ground Glass</td>
+        </tr>
+         </tr>
+            <td>Catalog Number</td>
+            <td>IM-3000B</td>
+        </tr>
+    </table>
+  </section>
+
+  <h3>IM-5000 Inverted Metallurgical Microscope</h3>
+<section class="carousel-features" id="im-5000">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="IM-5000 Inverted Metallurgical Microscope">
+                    <img src="/images/equipment/microscopy/metallurgical/im-5000/im-5000-cover.webp" alt="Image of the IM-5000 Inverted Metallurgical Microscope">
+                </div>
+                <div class="carousel-item" data-description="IM-5000 Objectives">
+                    <img src="/images/equipment/microscopy/metallurgical/im-5000/im-5000-objectives.webp" alt="Image of the IM-5000 Objectives">
+                </div>
+                <!--<div class="carousel-item" data-description="IM-5000 Dimensions">
+                    <img src="/images/equipment/microscopy/metallurgical microscopes/im-5000/im-500-dimensions.webp" alt="Image of the IM-5000 Microscope higlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!--<div class="carousel-item" data-description="IM-5000 Video">
+                    <video controls>
+                        <source src="/images/equipment/microscopy/metallurgical microscopes/im-5000/im-500-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>Advanced Illumination Options:</strong> Offers brightfield, darkfield, polarized light, and DIC illumination.</li>
+            <li><strong>Wide Field Eyepiece:</strong> Provides a wide field of view with WF10X eyepiece.</li>
+            <li><strong>High-Quality Objectives:</strong> Equipped with PL L5X to PL L100X objectives for versatile imaging.</li>
+            <li><strong>Trinocular Eyepiece Tube:</strong> Allows for flexible observation and photography with a 45-degree inclination.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/microscopes/im-5000.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+            <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <a href="https://www.youtube.com/watch?v=14DTVdjXrdQ&t=2s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>
+            <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for IM-5000 -->
+<section class="specifications">
+    <h3>Technical Specifications - IM-5000</h3>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Specifications</th>
+        </tr>
+        <tr>
+            <td>Eyepiece</td>
+            <td>Wide field WF 10X (field no. 22 mm)</td>
+        </tr>
+        <tr>
+            <td>Objectives</td>
+            <td>
+              PL L5X/0.12 BD (working distance 10 mm)<br>
+              PL L10X/0.25 BD (working distance 10 mm)<br>
+              PL L20/0.40 BD (working distance 5 mm)<br>
+              PL L50X/0.70 BD (working distance 1.3 mm)<br>
+              PL L100X/0.90 BD (working distance 0.7 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Eyepiece Tube</td>
+            <td>
+              Trinocular, 45 degree inclimation ratio<br>
+              Observation: 80%, photo 20%
+            </td>
+        </tr>
+        <tr>
+            <td>Focusing System</td>
+            <td>
+              Coaxial coarse/fine focus (2 micron)<br>
+              Travel (stage to focal plane) up 1 mm, down 7 mm
+            </td>
+        </tr>
+        <tr>
+            <td>Nosepiece</td>
+            <td>Quintuple</td>
+        </tr>
+        <tr>
+            <td>Mechanical Stage</td>
+            <td>
+              X-Y stage<br>
+              Travel range: 1.6x1.6-inches (40 x 40 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td>8.9 x 7-inch (226x178 mm)</td>
+        </tr>
+        <tr>
+            <td>Illumination</td>
+            <td>12V/50W Halogen Lamp</td>
+        </tr>
+        <tr>
+            <td>Color Filters</td>
+            <td>
+              Grey, Blue, and Green</td>
+        </tr>
+        <tr>
+            <td>Diffuser</td>
+            <td>Ground glass</td>
+        </tr>
+        <tr>
+            <td>Catalog Number</td>
+            <td>IM-5000</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+  </section>
+  
+  <h3>IM-7000 Premium Inverted Metallurgical Microscope</h3>
+<section class="carousel-features" id="im-7000">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="IM-7000 Inverted Metallurgical Microscope">
+                    <img src="/images/equipment/microscopy/metallurgical/im-7000/im-7000-cover.webp" alt="Image of the IM-7000 Inverted Metallurgical Microscope">
+                </div>
+                <div class="carousel-item" data-description="IM-7000 Objectives">
+                    <img src="/images/equipment/microscopy/metallurgical/im-7000/im-7000-objectives.webp" alt="Image of the IM-7000 Objectives">
+                </div>
+                <div class="carousel-item" data-description="IM-7000 Control Panel & Display">
+                    <img src="/images/equipment/microscopy/metallurgical/im-7000/im-7000-control-panel.webp" alt="Image of the IM-7000 Control Panel and Display">
+                </div>
+                <div class="carousel-item" data-description="IM-7000 DIC">
+                    <img src="/images/equipment/microscopy/metallurgical/im-7000/im-7000-DIC.webp" alt="Image of the IM-7000 DIC">
+                </div>
+                <div class="carousel-item" data-description="IM-7000 90° with Polarizers and Camera">
+                    <img src="/images/equipment/microscopy/metallurgical/im-7000/im-7000-90 degrees.webp" alt="Image of the IM-7000 with Polarizers and Cameras Installed">
+                </div>
+                <!--<div class="carousel-item" data-description="IM-7000 Dimensions">
+                    <img src="/images/equipment/microscopy/metallurgical microscopes/im-7000/im-7000-dimensions.webp" alt="Image of the IM-7000 Microscope higlighting key dimensions such as width, depth, and lenght">
+                </div>-->
+                <!--<div class="carousel-item" data-description="IM-7000 Video">
+                    <video controls>
+                        <source src="/images/equipment/microscopy/metallurgical microscopes/im-7000/im-7000-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p></p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+            <li><strong>Advanced Illumination Options:</strong> Offers brightfield, darkfield, polarized light & differential interference contrast (DIC).</li>
+            <li><strong>Wide Field Eyepiece:</strong> Provides a wide field of view with WF10X eyepiece.</li>
+            <li><strong>Premium LM Plan S-APO Objectives:</strong> Infinity-corrected, long-working-distance, plan-corrected, superapochromatic objectives.</li>
+            <li><strong>Plan-Planar Field Correction:</strong> Ensures a flat, distortion free image across the entire field of view.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+            <a href="/content/brochures/microscopes/im-7000.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a> 
+            <a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+            <!--<a href="https://www.youtube.com/watch?v=14DTVdjXrdQ&t=2s" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+            <a href="/./content/catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Full Catalog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for IM-7000 -->
+<section class="specifications">
+    <h3>Technical Specifications - IM-7000</h3>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Specifications</th>
+        </tr>
+        <tr>
+            <td>Eyepiece</td>
+            <td>Wide field WF 10X (field no. 22 mm)</td>
+        </tr>
+        <tr>
+            <td>Objectives</td>
+            <td>
+              LM Plan S-APO 5X/0.15 (working distance 14.4 mm)<br>
+              LM Plan S-APO 10X/0.30 (working distance 12.1 mm)<br>
+              LM Plan S-APO 20X/0.45 (working distance 11.1 mm)<br>
+              LM Plan S-APO 50X/0.75 (working distance 3.65 mm)<br>
+              LM Plan S-APO 100X/0.80 (working distance 3.2 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Trinocular Head</td>
+            <td>
+              30 degree inclination ratio<br>
+              360° rotatable
+            </td>
+        </tr>
+        <tr>
+            <td>Focusing System</td>
+            <td>
+              Coaxial coarse and fine focusing (1 micron)<br>
+              Fine focus travel per revolution (0.1 mm)<br>
+              Coarse focus travel per revolution (34 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Nosepiece</td>
+            <td>Quintuple</td>
+        </tr>
+        <tr>
+            <td>Mechanical Stage</td>
+            <td>
+              X-Y stage<br>
+              Travel range: 1.9 x 1.9-inches (50 x 50 mm)
+            </td>
+        </tr>
+        <tr>
+            <td>Illumination</td>
+            <td>Köhler illumination, 10W LED output equivalent to 100W halogen lamp</td>
+        </tr>
+        <tr>
+            <td>Catalog Number</td>
+            <td>IM-7000</td>
+        </tr>
+        <tr>
+        </tr>
+    </table>
+  </section>
+  
+  
+
+</section>
+
+
+
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a><br><br>
+
+
+  <!-- Related Consumables Section -->
+<section class="related-products">
+    <h3>Related Consumables</h3>
+    <ul>
+        <li><a href="https://shop.metallographic.com/products/mic-s?_pos=1&_psq=slides&_ss=e&_v=1.0" target="_blank" rel="noopener noreferrer">Microscope Slides</a></li>
+    </ul>
+    <br>
+  </section>
+</div>
+  
+<br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+  <!-- SCRIPTS -->
+  <script src="/../js/scripts.js"></script>
+  <script src="/../js/carousel.js"></script>
+
+  <script>
+  
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+          const offset = 175; // Adjust this value for your header's height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+          });
+      }
+  });
+});
+
+</script>
+
+</body>
+</html>
+

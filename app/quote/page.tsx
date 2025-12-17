@@ -1,6 +1,7 @@
 'use client'
 
 import Script from 'next/script'
+import Link from 'next/link'
 import { FileText, Package, Wrench } from 'lucide-react'
 import AnimateOnScroll from '@/components/AnimateOnScroll'
 
@@ -81,18 +82,24 @@ export default function QuotePage() {
                 </div>
 
                 <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Before You Submit</h3>
-                  <p className="text-gray-600 text-xs leading-relaxed mb-3">
-                    We recommend exploring our{' '}
-                    <a href="/builder" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">Need More Direction?</h3>
+                  <p className="text-gray-600 text-xs leading-relaxed mb-4">
+                    If you'd like more guidance before requesting a quote, explore our{' '}
+                    <Link href="/builder" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                       Build Your Lab
-                    </a>{' '}
-                    tool and{' '}
-                    <a href="/guides/equipment-overview" className="text-primary-600 hover:text-primary-700 font-semibold underline">
+                    </Link>{' '}
+                    tool for step-by-step equipment selection, or check out our{' '}
+                    <Link href="/guides/equipment-overview" className="text-primary-600 hover:text-primary-700 font-semibold underline">
                       Equipment Guide
-                    </a>{' '}
+                    </Link>{' '}
                     to better understand your needs.
                   </p>
+                  <Link 
+                    href="/builder" 
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+                  >
+                    Explore Build Your Lab →
+                  </Link>
                 </div>
               </div>
             </AnimateOnScroll>

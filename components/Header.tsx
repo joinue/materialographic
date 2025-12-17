@@ -14,7 +14,19 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null)
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const router = useRouter()
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Check if user is logged in as admin
   useEffect(() => {
@@ -67,67 +79,77 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <nav className="container-custom max-w-[1536px] py-4">
-        <div className="flex items-center h-16 px-6 rounded-full bg-white/85 backdrop-blur-sm border border-gray-200/80 shadow-lg shadow-gray-900/5">
+      <nav className="w-full">
+        <div className={`hidden lg:flex items-center px-8 bg-white border-b border-gray-200 shadow-sm w-full transition-all duration-300 ${
+          isScrolled ? 'min-h-20' : 'min-h-24'
+        }`}>
           {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative">
+          <div className={`flex items-center pr-8 transition-all duration-300 ${
+            isScrolled ? 'py-3' : 'py-4'
+          }`}>
+            <Link href="/" className="flex items-center">
+              <div className={`relative w-auto transition-all duration-300 ${
+                isScrolled ? 'h-16' : 'h-20'
+              }`}>
                 <Image 
-                  src="/logo.png" 
-                  alt="Metallography.org" 
-                  width={50} 
-                  height={50}
-                  className="h-10 w-auto"
+                  src="/images/pace/materialographic-logo.png" 
+                  alt="Materialographic.com" 
+                  width={160} 
+                  height={160}
+                  className={`w-auto object-contain transition-all duration-300 ${
+                    isScrolled ? 'h-16' : 'h-20'
+                  }`}
                   priority
                   fetchPriority="high"
+                  quality={100}
                 />
               </div>
-              <span className="hidden xl:block text-2xl font-bold tracking-tight text-gray-900">
-                Metallography.org
-              </span>
             </Link>
           </div>
           
           {/* Desktop Navigation with Dropdowns - Centered */}
-          <div className="hidden lg:flex items-center space-x-0 flex-1 justify-center">
+          <div className="flex items-center space-x-0 flex-1 justify-center">
+              {/* Equipment */}
               <div 
                 className="relative"
-                onMouseEnter={() => setActiveDropdown('guides')}
+                onMouseEnter={() => setActiveDropdown('equipment')}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link 
-                  href="/guides" 
+                  href="/equipment" 
                   className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
                 >
-                  Guides
+                  Equipment
                   <ChevronDown className="w-3.5 h-3.5" />
                 </Link>
-                {activeDropdown === 'guides' && (
+                {activeDropdown === 'equipment' && (
                   <>
                     {/* Invisible bridge to prevent gap */}
                     <div className="absolute top-full left-0 w-full h-2"></div>
-                    <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/guides" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
-                        All Guides
+                    <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
+                      <Link href="/equipment" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
+                        All Equipment
                       </Link>
                       <div className="border-t border-gray-200 my-2 mx-2"></div>
                       <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Categories</p>
-                        <Link href="/guides?category=Basics" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Basics
+                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">By Process</p>
+                        <Link href="/equipment/sectioning" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Sectioning
                         </Link>
-                        <Link href="/guides?category=Process" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Process
+                        <Link href="/equipment/mounting" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Mounting
                         </Link>
-                        <Link href="/guides?category=Material-Specific" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Material-Specific
+                        <Link href="/equipment/grinding-polishing" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Grinding & Polishing
                         </Link>
-                        <Link href="/guides?category=Application-Specific" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Application-Specific
+                        <Link href="/equipment/microscopy" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Microscopy
                         </Link>
-                        <Link href="/guides?category=Troubleshooting" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Troubleshooting
+                        <Link href="/equipment/hardness-testing" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Hardness Testing
+                        </Link>
+                        <Link href="/equipment/lab-furniture" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Lab Furniture
                         </Link>
                       </div>
                     </div>
@@ -137,6 +159,97 @@ export default function Header() {
               
               <span className="text-gray-300 mx-1">|</span>
               
+              {/* Consumables */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('consumables')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link 
+                  href="/consumables" 
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
+                >
+                  Consumables
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </Link>
+                {activeDropdown === 'consumables' && (
+                  <>
+                    {/* Invisible bridge to prevent gap */}
+                    <div className="absolute top-full left-0 w-full h-2"></div>
+                    <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
+                      <Link href="/consumables" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
+                        All Consumables
+                      </Link>
+                      <div className="border-t border-gray-200 my-2 mx-2"></div>
+                      <div className="px-2">
+                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">By Process</p>
+                        <Link href="/consumables/sectioning" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Sectioning
+                        </Link>
+                        <Link href="/consumables/mounting" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Mounting
+                        </Link>
+                        <Link href="/consumables/grinding-lapping" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Grinding & Lapping
+                        </Link>
+                        <Link href="/consumables/polishing" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Polishing
+                        </Link>
+                        <Link href="/consumables/etching" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Etching
+                        </Link>
+                        <Link href="/consumables/cleaning" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Cleaning
+                        </Link>
+                        <Link href="/consumables/hardness-testing" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Hardness Testing
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              <span className="text-gray-300 mx-1">|</span>
+              
+              {/* Services */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('services')}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link 
+                  href="/quote" 
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
+                >
+                  Services
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </Link>
+                {activeDropdown === 'services' && (
+                  <>
+                    {/* Invisible bridge to prevent gap */}
+                    <div className="absolute top-full left-0 w-full h-2"></div>
+                    <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
+                      <Link href="/quote" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
+                        Request Quote
+                      </Link>
+                      <div className="border-t border-gray-200 my-2 mx-2"></div>
+                      <div className="px-2">
+                        <Link href="/contact" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Contact Us
+                        </Link>
+                        <Link href="/builder" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Build Your Lab
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              <span className="text-gray-300 mx-1">|</span>
+              
+              {/* Resources Mega Menu - Combining Guides, Resources, Tools, Databases */}
               <div 
                 className="relative"
                 onMouseEnter={() => setActiveDropdown('resources')}
@@ -153,140 +266,100 @@ export default function Header() {
                   <>
                     {/* Invisible bridge to prevent gap */}
                     <div className="absolute top-full left-0 w-full h-2"></div>
-                    <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/resources" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
-                        All Resources
-                      </Link>
-                      <div className="border-t border-gray-200 my-2 mx-2"></div>
-                      <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Categories</p>
-                        <Link href="/resources?category=Checklists%20%26%20Quick%20References" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Checklists & Quick References
-                        </Link>
-                        <Link href="/resources?category=Reference Charts" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Reference Charts
-                        </Link>
-                        <Link href="/resources?category=Preparation Guides" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Preparation Guides
-                        </Link>
-                        <Link href="/resources?category=Video Resources" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Video Resources
-                        </Link>
-                        <Link href="/resources?category=Troubleshooting" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Troubleshooting
-                        </Link>
-                      </div>
-                      <div className="border-t border-gray-200 my-2 mx-2"></div>
-                      <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Popular</p>
-                        <Link href="/glossary" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Glossary
-                        </Link>
-                        <Link href="/resources/checklist" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Sample Prep Checklist
-                        </Link>
-                        <Link href="/resources/grit-size-chart" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Grit Size Chart
-                        </Link>
-                        <Link href="/resources/common-etchants-guide" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Common Etchants
-                        </Link>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-              
-              <span className="text-gray-300 mx-1">|</span>
-              
-              <div 
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('tools')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link 
-                  href="/tools" 
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
-                >
-                  Tools
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </Link>
-                {activeDropdown === 'tools' && (
-                  <>
-                    {/* Invisible bridge to prevent gap */}
-                    <div className="absolute top-full left-0 w-full h-2"></div>
-                    <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/tools" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
-                        All Tools
-                      </Link>
-                      <div className="border-t border-gray-200 my-2 mx-2"></div>
-                      <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Categories</p>
-                        <Link href="/tools?category=Calculators" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Calculators
-                        </Link>
-                        <Link href="/tools?category=Reference" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Reference
-                        </Link>
-                        <Link href="/tools?category=Workflow" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Workflow
-                        </Link>
-                      </div>
-                      <div className="border-t border-gray-200 my-2 mx-2"></div>
-                      <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Popular</p>
-                        <Link href="/tools/grit-size-converter" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Grit Size Converter
-                        </Link>
-                        <Link href="/tools/etchant-selector" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Etchant Selector
-                        </Link>
-                        <Link href="/tools/polishing-time-calculator" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Polishing Time Calculator
-                        </Link>
-                        <Link href="/guides?category=Material-Specific" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Procedure Guides →
-                        </Link>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-              
-              <span className="text-gray-300 mx-1">|</span>
-              
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('data-library')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link 
-                  href="/databases" 
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
-                >
-                  Databases
-                  <ChevronDown className="w-3.5 h-3.5" />
-                </Link>
-                {activeDropdown === 'data-library' && (
-                  <>
-                    {/* Invisible bridge to prevent gap */}
-                    <div className="absolute top-full left-0 w-full h-2"></div>
-                    <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/databases" className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
-                        All Databases
-                      </Link>
-                      <div className="border-t border-gray-200 my-2 mx-2"></div>
-                      <div className="px-2">
-                        <p className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">Libraries</p>
-                        <Link href="/materials" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Materials Database
-                        </Link>
-                        <Link href="/etchants" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Etchants Database
-                        </Link>
-                        <Link href="/standards" className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Standards Database
-                        </Link>
+                    <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-2xl shadow-xl border border-gray-200 py-4 z-50">
+                      <div className="grid grid-cols-4 gap-6 px-4">
+                        {/* Guides Column */}
+                        <div>
+                          <Link href="/guides" className="block px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mb-2">
+                            Guides
+                          </Link>
+                          <div className="space-y-1">
+                            <Link href="/guides?category=Basics" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Basics
+                            </Link>
+                            <Link href="/guides?category=Process" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Process
+                            </Link>
+                            <Link href="/guides?category=Material-Specific" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Material-Specific
+                            </Link>
+                            <Link href="/guides?category=Application-Specific" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Application-Specific
+                            </Link>
+                            <Link href="/guides?category=Troubleshooting" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Troubleshooting
+                            </Link>
+                          </div>
+                        </div>
+                        
+                        {/* Resources Column */}
+                        <div>
+                          <Link href="/resources" className="block px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mb-2">
+                            Resources
+                          </Link>
+                          <div className="space-y-1">
+                            <Link href="/glossary" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Glossary
+                            </Link>
+                            <Link href="/resources/checklist" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Sample Prep Checklist
+                            </Link>
+                            <Link href="/resources/grit-size-chart" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Grit Size Chart
+                            </Link>
+                            <Link href="/resources/common-etchants-guide" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Common Etchants
+                            </Link>
+                            <Link href="/resources?category=Reference Charts" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Reference Charts
+                            </Link>
+                          </div>
+                        </div>
+                        
+                        {/* Tools Column */}
+                        <div>
+                          <Link href="/tools" className="block px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mb-2">
+                            Tools
+                          </Link>
+                          <div className="space-y-1">
+                            <Link href="/tools/grit-size-converter" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Grit Size Converter
+                            </Link>
+                            <Link href="/tools/etchant-selector" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Etchant Selector
+                            </Link>
+                            <Link href="/tools/polishing-time-calculator" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Polishing Time Calculator
+                            </Link>
+                            <Link href="/tools?category=Calculators" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              All Calculators
+                            </Link>
+                            <Link href="/tools?category=Reference" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Reference Tools
+                            </Link>
+                          </div>
+                        </div>
+                        
+                        {/* Databases Column */}
+                        <div>
+                          <Link href="/databases" className="block px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mb-2">
+                            Databases
+                          </Link>
+                          <div className="space-y-1">
+                            <Link href="/materials" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Materials Database
+                            </Link>
+                            <Link href="/etchants" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Etchants Database
+                            </Link>
+                            <Link href="/standards" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Standards Database
+                            </Link>
+                            <Link href="/microstructures" className="block px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                              Microstructure Gallery
+                            </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </>
@@ -295,6 +368,7 @@ export default function Header() {
               
               <span className="text-gray-300 mx-1">|</span>
               
+              {/* Blog */}
               <Link 
                 href="/blog" 
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200"
@@ -342,19 +416,40 @@ export default function Header() {
                   Stock Your Lab
                 </Link>
                 <Link 
-                  href="/builder" 
+                  href="/quote" 
                   className="px-5 py-2 bg-gray-900 text-white hover:text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 flex items-center space-x-2 text-sm shadow-md hover:shadow-lg"
                 >
-                  <span>Build Your Lab</span>
+                  <span>Request Quote</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </>
             )}
           </div>
+        </div>
+
+        {/* Mobile Nav Bar - Pill Shaped */}
+        <div className="lg:hidden flex items-center h-16 px-6 rounded-full bg-white border border-gray-200 shadow-lg shadow-gray-900/5 mt-3">
+          {/* Mobile Logo */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-12 w-auto">
+                <Image 
+                  src="/images/pace/tri-structure.png" 
+                  alt="Materialographic.com" 
+                  width={96} 
+                  height={96}
+                  className="h-12 w-auto object-contain"
+                  priority
+                  fetchPriority="high"
+                  quality={100}
+                />
+              </div>
+            </Link>
+          </div>
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden ml-auto p-2 rounded-lg transition-all duration-200 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            className="ml-auto p-2 rounded-lg transition-all duration-200 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
@@ -369,40 +464,105 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 px-6 rounded-2xl mt-3 shadow-xl backdrop-blur-xl transition-all duration-300 bg-white border border-gray-200 max-h-[calc(100vh-120px)] overflow-y-auto">
-            {/* Guides Section */}
+          <div className="lg:hidden py-4 px-6 rounded-2xl mt-3 shadow-xl transition-all duration-300 bg-white border border-gray-200 max-h-[calc(100vh-120px)] overflow-y-auto">
+            {/* Equipment Section */}
             <div className="mb-2">
               <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
                 <Link 
-                  href="/guides" 
+                  href="/equipment" 
                   className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Guides
+                  Equipment
                 </Link>
                 <button
                   onClick={(e) => {
                     e.preventDefault()
-                    setMobileExpandedSection(mobileExpandedSection === 'guides' ? null : 'guides')
+                    setMobileExpandedSection(mobileExpandedSection === 'equipment' ? null : 'equipment')
                   }}
                   className="p-1 hover:bg-gray-100 rounded transition-colors"
-                  aria-label="Toggle Guides submenu"
+                  aria-label="Toggle Equipment submenu"
                 >
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'guides' ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'equipment' ? 'rotate-180' : ''}`} />
                 </button>
               </div>
-              {mobileExpandedSection === 'guides' && (
+              {mobileExpandedSection === 'equipment' && (
                 <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                  <Link href="/guides?category=Basics" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Basics</Link>
-                  <Link href="/guides?category=Process" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Process</Link>
-                  <Link href="/guides?category=Material-Specific" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Material-Specific</Link>
-                  <Link href="/guides?category=Application-Specific" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Application-Specific</Link>
-                  <Link href="/guides?category=Troubleshooting" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Troubleshooting</Link>
+                  <Link href="/equipment/sectioning" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Sectioning</Link>
+                  <Link href="/equipment/mounting" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Mounting</Link>
+                  <Link href="/equipment/grinding-polishing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Grinding & Polishing</Link>
+                  <Link href="/equipment/microscopy" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Microscopy</Link>
+                  <Link href="/equipment/hardness-testing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Hardness Testing</Link>
+                  <Link href="/equipment/lab-furniture" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Lab Furniture</Link>
                 </div>
               )}
             </div>
 
-            {/* Resources Section */}
+            {/* Consumables Section */}
+            <div className="mb-2">
+              <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
+                <Link 
+                  href="/consumables" 
+                  className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Consumables
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMobileExpandedSection(mobileExpandedSection === 'consumables' ? null : 'consumables')
+                  }}
+                  className="p-1 hover:bg-gray-100 rounded transition-colors"
+                  aria-label="Toggle Consumables submenu"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'consumables' ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+              {mobileExpandedSection === 'consumables' && (
+                <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                  <Link href="/consumables/sectioning" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Sectioning</Link>
+                  <Link href="/consumables/mounting" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Mounting</Link>
+                  <Link href="/consumables/grinding-lapping" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Grinding & Lapping</Link>
+                  <Link href="/consumables/polishing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Polishing</Link>
+                  <Link href="/consumables/etching" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Etching</Link>
+                  <Link href="/consumables/cleaning" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Cleaning</Link>
+                  <Link href="/consumables/hardness-testing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Hardness Testing</Link>
+                </div>
+              )}
+            </div>
+
+            {/* Services Section */}
+            <div className="mb-2">
+              <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
+                <Link 
+                  href="/quote" 
+                  className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Services
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMobileExpandedSection(mobileExpandedSection === 'services' ? null : 'services')
+                  }}
+                  className="p-1 hover:bg-gray-100 rounded transition-colors"
+                  aria-label="Toggle Services submenu"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'services' ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+              {mobileExpandedSection === 'services' && (
+                <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                  <Link href="/quote" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Request Quote</Link>
+                  <Link href="/contact" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
+                  <Link href="/builder" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Build Your Lab</Link>
+                </div>
+              )}
+            </div>
+
+            {/* Resources Mega Menu Section - Combining Guides, Resources, Tools, Databases */}
             <div className="mb-2">
               <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
                 <Link 
@@ -424,73 +584,50 @@ export default function Header() {
                 </button>
               </div>
               {mobileExpandedSection === 'resources' && (
-                <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                  <Link href="/glossary" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Glossary</Link>
-                  <Link href="/resources?category=Checklists%20%26%20Quick%20References" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Checklists & Quick References</Link>
-                  <Link href="/resources?category=Reference Charts" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Reference Charts</Link>
-                  <Link href="/resources?category=Preparation Guides" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Preparation Guides</Link>
-                  <Link href="/resources?category=Video Resources" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Video Resources</Link>
-                  <Link href="/resources?category=Troubleshooting" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Troubleshooting</Link>
-                </div>
-              )}
-            </div>
-
-            {/* Tools Section */}
-            <div className="mb-2">
-              <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
-                <Link 
-                  href="/tools" 
-                  className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Tools
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    setMobileExpandedSection(mobileExpandedSection === 'tools' ? null : 'tools')
-                  }}
-                  className="p-1 hover:bg-gray-100 rounded transition-colors"
-                  aria-label="Toggle Tools submenu"
-                >
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'tools' ? 'rotate-180' : ''}`} />
-                </button>
-              </div>
-              {mobileExpandedSection === 'tools' && (
-                <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                  <Link href="/tools?category=Calculators" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Calculators</Link>
-                  <Link href="/tools?category=Reference" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Reference</Link>
-                  <Link href="/tools?category=Workflow" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Workflow</Link>
-                </div>
-              )}
-            </div>
-
-            {/* Databases Section */}
-            <div className="mb-2">
-              <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
-                <Link 
-                  href="/databases" 
-                  className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Databases
-                </Link>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault()
-                    setMobileExpandedSection(mobileExpandedSection === 'databases' ? null : 'databases')
-                  }}
-                  className="p-1 hover:bg-gray-100 rounded transition-colors"
-                  aria-label="Toggle Databases submenu"
-                >
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'databases' ? 'rotate-180' : ''}`} />
-                </button>
-              </div>
-              {mobileExpandedSection === 'databases' && (
-                <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                  <Link href="/materials" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Materials Database</Link>
-                  <Link href="/etchants" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Etchants Database</Link>
-                  <Link href="/standards" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Standards Database</Link>
+                <div className="pl-4 pt-2 pb-2 space-y-3 animate-in slide-in-from-top-2 duration-200">
+                  {/* Guides Subsection */}
+                  <div>
+                    <Link href="/guides" className="block py-2 text-sm font-semibold text-primary-600">Guides</Link>
+                    <div className="pl-2 space-y-1">
+                      <Link href="/guides?category=Basics" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Basics</Link>
+                      <Link href="/guides?category=Process" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Process</Link>
+                      <Link href="/guides?category=Material-Specific" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Material-Specific</Link>
+                      <Link href="/guides?category=Application-Specific" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Application-Specific</Link>
+                      <Link href="/guides?category=Troubleshooting" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Troubleshooting</Link>
+                    </div>
+                  </div>
+                  
+                  {/* Resources Subsection */}
+                  <div>
+                    <Link href="/resources" className="block py-2 text-sm font-semibold text-primary-600">Resources</Link>
+                    <div className="pl-2 space-y-1">
+                      <Link href="/glossary" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Glossary</Link>
+                      <Link href="/resources/checklist" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Sample Prep Checklist</Link>
+                      <Link href="/resources/grit-size-chart" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Grit Size Chart</Link>
+                      <Link href="/resources/common-etchants-guide" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Common Etchants</Link>
+                    </div>
+                  </div>
+                  
+                  {/* Tools Subsection */}
+                  <div>
+                    <Link href="/tools" className="block py-2 text-sm font-semibold text-primary-600">Tools</Link>
+                    <div className="pl-2 space-y-1">
+                      <Link href="/tools/grit-size-converter" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Grit Size Converter</Link>
+                      <Link href="/tools/etchant-selector" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Etchant Selector</Link>
+                      <Link href="/tools/polishing-time-calculator" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Polishing Time Calculator</Link>
+                    </div>
+                  </div>
+                  
+                  {/* Databases Subsection */}
+                  <div>
+                    <Link href="/databases" className="block py-2 text-sm font-semibold text-primary-600">Databases</Link>
+                    <div className="pl-2 space-y-1">
+                      <Link href="/materials" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Materials Database</Link>
+                      <Link href="/etchants" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Etchants Database</Link>
+                      <Link href="/standards" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Standards Database</Link>
+                      <Link href="/microstructures" className="block py-1 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Microstructure Gallery</Link>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

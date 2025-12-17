@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACE Technologies Metallographic Products - Hardness Testers</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="PACE Technologies, metallographic equipment, hardness testers, microhardness testers, metallurgical testing, metallography, Vickers, Knoop, hardness measurement, automated hardness testers">
+    <meta name="description" content="Discover PACE Technologies' comprehensive range of hardness testers, offering precision measurement and reliable performance for metallography and materials testing, from manual to fully automated systems.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "PACE Technologies",
+          "url": "https://www.metallographic.com",
+          "logo": "https://www.metallographic.com/images/logo-microstructure-transparent.webp",
+          "sameAs": [
+            "https://www.facebook.com/PaceTechnologies",
+            "https://www.linkedin.com/company/metallographic"
+            "https://www.instagram.com/pace_technologies/"
+            "https://www.youtube.com/@pacetechnologies/videos"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-520-882-6598",
+            "contactType": "Customer Service"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Hardness Testers</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>Metallographic Hardness Testing Equipment</h2>
+      <p>
+        PACE Technologies provides reliable hardness testers, including Microhardness, Brinell, MacroVickers, and Rockwell models, designed for precise and consistent materials testing. Engineered to meet the demands of metallographic analysis, these instruments ensure industry-standard performance with essential features for effective testing.
+      </p>
+      
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div class="carousel-item" data-description="Pace Technologies Rockwell Hardness Testers - OMEGA-RT, OMEGA-DIGI-RT, and OMEGA-AUTO-RT (from left to right).">
+              <img src="/images/rockwell.webp" alt="Image of the Rockwell Hardness Testers including the OMEGA-RT, OMEGA-DIGI-RT, and OMEGA-AUTO-RT (from left to right)" />
+            </div>
+            <div class="carousel-item" data-description="Microhardness Testers - ALPHA-MHT-1000Z, ALPHA-MHT-2000Z2, ALPHA-MHT-AUTO, and ALPHA-MHT-1000VK (from left to right). ">
+              <img src="/images/microhardness.webp" alt="Image of the Microhardness Testers including the ALPHA-MHT-1000Z, ALPHA-MHT-2000Z2, ALPHA-MHT-AUTO, and ALPHA-MHT-1000VK (from left to right)" />
+            </div>
+            <div class="carousel-item" data-description="Dual Rockwell / Superficial Hardness Testers - OMEGA-RST-15/150, OMEGA-DIGI-RST, and OMEGA-AUTO-RST (from left to right).">
+              <img src="/images/dual-rockwell-superficial.webp" alt="Image of the Dual Rockwell / Superficial Hardness Testers including the OMEGA-RST-15/150, OMEGA-DIGI-RST, and OMEGA-AUTO-RST (from left to right)." />
+            </div>
+            <div class="carousel-item" data-description="Brinell / MacroVickers Hardness Testers - OMEGA-5000-VZ, OMEGA-HB, OMEGA-HB-3000, and OMEGA-AUTO-HB (from left to right).">
+              <img src="/images/brinell-macrovickers.webp" alt="Image of the Brinell / MacroVickers Hardness Testers including the OMEGA-5000-VZ, OMEGA-HB, OMEGA-HB-3000, and OMEGA-AUTO-HB (from left to right)." />
+            </div>
+            <!--<div class="carousel-item" data-description="Hardness Testers Video">
+              <video controls>
+                <source src="/videos/MEGA T400-A SAW RUNNING 2.MP4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>-->
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+        
+      <!-- Features Section -->
+      <div class="features">
+     
+        <p><strong>Choose Type:</strong></p>
+        <div class="feature-buttons">
+          <a href="#microhardness" class="feature-button">Microhardness</a>
+          <a href="#rockwell" class="feature-button">Rockwell</a>
+          <a href="#dual-rockwell" class="feature-button">Rockwell / Superficial</a>
+          <a href="#brinell" class="feature-button">Brinell / MacroVickers</a>
+      </div>
+        <h4>Overview:</h4>
+        <ul>
+          <li><strong>Microhardness Testers:</strong> Ideal for precise measurement of small or thin samples, ensuring accurate hardness testing on a micro scale.</li>
+          <li><strong>Rockwell Hardness Testers:</strong> Reliable tools for testing the hardness of a wide range of materials, suitable for both laboratory and production environments.</li>
+          <li><strong>Brinell/MacroVickers Hardness Testers:</strong> Robust options for testing larger samples, providing consistent and repeatable results in macro hardness testing applications.</li>
+      </ul>
+
+      </div>
+    </section>
+<a href="/quote.html" class="quote-btn-link">   
+    <button class="quote-btn-midpage">Request a Quote</button>
+</a>    
+
+<!-- MICROHARDNESS Series Section -->
+<div class="section-anchor" id="microhardness"></div>
+
+<section class="product-series">
+  <h3>Microhardness Testers</h3>
+  <p>
+    Microhardness testers provide precise measurements for small or delicate materials, using minimal force to accurately assess coatings, films, and microstructures. Ideal for labs and quality control, they offer reliable Vickers and Knoop testing in one compact device.
+  </p>
+  <div class="product-cards">
+    <!-- Microhardness Tester Card 1 -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-1000z" class="product-image">
+            <img src="/images/alpha-mht-1000z.webp" alt="Microhardness Tester ALPHA-MHT-1000Z" />
+        </a>
+        <div class="product-info">
+            <h3>ALPHA-MHT-1000Z - Microhardness Tester</h3>
+            <p>
+                The ALPHA-MHT-1000Z microhardness tester is designed for accurate Vickers or Knoop hardness testing, ideal for small samples or thin coatings. It offers precise control with an auto turret and digital measurements.
+            </p>
+            <ul>
+                <li><strong>Indenter Types:</strong> Vickers or Knoop</li>
+                <li><strong>Objective Magnification:</strong> 10X and 40X</li>
+                <li><strong>Testing Force:</strong> 10-1000 gf</li>
+                <li><strong>Testing Range:</strong> 1 HV ~ 3000 HV</li>
+                <li><strong>Dimensions (WxDxH):</strong> 13 x 19 x 22-inch</li>
+                <li><strong>Weight:</strong> 88 lbs</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-1000z" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Microhardness Tester Card 2 -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-2000z2" class="product-image">
+            <img src="/images/alpha-mht-2000z2.webp" alt="Microhardness Tester ALPHA-MHT-2000Z2" />
+        </a>
+        <div class="product-info">
+            <h3>ALPHA-MHT-2000Z2 - Microhardness Tester</h3>
+            <p>
+                The ALPHA-MHT-2000Z2 microhardness tester combines Vickers and Knoop testing with advanced digital features. It includes an auto turret, touch screen, and automatic hardness conversion for streamlined testing.
+            </p>
+            <ul>
+                <li><strong>Indenter Types:</strong> Vickers or Knoop</li>
+                <li><strong>Objective Magnification:</strong> 10X and 40X</li>
+                <li><strong>Testing Force:</strong> 10-2000 gf</li>
+                <li><strong>Testing Range:</strong> 1 HV ~ 3000 HV</li>
+                <li><strong>Dimensions (WxDxH):</strong> 17 x 19 x 17-inch</li>
+                <li><strong>Weight:</strong> 68 lbs</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-2000z2" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Microhardness Tester Card 3 -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-auto" class="product-image">
+            <img src="/images/alpha-auto-mht.webp" alt="Automated Microhardness Tester ALPHA-AUTO-MHT" />
+        </a>
+        <div class="product-info">
+            <h3>ALPHA-MHT-AUTO - Automated Microhardness Tester</h3>
+            <p>
+                The ALPHA-MHT-AUTO is an automated microhardness tester that simplifies the testing process with its auto-loading, dwell, and unloading features. It’s perfect for high-throughput environments requiring consistent, reliable results.
+            </p>
+            <ul>
+                <li><strong>Indenter Types:</strong> Vickers or Knoop</li>
+                <li><strong>Objective Magnification:</strong> 10X and 40X</li>
+                <li><strong>Testing Force:</strong> 10-1000 gf</li>
+                <li><strong>Testing Range:</strong> 1 HV ~ 3000 HV</li>
+                <li><strong>Dimensions (WxDxH):</strong> 13.2 x 22 x 26.6-inch</li>
+                <li><strong>Weight:</strong> 115 lbs</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-auto" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Microhardness Tester Card 4 -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-1000vk" class="product-image">
+            <img src="/images/alpha-mht-1000vk.webp" alt="Dual Indenter Microhardness Tester ALPHA-MHT-1000VK" />
+        </a>
+        <div class="product-info">
+            <h3>ALPHA-MHT-1000VK - Dual Indenter Microhardness Tester</h3>
+            <p>
+                The ALPHA-MHT-1000VK is a versatile dual indenter microhardness tester supporting both Vickers and Knoop tests. With auto turret, touch screen, and advanced features, it's designed for comprehensive microhardness testing.
+            </p>
+            <ul>
+                <li><strong>Indenter Types:</strong> Vickers or Knoop</li>
+                <li><strong>Objective Magnification:</strong> 10X, 20X, and 40X</li>
+                <li><strong>Testing Force:</strong> 10-1000 gf</li>
+                <li><strong>Testing Range:</strong> 1 HV ~ 3000 HV</li>
+                <li><strong>Dimensions (WxDxH):</strong> 12 x 19.5 x 22-inch</li>
+                <li><strong>Weight:</strong> 73 lbs</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/microhardness.html#alpha-mht-1000vk" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+</div>
+
+<!-- ROCKWELL Series Section -->
+<div class="section-anchor" id="rockwell"></div>
+
+<section class="product-series">
+  <h3>Rockwell Testers</h3>
+  <p>
+    Rockwell hardness testers deliver dependable and accurate hardness measurements across a range of materials. Designed for both manual and automated testing, these machines are perfect for diverse industrial applications, providing reliable results on a variety of Rockwell scales. With options for digital, semi-automated, and fully automated testing, they are well-suited for quality control in both production and laboratory settings.
+  </p>
+
+<div class="product-cards">
+
+    <!-- Product Card 1: Manual Rockwell Hardness Tester (OMEGA-RT) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-rt" class="product-image">
+            <img src="/images/omega-rt.webp" alt="Manual Rockwell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-RT - Manual Rockwell Hardness Tester</h3>
+            <p>
+                The OMEGA-RT is a cost-effective manual Rockwell hardness tester, ideal for basic testing needs. It supports key Rockwell scales and is manually controlled for precise hardness testing.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Loading Control:</strong> Manual</li>
+                <li><strong>Instrument Throat Height:</strong> 6.5-inch (165 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 7.2 x 21.5 x 29.7-inch</li>
+                <li><strong>Weight:</strong> 200 lbs (90 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-rt" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 2: Manual Rockwell Hardness Tester (OMEGA-RT2) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-rt2" class="product-image">
+            <img src="/images/omega-rt2.webp" alt="Manual Rockwell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-RT2 - Manual Rockwell Hardness Tester</h3>
+            <p>
+                The OMEGA-RT2 offers the same reliable performance as the OMEGA-RT but with a slightly different footprint, making it a versatile option for basic manual Rockwell hardness testing.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Loading Control:</strong> Manual</li>
+                <li><strong>Instrument Throat Height:</strong> 6.5-inch (165 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9.6 x 20.5 x 27.6-inch</li>
+                <li><strong>Weight:</strong> 172 lbs (78 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-rt2" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 3: Digital Semi-Automated Rockwell Hardness Tester (OMEGA-DIGI-RT) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-digi-rt" class="product-image">
+            <img src="/images/omega-digi-rt.webp" alt="Digital Semi-Automated Rockwell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-DIGI-RT - Digital Semi-Automated Rockwell Hardness Tester</h3>
+            <p>
+                The OMEGA-DIGI-RT is a digital Rockwell hardness tester that provides semi-automated testing with digital precision. It supports a wide range of Rockwell scales and automatic hardness conversion.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Hardness Resolution:</strong> 0.1 HR</li>
+                <li><strong>Dwell Time:</strong> Adjustable 1-60 seconds</li>
+                <li><strong>Instrument Throat Height:</strong> 6.9-inch (175 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 7 x 21.5 x 30-inch</li>
+                <li><strong>Weight:</strong> 265 lbs (120 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-digi-rt" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 4: Digital Rockwell Hardness Tester (OMEGA-RT-60/150) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-rt-60-150" class="product-image">
+            <img src="/images/omega-rt-60-150.webp" alt="Digital Rockwell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-RT-60/150 - Digital Rockwell Hardness Tester</h3>
+            <p>
+                The OMEGA-RT-60/150 is a versatile digital Rockwell hardness tester designed for a variety of hardness scales and automated testing features, making it suitable for complex testing environments.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Hardness Resolution:</strong> 0.1 HR</li>
+                <li><strong>Dwell Time:</strong> Adjustable 1-60 seconds</li>
+                <li><strong>Instrument Throat Height:</strong> 6.3-inch (160 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 8.5 x 20 x 28-inch</li>
+                <li><strong>Weight:</strong> 200 lbs (90 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-rt-60-150" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 5: Automated Rockwell Hardness Tester (OMEGA-AUTO-RT) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-auto-rt" class="product-image">
+            <img src="/images/omega-auto-rt.webp" alt="Automated Rockwell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-AUTO-RT - Automated Rockwell Hardness Tester</h3>
+            <p>
+                The OMEGA-AUTO-RT offers fully automated Rockwell hardness testing, with a broad range of supported scales and precision measurement, ideal for high-throughput testing environments.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Hardness Resolution:</strong> 0.1 HR</li>
+                <li><strong>Dwell Time:</strong> Adjustable 1-60 seconds</li>
+                <li><strong>Instrument Throat Height:</strong> 11 inches (280 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9 x 24 x 34.8-inch</li>
+                <li><strong>Weight:</strong> 265 lbs (120 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-auto-rt" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+</div>
+
+
+  <br>
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a>
+</section>
+
+<!-- DUAL ROCKWELL Series Section -->
+<div class="section-anchor" id="dual-rockwell"></div>
+
+<section class="product-series">
+  <h3>Dual Rockwell / Superficial Testers</h3>
+  <p>
+    Dual Rockwell / Superficial hardness testers provide precise and consistent hardness measurements for a wide range of materials. Tailored for both Rockwell and Superficial Rockwell scales, these testers are ideal for versatile industrial applications. Whether you require manual, semi-automated, or fully automated solutions, these machines offer reliable performance for quality control in production environments and laboratory settings. With digital and automated options, they ensure accurate and efficient testing, making them essential tools for maintaining high standards in material testing.
+    </p>
+
+  <div class="product-cards">
+    <!-- Product Card 1: Digital Dual Rockwell / Superficial Hardness Tester (OMEGA-SRT-15/150) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-srt-15-150" class="product-image">
+            <img src="/images/omega-srt-15-150.webp" alt="Digital Dual Rockwell / Superficial Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-SRT-15/150 - Digital Dual Rockwell / Superficial Hardness Tester</h3>
+            <p>
+                The OMEGA-SRT-15/150 is a versatile digital tester that offers both Rockwell and Superficial Rockwell hardness testing. With adjustable test forces and auto hardness conversion, it's ideal for a wide range of materials and applications.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV, HR15N, HR30N, HR45N, HR15T, HR30T, HR45T</li>
+                <li><strong>Test Forces:</strong> 3 Kgr (Superficial), 10 Kgr (Rockwell)</li>
+                <li><strong>Full Test Forces:</strong> 15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</li>
+                <li><strong>Resolution:</strong> 0.1 HR</li>
+                <li><strong>Instrument Throat Height:</strong> 6.3 inches (160 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 7 x 21.5 x 30 inches (182 x 546 x 755 mm)</li>
+                <li><strong>Weight:</strong> 200 lbs (90 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-srt-15-150" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 2: Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester (OMEGA-DIGI-RST) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-digi-rst" class="product-image">
+            <img src="/images/omega-digi-rst.webp" alt="Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-DIGI-RST - Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester</h3>
+            <p>
+                The OMEGA-DIGI-RST combines digital precision with semi-automated operation, offering efficient dual Rockwell and Superficial Rockwell hardness testing. It includes auto hardness conversion and adjustable dwell time for consistent results.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+                <li><strong>Test Forces:</strong> 3 Kgr (Superficial), 10 Kgr (Rockwell)</li>
+                <li><strong>Full Test Forces:</strong> 15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</li>
+                <li><strong>Resolution:</strong> 0.1 HR</li>
+                <li><strong>Instrument Throat Height:</strong> 6.9 inches (175 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9 x 24 x 34.8 inches (225 x 615 x 885 mm)</li>
+                <li><strong>Weight:</strong> 265 lbs (120 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-digi-rst" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 3: Automated Dual Rockwell / Superficial Hardness Tester (OMEGA-AUTO-RST) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/rockwell.html#omega-auto-rst" class="product-image">
+            <img src="/images/omega-auto-rst.webp" alt="Automated Dual Rockwell / Superficial Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-AUTO-RST - Automated Dual Rockwell / Superficial Hardness Tester</h3>
+            <p>
+                The OMEGA-AUTO-RST offers fully automated testing for both Rockwell and Superficial Rockwell scales. It features easy operation, precise control, and auto hardness conversion, making it a reliable tool for high-throughput testing environments.
+            </p>
+            <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+                <li><strong>Test Forces:</strong> 3 Kgr (Superficial), 10 Kgr (Rockwell)</li>
+                <li><strong>Full Test Forces:</strong> 15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</li>
+                <li><strong>Resolution:</strong> 0.1 HR</li>
+                <li><strong>Instrument Throat Height:</strong> 6.9 inches (175 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9 x 24 x 34.8 inches (225 x 615 x 885 mm)</li>
+                <li><strong>Weight:</strong> 265 lbs (120 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/rockwell.html#omega-auto-rst" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+</div>
+<br>
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a>
+</section>
+
+<!-- Equipment Series Section -->
+<div class="section-anchor" id="brinell"></div>
+
+<section class="product-series">
+  <h3>Brinell / MacroVickers Testers</h3>
+  <p>
+    Brinell and MacroVickers hardness testers are essential tools for evaluating the hardness of larger and bulkier specimens. These testers are designed to handle a wide range of test forces, making them versatile for various industrial applications. With options ranging from manual to fully automated systems, they provide reliable and consistent hardness measurements, ensuring quality control in both production and laboratory settings.
+  </p>
+
+  <div class="product-cards">
+    <!-- Product Card 1: Digital Semi-Automated MacroVickers Hardness Tester (OMEGA-5000-VZ) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/brinell-vickers.html#omega-5000-vz" class="product-image">
+            <img src="/images/omega-5000-vz.webp" alt="Digital Semi-Automated MacroVickers Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-5000-VZ - Digital Semi-Automated MacroVickers Hardness Tester</h3>
+            <p>
+                The OMEGA-5000-VZ offers semi-automated precision in MacroVickers hardness testing. With a wide range of test forces and automatic shifting between objectives and indenters, it’s perfect for detailed metallographic analysis.
+            </p>
+            <ul>
+                <li><strong>Test Forces:</strong> 1 kgf, 2 kgf, 2.5 kgf, 3 kgf, 5 kgf, 10 kgf, 20 kgf, 30 kgf, 50 kgf</li>
+                <li><strong>Magnification:</strong> 100X, 200X</li>
+                <li><strong>Loading Method:</strong> Automatic</li>
+                <li><strong>Dwell Time:</strong> Adjustable 5-60 seconds</li>
+                <li><strong>Max Sample Height:</strong> 6.7 inches (170 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 11 x 21 x 25 inches (280 x 530 x 630 mm)</li>
+                <li><strong>Weight:</strong> 77 lbs (35 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/brinell-vickers.html#omega-5000-vz" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 2: Manual Brinell Hardness Tester (OMEGA-HB) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/brinell-vickers.html#omega-hb" class="product-image">
+            <img src="/images/omega-hb.webp" alt="Manual Brinell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-HB - Manual Brinell Hardness Tester</h3>
+            <p>
+                The OMEGA-HB is a straightforward manual Brinell tester, offering reliable performance at a low cost. Ideal for basic hardness testing needs, it’s equipped with a 20X optical scope for precise measurements.
+            </p>
+            <ul>
+                <li><strong>Measuring Range:</strong> 3.2 to 650 HBW</li>
+                <li><strong>Test Forces:</strong> 187.5, 250, 500, 750, 1000, 3000 kgf</li>
+                <li><strong>Max Height of Specimen:</strong> 8.1 inches (205 mm)</li>
+                <li><strong>Instrument Throat Height:</strong> 5.3 inches (135 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9.3 x 21.5 x 29.7 inches (235 x 545 x 755 mm)</li>
+                <li><strong>Weight:</strong> 290 lbs (130 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/brinell-vickers.html#omega-hb" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 3: Digital Brinell Hardness Tester (OMEGA-HB-3000) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/brinell-vickers.html#omega-hb-3000" class="product-image">
+            <img src="/images/omega-hb-3000.webp" alt="Digital Brinell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-HB-3000 - Digital Brinell Hardness Tester</h3>
+            <p>
+                The OMEGA-HB-3000 is a digital Brinell tester, designed for more advanced testing applications. It offers a wide range of test forces and digital precision, making it suitable for detailed hardness analysis in larger samples.
+            </p>
+            <ul>
+                <li><strong>Test Forces:</strong> 62.5, 100, 125, 187.5, 250, 500, 750, 1000, 1500, 3000 kgf</li>
+                <li><strong>Testing Range:</strong> ~8 to 650 HBW</li>
+                <li><strong>Max Height of Specimen:</strong> 8.8 inches (225 mm)</li>
+                <li><strong>Max Width of Specimen:</strong> 5.3 inches (135 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 9.3 x 21.5 x 31.1 inches (235 x 545 x 790 mm)</li>
+                <li><strong>Weight:</strong> 290 lbs (130 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/brinell-vickers.html#omega-hb-3000" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Product Card 4: Fully Automated Digital Brinell Hardness Tester (OMEGA-AUTO-HB) -->
+    <article class="product">
+        <a href="/equipment/hardness-testing/brinell-vickers.html#omega-auto-hb" class="product-image">
+            <img src="/images/omega-auto-hb.webp" alt="Fully Automated Digital Brinell Hardness Tester" />
+        </a>
+        <div class="product-info">
+            <h3>OMEGA-AUTO-HB - Fully Automated Digital Brinell Hardness Tester</h3>
+            <p>
+                The OMEGA-AUTO-HB offers full automation in Brinell hardness testing, making it ideal for high-throughput environments. It features a range of test forces and can handle larger specimens, ensuring consistent and accurate results.
+            </p>
+            <ul>
+                <li><strong>Test Forces:</strong> 62.5, 100, 125, 187.5, 250, 500, 750, 1000, 1500, 3000 kgf</li>
+                <li><strong>Testing Range:</strong> ~8 to 650 HBW</li>
+                <li><strong>Max Height of Specimen:</strong> 10 inches (260 mm)</li>
+                <li><strong>Max Width of Specimen:</strong> 6 inches (150 mm)</li>
+                <li><strong>Dimensions (WxDxH):</strong> 12 x 24.5 x 39 inches (313 x 622 x 992 mm)</li>
+                <li><strong>Weight:</strong> 200 lbs (170 kg)</li>
+            </ul>
+            <div class="button-container">
+                <a href="/equipment/hardness-testing/brinell-vickers.html#omega-auto-hb" class="product-details-button">Learn More</a>
+            </div>
+        </div>
+    </article>
+  </div>
+</section>
+
+<section class="related-products">
+    <h3>Hardness Testing Consumables</h3>
+    <ul>
+        <li><a href="https://shop.metallographic.com/product1" target="_blank" rel="noopener noreferrer">Hardness Test Blocks</a></li>
+        <li><a href="https://shop.metallographic.com/product2" target="_blank" rel="noopener noreferrer">Indenters</a></li>
+        <li><a href="https://shop.metallographic.com/product3" target="_blank" rel="noopener noreferrer">Anvils & Accessories</a></li>
+    </ul>
+    <br>
+  </section>
+
+  </div>
+  
+  <br>  <br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/carousel.js"></script>
+
+    <script>
+    
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offset = 125; // Adjust this value for your header's height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+  
+  </script>
+
+</body>
+</html>

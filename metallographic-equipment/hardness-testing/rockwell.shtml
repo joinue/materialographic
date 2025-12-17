@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockwell Hardness Testers | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Rockwell Testers, Rockwell Hardness Testing, metallographic equipment, PACE Technologies, hardness testing, sample preparation, failure analysis">
+    <meta name="description" content="Explore the range of Rockwell Hardness Testers by PACE Technologies, engineered for precise and reliable hardness testing in various metallographic applications.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Rockwell Hardness Testers",
+          "image": "https://www.metallographic.com/Images/omega-rt-60-150.webp",
+          "description": "The Rockwell Hardness Testers offered by PACE Technologies are designed for accurate hardness measurements, suitable for a variety of metallographic applications.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/hardness-testing/rockwell",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Rockwell Hardness Testers</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+          <!-- Introduction -->
+          <h2 class="equipment-header">Rockwell Hardness Testers</h2>
+          <p>
+            Rockwell Hardness Testers by PACE Technologies provide dependable and accurate hardness measurement solutions tailored for various metallographic applications. Designed for modern material testing, they deliver precise results across various Rockwell scales, ensuring consistent performance and compliance with industry standards.
+          </p>
+
+<!-- Feature Buttons Section 1: Rockwell Testers -->
+<h3>Rockwell</h3>
+<div class="feature-buttons-top">
+  <a href="#omega-rt" class="feature-button-top">OMEGA-RT Manual Tester</a>
+  <a href="#omega-rt2" class="feature-button-top">OMEGA-RT2 Manual Tester</a>
+  <a href="#omega-digi-rt" class="feature-button-top">OMEGA-DIGI-RT Digital Tester</a>
+  <a href="#omega-rt-60-150" class="feature-button-top">OMEGA-RT-60/150 Digital Tester</a>
+  <a href="#omega-auto-rt" class="feature-button-top">OMEGA-AUTO-RT Auto Tester</a>
+</div>
+
+<!-- Feature Buttons Section 2: Dual Rockwell / Superficial Testers -->
+<h3>Superficial & Dual Rockwell / Superficial</h3>
+<div class="feature-buttons-top">
+  <a href="#omega-rst-15-150" class="feature-button-top">OMEGA-RST-15/150 Dual Digital Tester</a>
+  <a href="#omega-digi-rst" class="feature-button-top">OMEGA-DIGI-RST Dual Semi-Auto Tester</a>
+  <a href="#omega-auto-rst" class="feature-button-top">OMEGA-AUTO-RST Dual Auto Tester</a>
+</div>
+        
+      </section>
+      
+
+      <div id="omega-rt"></div>
+      <h3>OMEGA-RT Manual Rockwell Hardness Tester</h3>
+      <section class="carousel-features">
+          <!-- Carousel Section -->
+          <div class="carousel" aria-label="Product Images and Video">
+              <div class="carousel-container">
+                  <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                  <div class="carousel-content">
+                      <div class="carousel-item" data-description="OMEGA-RT Manual Rockwell Hardness Tester">
+                          <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-cover.webp" alt="OMEGA-RT Manual Rockwell Hardness Tester">
+                      </div>
+                      <div class="carousel-item" data-description="OMEGA-RT Front View">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-front.webp" alt="OMEGA-RT Front View">
+                    </div>
+                    <div class="carousel-item" data-description="OMEGA-RT Acessories">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-accessories.webp" alt="OMEGA-RT Accessories">
+                    </div>
+                    <div class="carousel-item" data-description="OMEGA-RT Features">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-features.webp" alt="Image of the OMEGA-RT Features with arrows pointing to key features such as dial indicator, anvil, and indenter">
+                    </div>
+                    <div class="carousel-item" data-description="OMEGA-RT Dimensions">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-dimensions.webp" alt="Image of the OMEGA-RT highlighting key dimensions such as width, depth, and lenght">
+                    </div>
+                      <!--<div class="carousel-item" data-description="OMEGA-RT Video">
+                          <video controls>
+                              <source src="/../images/equipment/hardness testing/rockwell tester/omega-rt/omega-rt-video.mp4" type="video/mp4">
+                              Your browser does not support the video tag.
+                          </video>
+                      </div>-->
+                  </div>
+                  <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+              <div class="carousel-description">
+                  <p>OMEGA-RT - Manual Rockwell Hardness Tester</p>
+              </div>
+          </div>
+      
+          <!-- Features Section -->
+          <div class="features">
+              <h3>Features</h3>
+              <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Manual Loading Control:</strong> Provides operator control for precise testing.</li>
+              </ul>
+              <br>
+              <div class="feature-buttons">
+                <a href="/content/brochures/omega/omega-rt.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                <!--<a href="/../videos/omega-rt-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Technical Specifications Section for OMEGA-RT -->
+      <section class="specifications">
+        <h3>Technical Specifications - OMEGA-RT</h3>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Specification</th>
+            </tr>
+            <tr>
+                <td>Rockwell Scales</td>
+                <td>HRA, HRB, HRC</td>
+            </tr>
+            <tr>
+                <td>Preliminary Test Force</td>
+                <td>10 Kgf (98.07N)</td>
+            </tr>
+            <tr>
+                <td>Full Test Force</td>
+                <td>60 Kgf, 100 Kgf, 150 Kgf</td>
+            </tr>
+            <tr>
+                <td>Instrument Throat Height</td>
+                <td>6.5 inches (165 mm)</td>
+            </tr>
+            <tr>
+                <td>Dimensions (WxDxH)</td>
+                <td>7.2 x 21.5 x 29.7 inches (182 x 546 x 755 mm)</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>200 lbs (90 kg)</td>
+            </tr>
+            <tr>
+                <td>Part Number</td>
+                <td>OMEGA-RT</td>
+            </tr>
+        </table>
+      </section>
+      
+      <a href="/quote.html" class="quote-btn-link">
+        <button class="quote-btn-midpage">Request a Quote</button>
+      </a><br><br>
+
+      <div id="omega-rt2"></div>
+      <h3>OMEGA-RT2 Manual Rockwell Hardness Tester</h3>
+      <section class="carousel-features">
+          <!-- Carousel Section -->
+          <div class="carousel" aria-label="Product Images and Video">
+              <div class="carousel-container">
+                  <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                  <div class="carousel-content">
+                      <div class="carousel-item" data-description="OMEGA-RT2 Manual Rockwell Hardness Tester">
+                          <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt2/omega-rt2-cover.webp" alt="OMEGA-RT Manual Rockwell Hardness Tester">
+                      </div>
+                    <!--<div class="carousel-item" data-description="OMEGA-RT2 Features">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt2/omega-rt2-features.webp" alt="Image of the OMEGA-RT2 Features with arrows pointing to key features such as dial indicator, anvil, and indenter">
+                    </div>-->
+                    <!--<div class="carousel-item" data-description="OMEGA-RT2 Dimensions">
+                        <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt2/omega-rt2-dimensions.webp" alt="Image of the OMEGA-RT2 highlighting key dimensions such as width, depth, and lenght">
+                    </div>-->
+                      <!--<div class="carousel-item" data-description="OMEGA-RT2 Video">
+                          <video controls>
+                              <source src="/../images/equipment/hardness testing/rockwell tester/omega-rt2/omega-rt2-video.mp4" type="video/mp4">
+                              Your browser does not support the video tag.
+                          </video>
+                      </div>-->
+                  </div>
+                  <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+              <div class="carousel-description">
+                  <p>OMEGA-RT2 - Manual Rockwell Hardness Tester</p>
+              </div>
+          </div>
+      
+          <!-- Features Section -->
+          <div class="features">
+              <h3>Features</h3>
+              <ul>
+                <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC</li>
+                <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+                <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+                <li><strong>Manual Loading Control:</strong> Provides operator control for precise testing.</li>
+              </ul>
+              <br>
+              <div class="feature-buttons">
+                <a href="/content/brochures/omega/omega-rt2.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                <!--<a href="/../videos/omega-rt2-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Technical Specifications Section for OMEGA-RT2 -->
+      <section class="specifications">
+        <h3>Technical Specifications - OMEGA-RT2</h3>
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Specification</th>
+            </tr>
+            <tr>
+                <td>Rockwell Scales</td>
+                <td>HRA, HRB, HRC</td>
+            </tr>
+            <tr>
+                <td>Preliminary Test Force</td>
+                <td>10 Kgf (98.07N)</td>
+            </tr>
+            <tr>
+                <td>Full Test Force</td>
+                <td>60 Kgf, 100 Kgf, 150 Kgf</td>
+            </tr>
+            <tr>
+                <td>Instrument Throat Height</td>
+                <td>6.5 inches (165 mm)</td>
+            </tr>
+            <tr>
+                <td>Dimensions (WxDxH)</td>
+                <td> 9.6 x 20.5 x 27.6-inch (245 x 520 x 700mm)</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>172 lbs (78 kg)</td>
+            </tr>
+            <tr>
+                <td>Part Number</td>
+                <td>OMEGA-RT2</td>
+            </tr>
+        </table>
+      </section>
+      
+      <a href="/quote.html" class="quote-btn-link">
+        <button class="quote-btn-midpage">Request a Quote</button>
+      </a><br><br>
+
+      <div id="omega-digi-rt"></div>
+<h3>OMEGA-DIGI-RT Digital Rockwell Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-DIGI-RT Digital Rockwell Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rt/omega-digi-rt-cover.webp" alt="OMEGA-DIGI-RT Digital Rockwell Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-DIGI-RT Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rt/omega-digi-rt-features.webp" alt="Image of the OMEGA-DIGI-RT with arrows pointing to key features such as touchscreen, control panel, and anvil">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-DIGI-RT Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rt/omega-digi-rt-dimensions.webp" alt="Image of the OMEGA-DIGI-RT highlighting key dimensions such as width, depth, and lenght">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-DIGI-RT Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rt/omega-digi-rt-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-DIGI-RT - Digital Rockwell Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+          <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+          <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+          <li><strong>Digital Interface:</strong> Provides easy operation and precise control with auto hardness conversion.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-digi-rt.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/omega-digi-rt-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-DIGI-RT -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-DIGI-RT</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</td>
+      </tr>
+      <tr>
+          <td>Preliminary Test Force</td>
+          <td>10 Kgf (98.07N)</td>
+      </tr>
+      <tr>
+          <td>Full Test Force</td>
+          <td>60 Kgf, 100 Kgf, 150 Kgf</td>
+      </tr>
+      <tr>
+          <td>Hardness Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>Adjustable 1-60 seconds</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>6.9 inches (175 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>7 x 21.5 x 30 inches (182 x 546 x 755 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>198 lbs (90 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-DIGI-RT</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<div id="omega-rt-60-150"></div>
+<h3>OMEGA-RT-60/150 Digital Rockwell Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-RT-60/150 Digital Rockwell Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt-60-150/omega-rt-60-150-cover.webp" alt="OMEGA-RT-60/150 Digital Rockwell Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-RT-60/150 Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt-60-150/omega-rt-60-150-features.webp" alt="Image of the OMEGA-RT-60/150 with arrows pointing to key features such as LED screen, control panel, and indenter">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-RT-60/150 Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rt-60-150/omega-rt-60-150-dimensions.webp" alt="Image of the OMEGA-RT-60/150 highlighting key dimensions such as width, depth, and lenght">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-RT-60/150 Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-rt-60-150/omega-rt-60-150-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-RT-60/150 - Digital Rockwell Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+          <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+          <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+          <li><strong>Adjustable Dwell Time:</strong> Ensures consistent and accurate testing.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-rt-60-150.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/omega-rt-60-150-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-RT-60/150 -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-RT-60/150</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</td>
+      </tr>
+      <tr>
+          <td>Preliminary Test Force</td>
+          <td>10 Kgf (98.07N)</td>
+      </tr>
+      <tr>
+          <td>Full Test Force</td>
+          <td>60 Kgf, 100 Kgf, 150 Kgf</td>
+      </tr>
+      <tr>
+          <td>Hardness Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>Adjustable 1-60 seconds</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>6.5 inches (165 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>8.5 x 20 x 28 inches (215 x 520 x 700 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>172 lbs (78 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-RT-60/150</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<div id="omega-auto-rt"></div>
+<h3>OMEGA-AUTO-RT Automated Rockwell Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-AUTO-RT Automated Rockwell Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rt/omega-auto-rt-cover.webp" alt="OMEGA-AUTO-RT Automated Rockwell Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-AUTO-RT Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rt/omega-auto-rt-features.webp" alt="Image of the OMEGA-AUTO-RT with arrows pointing to key features such as touchscreen, control panel, and indenter">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-AUTO-RT Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rt/omega-auto-rt-dimensions.webp" alt="Image of the OMEGA-AUTO-RT highlighting key dimensions">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-AUTO-RT Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rt/omega-auto-rt-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-AUTO-RT - Automated Rockwell Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Rockwell Scales:</strong> HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</li>
+          <li><strong>Preliminary Test Force:</strong> 10 Kgf (98.07N)</li>
+          <li><strong>Full Test Force:</strong> 60 Kgf, 100 Kgf, 150 Kgf</li>
+          <li><strong>Fully Automated Operation:</strong> Ensures consistent and repeatable results with minimal operator intervention.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-auto-rt.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/../videos/omega-auto-rt-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-AUTO-RT -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-AUTO-RT</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</td>
+      </tr>
+      <tr>
+          <td>Preliminary Test Force</td>
+          <td>10 Kgf (98.07N)</td>
+      </tr>
+      <tr>
+          <td>Full Test Force</td>
+          <td>60 Kgf, 100 Kgf, 150 Kgf</td>
+      </tr>
+      <tr>
+          <td>Hardness Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Dwell Time</td>
+          <td>Adjustable 1-60 seconds</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>11 inches (280 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>9 x 24 x 34.8 inches (225 x 615 x 885 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>275 lbs (125 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-AUTO-RT</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+<!-- OMEGA-RST-15/150 - Digital Dual Rockwell / Superficial Hardness Tester -->
+<div id="omega-rst-15-150"></div>
+<h3>OMEGA-RST-15/150 Digital Dual Rockwell / Superficial Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-RST-15/150 Digital Dual Rockwell / Superficial Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rst-15-150/omega-rst-15-150-cover.webp" alt="OMEGA-RST-15/150 Digital Dual Rockwell / Superficial Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-RST-15/150 Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rst-15-150/omega-rst-15-150-features.webp" alt="Image of the OMEGA-RST-15/150 with arrows pointing to key features such as LED screen, control panel, and anvil">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-RST-15/150 Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-rst-15-150/omega-rst-15-150-dimensions.webp" alt="Image of the OMEGA-RST-15/150 highlighting key dimensions such as width, depth, and lenght">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-RST-15/150 Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-rst-15-150/omega-rst-15-150-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-RST-15/150 - Digital Dual Rockwell / Superficial Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Versatile Testing:</strong> Capable of both Rockwell and Superficial Rockwell hardness testing.</li>
+          <li><strong>Adjustable Test Forces:</strong> Offers a wide range of test forces for different materials and applications.</li>
+          <li><strong>Digital Precision:</strong> Includes digital controls for accurate and repeatable testing results.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-rst-15-150.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/videos/omega-srt-15-150-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-SRT-15/150 -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-RST-15/150</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV, HR15N, HR30N, HR45N, HR15T, HR30T, HR45T</td>
+      </tr>
+      <tr>
+          <td>Test Forces</td>
+          <td>3 Kgr (Superficial), 10 Kgr (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Full Test Forces</td>
+          <td>15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>6.3 inches (165 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>8.5 x 20 x 28 inches (215 x 520 x 700 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>175 lbs (80 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-RST-15/150</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- OMEGA-DIGI-RST - Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester -->
+<div id="omega-digi-rst"></div>
+<h3>OMEGA-DIGI-RST Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-DIGI-RST Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rst/omega-digi-rst-cover.webp" alt="OMEGA-DIGI-RST Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-DIGI-RST Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rst/omega-digi-rst-features.webp" alt="Image of the OMEGA-DIGI-RST with arrows pointing to key features such as touchscreen, control panel, and anvil">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-DIGI-RST Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rst/omega-digi-rst-dimensions.webp" alt="Image of the OMEGA-DIGI-RST highlighting key dimensions such as width, depth, and lenght">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-DIGI-RST Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-digi-rst/omega-digi-rst-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-DIGI-RST - Digital Semi-Automated Dual Rockwell / Superficial Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Semi-Automated Operation:</strong> Combines manual and automated features for efficient testing.</li>
+          <li><strong>Digital Precision:</strong> Includes digital controls for accurate and repeatable testing results.</li>
+          <li><strong>Versatile Testing:</strong> Capable of both Rockwell and Superficial Rockwell hardness testing.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-digi-rst.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/videos/omega-digi-rst-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-DIGI-RST -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-DIGI-RST</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</td>
+      </tr>
+      <tr>
+          <td>Test Forces</td>
+          <td>3 Kgr (Superficial), 10 Kgr (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Full Test Forces</td>
+          <td>15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>6.9 inches (175 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>8.8 x 24 x 35 inches (225 x 615 x 885 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>265 lbs (120 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-DIGI-RST</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+<!-- OMEGA-AUTO-RST - Automated Dual Rockwell / Superficial Hardness Tester -->
+<div id="omega-auto-rst"></div>
+<h3>OMEGA-AUTO-RST Automated Dual Rockwell / Superficial Hardness Tester</h3>
+<section class="carousel-features">
+    <!-- Carousel Section -->
+    <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+            <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-content">
+                <div class="carousel-item" data-description="OMEGA-AUTO-RST Automated Dual Rockwell / Superficial Hardness Tester">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rst/omega-auto-rst-cover.webp" alt="OMEGA-AUTO-RST Automated Dual Rockwell / Superficial Hardness Tester">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-AUTO-RST Features">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rst/omega-auto-rst-features.webp" alt="Image of the OMEGA-AUTO-RST with arrows pointing to key features such as touchscreen, control panel, and anvil">
+                </div>
+                <div class="carousel-item" data-description="OMEGA-AUTO-RST Dimensions">
+                    <img src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rst/omega-auto-rst-dimensions.webp" alt="Image of the OMEGA-AUTO-RST highlighting key dimensions such as width, depth, and height">
+                </div>
+                <!--<div class="carousel-item" data-description="OMEGA-AUTO-RST Video">
+                    <video controls>
+                        <source src="/../images/equipment/hardness testing/rockwell tester/omega-auto-rst/omega-auto-rst-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>-->
+            </div>
+            <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-description">
+            <p>OMEGA-AUTO-RST - Automated Dual Rockwell / Superficial Hardness Tester</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h3>Features</h3>
+        <ul>
+          <li><strong>Fully Automated Testing:</strong> Offers complete automation for Rockwell and Superficial Rockwell hardness testing.</li>
+          <li><strong>High Throughput:</strong> Designed for efficient, high-volume testing environments.</li>
+          <li><strong>Precision Control:</strong> Provides accurate and consistent results with minimal operator intervention.</li>
+        </ul>
+        <br>
+        <div class="feature-buttons">
+          <a href="/content/brochures/omega/omega-auto-rst.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+          <a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+          <!--<a href="/videos/omega-auto-rst-demo.mp4" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+          <a href="/metallographic-consumables/hardness-testing.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specifications Section for OMEGA-AUTO-RST -->
+<section class="specifications">
+  <h3>Technical Specifications - OMEGA-AUTO-RST</h3>
+  <table>
+      <tr>
+          <th>Parameter</th>
+          <th>Specification</th>
+      </tr>
+      <tr>
+          <td>Rockwell Scales</td>
+          <td>HRA, HRB, HRC, HRD, HRE, HRF, HRG, HRH, HRK, HRL, HRM, HRR, HRP, HRS, HRV</td>
+      </tr>
+      <tr>
+          <td>Test Forces</td>
+          <td>3 Kgr (Superficial), 10 Kgr (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Full Test Forces</td>
+          <td>15, 30, 45 Kgf (Superficial); 60, 100, 150 Kgf (Rockwell)</td>
+      </tr>
+      <tr>
+          <td>Resolution</td>
+          <td>0.1 HR</td>
+      </tr>
+      <tr>
+          <td>Instrument Throat Height</td>
+          <td>6.9 inches (175 mm)</td>
+      </tr>
+      <tr>
+          <td>Dimensions (WxDxH)</td>
+          <td>9 x 24 x 34.8 inches (225 x 615 x 885 mm)</td>
+      </tr>
+      <tr>
+          <td>Weight</td>
+          <td>275 lbs (125 kg)</td>
+      </tr>
+      <tr>
+          <td>Part Number</td>
+          <td>OMEGA-AUTO-RST</td>
+      </tr>
+  </table>
+</section>
+
+<a href="/quote.html" class="quote-btn-link">
+  <button class="quote-btn-midpage">Request a Quote</button>
+</a><br><br>
+
+
+
+<section class="related-products">
+  <h3>Hardness Testing Consumables</h3>
+  <ul>
+      <li><a href="https://shop.metallographic.com/collections/rockwell-hardness-testing" target="_blank" rel="noopener noreferrer">Rockwell Accessories</a></li>
+      <li><a href="https://shop.metallographic.com/collections/superficial-hardness-testing" target="_blank" rel="noopener noreferrer">Superficial Accessories</a></li>
+  </ul>
+  <br>
+</section>
+
+
+</div>
+
+
+</main>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+    // Smooth Scroll with Offset
+      // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+      // It prevents the default jump behavior and scrolls smoothly to the target section,
+      // applying an offset to account for fixed headers. Adjust the 'offset' variable
+      // to ensure the target section is fully visible below any fixed header.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+      
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+      
+              if (targetElement) {
+                  const offset = 175; // Adjust this value for your header's height
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+                  window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+      </script>
+
+</body>
+</html>

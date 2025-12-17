@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACE Technologies - Metallographic Lab Furniture</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> 
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow"> 
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" />
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="PACE Technologies, metallographic lab furniture, lab benches, fume hoods, safety cabinets, specimen storage, metallography, materials testing, laboratory equipment">
+    <meta name="description" content="Explore PACE Technologies' range of metallographic lab furniture designed to enhance your laboratory setup. From equipment benches to safety cabinets, our furniture solutions offer durability, functionality, and space efficiency for all your metallographic needs.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "PACE Technologies",
+          "url": "https://www.metallographic.com",
+          "logo": "https://www.metallographic.com/images/logo-microstructure-transparent.webp",
+          "sameAs": [
+            "https://www.facebook.com/PaceTechnologies",
+            "https://www.linkedin.com/company/pace-technologies"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-520-882-6598",
+            "contactType": "Customer Service"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Lab Furniture</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>Metallographic Lab Furniture</h2>
+      <p>
+        PACE Technologies offers a comprehensive range of metallographic lab furniture designed to enhance the efficiency and organization of your laboratory. Our durable benches, fume hoods, safety cabinets, and specimen storage solutions are built to meet the rigorous demands of modern materials testing. Whether you're setting up equipment, ensuring safety, or storing specimens, our furniture combines functionality with robust construction, providing a reliable foundation for your metallographic processes.    
+      </p>
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div
+              class="carousel-item"
+              data-description="PICO-155S - side view with hood opened."
+            >
+              <img src="/images/furnitureequipment.webp" alt="PICO-155S - side view with hood opened." />
+            </div>
+            <div class="carousel-item" data-description="PICO-155P - front view with hood closed.">
+              <img src="/images/tp-7100s.webp" alt="PICO-155P - front view with hood closed." />
+            </div>
+            <div class="carousel-item" data-description="PICO-200 - front view with hood closed.">
+                <img src="/images/tp-tank.webp" alt="PICO-200 - front view with hood closed." />
+              </div>
+            <div class="carousel-item" data-description="Watch the MEGA T400A in action demonstrating automated sequential cuts.">
+              <video controls>
+                <source src="/videos/MEGA T400-A SAW RUNNING 2.MP4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+  
+      <!-- Features Section -->
+      <div class="features">
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Customizable Layouts:</strong> Our lab furniture offers versatile configurations, including single, double, and corner benches that seamlessly fit together or stand alone, maximizing your workspace efficiency.</li>
+            <li><strong>Integrated Storage Solutions:</strong> Features include double door cabinets, single drawers, and removable trays, providing ample storage for equipment, tools, and specimens.</li>
+            <li><strong>Specialized Options:</strong> Our fume hoods offer high exhaust airflow with built-in sinks, while our safety cabinets ensure secure storage for flammable and chemical substances.</li>
+        </ul>
+        
+
+        <p><strong>Choose Type:</strong></p>
+        <div class="feature-buttons">
+            <a href="#mega-bench" class="feature-button">MEGA Abrasive Cutter Bench</a>
+            <a href="#equipment-benches" class="feature-button">Lab Equipment Benches</a>
+            <a href="#microscope-benches" class="feature-button">Microscope Benches</a>
+            <a href="#fume-hood" class="feature-button">Fume Hood</a>
+            <a href="#safety-cabinets" class="feature-button">Safety Cabinets</a>
+            <a href="#specimen-storage" class="feature-button">Specimen Storage Cabinet</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Lab Furniture Series Section -->
+<div class="section-anchor" id="mega-bench"></div>
+
+<section class="product-series">
+  <h3>Lab Furniture Solutions</h3>
+  <p>
+    PACE Technologies offers a range of lab furniture designed to optimize your metallographic laboratory's efficiency and organization. From benches tailored for abrasive cutters to specialized microscope setups, our lab furniture is built to support a variety of equipment while ensuring durability and functionality. Each piece is engineered to enhance workflow, provide ample storage, and withstand the rigors of daily lab use.
+  </p>
+  
+  <div class="product-cards">
+    <!-- Product Card 1: MEGA Abrasive Cutter Bench -->
+    <article class="product">
+      <a href="#mega-bench" class="product-image">
+        <img src="/images/mega-bench.webp" alt="MEGA Abrasive Cutter Bench" />
+      </a>
+      <div class="product-info">
+        <h3>MEGA Abrasive Cutter Bench</h3>
+        <p>
+          The MEGA Abrasive Cutter Bench is a robust and versatile bench designed specifically for use with the MEGA-300 abrasive saws. It features a single drawer and a double-door cabinet, providing secure storage for essential tools and accessories.
+        </p>
+        <ul>
+          <li><strong>Weight Capacity:</strong> Holds up to 661 lbs (300 kg)</li>
+          <li><strong>Dimensions (WxDxH):</strong> 39.4 x 29.5 x 33.5 inches (1000 x 750 x 851 mm)</li>
+          <li><strong>Optional Accessory:</strong> Replaceable protective bench cover (Part No. BC-M)</li>
+        </ul>
+        <p>
+          With its sturdy construction and ample storage, the MEGA Bench is an ideal addition to any metallographic lab using abrasive cutting equipment.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+
+    <div class="section-anchor" id="equipment-benches"></div>
+
+    <!-- Product Card 2: Lab Equipment Benches -->
+    <article class="product">
+      <a href="#equipment-benches" class="product-image">
+        <img src="/images/lab-equipment-benches.webp" alt="Lab Equipment Benches" />
+      </a>
+      <div class="product-info">
+        <h3>Lab Equipment Benches</h3>
+        <p>
+          Our lab equipment benches are designed for maximum efficiency and organization, offering a range of sizes to accommodate various lab setups. Whether you need a single, double, or corner bench, these units provide a cohesive and functional workspace.
+        </p>
+        <ul>
+          <li><strong>Weight Capacity:</strong> Holds up to 661 lbs (300 kg)</li>
+          <li><strong>Available Sizes:</strong> Single, double, and corner configurations</li>
+          <li><strong>Additional Options:</strong> Replaceable protective bench covers and back panels</li>
+        </ul>
+        <p>
+          These benches are perfect for organizing and streamlining your metallographic laboratory, ensuring that your equipment is easily accessible and securely stored.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+
+    <div class="section-anchor" id="microscope-benches"></div>
+    
+    <!-- Product Card 3: Microscope Benches -->
+    <article class="product">
+      <a href="#microscope-benches" class="product-image">
+        <img src="/images/microscope-benches.webp" alt="Microscope Benches" />
+      </a>
+      <div class="product-info">
+        <h3>Microscope Benches</h3>
+        <p>
+          Designed for microscope and microhardness tester setups, our microscope benches provide ample space and a dedicated chair cut-out for ease of use during detailed analyses. Available in single and double configurations, these benches ensure a stable and ergonomic work environment.
+        </p>
+        <ul>
+          <li><strong>Ergonomic Design:</strong> Includes a chair cut-out for comfortable usage</li>
+          <li><strong>Storage:</strong> Double door cabinets and single drawer options</li>
+          <li><strong>Available Sizes:</strong> 78-inch and 103-inch widths</li>
+        </ul>
+        <p>
+          These benches are tailored for precise and comfortable operation, making them essential for any lab requiring detailed observation and testing.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+
+    <div class="section-anchor" id="fume-hood"></div>
+
+    <!-- Product Card 4: Fume Hood -->
+    <article class="product">
+      <a href="#fume-hood" class="product-image">
+        <img src="/images/fume-hood.webp" alt="Fume Hood" />
+      </a>
+      <div class="product-info">
+        <h3>Fume Hood</h3>
+        <p>
+          Ensure a safe working environment with our lab fume hood, designed to limit exposure to toxic fumes, vapors, and dust. It features a high air exhaust flow, built-in sink, and multiple air and gas supply lines with programmable control, making it a vital addition to any metallographic lab.
+        </p>
+        <ul>
+          <li><strong>Air Flow:</strong> High exhaust capacity</li>
+          <li><strong>Safety Features:</strong> Includes a sink and programmable control for air and gas supply</li>
+          <li><strong>Dimensions (WxDxH):</strong> 47.2 x 32 x 118 inches (1200 x 810 x 3000 mm)</li>
+        </ul>
+        <p>
+          This fume hood is a critical piece of equipment for ensuring lab safety, particularly when working with hazardous materials.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+
+    <div class="section-anchor" id="safety-cabinets"></div>
+
+    <!-- Product Card 5: Safety Cabinets -->
+    <article class="product">
+      <a href="#safety-cabinets" class="product-image">
+        <img src="/images/safety-cabinets.webp" alt="Safety Cabinets" />
+      </a>
+      <div class="product-info">
+        <h3>Safety Cabinets</h3>
+        <p>
+          Our safety cabinets are designed for the secure storage of flammable and chemical substances, featuring bright colors for easy identification and robust construction for added security. Choose from safety yellow or blue cabinets to meet your lab's specific storage needs.
+        </p>
+        <ul>
+          <li><strong>Safety Features:</strong> Ventilated, lockable, and highly visible</li>
+          <li><strong>Storage Capacity:</strong> Available in various sizes</li>
+          <li><strong>Dimensions (WxDxH):</strong> Flammable: 43 x 18 x 65 inches; Chemical: 43 x 18 x 44 inches</li>
+        </ul>
+        <p>
+          These cabinets are essential for maintaining a safe and organized lab environment, ensuring that hazardous materials are properly stored.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+
+    <div class="section-anchor" id="specimen-storage"></div>
+
+    <!-- Product Card 6: Specimen Storage Cabinet -->
+    <article class="product">
+      <a href="#specimen-storage" class="product-image">
+        <img src="/images/specimen-storage-cabinets.webp" alt="Specimen Storage Cabinet" />
+      </a>
+      <div class="product-info">
+        <h3>Specimen Storage Cabinet</h3>
+        <p>
+          The Specimen Storage Cabinet is a durable and practical solution for organizing and securely storing metallographic specimen mounts. It features removable and interchangeable trays, allowing for flexible and personalized storage options.
+        </p>
+        <ul>
+          <li><strong>Storage Capacity:</strong> 10 stainless steel drawers with optional tray configurations</li>
+          <li><strong>Dimensions (WxDxH):</strong> 21.75 x 18 x 27 inches (552 x 470 x 686 mm)</li>
+          <li><strong>Weight:</strong> 100 lbs (46 kg)</li>
+        </ul>
+        <p>
+          This cabinet is ideal for keeping specimen mounts organized and protected, with customizable tray options to suit various specimen sizes.
+        </p>
+        <a href="/quote.html" class="quote-btn-link">
+            <button class="quote-btn-midpage">Request a Quote</button>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+  
+  <br>  <br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/carousel.js"></script>
+
+    <script>
+    
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offset = 125; // Adjust this value for your header's height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+  
+  </script>
+
+</body>
+</html>
+

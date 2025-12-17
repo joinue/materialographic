@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACE Technologies Metallographic Products - Grinding & Polishing</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="PACE Technologies, metallographic equipment, grinding, polishing, sample preparation, metallurgical testing, metallography, microstructural analysis, grinding machines, polishing machines">
+    <meta name="description" content="Explore PACE Technologies' comprehensive range of grinding and polishing equipment and consumables for precise sample preparation and analysis in metallography and materials testing.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "PACE Technologies",
+          "url": "https://www.metallographic.com",
+          "logo": "https://www.metallographic.com/images/logo-microstructure-transparent.webp",
+          "sameAs": [
+            "https://www.facebook.com/PaceTechnologies",
+            "https://www.linkedin.com/company/metallographic"
+            "https://www.instagram.com/pace_technologies/"
+            "https://www.youtube.com/@pacetechnologies/videos"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-520-882-6598",
+            "contactType": "Customer Service"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">Equipment / Grinding & Polishing</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+<div class="first-container">
+    <!-- Introduction Section -->
+    <section class="introduction">
+      <h2>Metallographic Grinding & Polishing Equipment</h2>
+      <p>
+        PACE Technologies provides high-quality grinding and polishing equipment for metallographic sample preparation. From versatile hand grinders to advanced automated systems, our machines ensure precision, efficiency, and exceptional sample quality for microstructural analysis across diverse materials and applications.
+      </p>
+      
+    </section>
+  
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features">
+      <!-- Carousel Section -->
+      <div class="carousel" aria-label="Product Images and Video">
+        <div class="carousel-container">
+          <button class="carousel-prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div class="carousel-item" data-description="NANO-1000S with FEMTO-1100S Auto-Polishing Head and ZETA-2000 Automated Dispenser - A comprehensive grinding and polishing system offering precision, automation, and efficiency for sample preparation.">
+              <img src="/images/FEMTO-NANO-ZETA-1-b.png" alt="NANO-1000S with FEMTO-1100S Auto-Polishing Head and ZETA-2000 Automated Dispenser - A comprehensive grinding and polishing system offering precision, automation, and efficiency for sample preparation." />
+            </div>
+            <div class="carousel-item" data-description="ATTO-1000S - A compact controlled removal polisher, ideal for precise, metered material removal in manual grinding and polishing tasks.">
+              <img src="/images/atto-1000s.webp" alt="ATTO-1000S - A compact controlled removal polisher, ideal for precise, metered material removal in manual grinding and polishing tasks." />
+            </div>
+            <div class="carousel-item" data-description="GIGA-S - A high-performance vibratory polisher designed for achieving ultra-smooth, consistent finishes in metallographic sample preparation.">
+              <img src="/images/giga-s.webp" alt="GIGA-S - A high-performance vibratory polisher designed for achieving ultra-smooth, consistent finishes in metallographic sample preparation." />
+            </div>
+            <div class="carousel-item" data-description="PENTA-7500S - A heavy-duty belt grinder designed for efficient material removal and surface preparation in high-volume applications.">
+              <img src="/images/penta-7500s.webp" alt="PENTA-7500S - A heavy-duty belt grinder designed for efficient material removal and surface preparation in high-volume applications." />
+            </div>
+            <div class="carousel-item" data-description="Watch the MEGA T400A in action demonstrating automated sequential cuts.">
+              <video controls>
+                <source src="/videos/MEGA T400-A SAW RUNNING 2.MP4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <button class="carousel-next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        <div class="carousel-description">
+          <p></p>
+        </div>
+      </div>
+        
+      <!-- Features Section -->
+      <div class="features">
+     
+        <p><strong>Choose Type:</strong></p>
+        <div class="feature-buttons">
+          <a href="#penta" class="feature-button">Belt and Hand Grinders</a>
+          <a href="#nano" class="feature-button">Manual Grinder Polisher</a>
+          <a href="#femto" class="feature-button">Auto Polishing Heads</a>
+          <a href="#atto" class="feature-button">Controlled Removal</a>
+          <a href="#giga" class="feature-button">Vibratory Polisher</a>
+          <a href="#zeta" class="feature-button">Automated Dispenser</a>
+        </div>
+        <h4>Overview:</h4>
+        <ul>
+          <li><strong>Belt and Hand Grinders:</strong> Versatile tools for initial material removal in early sample preparation stages.</li>
+          <li><strong>Grinder Polishers:</strong> Ensure consistent polishing with options for manual or automated use.</li>
+          <li><strong>Controlled Removal Polishers:</strong> Fine-tuned material removal for high-precision sample preparation.</li>
+          <li><strong>Vibratory Polishers:</strong> Achieve smooth, even finishes on delicate samples with minimal effort.</li>
+          <li><strong>Automated Dispenser:</strong> Automates polishing suspension dispensing, reducing manual handling.</li>
+      </ul>
+
+      </div>
+    </section>
+    <button class="quote-btn-midpage">Request a Quote</button>
+
+<!-- Equipment Series Section -->
+<div class="section-anchor" id="penta"></div>
+
+<section class="product-series">
+  <h3>Hand and Belt Grinders</h3>
+  <p>
+    PENTA Hand and Belt Grinders are critical tools for metallographic sample preparation, offering precise material removal and surface finishing. These machines are designed for durability and performance, ensuring consistent results in demanding applications across various industries, including aerospace and biomedical.
+  </p>
+  <div class="product-cards">
+    <!-- Machine Card 1 -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/penta.html" class="product-image">
+        <img src="/images/penta-5000a.webp" alt="Hand Grinder" />
+      </a>
+      <div class="product-info">
+        <h3>PENTA-5000A - Hand Grinder</h3>
+        <p>
+          The PENTA-5000A is a versatile hand grinder equipped with silicon carbide rolls, ideal for precise grinding of metallographic samples. Its robust construction and efficient cooling system make it a reliable choice for consistent material removal.
+        </p>
+        <ul>
+          <li><strong>Grinding Stations:</strong> 240, 360, 600, 800, and 1200 grit</li>
+          <li><strong>Roll Sizes:</strong> 3-7/16-inch width x 60 feet length</li>
+          <li><strong>Construction:</strong> Aluminum and stainless steel</li>
+          <li><strong>Cooling System:</strong> Water rinse</li>
+          <li><strong>Dimensions (WxDxH):</strong> 22 x 24 x 9-inch</li>
+          <li><strong>Weight:</strong> 56 lbs (25 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/penta.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Machine Card 2 -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/penta.html" class="product-image">
+        <img src="/images/penta-7500s.webp" alt="Belt Grinder" />
+      </a>
+      <div class="product-info">
+        <h3>PENTA-7500S - Belt Grinder</h3>
+        <p>
+          The PENTA-7500S is a heavy-duty belt grinder designed for high-volume material removal and surface preparation. Its powerful motor and water cooling system ensure efficient and precise grinding in industrial applications.
+        </p>
+        <ul>
+          <li><strong>Belt Size:</strong> 4 x 36-inch</li>
+          <li><strong>Cooling System:</strong> Water rinse</li>
+          <li><strong>Construction:</strong> Aluminum and fabricated metal</li>
+          <li><strong>Motor Power:</strong> 550 W (0.75 hp)</li>
+          <li><strong>Dimensions (WxDxH):</strong> 20 x 25 x 15-inch</li>
+          <li><strong>Weight:</strong> 120 lbs (53 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/penta.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <br>
+  <a href="/quote.html" class="quote-btn-link">
+    <button class="quote-btn-midpage">Request a Quote</button>
+  </a>
+</section>
+
+<div class="section-anchor" id="nano"></div>
+
+<section class="product-series">
+  <h3>Manual Grinder Polishers</h3>
+  <p>
+    The NANO series manual grinder polishers are essential for precise material removal and surface finishing in metallographic sample preparation. These machines, available in single and double wheel configurations, are engineered for consistent performance, making them ideal for demanding applications in industries such as aerospace and biomedical. The NANO series combines robust construction with advanced features, ensuring reliability and accuracy in every polishing task.
+  </p>
+  <div class="product-cards">
+    <!-- Machine Card 1 -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/nano.html" class="product-image">
+        <img src="/images/nano-1000s.webp" alt="NANO-1000S - Single Wheel Polisher" />
+      </a>
+      <div class="product-info">
+        <h3>NANO-1000S - Single Wheel Polisher</h3>
+        <p>
+          The NANO-1000S features a single 8 & 10-inch wheel, driven by a 1 hp dynamic torque servo motor. Ideal for precise manual polishing, this machine supports optional automation accessories for enhanced functionality.
+        </p>
+        <ul>
+          <li><strong>Working Wheels:</strong> 8 & 10-inch diameter</li>
+          <li><strong>Drive Mechanism:</strong> 1 hp (750 W) servo motor</li>
+          <li><strong>Variable Speed:</strong> 100-1000 rpm</li>
+          <ul>
+            <li>Grinding: (600-1000 rpm)</li>
+            <li>Polishing: (100-600 rpm)</li>
+        </ul>
+          <li><strong>Weight:</strong> 63 lbs (29 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/nano.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Machine Card 2 -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/nano.html" class="product-image">
+        <img src="/images/nano-2000s.webp" alt="NANO-2000S - Double Wheel Polisher" />
+      </a>
+      <div class="product-info">
+        <h3>NANO-2000S - Double Wheel Polisher</h3>
+        <p>
+          The NANO-2000S offers dual 8 & 10-inch wheels for increased throughput. Powered by the same reliable 1 hp servo motor, this polisher is perfect for labs needing efficient and consistent sample preparation.
+        </p>
+        <ul>
+          <li><strong>Working Wheels:</strong> 8 & 10-inch diameter</li>
+          <li><strong>Number of Stations:</strong> Double wheel</li>
+          <li><strong>Drive Mechanism:</strong> 1 hp (750 W) servo motor</li>
+          <li><strong>Weight:</strong> 80 lbs (36 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/nano.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Machine Card 3 -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/nano.html" class="product-image">
+        <img src="/images/nano-1200s.webp" alt="NANO-1200S - Large Wheel Polisher" />
+      </a>
+      <div class="product-info">
+        <h3>NANO-1200S - Large Wheel Polisher</h3>
+        <p>
+          The NANO-1200S is designed for larger samples, featuring 12 & 14-inch wheels. With a 1.3 hp motor, this polisher offers robust performance for high-precision sample preparation.
+        </p>
+        <ul>
+          <li><strong>Working Wheels:</strong> 12 & 14-inch diameter</li>
+          <li><strong>Drive Mechanism:</strong> 1.3 hp (1 KW) servo motor</li>
+          <li><strong>Speed:</strong> Variable 100-1000 rpm</li>
+          <li><strong>Weight:</strong> 95 lbs (43 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/nano.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="section-anchor" id="femto"></div>
+
+<section class="product-series">
+  <h3>Auto Polishing Heads</h3>
+  <p>
+    The FEMTO series autopolishing heads deliver consistent, precise polishing for metallographic sample preparation. Compatible with NANO polishers, they feature individual and central force application, advanced torque servo motors, and variable speed control for exceptional accuracy. Ideal for aerospace, biomedical, and other demanding industries, FEMTO heads ensure efficiency and reliability in every polishing process.
+  </p>
+  <div class="product-cards">
+    <!-- FEMTO-1100S Card -->
+<article class="product">
+  <a href="/equipment/grinding-polishing/femto.html" class="product-image">
+    <img src="/images/femto-1100s.webp" alt="FEMTO-1100S - Individual Force Autopolishing Head" />
+  </a>
+  <div class="product-info">
+    <h3>FEMTO-1100S - Individual Force Autopolishing Head</h3>
+    <p>
+      The FEMTO-1100S is an individual specimen holder polishing head designed for precise, controlled polishing of 1-6 samples. Compatible with NANO-1000S and NANO-2000S polishers, this unit features a dynamic torque servo motor for consistent results.
+    </p>
+    <ul>
+      <li><strong>Application of Force:</strong> Individual pistons (1-6 samples)</li>
+      <li><strong>Head Speed:</strong> 0-300 rpm (variable)</li>
+      <li><strong>Compatibility:</strong> NANO-1000S / NANO-2000S polishers</li>
+      <li><strong>Motor:</strong> 0.54 hp (400 W) servo motor</li>
+      <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz</li>
+    </ul>
+    <div class="button-container">
+      <a href="/equipment/grinding-polishing/femto.html" class="product-details-button">Learn More</a>
+    </div>
+  </div>
+</article>
+
+<!-- FEMTO-1500S Card -->
+<article class="product">
+  <a href="/equipment/grinding-polishing/femto.html" class="product-image">
+    <img src="/images/femto-1500s.webp" alt="FEMTO-1500S - Individual/Central Force Autopolishing Head" />
+  </a>
+  <div class="product-info">
+    <h3>FEMTO-1500S - Individual/Central Force Autopolishing Head</h3>
+    <p>
+      The FEMTO-1500S offers both individual and central force polishing, making it versatile for different sample preparation needs. It is compatible with NANO-1000S and NANO-2000S polishers, offering reliable performance with a dynamic torque servo motor.
+    </p>
+    <ul>
+      <li><strong>Application of Force:</strong> Individual pistons (1-6 samples), Central force (3-6 samples)</li>
+      <li><strong>Head Speed:</strong> 0-300 rpm (variable)</li>
+      <li><strong>Compatibility:</strong> NANO-1000S / NANO-2000S polishers</li>
+      <li><strong>Motor:</strong> 0.54 hp (400 W) servo motor</li>
+      <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz</li>
+    </ul>
+    <div class="button-container">
+      <a href="/equipment/grinding-polishing/femto.html" class="product-details-button">Learn More</a>
+    </div>
+  </div>
+</article>
+
+<!-- FEMTO-2200S Card -->
+<article class="product">
+  <a href="/equipment/grinding-polishing/femto.html" class="product-image">
+    <img src="/images/femto-2200s.webp" alt="FEMTO-2200S - Individual Force Autopolishing Head" />
+  </a>
+  <div class="product-info">
+    <h3>FEMTO-2200S - Individual Force Autopolishing Head</h3>
+    <p>
+      The FEMTO-2200S is designed for use with the NANO-1200S polisher, providing individual force polishing for 1-6 samples. Its robust motor ensures precision and consistency in polishing applications.
+    </p>
+    <ul>
+      <li><strong>Application of Force:</strong> Individual pistons (1-6 samples)</li>
+      <li><strong>Head Speed:</strong> 0-300 rpm (variable)</li>
+      <li><strong>Compatibility:</strong> NANO-1200S polisher</li>
+      <li><strong>Motor:</strong> 0.54 hp (400 W) servo motor</li>
+      <li><strong>Dimensions with NANO-1200S:</strong> 25 x 27 x 28 inches</li>
+    </ul>
+    <div class="button-container">
+      <a href="/equipment/grinding-polishing/femto.html" class="product-details-button">Learn More</a>
+    </div>
+  </div>
+</article>
+
+<!-- FEMTO-2500S Card -->
+<article class="product">
+  <a href="/equipment/grinding-polishing/femto.html" class="product-image">
+    <img src="/images/femto-2500s.webp" alt="FEMTO-2500S - Individual/Central Force Autopolishing Head" />
+  </a>
+  <div class="product-info">
+    <h3>FEMTO-2500S - Individual/Central Force Autopolishing Head</h3>
+    <p>
+      The FEMTO-2500S is tailored for the NANO-1200S polisher, offering both individual and central force polishing. Its versatile functionality and powerful motor make it ideal for a variety of metallographic polishing tasks.
+    </p>
+    <ul>
+      <li><strong>Application of Force:</strong> Individual pistons (1-6 samples), Central force (3-6 samples)</li>
+      <li><strong>Head Speed:</strong> 0-300 rpm (variable)</li>
+      <li><strong>Compatibility:</strong> NANO-1200S polisher</li>
+      <li><strong>Motor:</strong> 0.54 hp (400 W) servo motor</li>
+      <li><strong>Dimensions with NANO-1200S:</strong> 25 x 27 x 28 inches</li>
+    </ul>
+    <div class="button-container">
+      <a href="/equipment/grinding-polishing/femto.html" class="product-details-button">Learn More</a>
+    </div>
+  </div>
+</article>
+</section>
+
+<div class="section-anchor" id="atto"></div>
+
+<section class="product-series">
+  <h3>Precision Controlled Removal Polishers</h3>
+  <p>
+    The ATTO precision-controlled removal polisher ensures micrometer-level accuracy in material removal. Ideal for plano-parallel sample preparation, it serves industries like aerospace, biomedical, and advanced electronics. With programmable settings, a 7-inch touchscreen, and dual micrometers for pitch and roll control, the ATTO delivers consistent, precise results. Designed for reliability and ease of use, it enhances sample preparation quality and efficiency.
+  </p>
+  <div class="product-cards">
+    <!-- FEMTO-1100S Card -->
+<!-- Machine Card -->
+<article class="product">
+  <a href="/equipment/grinding-polishing/atto.html" class="product-image">
+    <img src="/images/atto-1000s.webp" alt="ATTO-1000S Precision Controlled Removal Polisher" />
+  </a>
+  <div class="product-info">
+    <h3>ATTO-1000S - Precision Controlled Removal Polisher</h3>
+    <p>
+      The ATTO-1000S is a high-precision polishing machine designed for controlled material removal with micrometer-level accuracy. Ideal for applications such as IC Flip Chip surface mount failure analysis, SEM, FIB, TEM, AFM, EBSD, petrographic, and optical analysis, this machine ensures precise and consistent sample preparation.
+    </p>
+    <ul>
+      <li><strong>Power:</strong> 750 kW (1 hp)</li>
+      <li><strong>Working Wheel Diameter:</strong> 8 or 10-inch</li>
+      <li><strong>Head Speed:</strong> 0-50 rpm (in 1 rpm increments)</li>
+      <li><strong>Control:</strong> Programmable with 7-inch touchscreen panel</li>
+      <li><strong>Dimensions (WxDxH):</strong> 27.6 x 16.9 x 22.8-inch</li>
+      <li><strong>Weight:</strong> 125.7 lbs (57 kg)</li>
+    </ul>
+    <div class="button-container">
+      <a href="/equipment/grinding-polishing/atto.html" class="product-details-button">Learn More</a>
+    </div>
+  </div>
+</article>
+</section>
+
+
+<div class="section-anchor" id="giga"></div>
+
+<section class="product-series">
+  <h3>Vibratory Polishers</h3>
+  <p>
+    The GIGA-S Vibratory Polisher is specifically designed for the gentle polishing of difficult materials, making it ideal for EBSD (electron backscatter diffraction) sample preparation. This polisher allows precise control of the polishing process by adjusting the voltage to change the rotational speed. The GIGA-S is engineered to enhance the efficiency of your polishing processes, providing consistent results across various challenging materials.
+  </p>
+  <div class="product-cards">
+    <!-- GIGA-S Card -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/giga.html" class="product-image">
+        <img src="/images/giga-s.webp" alt="GIGA-S - Vibratory Polisher" />
+      </a>
+      <div class="product-info">
+        <h3>GIGA-S - Vibratory Polisher</h3>
+        <p>
+          The GIGA-S is designed for gentle, controlled polishing of difficult materials, especially for EBSD sample preparation. It features an advanced PZT motor, with adjustable voltage for precise control, ensuring minimal polishing relief and enhanced sample preparation.
+        </p>
+        <ul>
+          <li><strong>Polishing Bowl Size:</strong> Interchangeable 9 or 12-inch diameter</li>
+          <li><strong>Drive Mechanism:</strong> Advanced PZT motor</li>
+          <li><strong>Construction:</strong> Aluminum casting, SMC cover, and acrylic hood</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz</li>
+          <li><strong>Weight:</strong> 135 lbs (62 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/giga.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="section-anchor" id="zeta"></div>
+
+<section class="product-series">
+  <h3>Automated Abrasive Dispensers</h3>
+  <p>
+    The ZETA-2000S is a critical tool for enhancing the efficiency and consistency of metallographic polishing processes. Designed for use with other metallographic polishing machines, the ZETA-2000S automates the dispensing of abrasives and lubricants, ensuring precise and repeatable results. With programmable peristaltic pumps and a user-friendly touchscreen interface, this dispenser offers both manual and automated modes, making it versatile for various polishing applications.
+  </p>
+  <div class="product-cards">
+    <!-- ZETA-2000S Card -->
+    <article class="product">
+      <a href="/equipment/grinding-polishing/zeta.html" class="product-image">
+        <img src="/images/zeta-2000s.webp" alt="ZETA-2000S - Automated Abrasive Dispenser" />
+      </a>
+      <div class="product-info">
+        <h3>ZETA-2000S - Automated Abrasive Dispenser</h3>
+        <p>
+          The ZETA-2000S is an automated dispenser designed to precisely control the flow of abrasives and lubricants during metallographic polishing. Equipped with four programmable peristaltic pumps, it ensures consistent and efficient sample preparation.
+        </p>
+        <ul>
+          <li><strong>Pumps:</strong> 4 dedicated, programmable peristaltic pumps</li>
+          <li><strong>Flow Rates:</strong> 1.2 - 90 ml/min</li>
+          <li><strong>Controls:</strong> 7-inch programmable touchscreen interface</li>
+          <li><strong>Electrical Specifications:</strong> 110V or 220V 50/60 Hz</li>
+          <li><strong>Dimensions (WxDxH):</strong> 9.5 x 11 x 12-inches</li>
+          <li><strong>Weight:</strong> 12 lbs (91 kg)</li>
+        </ul>
+        <div class="button-container">
+          <a href="/equipment/grinding-polishing/zeta.html" class="product-details-button">Learn More</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+  </div>
+  
+  <br>  <br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/js/scripts.js"></script>
+    <script src="/js/carousel.js"></script>
+
+    <script>
+    
+// Smooth Scroll with Offset
+// This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+// It prevents the default jump behavior and scrolls smoothly to the target section,
+// applying an offset to account for fixed headers. Adjust the 'offset' variable
+// to ensure the target section is fully visible below any fixed header.
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            const offset = 125; // Adjust this value for your header's height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+  
+  </script>
+
+</body>
+</html>
+

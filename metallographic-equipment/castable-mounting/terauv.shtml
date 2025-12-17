@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeraUV Ultraviolet Mounting Curing System | PACE Technologies</title>
+    <link rel="stylesheet" href="/../css/nav.css">
+    <link rel="stylesheet" href="/../css/footer.css">
+    <link rel="stylesheet" href="/../css/styles.css">
+    <link rel="stylesheet" href="/../css/machinepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- External libraries or scripts -->
+    <link rel="preconnect" href="https://www.googletagmanager.com"> <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1066794256"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-1066794256');
+    </script>
+
+    <!-- Meta tags -->
+    <meta name="robots" content="index, follow"> <!-- Allow search engine indexing -->
+
+    <!-- Verification meta tags -->
+    <meta name="google-site-verification" content="LzR4wVONWG6uIX3m2QcGuvf3rBxuHBCijv-Pl1tccFs" /> <!-- Google site verification -->
+    <meta name="norton-safeweb-site-verification" content="kw254olmyzhm98ttscnebx59npy7ji28spxv77ktnnqwpg2entz0hsfozhba0gzvjvrfj6z0-c00djzn-iq1hw-z1vdcna8ug093xtjit61oop1s26erotk-0ruemld5" />
+    <!-- Norton SafeWeb site verification -->
+
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="TeraUV, UV curing system, metallographic mounting, PACE Technologies, sample preparation, castable mounting, cold mounting, failure analysis">
+    <meta name="description" content="The TeraUV Ultraviolet Curing System by PACE Technologies offers rapid and reliable curing for high-quality metallographic mounting, ensuring excellent adhesion and minimal shrinkage.">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "UVmount UV Curing System",
+          "image": "https://www.metallographic.com/Images/terauv.webp",
+          "description": "The TeraUV Ultraviolet Curing System delivers fast, high-quality curing for metallographic mounting, ensuring optimal sample preparation.",
+          "brand": {
+            "@type": "Brand",
+            "name": "PACE Technologies"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.metallographic.com/equipment/castable-mounting/terauv",
+            "priceCurrency": "USD",
+            "price": "Contact for pricing",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+    </script>   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/../Images/pt-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/../Images/pt-favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/../Images/pt-favicon/favicon-16x16.png">
+    <link rel="manifest" href="/../Images/pt-favicon/site.webmanifest">
+    <link rel="mask-icon" href="/../Images/pt-favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> <!-- Icon displayed in the browser tab -->
+</head>
+
+
+
+<body>
+
+    <!-- Include the navigation -->
+    <!--#include virtual="/navigation.html" -->
+
+    <!-- Include the quote modal -->
+    <!--#include virtual="/modal.html" -->
+
+<!-- HEADER -->
+
+    <header class="top-header">
+        <div class="top-header-content">
+            <div class="top-header-inner">
+                <h1 class="page-title">TeraUV - UV Mounting Curing System</h1>
+                <div class="text-content"></div>
+            </div>
+        </div>
+    </header>
+            
+<!-- MAIN -->
+
+
+<main>
+
+
+    <div class="first-container">
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <h2>TeraUV</h2>
+            <p>
+                The TeraUV UV Mounting Curing System by PACE Technologies ensures fast, reliable curing with strong adhesion and minimal shrinkage. Designed for quick turnaround, it delivers consistent, high-quality results for precise sample preparation. Its user-friendly interface and efficient operation make it ideal for material science and metallography labs.
+            </p>
+            <div class="feature-buttons-top">
+              <a href="#castable-features" class="feature-button-top">Features</a>
+              <a href="#castable-specifications" class="feature-button-top">Technical Specifications</a>
+              <a href="#castable-consumables" class="feature-button-top">Related Consumables</a>
+          </div>
+        </section>
+
+    <!-- Carousel and Features Section -->
+    <section class="carousel-features" id="castable-features">
+        <!-- Carousel Section -->
+        <div class="carousel" aria-label="Product Images and Video">
+            <div class="carousel-container">
+                <button class="carousel-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="carousel-content">
+                     <div class="carousel-item" data-description="TeraUV UV Mounting Curing System">
+                        <img src="/../images/equipment/castable mounting/uv curing system/terauv-cover.webp" alt="Image of the TeraUV UV Mounting Curing System">
+                    </div>
+                    <div class="carousel-item" data-description="TeraUV with Open Tray">
+                        <img src="/../images/equipment/castable mounting/uv curing system/terauv-open-tray.webp" alt="TeraUV with Open Tray">
+                    </div>
+                    <div class="carousel-item" data-description="TeraUV Features">
+                        <img src="/../images/equipment/castable mounting/uv curing system/terauv-features.webp" alt="Image of the TeraUV with arrows pointing to key features such as touchscreen display, electric door, start, and timer buttons">
+                    </div>
+                    <div class="carousel-item" data-description="TeraUV Dimensions">
+                        <img src="/../images/equipment/castable mounting/uv curing system/terauv-dimensions.webp" alt="Image of the TeraUV highlighting key dimensions such as width, depth, and length">
+                    </div>
+                    <!--<div class="carousel-item" data-description="UVmount Video">
+                        <video controls>
+                            <source src="/../images/equipment/castable mounting/uv curing system/uvmount-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>-->
+                </div>
+                <button class="carousel-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-description">
+                <p></p>
+            </div>
+        </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                  <li><strong>Advanced UV Curing:</strong> Ensures strong adhesion and minimal shrinkage during the sample mounting process.</li>
+                  <li><strong>Fast Processing:</strong> Speeds up sample preparation with quick curing times, ideal for labs requiring rapid turnaround.</li>
+                  <li><strong>Consistent Results:</strong> Provides uniform curing for high-quality, reliable metallographic samples.</li>
+                  <li><strong>User-Friendly Interface:</strong> Simple controls make it easy to operate, suitable for various material science applications.</li>
+                  <li><strong>Versatile Application:</strong> Effective for a wide range of materials and sample sizes, enhancing lab efficiency.</li>
+                </ul>
+                
+             
+            <br>
+                <div class="feature-buttons">
+                    <a href="/content/brochures/castable/teraUV.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Brochure</a>
+                    <a href="https://shop.metallographic.com/collections/castable-mounting" class="feature-button" target="_blank" rel="noopener noreferrer">Shop Consumables</a>
+                      <!--<a href="/../catalog.pdf" class="feature-button" target="_blank" rel="noopener noreferrer">Demo Video</a>-->
+                      <a href="/consumables/mounting/castable.html" class="feature-button" rel="noopener noreferrer">Consumables Guide</a>
+                  </div>
+            </div>
+        </section>
+
+        <section class="specifications" id="castable-specifications">
+          <h3>Technical Specifications - TeraUV</h3>
+          <table>
+              <tr>
+                  <th>Parameter</th>
+                  <th>Specification</th>
+              </tr>
+              <tr>
+                  <td>Sample Tray Total Dimension</td>
+                  <td>11.5 x 9.1-inch (291 x 230 mm)</td>
+              </tr>
+              <tr>
+                  <td>Sample Tray Max. Height</td>
+                  <td>2-inch (50 mm)</td>
+              </tr>
+              <tr>
+                  <td>UV Curing Time</td>
+                  <td>0-999 secs</td>
+              </tr>
+              <tr>
+                  <td>UV Light Wavelenght</td>
+                  <td>365nm</td>
+              </tr>
+              <tr>
+                  <td>Dimensions (WxDxH)</td>
+                  <td>
+                    Closed: 15.7 x 15.9 x 7.6-inch (400 x 405 x 195 mm)<br>
+                    Open: 15.7 x 25.1 x 7.6-inch (400 x 639 x 195 mm)
+                  </td>
+              </tr>
+              <tr>
+                  <td>Voltage/Frequency</td>
+                  <td>85-240V, 50/60Hz (1Ph/N/PE)</td>
+              </tr>
+              <tr>
+                  <td>Weight</td>
+                  <td>46 lbs (21 kg)</td>
+              </tr>
+          </table>
+        </section>
+        
+        <section class="specifications">
+          <h3>TeraUV Accessories</h3>
+          <table>
+              <tr>
+                  <th>Accessory</th>
+                  <th>Catalog Number</th>
+              </tr>
+              <tr>
+                  <td>1-inch diameter Clear UV mounting mold (10/pkg)</td>
+                  <td>UV-0100</td>
+              </tr>
+              <tr>
+                  <td>1.25-inch diameter Clear UV mounting mold (10/pkg)</td>
+                  <td>UV-0125</td>
+              </tr>
+              <tr>
+                  <td>1.5-inch diameter Clear UV mounting mold (10/pkg)</td>
+                  <td>UV-0150</td>
+              </tr>
+              <tr>
+                  <td>2-inch diameter Clear UV mounting mold (10/pkg)</td>
+                  <td>UV-0200</td>
+              </tr>
+              <tr>
+                  <td>UV Acrylic Curing Liquid, 1-liter</td>
+                  <td>UV-032</td>
+              </tr>
+          </table>
+        </section>
+        
+
+
+        <!-- Related Products Section -->
+        <section class="related-products" id="castable-consumables">
+          <h3>Related Consumables</h3>
+          <ul>
+            <li><a href="https://shop.metallographic.com/collections/castable-mounting-acrylic" target="_blank" rel="noopener noreferrer">Acrylic Resin</a></li>
+            <li><a href="https://shop.metallographic.com/collections/castable-mounting-epoxy" target="_blank" rel="noopener noreferrer">Epoxy Resin</a></li>
+            <li><a href="https://shop.metallographic.com/collections/castable-mounting-polyester" target="_blank" rel="noopener noreferrer">Polyester Resin</a></li>
+            <li><a href="https://shop.metallographic.com/collections/castable-mounting-accessories" target="_blank" rel="noopener noreferrer">Accessories</a></li>
+        </ul>
+            <br>
+        </section>
+    </div>
+
+
+</main>
+
+<br><br><br>
+
+    <!-- Include Return To Top -->
+    <!--#include virtual="/return-top.html" -->
+
+    <!-- Include the footer -->
+    <!--#include virtual="/footer.html" -->
+
+    <!-- SCRIPTS -->
+    <script src="/../js/scripts.js"></script>
+    <script src="/../js/carousel.js"></script>
+    <script>
+      // Smooth Scroll with Offset
+        // This script enables smooth scrolling for anchor links that reference page sections by ID (href="#").
+        // It prevents the default jump behavior and scrolls smoothly to the target section,
+        // applying an offset to account for fixed headers. Adjust the 'offset' variable
+        // to ensure the target section is fully visible below any fixed header.
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+        
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+        
+                if (targetElement) {
+                    const offset = 175; // Adjust this value for your header's height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        </script>
+
+</body>
+</html>
+
+</body>
+</html>
+
