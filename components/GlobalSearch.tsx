@@ -838,7 +838,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               <div className="border-t border-gray-200 flex-1 overflow-y-auto">
                 {(isLoadingMaterials || isLoadingBlogPosts) && (
                   <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
-                    Loading...
+                    <LoadingSpinner size="sm" />
                   </div>
                 )}
                 {typeOrder.map(type => {

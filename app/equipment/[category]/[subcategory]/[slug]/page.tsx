@@ -5,8 +5,16 @@ import Image from 'next/image'
 import { use, useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase-client'
 import { getSubcategoryMetadata } from '@/lib/supabase'
-import type { SubcategoryMetadata, Equipment } from '@/lib/supabase'
-import { ChevronRight, ArrowLeft } from 'lucide-react'
+import type { SubcategoryMetadata, Equipment, EquipmentWithDetails } from '@/lib/supabase'
+import { ChevronRight, ArrowLeft, X, ChevronLeft } from 'lucide-react'
+import { getEquipmentImageUrl } from '@/lib/storage'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import SectioningSpecs from '@/components/equipment/SectioningSpecs'
+import MountingSpecs from '@/components/equipment/MountingSpecs'
+import GrindingPolishingSpecs from '@/components/equipment/GrindingPolishingSpecs'
+import MicroscopySpecs from '@/components/equipment/MicroscopySpecs'
+import HardnessTestingSpecs from '@/components/equipment/HardnessTestingSpecs'
+import LabFurnitureSpecs from '@/components/equipment/LabFurnitureSpecs'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -19,19 +27,29 @@ const categoryLabels: Record<string, string> = {
 
 export default function EquipmentProductPage({ params }: { params: Promise<{ category: string; subcategory: string; slug: string }> }) {
   const { category, subcategory, slug } = use(params)
-  const [equipment, setEquipment] = useState<Equipment | null>(null)
+  const [equipment, setEquipment] = useState<EquipmentWithDetails | null>(null)
   const [subcategoryMeta, setSubcategoryMeta] = useState<SubcategoryMetadata | null>(null)
   const [loading, setLoading] = useState(true)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const supabase = createClient()
         
-        // Try to find equipment by slug first, then by item_id
+        // Fetch equipment with category-specific data using joins
         let { data, error } = await supabase
           .from('equipment')
-          .select('*')
+          .select(`
+            *,
+            equipment_sectioning (*),
+            equipment_mounting (*),
+            equipment_grinding_polishing (*),
+            equipment_microscopy (*),
+            equipment_hardness_testing (*),
+            equipment_lab_furniture (*)
+          `)
           .or(`slug.eq.${slug},item_id.ilike.${slug.toUpperCase()}`)
           .eq('status', 'active')
           .single()
@@ -40,7 +58,15 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
           // Try with lowercase item_id
           const { data: data2, error: error2 } = await supabase
             .from('equipment')
-            .select('*')
+            .select(`
+              *,
+              equipment_sectioning (*),
+              equipment_mounting (*),
+              equipment_grinding_polishing (*),
+              equipment_microscopy (*),
+              equipment_hardness_testing (*),
+              equipment_lab_furniture (*)
+            `)
             .ilike('item_id', slug.toUpperCase())
             .eq('status', 'active')
             .single()
@@ -55,7 +81,30 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
           return
         }
 
-        setEquipment(data)
+        // Transform the data to match EquipmentWithDetails type
+        const equipmentWithDetails: EquipmentWithDetails = {
+          ...data,
+          sectioning: Array.isArray(data.equipment_sectioning) && data.equipment_sectioning.length > 0 
+            ? data.equipment_sectioning[0] 
+            : null,
+          mounting: Array.isArray(data.equipment_mounting) && data.equipment_mounting.length > 0 
+            ? data.equipment_mounting[0] 
+            : null,
+          grinding_polishing: Array.isArray(data.equipment_grinding_polishing) && data.equipment_grinding_polishing.length > 0 
+            ? data.equipment_grinding_polishing[0] 
+            : null,
+          microscopy: Array.isArray(data.equipment_microscopy) && data.equipment_microscopy.length > 0 
+            ? data.equipment_microscopy[0] 
+            : null,
+          hardness_testing: Array.isArray(data.equipment_hardness_testing) && data.equipment_hardness_testing.length > 0 
+            ? data.equipment_hardness_testing[0] 
+            : null,
+          lab_furniture: Array.isArray(data.equipment_lab_furniture) && data.equipment_lab_furniture.length > 0 
+            ? data.equipment_lab_furniture[0] 
+            : null,
+        }
+
+        setEquipment(equipmentWithDetails)
 
         // Fetch subcategory metadata
         if (data?.subcategory) {
@@ -80,8 +129,7 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading equipment...</p>
+            <LoadingSpinner size="md" message="Loading equipment..." />
           </div>
         </div>
       </div>
@@ -136,16 +184,203 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Image Section */}
           <div>
-            {equipment.image_url && (
-              <div className="relative w-full h-96 rounded-lg overflow-hidden bg-gray-100 mb-4">
-                <Image
-                  src={equipment.image_url}
-                  alt={equipment.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            )}
+            {/* Main Image */}
+            {(() => {
+              // Get all images: primary image_url + additional images array
+              const allImages: Array<{ url: string; alt?: string; caption?: string }> = []
+              
+              // Normalize URLs for comparison (remove query params, trailing slashes, protocol)
+              const normalizeUrl = (url: string) => {
+                if (!url) return ''
+                // Remove protocol, query params, trailing slashes, and convert to lowercase
+                return url
+                  .replace(/^https?:\/\//, '')
+                  .split('?')[0]
+                  .replace(/\/$/, '')
+                  .toLowerCase()
+              }
+              
+              // Add primary image if it exists
+              if (equipment.image_url) {
+                allImages.push({ 
+                  url: equipment.image_url, 
+                  alt: equipment.name,
+                  caption: 'Primary image'
+                })
+              }
+              
+              // Add additional images from images array
+              // Handle both array and string (JSON) formats
+              let imagesArray: any[] = []
+              if (equipment.images) {
+                if (Array.isArray(equipment.images)) {
+                  imagesArray = equipment.images
+                } else if (typeof equipment.images === 'string') {
+                  try {
+                    imagesArray = JSON.parse(equipment.images)
+                  } catch {
+                    // If parsing fails, try to treat as single URL
+                    if (equipment.images.trim()) {
+                      imagesArray = [{ url: equipment.images }]
+                    }
+                  }
+                }
+              }
+              
+              if (imagesArray.length > 0) {
+                const primaryUrlNormalized = equipment.image_url ? normalizeUrl(equipment.image_url) : ''
+                
+                imagesArray.forEach((img: any) => {
+                  if (img && img.url) {
+                    // Only add if it's different from the primary image (normalized comparison)
+                    const imgUrlNormalized = normalizeUrl(img.url)
+                    if (imgUrlNormalized && imgUrlNormalized !== primaryUrlNormalized) {
+                      allImages.push({
+                        url: img.url,
+                        alt: img.alt || equipment.name,
+                        caption: img.caption
+                      })
+                    }
+                  }
+                })
+              }
+              
+              
+              if (allImages.length === 0) return null
+              
+              // Ensure selectedImageIndex is within bounds
+              const safeIndex = Math.min(Math.max(0, selectedImageIndex), allImages.length - 1)
+              const currentImage = allImages[safeIndex] || allImages[0]
+              
+              return (
+                <>
+                  <div 
+                    className="relative w-full h-96 rounded-lg overflow-hidden bg-gray-100 mb-4 cursor-pointer group"
+                    onClick={() => setLightboxOpen(true)}
+                  >
+                    <Image
+                      src={getEquipmentImageUrl(currentImage.url) || currentImage.url}
+                      alt={currentImage.alt || equipment.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {allImages.length > 1 && (
+                      <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
+                        {safeIndex + 1} / {allImages.length}
+                      </div>
+                    )}
+                    {currentImage.caption && (
+                      <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm max-w-xs">
+                        {currentImage.caption}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Thumbnail Gallery */}
+                  {allImages.length > 1 && (
+                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                      {allImages.map((img, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          onClick={() => {
+                            setSelectedImageIndex(index)
+                            setLightboxOpen(false) // Close lightbox if open
+                          }}
+                          className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                            safeIndex === index
+                              ? 'border-primary-600 ring-2 ring-primary-200'
+                              : 'border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          <Image
+                            src={getEquipmentImageUrl(img.url) || img.url}
+                            alt={img.alt || `${equipment.name} - Image ${index + 1}`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 25vw, 16vw"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {/* Show message if only one image */}
+                  {allImages.length === 1 && (
+                    <p className="text-xs text-gray-500 mt-2 text-center">
+                      Click image to view full size
+                    </p>
+                  )}
+                  
+                  {/* Lightbox Modal */}
+                  {lightboxOpen && (
+                    <div 
+                      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+                      onClick={() => setLightboxOpen(false)}
+                    >
+                      <button
+                        onClick={() => setLightboxOpen(false)}
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+                      >
+                        <X className="w-8 h-8" />
+                      </button>
+                      
+                      {allImages.length > 1 && (
+                        <>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setSelectedImageIndex((prev) => 
+                                prev > 0 ? prev - 1 : allImages.length - 1
+                              )
+                            }}
+                            className="absolute left-4 text-white hover:text-gray-300 z-10"
+                          >
+                            <ChevronLeft className="w-10 h-10" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setSelectedImageIndex((prev) => 
+                                prev < allImages.length - 1 ? prev + 1 : 0
+                              )
+                            }}
+                            className="absolute right-4 text-white hover:text-gray-300 z-10"
+                          >
+                            <ChevronRight className="w-10 h-10" />
+                          </button>
+                        </>
+                      )}
+                      
+                      <div 
+                        className="relative max-w-7xl max-h-full w-full h-full flex items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={getEquipmentImageUrl(currentImage.url) || currentImage.url}
+                            alt={currentImage.alt || equipment.name}
+                            fill
+                            className="object-contain"
+                            sizes="100vw"
+                          />
+                          {currentImage.caption && (
+                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 text-center">
+                              {currentImage.caption}
+                            </div>
+                          )}
+                          {allImages.length > 1 && (
+                            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded">
+                              {safeIndex + 1} / {allImages.length}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )
+            })()}
           </div>
 
           {/* Details Section */}
@@ -162,32 +397,13 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
               </div>
             )}
 
-            {/* Specifications */}
-            {(equipment.blade_size_mm || equipment.automation_level || equipment.wheel_size_inches) && (
-              <div className="border-t border-gray-200 pt-6 mb-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Specifications</h2>
-                <dl className="grid grid-cols-2 gap-4">
-                  {equipment.blade_size_mm && (
-                    <>
-                      <dt className="text-sm text-gray-600">Blade Size</dt>
-                      <dd className="text-sm text-gray-900">{equipment.blade_size_mm}mm ({equipment.blade_size_inches}")</dd>
-                    </>
-                  )}
-                  {equipment.automation_level && (
-                    <>
-                      <dt className="text-sm text-gray-600">Automation</dt>
-                      <dd className="text-sm text-gray-900 capitalize">{equipment.automation_level}</dd>
-                    </>
-                  )}
-                  {equipment.wheel_size_inches && equipment.wheel_size_inches.length > 0 && (
-                    <>
-                      <dt className="text-sm text-gray-600">Wheel Size</dt>
-                      <dd className="text-sm text-gray-900">{equipment.wheel_size_inches.join('", ')}"</dd>
-                    </>
-                  )}
-                </dl>
-              </div>
-            )}
+            {/* Category-Specific Specifications */}
+            {category === 'sectioning' && <SectioningSpecs specs={equipment.sectioning} />}
+            {category === 'mounting' && <MountingSpecs specs={equipment.mounting} />}
+            {category === 'grinding-polishing' && <GrindingPolishingSpecs specs={equipment.grinding_polishing} />}
+            {category === 'microscopy' && <MicroscopySpecs specs={equipment.microscopy} />}
+            {category === 'hardness-testing' && <HardnessTestingSpecs specs={equipment.hardness_testing} />}
+            {category === 'lab-furniture' && <LabFurnitureSpecs specs={equipment.lab_furniture} />}
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">

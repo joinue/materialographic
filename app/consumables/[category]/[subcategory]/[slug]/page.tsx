@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase-client'
 import { getSubcategoryMetadata } from '@/lib/supabase'
 import type { SubcategoryMetadata, Consumable } from '@/lib/supabase'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -83,8 +84,7 @@ export default function ConsumableProductPage({ params }: { params: Promise<{ ca
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading consumable...</p>
+            <LoadingSpinner size="md" message="Loading consumable..." />
           </div>
         </div>
       </div>

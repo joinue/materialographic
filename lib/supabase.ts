@@ -174,23 +174,24 @@ export interface Standard {
   updated_at?: string
 }
 
+// Base Equipment interface (common fields)
 export interface Equipment {
   id: string
   name: string
   item_id: string
   slug?: string | null
   description?: string | null
-  category: string
+  category: 'sectioning' | 'mounting' | 'grinding-polishing' | 'microscopy' | 'hardness-testing' | 'lab-furniture'
   subcategory?: string | null
   is_pace_product?: boolean | null
   product_url?: string | null
   image_url?: string | null
-  blade_size_mm?: number | null
-  blade_size_inches?: number | null
-  automation_level?: 'manual' | 'semi-automated' | 'automated' | null
-  wheel_size_inches?: number[] | null
-  max_cutting_capacity_mm?: number | null
-  max_cutting_capacity_inches?: number | null
+  images?: Array<{
+    url: string
+    alt?: string | null
+    caption?: string | null
+    type?: 'cover' | 'detail' | 'specs' | 'dimensions' | 'other' | null
+  }> | null
   suitable_for_material_types?: string[] | null
   suitable_for_hardness?: string[] | null
   suitable_for_sample_sizes?: string[] | null
@@ -203,6 +204,139 @@ export interface Equipment {
   sort_order?: number | null
   created_at?: string
   updated_at?: string
+}
+
+// Category-specific interfaces
+export interface EquipmentSectioning {
+  equipment_id: string
+  blade_size_mm?: number | null
+  blade_size_inches?: number | null
+  blade_type?: string | null
+  max_cutting_capacity_mm?: number | null
+  max_cutting_capacity_inches?: number | null
+  automation_level?: 'manual' | 'semi-automated' | 'automated' | null
+  cutting_speed_rpm?: number | null
+  feed_rate_mm_per_min?: number | null
+  cooling_system?: string | null
+  sample_holder_type?: string | null
+  precision_level?: string | null
+  motor_power_watts?: number | null
+  dimensions_mm?: Record<string, number> | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface EquipmentMounting {
+  equipment_id: string
+  mounting_type?: string | null
+  max_pressure_psi?: number | null
+  max_pressure_mpa?: number | null
+  pressure_range_psi?: string | null
+  max_temperature_celsius?: number | null
+  min_temperature_celsius?: number | null
+  heating_capability?: boolean | null
+  cooling_capability?: boolean | null
+  chamber_size_mm?: Record<string, number> | null
+  max_sample_size_mm?: Record<string, number> | null
+  vacuum_level_mbar?: number | null
+  vacuum_pump_required?: boolean | null
+  programmable_cycles?: boolean | null
+  digital_controls?: boolean | null
+  safety_features?: string[] | null
+  power_consumption_watts?: number | null
+  dimensions_mm?: Record<string, number> | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface EquipmentGrindingPolishing {
+  equipment_id: string
+  wheel_size_inches?: number[] | null
+  platen_material?: string | null
+  number_of_stations?: number | null
+  automation_level?: 'manual' | 'semi-automated' | 'automated' | null
+  speed_range_rpm?: string | null
+  force_range_n?: number[] | null
+  programmable_force?: boolean | null
+  cooling_system?: string | null
+  sample_holder_type?: string | null
+  controlled_removal?: boolean | null
+  motor_power_watts?: number | null
+  dimensions_mm?: Record<string, number> | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface EquipmentMicroscopy {
+  equipment_id: string
+  microscope_type?: string | null
+  magnification_range?: string | null
+  objective_lenses?: string[] | null
+  eyepiece_magnification?: string | null
+  camera_resolution?: string | null
+  image_analysis_capable?: boolean | null
+  measurement_capabilities?: string[] | null
+  illumination_type?: string[] | null
+  light_source?: string | null
+  motorized_stage?: boolean | null
+  z_stack_capability?: boolean | null
+  live_measurement?: boolean | null
+  dimensions_mm?: Record<string, number> | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface EquipmentHardnessTesting {
+  equipment_id: string
+  test_methods?: string[] | null
+  load_range_n?: number[] | null
+  load_range_kgf?: number[] | null
+  selectable_loads?: string[] | null
+  max_indentation_depth_mm?: number | null
+  indenter_types?: string[] | null
+  automation_level?: 'manual' | 'semi-automated' | 'automated' | null
+  automatic_loading?: boolean | null
+  data_export_capabilities?: string[] | null
+  measurement_accuracy?: string | null
+  digital_display?: boolean | null
+  dimensions_mm?: Record<string, number> | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface EquipmentLabFurniture {
+  equipment_id: string
+  furniture_type?: string | null
+  dimensions_mm?: Record<string, number> | null
+  work_surface_area_m2?: number | null
+  material?: string | null
+  surface_material?: string | null
+  weight_capacity_kg?: number | null
+  storage_capacity?: string | null
+  ventilation_required?: boolean | null
+  electrical_outlets?: number | null
+  drawers?: number | null
+  shelves?: number | null
+  locking_mechanism?: boolean | null
+  safety_features?: string[] | null
+  weight_kg?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+// Combined interfaces for equipment with category-specific data
+export type EquipmentWithDetails = Equipment & {
+  sectioning?: EquipmentSectioning | null
+  mounting?: EquipmentMounting | null
+  grinding_polishing?: EquipmentGrindingPolishing | null
+  microscopy?: EquipmentMicroscopy | null
+  hardness_testing?: EquipmentHardnessTesting | null
+  lab_furniture?: EquipmentLabFurniture | null
 }
 
 export interface Consumable {
@@ -218,11 +352,6 @@ export interface Consumable {
   product_url?: string | null
   image_url?: string | null
   list_price?: number | null
-  size_mm?: number | null
-  size_inches?: number | null
-  grit_size?: string | null
-  material_composition?: string | null
-  type?: string | null
   suitable_for_material_types?: string[] | null
   suitable_for_hardness?: string[] | null
   compatible_with_equipment?: string[] | null
@@ -233,6 +362,178 @@ export interface Consumable {
   sort_order?: number | null
   created_at?: string
   updated_at?: string
+}
+
+// Category-specific consumables interfaces
+export interface ConsumableSectioning {
+  consumable_id: string
+  blade_size_mm?: number | null
+  blade_size_inches?: number | null
+  blade_type?: string | null
+  blade_thickness_mm?: number | null
+  blade_thickness_inches?: number | null
+  arbor_size_mm?: number | null
+  arbor_size_inches?: number | null
+  grit_size?: string | null
+  grit_concentration?: string | null
+  material_composition?: string | null
+  bond_type?: string | null
+  max_speed_rpm?: number | null
+  recommended_speed_rpm?: number | null
+  cutting_rate_mm_per_min?: number | null
+  suitable_for_materials?: string[] | null
+  suitable_for_hardness_levels?: string[] | null
+  application_notes?: string | null
+  fluid_type?: string | null
+  volume_ml?: number | null
+  volume_oz?: number | null
+  anti_corrosion?: boolean | null
+  stick_size_mm?: number | null
+  stick_size_inches?: number | null
+  stick_material?: string | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface ConsumableMounting {
+  consumable_id: string
+  mounting_type?: string | null
+  resin_type?: string | null
+  resin_color?: string | null
+  resin_form?: string | null
+  weight_kg?: number | null
+  weight_lbs?: number | null
+  volume_ml?: number | null
+  volume_oz?: number | null
+  package_size?: string | null
+  curing_temperature_celsius?: number | null
+  curing_time_minutes?: number | null
+  shrinkage_percentage?: number | null
+  hardness_shore?: string | null
+  edge_retention?: boolean | null
+  conductive?: boolean | null
+  conductive_material?: string | null
+  glass_reinforced?: boolean | null
+  transparent?: boolean | null
+  release_type?: string | null
+  release_form?: string | null
+  mold_size_mm?: any | null
+  mold_type?: string | null
+  mold_material?: string | null
+  hardener_type?: string | null
+  hardener_ratio?: string | null
+  clip_type?: string | null
+  clip_size_mm?: any | null
+  clip_material?: string | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface ConsumableGrindingPolishing {
+  consumable_id: string
+  product_type?: string | null
+  size_inches?: number[] | null
+  size_mm?: number[] | null
+  diameter_mm?: number | null
+  diameter_inches?: number | null
+  width_mm?: number | null
+  width_inches?: number | null
+  length_mm?: number | null
+  length_inches?: number | null
+  thickness_mm?: number | null
+  thickness_microns?: number | null
+  abrasive_type?: string | null
+  grit_size?: string | null
+  grit_size_numeric?: number | null
+  grit_concentration?: string | null
+  diamond_type?: string | null
+  diamond_concentration?: string | null
+  bond_type?: string | null
+  backing_type?: string | null
+  backing_material?: string | null
+  form?: string | null
+  viscosity?: string | null
+  suitable_for_materials?: string[] | null
+  suitable_for_hardness_levels?: string[] | null
+  application_stage?: string | null
+  waterproof?: boolean | null
+  anti_static?: boolean | null
+  electronics_grade?: boolean | null
+  deagglomerated?: boolean | null
+  quantity_per_package?: number | null
+  package_size?: string | null
+  weight_kg?: number | null
+  weight_lbs?: number | null
+  volume_ml?: number | null
+  volume_oz?: number | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface ConsumableEtchants {
+  consumable_id: string
+  etchant_type?: string | null
+  composition?: string | null
+  concentration_percentage?: number | null
+  suitable_for_materials?: string[] | null
+  application_method?: string | null
+  application_temperature_celsius?: number | null
+  application_time_seconds?: number | null
+  hazardous?: boolean | null
+  requires_ventilation?: boolean | null
+  storage_requirements?: string | null
+  volume_ml?: number | null
+  volume_oz?: number | null
+  package_size?: string | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface ConsumableCleaning {
+  consumable_id: string
+  product_type?: string | null
+  cleaning_method?: string | null
+  solvent_type?: string | null
+  ph_level?: number | null
+  biodegradable?: boolean | null
+  suitable_for_materials?: string[] | null
+  removes?: string[] | null
+  volume_ml?: number | null
+  volume_oz?: number | null
+  package_size?: string | null
+  created_at?: string
+  updated_at?: string
+}
+
+export interface ConsumableHardnessTesting {
+  consumable_id: string
+  product_type?: string | null
+  test_type?: string | null
+  indenter_type?: string | null
+  indenter_shape?: string | null
+  indenter_angle_degrees?: number | null
+  ball_diameter_mm?: number | null
+  anvil_type?: string | null
+  anvil_material?: string | null
+  anvil_size_mm?: any | null
+  block_material?: string | null
+  block_hardness_value?: number | null
+  block_hardness_scale?: string | null
+  block_certification?: string | null
+  calibration_standard?: boolean | null
+  certification_level?: string | null
+  created_at?: string
+  updated_at?: string
+}
+
+// Combined interface for consumables with category-specific data
+export type ConsumableWithDetails = Consumable & {
+  sectioning?: ConsumableSectioning | null
+  mounting?: ConsumableMounting | null
+  grinding_polishing?: ConsumableGrindingPolishing | null
+  etchants?: ConsumableEtchants | null
+  cleaning?: ConsumableCleaning | null
+  hardness_testing?: ConsumableHardnessTesting | null
 }
 
 export interface SubcategoryMetadata {
@@ -709,12 +1010,41 @@ export async function getEquipmentByItemId(itemId: string): Promise<Equipment | 
 
 // Consumable functions
 export async function getConsumablesByCategory(category: string): Promise<Consumable[]> {
-  const { data, error } = await supabase
+  // Map navigation category to database categories and subcategories
+  let dbCategories: string[] = []
+  let subcategoryFilter: string[] | null = null
+  
+  if (category === 'sectioning') {
+    dbCategories = ['sectioning']
+  } else if (category === 'mounting') {
+    dbCategories = ['mounting']
+  } else if (category === 'grinding-lapping') {
+    dbCategories = ['grinding-lapping']
+  } else if (category === 'polishing') {
+    dbCategories = ['polishing']
+  } else if (category === 'etching') {
+    dbCategories = ['etching', 'etchants']
+  } else if (category === 'cleaning') {
+    dbCategories = ['cleaning']
+  } else if (category === 'hardness-testing') {
+    dbCategories = ['hardness-testing', 'hardness', 'hardness testing']
+  } else {
+    dbCategories = [category]
+  }
+
+  let query = supabase
     .from('consumables')
     .select('*')
-    .eq('category', category)
+    .in('category', dbCategories)
     .eq('status', 'active')
     .eq('is_active', true)
+
+  // Apply subcategory filter if needed
+  if (subcategoryFilter) {
+    query = query.in('subcategory', subcategoryFilter)
+  }
+
+  const { data, error } = await query
     .order('sort_order', { ascending: true })
     .order('name', { ascending: true })
 
@@ -776,11 +1106,19 @@ export async function getSubcategoriesForCategory(
   // Use browser client for client-side calls (all current usages are from client components)
   const client = createBrowserClient()
   
+  // Map navigation category to database categories for metadata lookup
+  let dbCategories: string[] = [category]
+  if (category === 'etching') {
+    dbCategories = ['etching', 'etchants']
+  } else if (category === 'hardness-testing') {
+    dbCategories = ['hardness-testing', 'hardness', 'hardness testing']
+  }
+  
   const { data, error } = await client
     .from('subcategory_metadata')
     .select('*')
     .eq('entity_type', entityType)
-    .eq('category', category)
+    .in('category', dbCategories)
     .eq('is_active', true)
     .order('display_order', { ascending: true })
     .order('subcategory_label', { ascending: true })
@@ -884,7 +1222,7 @@ export async function getFeaturedEquipmentBySubcategory(
   return data || []
 }
 
-// Consumables by subcategory
+// Consumables by subcategory - uses subcategory field from consumables table
 export async function getConsumablesBySubcategory(
   category: string,
   subcategory: string
@@ -893,19 +1231,74 @@ export async function getConsumablesBySubcategory(
   let dbCategories: string[] = []
   if (category === 'sectioning') dbCategories = ['sectioning']
   else if (category === 'mounting') dbCategories = ['mounting']
-  else if (category === 'grinding-lapping') dbCategories = ['grinding', 'grinding & polishing']
+  else if (category === 'grinding-lapping') dbCategories = ['grinding-lapping']
   else if (category === 'polishing') dbCategories = ['polishing']
-  else if (category === 'etching') dbCategories = ['etching']
+  else if (category === 'etching') dbCategories = ['etching', 'etchants']
   else if (category === 'cleaning') dbCategories = ['cleaning']
-  else if (category === 'hardness-testing') dbCategories = ['hardness', 'hardness testing']
+  else if (category === 'hardness-testing') dbCategories = ['hardness-testing', 'hardness', 'hardness testing']
 
-  const { data, error } = await supabase
+  // Build query
+  let query = supabase
     .from('consumables')
     .select('*')
     .in('category', dbCategories)
-    .eq('subcategory', subcategory)
     .eq('status', 'active')
     .eq('is_active', true)
+
+  // Map URL slug to database subcategory values
+  // URL slugs are created from subcategory names (e.g., "Abrasive Blades" -> "abrasive-blades")
+  // We need to convert the slug back to match the actual database subcategory values
+  
+  // Convert slug to potential subcategory name (e.g., "abrasive-blades" -> "Abrasive Blades")
+  const slugToSubcategory = (slug: string): string => {
+    return slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
+  
+  // For sectioning, we have specific mappings
+  if (category === 'sectioning') {
+    const subcategoryMap: Record<string, string> = {
+      'abrasive-blades': 'Abrasive Blades',
+      'wafering-blades': 'Wafering Blades',
+      'cutting-fluids': 'Cutting Fluids',
+      'dressing-sticks': 'Dressing Sticks'
+    }
+    const dbSubcategory = subcategoryMap[subcategory] || slugToSubcategory(subcategory)
+    // Use exact match (case-insensitive) to ensure we only get this specific subcategory
+    query = query.eq('subcategory', dbSubcategory)
+  } else if (category === 'mounting') {
+    const subcategoryMap: Record<string, string> = {
+      'compression-mounting': 'Compression Mounting',
+      'castable-mounting': 'Castable Mounting'
+    }
+    const dbSubcategory = subcategoryMap[subcategory] || slugToSubcategory(subcategory)
+    query = query.eq('subcategory', dbSubcategory)
+  } else if (category === 'grinding-lapping') {
+    const subcategoryMap: Record<string, string> = {
+      'grinding-papers': 'Grinding Papers',
+      'grinding-powders': 'Grinding Powders',
+      'lapping-films': 'Lapping Films',
+      'grinding-belts': 'Abrasive Belts',
+      'grinding-rolls': 'Grinding Rolls'
+    }
+    const dbSubcategory = subcategoryMap[subcategory] || slugToSubcategory(subcategory)
+    query = query.eq('subcategory', dbSubcategory)
+  } else if (category === 'polishing') {
+    const subcategoryMap: Record<string, string> = {
+      'rough-polishing': 'Rough Polishing',
+      'final-polishing': 'Final Polishing'
+    }
+    const dbSubcategory = subcategoryMap[subcategory] || slugToSubcategory(subcategory)
+    query = query.eq('subcategory', dbSubcategory)
+  } else {
+    // For other categories, convert slug to subcategory name and match exactly
+    const dbSubcategory = slugToSubcategory(subcategory)
+    query = query.eq('subcategory', dbSubcategory)
+  }
+
+  const { data, error } = await query
     .order('sort_order', { ascending: true })
     .order('name', { ascending: true })
 
@@ -922,33 +1315,9 @@ export async function getFeaturedConsumablesBySubcategory(
   subcategory: string,
   limit: number = 6
 ): Promise<Consumable[]> {
-  // Map navigation category to database categories
-  let dbCategories: string[] = []
-  if (category === 'sectioning') dbCategories = ['sectioning']
-  else if (category === 'mounting') dbCategories = ['mounting']
-  else if (category === 'grinding-lapping') dbCategories = ['grinding', 'grinding & polishing']
-  else if (category === 'polishing') dbCategories = ['polishing']
-  else if (category === 'etching') dbCategories = ['etching']
-  else if (category === 'cleaning') dbCategories = ['cleaning']
-  else if (category === 'hardness-testing') dbCategories = ['hardness', 'hardness testing']
-
-  const { data, error } = await supabase
-    .from('consumables')
-    .select('*')
-    .in('category', dbCategories)
-    .eq('subcategory', subcategory)
-    .eq('status', 'active')
-    .eq('is_active', true)
-    .order('sort_order', { ascending: true })
-    .order('name', { ascending: true })
-    .limit(limit)
-
-  if (error) {
-    console.error('Error fetching featured consumables:', error)
-    throw error
-  }
-
-  return data || []
+  // Use the same logic as getConsumablesBySubcategory but with limit
+  const allConsumables = await getConsumablesBySubcategory(category, subcategory)
+  return allConsumables.slice(0, limit)
 }
 
 // Smart recommendation functions that use suitability attributes

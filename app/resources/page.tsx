@@ -5,6 +5,7 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, FileText, BarChart3, BookOpen, AlertCircle, ChevronRight, Scale, Shield, Eye, PlayCircle } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 // Resource categories in order
 const categoryOrder = ['Checklists & Quick References', 'Reference Charts', 'Preparation Guides', 'Video Resources', 'Troubleshooting']
@@ -410,8 +411,7 @@ export default function ResourcesPage() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading resources...</p>
+            <LoadingSpinner size="md" message="Loading resources..." />
           </div>
         </div>
       </div>

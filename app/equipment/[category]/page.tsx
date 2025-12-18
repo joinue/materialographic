@@ -8,6 +8,8 @@ import { getSubcategoriesForCategory, getFeaturedEquipmentBySubcategory } from '
 import type { SubcategoryMetadata, Equipment } from '@/lib/supabase'
 import { Scissors, Package, Gauge, Microscope, HardDrive, Home, ChevronRight, ArrowLeft } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
+import { getEquipmentImageUrl } from '@/lib/storage'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -75,8 +77,7 @@ export default function EquipmentCategoryPage({ params }: { params: Promise<{ ca
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading equipment...</p>
+            <LoadingSpinner size="md" message="Loading equipment..." />
           </div>
         </div>
       </div>
@@ -145,7 +146,7 @@ export default function EquipmentCategoryPage({ params }: { params: Promise<{ ca
                               {item.image_url && (
                                 <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
                                   <Image
-                                    src={item.image_url}
+                                    src={getEquipmentImageUrl(item.image_url) || item.image_url}
                                     alt={item.name}
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-300"

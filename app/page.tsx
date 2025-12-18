@@ -336,17 +336,17 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToStructuredData) }}
       />
       <div className="-mt-24">
-      {/* Hero Section with Background */}
+      {/* Hero Section */}
       <section className="relative min-h-[100vh] sm:min-h-[100vh] flex items-center pt-24 pb-12 sm:pb-20 overflow-hidden">
-        {/* Background Image with Overlay - extends to cover header area */}
-        <div className="absolute -top-24 left-0 right-0 bottom-0 z-0 bg-gray-900">
+        {/* Background Image */}
+        <div className="absolute -top-24 left-0 right-0 bottom-0 z-0 bg-white">
           <div className="relative w-full h-full">
             <Image
               src="/images/pace/equipment.webp"
               alt="PACE Technologies metallography equipment including precision cutter, hydraulic press, and polishing system"
               title="PACE Technologies metallography equipment for sample preparation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center opacity-30"
               priority
               quality={90}
               sizes="100vw"
@@ -355,13 +355,9 @@ export default function Home() {
               }}
               fetchPriority="high"
             />
-            {/* Overlay for Text Visibility */}
-            <div className="absolute inset-0" style={{ 
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.1) 100%)'
-            }}></div>
             {/* Fade background image to white at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none" style={{ 
-              background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.6) 80%, white 100%)'
+            <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none" style={{ 
+              background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.7) 70%, white 100%)'
             }}></div>
           </div>
         </div>
@@ -369,25 +365,20 @@ export default function Home() {
         <div className="container-custom relative z-10 w-full flex items-center min-h-[calc(100vh-6rem)] pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-12 md:pb-24 px-4 sm:px-6" style={{ marginTop: '-4rem' }}>
           <div className="max-w-3xl w-full">
             <AnimateOnScroll animation="fadeInUp" duration={800} threshold={0}>
-              <div 
-                className="rounded-2xl p-5 sm:p-7 md:p-10 border border-white/30 shadow-2xl w-full"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%)',
-                  backdropFilter: 'blur(20px) saturate(180%)',
-                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.2)',
-                }}
-              >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-white" style={{ 
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                }}>
-                  Build Your Sample Preparation Lab
+              <div className="w-full">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
+                  <span style={{
+                    backgroundImage: 'linear-gradient(135deg, #4b5563, #1f2937)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  } as React.CSSProperties}>
+                    Build Your Sample Preparation Lab
+                  </span>
                 </h1>
-                <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 md:mb-12 leading-relaxed" style={{ 
-                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
-                }}>
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-6 sm:mb-8 md:mb-12 leading-relaxed">
                   Quality control, failure analysis, research and development, and material characterization. 
-                  Complete solutions for every metallography application.
+                  Complete equipment and consumables solutions for every metallography application, backed by expert preparation guides.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
                   <CTA href="/quote" variant="primary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
@@ -413,10 +404,10 @@ export default function Home() {
                   <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How PACE can help</h2>
                   <p className="text-lg leading-relaxed text-gray-700 mb-4">
                     PACE Technologies provides everything your lab needs for metallographic sample preparation. 
-                    Equipment and consumables for sectioning, mounting, grinding, polishing, and etching, backed by expert guidance and support.
+                    Our complete product line includes precision equipment and high-quality consumables for sectioning, mounting, grinding, polishing, and etching—all backed by expert preparation guides and technical support.
                   </p>
                   <p className="text-base text-gray-600">
-                    Whether you're building a new lab or improving existing workflows, our solutions deliver consistent, 
+                    Whether you're building a new lab or improving existing workflows, our products and proven preparation methods deliver consistent, 
                     reliable results for quality control, failure analysis, and materials research.
                   </p>
                 </div>
@@ -479,10 +470,10 @@ export default function Home() {
 
             <AnimateOnScroll animation="fadeIn" delay={300} duration={500} className="text-center">
               <p className="text-base text-gray-700 mb-4">
-                Browse our <Link href="/equipment" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">equipment catalog</Link>, 
-                <Link href="/consumables" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> consumables</Link>, 
-                <Link href="/quote" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> request a quote</Link>, or 
-                <Link href="/guides" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> explore our preparation guides</Link>.
+                Explore our complete product line: <Link href="/equipment" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">equipment</Link> and 
+                <Link href="/consumables" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> consumables</Link>. 
+                Pair your products with our <Link href="/guides" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">expert preparation guides</Link>, or 
+                <Link href="/quote" className="text-primary-600 hover:text-primary-700 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded"> request a custom quote</Link> for your lab.
               </p>
             </AnimateOnScroll>
           </div>
@@ -492,10 +483,10 @@ export default function Home() {
       {/* Features Section */}
       <section className="py-12 sm:py-20">
         <div className="container-custom">
-          <AnimateOnScroll animation="fadeInUp" duration={700} className="text-center mb-10 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Sample Preparation Resources</h2>
+            <AnimateOnScroll animation="fadeInUp" duration={700} className="text-center mb-10 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Products & Preparation Guides</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Step-by-step procedures, material-specific protocols, and technical references for metallographic analysis.
+              Complete equipment and consumables for your lab, paired with step-by-step preparation guides and material-specific protocols.
             </p>
           </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -512,13 +503,12 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">Preparation Guides</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Equipment & Consumables</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
-                  Detailed procedures for sectioning, mounting, grinding, polishing, and etching. 
-                  Material-specific protocols for steels, aluminum, titanium, ceramics, and composites.
+                  Complete product catalog featuring precision cutters, mounting presses, grinder-polishers, and all consumables needed for sectioning, mounting, grinding, polishing, and etching.
                 </p>
-                <Link href="/guides" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
-                  Explore Guides
+                <Link href="/equipment" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
+                  Browse Products
                   <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -537,13 +527,13 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">Reference Tools</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Preparation Guides</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
-                  Grit size converters, polishing time calculators, etchant selectors, and material compatibility checkers. 
-                  Quick access to ASTM standards and technical specifications.
+                  Detailed step-by-step procedures for sectioning, mounting, grinding, polishing, and etching. 
+                  Material-specific protocols for steels, aluminum, titanium, ceramics, and composites using our products.
                 </p>
-                <Link href="/tools" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
-                  Browse Tools
+                <Link href="/guides" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
+                  Explore Guides
                   <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -562,13 +552,13 @@ export default function Home() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">Reference Materials</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">Reference Tools & Resources</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed flex-grow">
-                  Preparation checklists, troubleshooting guides, ASTM standard references, and safety data sheets. 
-                  Documentation for quality control and procedure verification.
+                  Grit size converters, polishing calculators, etchant selectors, troubleshooting guides, and ASTM standard references. 
+                  Technical tools to optimize your preparation workflow with our products.
                 </p>
-                <Link href="/resources" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
-                  View Resources
+                <Link href="/tools" className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
+                  Browse Tools
                   <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -828,31 +818,31 @@ export default function Home() {
               
               {/* Content */}
               <div className="relative z-10 text-center px-4 sm:px-6">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">Metallographic Sample Preparation</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">Complete Solutions for Your Lab</h2>
                 <p className="text-lg sm:text-xl mb-3 sm:mb-4 text-gray-600 leading-relaxed">
-                  Procedures, protocols, and technical references for preparing samples for microstructural analysis.
+                  Premium equipment and consumables paired with expert preparation guides for consistent, reliable metallographic results.
                 </p>
                 <p className="text-sm sm:text-base mb-8 sm:mb-10 text-gray-500">
-                  All resources are free and available without registration
+                  Explore our product catalog and preparation guides to build your complete sample preparation workflow
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <Link 
-                    href="/guides" 
+                    href="/equipment" 
                     className="btn-primary"
                   >
-                    Browse Guides
+                    Browse Products
                   </Link>
                   <Link 
-                    href="/resources" 
+                    href="/guides" 
                     className="btn-secondary"
                   >
-                    View Resources
+                    View Guides
                   </Link>
                   <Link 
-                    href="/guides/equipment-overview" 
+                    href="/quote" 
                     className="btn-tertiary"
                   >
-                    Equipment Guide
+                    Request Quote
                   </Link>
                 </div>
               </div>

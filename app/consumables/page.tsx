@@ -6,6 +6,7 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, Scissors, Package, Gauge, FlaskConical, Droplet, HardDrive, ChevronRight } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
 import { createClient } from '@/lib/supabase-client'
 
 // Process order for consumables categories
@@ -81,10 +82,11 @@ function ConsumablesPageContent() {
   }
 
   // Map database categories to navigation categories
-  const mapCategory = (dbCategory: string): string => {
+  const mapCategory = (item: any): string => {
+    const dbCategory = item.category
     if (dbCategory === 'sectioning') return 'sectioning'
     if (dbCategory === 'mounting') return 'mounting'
-    if (dbCategory === 'grinding' || dbCategory === 'grinding & polishing') return 'grinding-lapping'
+    if (dbCategory === 'grinding-lapping') return 'grinding-lapping'
     if (dbCategory === 'polishing') return 'polishing'
     if (dbCategory === 'etching') return 'etching'
     if (dbCategory === 'cleaning') return 'cleaning'
@@ -93,7 +95,7 @@ function ConsumablesPageContent() {
   }
 
   const filteredConsumables = consumables.filter(item => {
-    const itemCategory = mapCategory(item.category)
+    const itemCategory = mapCategory(item)
     const categoryLabel = categoryLabels[itemCategory] || itemCategory
     const matchesCategory = selectedCategory === 'All' || categoryLabel === selectedCategory
     const matchesSearch = searchQuery === '' || 
@@ -105,7 +107,7 @@ function ConsumablesPageContent() {
 
   // Group consumables by category for sectioned display
   const consumablesByCategory = filteredConsumables.reduce((acc, item) => {
-    const itemCategory = mapCategory(item.category)
+    const itemCategory = mapCategory(item)
     const categoryLabel = categoryLabels[itemCategory] || itemCategory
     if (!acc[categoryLabel]) {
       acc[categoryLabel] = []
@@ -119,8 +121,7 @@ function ConsumablesPageContent() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading consumables...</p>
+            <LoadingSpinner size="md" message="Loading consumables..." />
           </div>
         </div>
       </div>
@@ -234,7 +235,7 @@ function ConsumablesPageContent() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-8 md:mb-12">
             {filteredConsumables.map((item, index) => {
-              const itemCategory = mapCategory(item.category)
+              const itemCategory = mapCategory(item)
               return (
                 <AnimatedCard key={item.id} index={index} animation="fadeInUp" duration={500}>
                   <Link 
@@ -292,8 +293,7 @@ export default function ConsumablesPage() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading consumables...</p>
+            <LoadingSpinner size="md" message="Loading consumables..." />
           </div>
         </div>
       </div>

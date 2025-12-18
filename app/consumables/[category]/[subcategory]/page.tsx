@@ -8,6 +8,7 @@ import { getSubcategoryMetadata, getConsumablesBySubcategory } from '@/lib/supab
 import type { SubcategoryMetadata, Consumable } from '@/lib/supabase'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -46,15 +47,21 @@ export default function ConsumablesSubcategoryPage({ params }: { params: Promise
   }, [category, subcategory])
 
   const categoryLabel = categoryLabels[category] || category
-  const subcategoryLabel = subcategoryMeta?.subcategory_label || subcategory
+  // Convert slug to proper label (e.g., "abrasive-blades" -> "Abrasive Blades")
+  const slugToLabel = (slug: string): string => {
+    return slug
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  }
+  const subcategoryLabel = subcategoryMeta?.subcategory_label || slugToLabel(subcategory)
 
   if (loading) {
     return (
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading consumables...</p>
+            <LoadingSpinner size="md" message="Loading consumables..." />
           </div>
         </div>
       </div>

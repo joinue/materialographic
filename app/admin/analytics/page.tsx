@@ -162,27 +162,69 @@ export default async function AnalyticsPage({ searchParams }: PageProps) {
   // Filter out admin pages
   const referrerStats = referrerStatsRaw?.filter(r => !r.path?.startsWith('/admin')) || []
 
-  // Log errors for debugging
-  if (blogError) {
-    console.error('Error fetching blog posts:', blogError)
+  // Log errors for debugging (only if there's a meaningful error)
+  if (blogError && (blogError.message || blogError.code)) {
+    console.error('Error fetching blog posts:', {
+      message: blogError.message,
+      code: blogError.code,
+      details: blogError.details,
+      hint: blogError.hint,
+      error: blogError
+    })
   }
-  if (subError) {
-    console.error('Error fetching newsletter subscriptions:', subError)
+  if (subError && (subError.message || subError.code)) {
+    console.error('Error fetching newsletter subscriptions:', {
+      message: subError.message,
+      code: subError.code,
+      details: subError.details,
+      hint: subError.hint,
+      error: subError
+    })
   }
-  if (pageViewsError) {
-    console.error('Error fetching page views:', pageViewsError)
+  if (pageViewsError && (pageViewsError.message || pageViewsError.code)) {
+    console.error('Error fetching page views:', {
+      message: pageViewsError.message,
+      code: pageViewsError.code,
+      details: pageViewsError.details,
+      hint: pageViewsError.hint,
+      error: pageViewsError
+    })
   }
-  if (topPagesError) {
-    console.error('Error fetching top pages:', topPagesError)
+  if (topPagesError && (topPagesError.message || topPagesError.code)) {
+    console.error('Error fetching top pages:', {
+      message: topPagesError.message,
+      code: topPagesError.code,
+      details: topPagesError.details,
+      hint: topPagesError.hint,
+      error: topPagesError
+    })
   }
-  if (countryStatsError) {
-    console.error('Error fetching country stats:', countryStatsError)
+  if (countryStatsError && (countryStatsError.message || countryStatsError.code)) {
+    console.error('Error fetching country stats:', {
+      message: countryStatsError.message,
+      code: countryStatsError.code,
+      details: countryStatsError.details,
+      hint: countryStatsError.hint,
+      error: countryStatsError
+    })
   }
-  if (cityStateStatsError) {
-    console.error('Error fetching city/state stats:', cityStateStatsError)
+  if (cityStateStatsError && (cityStateStatsError.message || cityStateStatsError.code)) {
+    console.error('Error fetching city/state stats:', {
+      message: cityStateStatsError.message,
+      code: cityStateStatsError.code,
+      details: cityStateStatsError.details,
+      hint: cityStateStatsError.hint,
+      error: cityStateStatsError
+    })
   }
-  if (referrerStatsError) {
-    console.error('Error fetching referrer stats:', referrerStatsError)
+  if (referrerStatsError && (referrerStatsError.message || referrerStatsError.code)) {
+    console.error('Error fetching referrer stats:', {
+      message: referrerStatsError.message,
+      code: referrerStatsError.code,
+      details: referrerStatsError.details,
+      hint: referrerStatsError.hint,
+      error: referrerStatsError
+    })
   }
 
   // Calculate blog statistics

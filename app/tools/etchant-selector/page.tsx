@@ -864,8 +864,7 @@ export default function EtchantSelector() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center py-20">
-              <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-600 mx-auto mb-4"></div>
-              <p className="text-lg text-gray-600">Loading materials and etchants...</p>
+              <LoadingSpinner size="lg" message="Loading materials and etchants..." />
               <p className="text-sm text-gray-500 mt-2">This may take a moment</p>
             </div>
           </div>

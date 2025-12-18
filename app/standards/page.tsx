@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, BookOpen, ExternalLink, Filter, X, ChevronDown } from 'lucide-react'
 import { getAllStandards, getStandardsByCategory, getStandardsByOrganization, searchStandards, type Standard } from '@/lib/supabase'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 const categoryColors: Record<string, string> = {
   'Preparation': 'bg-blue-100 text-blue-700',
@@ -371,8 +372,7 @@ export default function StandardsDatabasePage() {
         {/* Standards Grid */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="text-gray-500 mt-4">Loading standards...</p>
+            <LoadingSpinner size="md" message="Loading standards..." />
           </div>
         ) : filteredStandards.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

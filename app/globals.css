@@ -261,6 +261,17 @@ body.build-page-active .build-page-main {
     }
   }
 
+  @keyframes fadeInSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Animation Classes */
   .animate-on-scroll {
     animation-fill-mode: both;

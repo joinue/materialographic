@@ -5,6 +5,7 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, Calculator, FlaskConical, Workflow, Layers, Clock, Ruler, Hourglass, Square, ClipboardList, Box } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 // Tool categories in order
 const categoryOrder = ['Calculators', 'Reference', 'Workflow']
@@ -351,8 +352,7 @@ export default function ToolsPage() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading tools...</p>
+            <LoadingSpinner size="md" message="Loading tools..." />
           </div>
         </div>
       </div>

@@ -220,8 +220,7 @@ export default function ASTMStandardsReferencePage() {
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-                <p className="mt-4 text-gray-600">Loading standards...</p>
+                <LoadingSpinner size="md" message="Loading standards..." />
               </div>
             ) : (
               <div className="space-y-8">

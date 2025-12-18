@@ -6,7 +6,9 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Search, Scissors, Package, Gauge, Microscope, HardDrive, Home, ChevronRight } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
+import LoadingSpinner from '@/components/LoadingSpinner'
 import { createClient } from '@/lib/supabase-client'
+import { getEquipmentImageUrl } from '@/lib/storage'
 
 // Process order for equipment categories
 const categoryOrder = ['sectioning', 'mounting', 'grinding-polishing', 'microscopy', 'hardness-testing', 'lab-furniture']
@@ -115,8 +117,7 @@ function EquipmentPageContent() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading equipment...</p>
+            <LoadingSpinner size="md" message="Loading equipment..." />
           </div>
         </div>
       </div>
@@ -185,16 +186,18 @@ function EquipmentPageContent() {
                     <span className="text-xs sm:text-sm text-gray-500">({categoryItems.length} {categoryItems.length === 1 ? 'item' : 'items'})</span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {categoryItems.map((item, index) => (
+                    {categoryItems.map((item, index) => {
+                      const subcategory = item.subcategory || 'general'
+                      return (
                       <AnimatedCard key={item.id} index={index} animation="fadeInUp" duration={500}>
                         <Link 
-                          href={`/equipment/${categoryKey}/${item.slug || item.item_id?.toLowerCase()}`}
+                          href={`/equipment/${categoryKey}/${subcategory}/${item.slug || item.item_id?.toLowerCase()}`}
                           className="card hover:border-gray-300 group p-4 sm:p-6"
                         >
                           {item.image_url && (
                             <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
                               <Image
-                                src={item.image_url}
+                                src={getEquipmentImageUrl(item.image_url) || item.image_url}
                                 alt={item.name}
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -218,7 +221,8 @@ function EquipmentPageContent() {
                           </span>
                         </Link>
                       </AnimatedCard>
-                    ))}
+                      )
+                    })}
                   </div>
                 </section>
               )
@@ -228,16 +232,17 @@ function EquipmentPageContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-8 md:mb-12">
             {filteredEquipment.map((item, index) => {
               const itemCategory = mapCategory(item.category)
+              const subcategory = item.subcategory || 'general'
               return (
                 <AnimatedCard key={item.id} index={index} animation="fadeInUp" duration={500}>
                   <Link 
-                    href={`/equipment/${itemCategory}/${item.slug || item.item_id?.toLowerCase()}`}
+                    href={`/equipment/${itemCategory}/${subcategory}/${item.slug || item.item_id?.toLowerCase()}`}
                     className="card hover:border-gray-300 group p-4 sm:p-6"
                   >
                     {item.image_url && (
                       <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
                         <Image
-                          src={item.image_url}
+                          src={getEquipmentImageUrl(item.image_url) || item.image_url}
                           alt={item.name}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -282,8 +287,7 @@ export default function EquipmentPage() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-            <p className="mt-4 text-gray-600">Loading equipment...</p>
+            <LoadingSpinner size="md" message="Loading equipment..." />
           </div>
         </div>
       </div>

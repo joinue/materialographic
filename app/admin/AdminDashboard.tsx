@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import type { User } from '@supabase/supabase-js'
-import { Package, FlaskConical, FileText, Users, BarChart3, Database } from 'lucide-react'
+import { Package, FlaskConical, FileText, Users, BarChart3, Database, Wrench, ShoppingCart } from 'lucide-react'
 
 interface AdminDashboardProps {
   user: User
@@ -44,6 +44,24 @@ const adminOptions: AdminOption[] = [
     icon: FlaskConical,
     color: 'green',
     href: '/admin/etchants',
+    status: 'active',
+  },
+  {
+    id: 'equipment',
+    title: 'Equipment',
+    description: 'Manage lab equipment and specifications',
+    icon: Wrench,
+    color: 'teal',
+    href: '/admin/equipment',
+    status: 'active',
+  },
+  {
+    id: 'consumables',
+    title: 'Consumables',
+    description: 'Manage consumables and supplies',
+    icon: ShoppingCart,
+    color: 'cyan',
+    href: '/admin/consumables',
     status: 'active',
   },
   {
@@ -144,6 +162,22 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
         title: 'text-pink-900',
         description: 'text-pink-700',
         border: 'border-pink-200',
+      },
+      teal: {
+        bg: 'bg-teal-50',
+        hover: 'hover:bg-teal-100',
+        icon: 'text-teal-600',
+        title: 'text-teal-900',
+        description: 'text-teal-700',
+        border: 'border-teal-200',
+      },
+      cyan: {
+        bg: 'bg-cyan-50',
+        hover: 'hover:bg-cyan-100',
+        icon: 'text-cyan-600',
+        title: 'text-cyan-900',
+        description: 'text-cyan-700',
+        border: 'border-cyan-200',
       },
     }
 
