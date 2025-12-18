@@ -32,6 +32,7 @@ import {
   Hand
 } from 'lucide-react'
 import { Material, Etchant, getAllMaterials, getAllEtchants, getPaceProductUrl } from '@/lib/supabase'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 type PurposeFilter = 
   | 'grain-boundaries'

@@ -2,22 +2,19 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import { Search, Scissors, Package, Gauge, FlaskConical, Droplet, HardDrive, ChevronRight } from 'lucide-react'
+import { Suspense } from 'react'
+import { Scissors, Package, Gauge, FlaskConical, HardDrive } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import { createClient } from '@/lib/supabase-client'
 
 // Process order for consumables categories
-const categoryOrder = ['sectioning', 'mounting', 'grinding-lapping', 'polishing', 'etching', 'cleaning', 'hardness-testing']
+const categoryOrder = ['sectioning', 'mounting', 'grinding-lapping', 'polishing', 'etching', 'hardness-testing']
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
   'mounting': 'Mounting',
   'grinding-lapping': 'Grinding & Lapping',
   'polishing': 'Polishing',
   'etching': 'Etching',
-  'cleaning': 'Cleaning',
   'hardness-testing': 'Hardness Testing',
 }
 
@@ -27,261 +24,114 @@ const categoryIcons: Record<string, typeof Scissors> = {
   'grinding-lapping': Gauge,
   'polishing': Gauge,
   'etching': FlaskConical,
-  'cleaning': Droplet,
   'hardness-testing': HardDrive,
 }
 
+const categoryDescriptions: Record<string, string> = {
+  'sectioning': 'Cutting blades, fluids, and accessories for sectioning samples.',
+  'mounting': 'Mounting resins, molds, and accessories for compression and castable mounting.',
+  'grinding-lapping': 'Grinding papers, powders, lapping films, and grinding accessories.',
+  'polishing': 'Polishing compounds, pads, cloths, and final polishing materials.',
+  'etching': 'Etchants and reagents for revealing microstructures.',
+  'hardness-testing': 'Accessories and supplies for hardness testing equipment.',
+}
+
+// Cover images for each category
+const categoryCoverImages: Record<string, string> = {
+  'sectioning': '/images/consumables/sectioning-cover.webp',
+  'mounting': '/images/consumables/mounting-cover.webp',
+  'grinding-lapping': '/images/consumables/grinding & lapping-cover.webp',
+  'polishing': '/images/consumables/polishing-cover.webp',
+  'etching': '/images/consumables/etching-cleaning-cover.webp',
+  'hardness-testing': '/images/consumables/hardness-testing-cover.webp',
+}
+
+// Shop collection URLs for each category
+const categoryShopUrls: Record<string, string> = {
+  'sectioning': 'https://shop.metallographic.com/collections/cutting',
+  'mounting': 'https://shop.metallographic.com/collections/mounting',
+  'grinding-lapping': 'https://shop.metallographic.com/collections/grinding',
+  'polishing': 'https://shop.metallographic.com/collections/polishing',
+  'etching': 'https://shop.metallographic.com/collections/etching-and-cleaning',
+  'hardness-testing': 'https://shop.metallographic.com/collections/hardness-testing',
+}
+
 function ConsumablesPageContent() {
-  const categories = ['All', ...categoryOrder.map(cat => categoryLabels[cat])]
-  const searchParams = useSearchParams()
-  const router = useRouter()
-  const categoryParam = searchParams.get('category') || 'All'
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [consumables, setConsumables] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchConsumables = async () => {
-      try {
-        const supabase = createClient()
-        const { data, error } = await supabase
-          .from('consumables')
-          .select('*')
-          .eq('status', 'active')
-          .eq('is_active', true)
-          .order('sort_order', { ascending: true })
-          .order('name', { ascending: true })
-
-        if (error) throw error
-        setConsumables(data || [])
-      } catch (error) {
-        console.error('Error fetching consumables:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchConsumables()
-  }, [])
-
-  // Sync state with URL when it changes externally
-  useEffect(() => {
-    const category = searchParams.get('category') || 'All'
-    setSelectedCategory(category)
-  }, [searchParams])
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category)
-    if (category === 'All') {
-      router.push('/consumables')
-    } else {
-      const categoryKey = Object.keys(categoryLabels).find(key => categoryLabels[key] === category) || category
-      router.push(`/consumables/${categoryKey}`)
-    }
-  }
-
-  // Map database categories to navigation categories
-  const mapCategory = (item: any): string => {
-    const dbCategory = item.category
-    if (dbCategory === 'sectioning') return 'sectioning'
-    if (dbCategory === 'mounting') return 'mounting'
-    if (dbCategory === 'grinding-lapping') return 'grinding-lapping'
-    if (dbCategory === 'polishing') return 'polishing'
-    if (dbCategory === 'etching') return 'etching'
-    if (dbCategory === 'cleaning') return 'cleaning'
-    if (dbCategory === 'hardness' || dbCategory === 'hardness testing') return 'hardness-testing'
-    return dbCategory
-  }
-
-  const filteredConsumables = consumables.filter(item => {
-    const itemCategory = mapCategory(item)
-    const categoryLabel = categoryLabels[itemCategory] || itemCategory
-    const matchesCategory = selectedCategory === 'All' || categoryLabel === selectedCategory
-    const matchesSearch = searchQuery === '' || 
-      item.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.item_id?.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
-
-  // Group consumables by category for sectioned display
-  const consumablesByCategory = filteredConsumables.reduce((acc, item) => {
-    const itemCategory = mapCategory(item)
-    const categoryLabel = categoryLabels[itemCategory] || itemCategory
-    if (!acc[categoryLabel]) {
-      acc[categoryLabel] = []
-    }
-    acc[categoryLabel].push(item)
-    return acc
-  }, {} as Record<string, typeof filteredConsumables>)
-
-  if (loading) {
-    return (
-      <div className="py-4 sm:py-6 md:py-12">
-        <div className="container-custom">
-          <div className="text-center py-12">
-            <LoadingSpinner size="md" message="Loading consumables..." />
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="py-4 sm:py-6 md:py-12">
       <div className="container-custom">
         {/* Header Section */}
-        <div className="mb-3 sm:mb-4 md:mb-6">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1.5 sm:mb-2 text-gray-900">Consumables</h1>
-          <p className="text-xs sm:text-sm md:text-base text-gray-600 mt-1 sm:mt-2">
-            Browse our complete range of consumables and accessories organized by process step.
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-gray-900">Consumables</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl">
+            Browse our complete range of consumables and accessories organized by process step. Select a category to view all products in that section.
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="mb-4 sm:mb-6">
-          <div className="relative max-w-2xl">
-            <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search consumables..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-gray-900 placeholder-gray-400 text-sm sm:text-base"
-            />
-          </div>
-        </div>
+        {/* Category Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-8 md:mb-12">
+          {categoryOrder.map((categoryKey, index) => {
+            const categoryLabel = categoryLabels[categoryKey]
+            const categoryDescription = categoryDescriptions[categoryKey]
+            const IconComponent = categoryIcons[categoryKey] || Package
+            const coverImage = categoryCoverImages[categoryKey]
+            const shopUrl = categoryShopUrls[categoryKey]
 
-        {/* Category Filter - Scrollable on mobile */}
-        <div className="mb-3 sm:mb-4 md:mb-6">
-          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 -mx-4 sm:mx-0 px-4 sm:px-0 scrollbar-hide">
-            {categories.map(category => (
-              <button
-                key={category}
-                onClick={() => handleCategoryChange(category)}
-                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors duration-200 whitespace-nowrap flex-shrink-0 ${
-                  selectedCategory === category
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Consumables by Section */}
-        {selectedCategory === 'All' ? (
-          <div className="space-y-6 sm:space-y-8 md:space-y-10 mb-4 sm:mb-8 md:mb-12">
-            {categoryOrder.map(categoryKey => {
-              const categoryLabel = categoryLabels[categoryKey]
-              const categoryItems = consumablesByCategory[categoryLabel] || []
-              if (categoryItems.length === 0) return null
-              
-              const IconComponent = categoryIcons[categoryKey] || Package
-              
-              return (
-                <section key={categoryKey} className="scroll-mt-24">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
-                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900">{categoryLabel}</h2>
-                    <span className="text-xs sm:text-sm text-gray-500">({categoryItems.length} {categoryItems.length === 1 ? 'item' : 'items'})</span>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {categoryItems.map((item, index) => (
-                      <AnimatedCard key={item.id} index={index} animation="fadeInUp" duration={500}>
-                        <Link 
-                          href={`/consumables/${categoryKey}/${item.slug || item.item_id?.toLowerCase()}`}
-                          className="card hover:border-gray-300 group p-4 sm:p-6"
-                        >
-                          {item.image_url && (
-                            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
-                              <Image
-                                src={item.image_url}
-                                alt={item.name}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                            </div>
-                          )}
-                          <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
-                            {item.name}
-                          </h3>
-                          {item.item_id && (
-                            <p className="text-xs text-gray-500 mb-2">Item ID: {item.item_id}</p>
-                          )}
-                          {item.description && (
-                            <p className="text-gray-600 text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-3">
-                              {item.description}
-                            </p>
-                          )}
-                          {item.list_price && (
-                            <p className="text-sm font-semibold text-gray-900 mb-2">${item.list_price.toFixed(2)}</p>
-                          )}
-                          <span className="text-primary-600 font-semibold text-xs sm:text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                            View Details
-                            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                          </span>
-                        </Link>
-                      </AnimatedCard>
-                    ))}
-                  </div>
-                </section>
-              )
-            })}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-8 md:mb-12">
-            {filteredConsumables.map((item, index) => {
-              const itemCategory = mapCategory(item)
-              return (
-                <AnimatedCard key={item.id} index={index} animation="fadeInUp" duration={500}>
-                  <Link 
-                    href={`/consumables/${itemCategory}/${item.slug || item.item_id?.toLowerCase()}`}
-                    className="card hover:border-gray-300 group p-4 sm:p-6"
-                  >
-                    {item.image_url && (
-                      <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gray-100">
+            return (
+              <AnimatedCard key={categoryKey} index={index} animation="fadeInUp" duration={500}>
+                <div className="card hover:border-primary-400 hover:shadow-lg group overflow-hidden h-full flex flex-col transition-all duration-300">
+                  {/* Cover Image */}
+                  {coverImage && (
+                    <Link href={`/consumables/${categoryKey}`} className="block">
+                      <div className="relative w-full h-48 sm:h-56 mb-4 rounded-lg overflow-hidden bg-white p-2 sm:p-3">
                         <Image
-                          src={item.image_url}
-                          alt={item.name}
+                          src={coverImage}
+                          alt={categoryLabel}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="object-contain group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>
-                    )}
-                    <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900 group-hover:text-primary-600 transition-colors">
-                      {item.name}
-                    </h3>
-                    {item.item_id && (
-                      <p className="text-xs text-gray-500 mb-2">Item ID: {item.item_id}</p>
-                    )}
-                    {item.description && (
-                      <p className="text-gray-600 text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-3">
-                        {item.description}
-                      </p>
-                    )}
-                    {item.list_price && (
-                      <p className="text-sm font-semibold text-gray-900 mb-2">${item.list_price.toFixed(2)}</p>
-                    )}
-                    <span className="text-primary-600 font-semibold text-xs sm:text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      View Details
-                      <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                    </span>
-                  </Link>
-                </AnimatedCard>
-              )
-            })}
-          </div>
-        )}
+                    </Link>
+                  )}
 
-        {filteredConsumables.length === 0 && !loading && (
-          <div className="text-center py-12">
-            <p className="text-gray-600">No consumables found matching your search.</p>
-          </div>
-        )}
+                  {/* Content */}
+                  <div className="flex-1 flex flex-col">
+                    <Link href={`/consumables/${categoryKey}`} className="flex items-center gap-2 mb-2 group/title">
+                      <IconComponent className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover/title:text-primary-600 transition-colors">
+                        {categoryLabel}
+                      </h2>
+                    </Link>
+                    
+                    <p className="text-sm sm:text-base text-gray-600 mb-4 flex-grow leading-relaxed">
+                      {categoryDescription}
+                    </p>
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto pt-3 border-t border-gray-200">
+                      <Link 
+                        href={`/consumables/${categoryKey}`}
+                        className="btn-primary text-center no-underline flex-1"
+                      >
+                        Learn More
+                      </Link>
+                      <Link 
+                        href={shopUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-tertiary text-center no-underline flex-1"
+                      >
+                        Shop
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
@@ -302,4 +152,3 @@ export default function ConsumablesPage() {
     </Suspense>
   )
 }
-

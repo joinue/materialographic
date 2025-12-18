@@ -381,12 +381,12 @@ export default function Home() {
                   Complete equipment and consumables solutions for every metallography application, backed by expert preparation guides.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
-                  <CTA href="/quote" variant="primary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                    Request Quote
-                  </CTA>
-                  <CTA href="https://shop.metallographic.com" variant="secondary" className="no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" target="_blank" rel="noopener noreferrer">
-                    Shop Equipment
-                  </CTA>
+                  <Link href="/equipment" className="btn-primary no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 shadow-lg hover:shadow-xl">
+                    Browse Equipment
+                  </Link>
+                  <Link href="/guides" className="btn-tertiary no-underline focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 shadow-lg hover:shadow-xl">
+                    Sample Prep Guides
+                  </Link>
                 </div>
               </div>
             </AnimateOnScroll>

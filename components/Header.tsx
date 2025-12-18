@@ -612,16 +612,16 @@ export default function Header() {
               
               <span className="text-gray-300 mx-1">|</span>
               
-              {/* Resources Mega Menu - Combining Guides, Resources, Tools, Databases */}
+              {/* Learn Mega Menu - Combining Guides, Resources, Tools, Databases */}
               <div 
                 className="relative"
                 onMouseEnter={() => setActiveDropdown('resources')}
               >
                 <Link 
-                  href="/resources" 
+                  href="/guides" 
                   className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group"
                 >
-                  Resources
+                  Learn
                   <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </Link>
@@ -825,7 +825,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-sm shadow-sm hover:shadow-md"
                 >
-                  Stock Your Lab
+                  Shop Consumables
                 </Link>
                 <Link 
                   href="/quote" 
@@ -974,15 +974,15 @@ export default function Header() {
               )}
             </div>
 
-            {/* Resources Mega Menu Section - Combining Guides, Resources, Tools, Databases */}
+            {/* Learn Mega Menu Section - Combining Guides, Resources, Tools, Databases */}
             <div className="mb-2">
               <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
                 <Link 
-                  href="/resources" 
+                  href="/guides" 
                   className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Resources
+                  Learn
                 </Link>
                 <button
                   onClick={(e) => {
@@ -990,7 +990,7 @@ export default function Header() {
                     setMobileExpandedSection(mobileExpandedSection === 'resources' ? null : 'resources')
                   }}
                   className="p-1 hover:bg-gray-100 rounded transition-colors"
-                  aria-label="Toggle Resources submenu"
+                  aria-label="Toggle Learn submenu"
                 >
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileExpandedSection === 'resources' ? 'rotate-180' : ''}`} />
                 </button>
@@ -1095,7 +1095,7 @@ export default function Header() {
                     className="px-5 py-2 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 border border-gray-200 text-center text-sm shadow-sm hover:shadow-md"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Stock Your Lab
+                    Shop Consumables
                   </Link>
                   <Link 
                     href="/builder" 
