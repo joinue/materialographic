@@ -4,8 +4,6 @@ import ProductLink from '@/components/ProductLink'
 import GuideSideNav from '@/components/GuideSideNav'
 import Link from 'next/link'
 import YouTubeVideo from '@/components/YouTubeVideo'
-import ProcessVideo from '@/components/ProcessVideo'
-import { getVideoUrlWithFallback } from '@/lib/video-urls'
 import { getGuideMetadata, getGuideStructuredData, getGuideBySlug } from '@/lib/guide-seo'
 
 const guide = getGuideBySlug('sectioning')!
@@ -306,13 +304,6 @@ export default function SectioningGuide() {
                 description="Abrasive blades suitable for all material types and applications"
               />
 
-              {/* Video Section */}
-              <ProcessVideo
-                src={getVideoUrlWithFallback('abrasive-sectioning-consumables.mp4')}
-                title="Abrasive Sectioning Consumables Demonstration"
-                description="Watch demonstrations of abrasive sectioning consumables and their proper use in metallographic sample preparation."
-              />
-              
               <p className="mt-4">
                 <strong>Next Steps:</strong> After selecting your blade, configure the 
                 <a href="#cutting-parameters" className="text-primary-600 hover:underline font-semibold"> Cutting Parameters</a> (speed, pressure, cooling) 

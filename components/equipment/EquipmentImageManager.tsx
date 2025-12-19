@@ -264,6 +264,7 @@ export default function EquipmentImageManager({
               alt="Primary image"
               fill
               className="object-contain"
+              sizes="(max-width: 768px) 100vw, 448px"
             />
             <button
               type="button"
@@ -343,6 +344,7 @@ export default function EquipmentImageManager({
                     alt={img.alt || `Image ${index + 1}`}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   <button
                     type="button"

@@ -81,18 +81,21 @@ async function findVideoFiles(dir: string, basePath: string = ''): Promise<Video
  * Check if file already exists in storage
  */
 async function fileExists(storagePath: string): Promise<boolean> {
+  // Prepend 'videos/' to match the structure expected by getVideoUrl()
+  const fullStoragePath = `videos/${storagePath}`
+  
   const { data, error } = await supabase.storage
     .from(STORAGE_BUCKET)
-    .list(storagePath.split('/').slice(0, -1).join('/') || '', {
+    .list(fullStoragePath.split('/').slice(0, -1).join('/') || '', {
       limit: 1000,
     })
   
   if (error) {
-    console.warn(`Error checking if file exists: ${storagePath}`, error.message)
+    console.warn(`Error checking if file exists: ${fullStoragePath}`, error.message)
     return false
   }
   
-  const fileName = storagePath.split('/').pop()!
+  const fileName = fullStoragePath.split('/').pop()!
   return data?.some(file => file.name === fileName) || false
 }
 
@@ -111,31 +114,35 @@ async function uploadVideo(video: VideoFile): Promise<boolean> {
     const fileBuffer = await readFile(video.localPath)
     const fileSizeMB = (video.size / (1024 * 1024)).toFixed(2)
     
-    console.log(`📤 Uploading ${video.storagePath} (${fileSizeMB} MB)...`)
+    // Prepend 'videos/' to match the structure expected by getVideoUrl()
+    // The bucket structure is: videos/videos/process/sectioning.MP4
+    const storagePath = `videos/${video.storagePath}`
+    
+    console.log(`📤 Uploading ${storagePath} (${fileSizeMB} MB)...`)
     
     // Upload to Supabase
     const { data, error } = await supabase.storage
       .from(STORAGE_BUCKET)
-      .upload(video.storagePath, fileBuffer, {
+      .upload(storagePath, fileBuffer, {
         contentType: 'video/mp4',
         upsert: false, // Don't overwrite existing files
       })
     
     if (error) {
-      console.error(`❌ Error uploading ${video.storagePath}:`, error.message)
+      console.error(`❌ Error uploading ${storagePath}:`, error.message)
       return false
     }
     
     // Get public URL
     const { data: urlData } = supabase.storage
       .from(STORAGE_BUCKET)
-      .getPublicUrl(video.storagePath)
+      .getPublicUrl(storagePath)
     
-    console.log(`✅ Uploaded ${video.storagePath}`)
+    console.log(`✅ Uploaded ${storagePath}`)
     console.log(`   URL: ${urlData.publicUrl}`)
     return true
   } catch (error) {
-    console.error(`❌ Error uploading ${video.storagePath}:`, error)
+    console.error(`❌ Error uploading ${storagePath}:`, error)
     return false
   }
 }
@@ -192,9 +199,10 @@ async function uploadVideos() {
   // Get public URLs for all videos
   console.log('\n📋 Public URLs for uploaded videos:')
   for (const video of videos) {
+    const storagePath = `videos/${video.storagePath}`
     const { data } = supabase.storage
       .from(STORAGE_BUCKET)
-      .getPublicUrl(video.storagePath)
+      .getPublicUrl(storagePath)
     console.log(`  ${video.storagePath}: ${data.publicUrl}`)
   }
   

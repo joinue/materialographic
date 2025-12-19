@@ -9,8 +9,6 @@ import type { Consumable, SubcategoryMetadata } from '@/lib/supabase'
 import { Scissors, Package, Gauge, FlaskConical, Droplet, HardDrive, ChevronRight, ArrowLeft } from 'lucide-react'
 import AnimatedCard from '@/components/AnimatedCard'
 import LoadingSpinner from '@/components/LoadingSpinner'
-import ProcessVideo from '@/components/ProcessVideo'
-import { getVideoUrlWithFallback } from '@/lib/video-urls'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -505,24 +503,6 @@ export default function ConsumablesCategoryPage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        {/* Video Section for Sectioning */}
-        {category === 'sectioning' && (
-          <section className="mt-12 mb-8 sm:mb-12">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-6 sm:mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Abrasive Sectioning Consumables</h2>
-                <p className="text-base text-gray-600">
-                  Watch demonstrations of abrasive sectioning consumables and their proper use.
-                </p>
-              </div>
-              <ProcessVideo
-                src={getVideoUrlWithFallback('abrasive-sectioning-consumables.mp4')}
-                title="Abrasive Sectioning Consumables"
-                description="Watch demonstrations of abrasive sectioning consumables and their proper use in metallographic sample preparation."
-              />
-            </div>
-          </section>
-        )}
       </div>
     </div>
   )
