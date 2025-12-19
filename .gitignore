@@ -35,9 +35,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large video files (over 50MB - hosted on Supabase Storage)
+# large video files - hosted on Supabase Storage
 # Exclude all videos - they should be uploaded to Supabase Storage bucket 'videos'
+# Videos are stored in Supabase at: videos/videos/[same structure as public/videos]
 public/videos/**/*.mp4
 public/videos/**/*.MP4
 public/videos/**/*.webm
+public/videos/**/*.mov
+public/videos/**/*.MOV
+public/videos/**/*.avi
+public/videos/**/*.AVI
 

@@ -43,38 +43,6 @@ interface VideoFile {
 }
 
 /**
- * Sanitize file path for Supabase storage
- * Supabase requires lowercase file names and extensions, and doesn't allow certain special characters
- */
-function sanitizeStoragePath(path: string): string {
-  // Split path into directory and filename
-  const parts = path.split('/')
-  const fileName = parts.pop() || ''
-  
-  // Sanitize directory parts
-  const sanitizedDirs = parts.map(dir => 
-    dir.toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/^-+|-+$/g, '')
-  )
-  
-  // Sanitize filename: separate name and extension
-  const lastDot = fileName.lastIndexOf('.')
-  if (lastDot === -1) {
-    // No extension, just sanitize the whole name
-    const sanitized = fileName.toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/^-+|-+$/g, '')
-    return [...sanitizedDirs, sanitized].filter(Boolean).join('/')
-  }
-  
-  const name = fileName.substring(0, lastDot)
-  const ext = fileName.substring(lastDot + 1)
-  
-  // Sanitize name part and ensure extension is lowercase
-  const sanitizedName = name.toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/^-+|-+$/g, '')
-  const sanitizedExt = ext.toLowerCase()
-  
-  return [...sanitizedDirs, `${sanitizedName}.${sanitizedExt}`].filter(Boolean).join('/')
-}
-
-/**
  * Recursively find all video files in the videos directory
  */
 async function findVideoFiles(dir: string, basePath: string = ''): Promise<VideoFile[]> {
@@ -92,16 +60,11 @@ async function findVideoFiles(dir: string, basePath: string = ''): Promise<Video
         files.push(...subFiles)
       } else if (entry.isFile()) {
         const ext = entry.name.toLowerCase()
-        if (ext.endsWith('.mp4') || ext.endsWith('.webm')) {
+        if (ext.endsWith('.mp4') || ext.endsWith('.MP4') || ext.endsWith('.webm')) {
           const stats = await stat(fullPath)
-          const rawPath = relativePath.replace(/\\/g, '/') // Normalize path separators
-          const sanitizedPath = sanitizeStoragePath(rawPath)
-          if (rawPath !== sanitizedPath) {
-            console.log(`📝 Sanitizing file name: "${rawPath}" → "${sanitizedPath}"`)
-          }
           files.push({
             localPath: fullPath,
-            storagePath: sanitizedPath,
+            storagePath: relativePath.replace(/\\/g, '/'), // Normalize path separators
             size: stats.size,
           })
         }
