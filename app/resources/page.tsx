@@ -411,7 +411,7 @@ export default function ResourcesPage() {
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <LoadingSpinner size="md" message="Loading resources..." />
+            <LoadingSpinner size="md" />
           </div>
         </div>
       </div>

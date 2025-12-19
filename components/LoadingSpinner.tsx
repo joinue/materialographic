@@ -2,13 +2,11 @@ import Image from 'next/image'
 
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg'
-  message?: string
   className?: string
 }
 
 export default function LoadingSpinner({ 
   size = 'md', 
-  message,
   className = '' 
 }: LoadingSpinnerProps) {
   const sizeClasses = {
@@ -28,11 +26,6 @@ export default function LoadingSpinner({
           sizes={size === 'sm' ? '32px' : size === 'md' ? '48px' : '64px'}
         />
       </div>
-      {message && (
-        <p className={`mt-4 text-gray-600 ${size === 'sm' ? 'text-sm' : ''}`}>
-          {message}
-        </p>
-      )}
     </div>
   )
 }

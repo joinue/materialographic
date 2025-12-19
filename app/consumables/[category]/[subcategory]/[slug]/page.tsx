@@ -84,7 +84,7 @@ export default function ConsumableProductPage({ params }: { params: Promise<{ ca
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <LoadingSpinner size="md" message="Loading consumable..." />
+            <LoadingSpinner size="md" />
           </div>
         </div>
       </div>
@@ -171,37 +171,8 @@ export default function ConsumableProductPage({ params }: { params: Promise<{ ca
             )}
 
             {/* Specifications */}
-            {(consumable.size_mm || consumable.grit_size || consumable.type) && (
-              <div className="border-t border-gray-200 pt-6 mb-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Specifications</h2>
-                <dl className="grid grid-cols-2 gap-4">
-                  {consumable.size_mm && (
-                    <>
-                      <dt className="text-sm text-gray-600">Size</dt>
-                      <dd className="text-sm text-gray-900">{consumable.size_mm}mm ({consumable.size_inches}")</dd>
-                    </>
-                  )}
-                  {consumable.grit_size && (
-                    <>
-                      <dt className="text-sm text-gray-600">Grit Size</dt>
-                      <dd className="text-sm text-gray-900">{consumable.grit_size}</dd>
-                    </>
-                  )}
-                  {consumable.type && (
-                    <>
-                      <dt className="text-sm text-gray-600">Type</dt>
-                      <dd className="text-sm text-gray-900 capitalize">{consumable.type.replace(/-/g, ' ')}</dd>
-                    </>
-                  )}
-                  {consumable.material_composition && (
-                    <>
-                      <dt className="text-sm text-gray-600">Material</dt>
-                      <dd className="text-sm text-gray-900">{consumable.material_composition}</dd>
-                    </>
-                  )}
-                </dl>
-              </div>
-            )}
+            {/* Note: Category-specific fields (size_mm, grit_size, type, material_composition) 
+                are stored in category-specific tables and would need to be fetched separately */}
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">

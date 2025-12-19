@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Suspense } from 'react'
 import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import ReturnToTop from '@/components/ReturnToTop'
+import ConditionalLayout from '@/components/ConditionalLayout'
 import PageViewTracker from '@/components/PageViewTracker'
 
 const inter = Inter({ 
@@ -110,34 +108,64 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
+        {/* Resource hints for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
         <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: dark)" />
       </head>
       <body className={`${inter.className} font-sans antialiased relative bg-white`}>
-        {/* Grain Structure Background Pattern - Full Page */}
-        <div className="fixed inset-0 opacity-[0.08] overflow-hidden pointer-events-none z-0">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        {/* Grain Structure Background Pattern - Optimized SVG with GPU acceleration */}
+        <div 
+          className="fixed inset-0 opacity-[0.08] overflow-hidden pointer-events-none z-0"
+          style={{
+            willChange: 'auto',
+            transform: 'translateZ(0)', // GPU acceleration
+          }}
+          aria-hidden="true"
+        >
+          <svg 
+            className="absolute inset-0 w-full h-full" 
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
             <defs>
-              <pattern id="hexagons" x="0" y="0" width="100" height="86.6" patternUnits="userSpaceOnUse">
-                <polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" fill="none" stroke="currentColor" strokeWidth="0.4"/>
+              <pattern 
+                id="hexagons" 
+                x="0" 
+                y="0" 
+                width="100" 
+                height="86.6" 
+                patternUnits="userSpaceOnUse"
+              >
+                <polygon 
+                  points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="0.4"
+                  vectorEffect="non-scaling-stroke"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#hexagons)" className="text-gray-400"/>
+            <rect 
+              width="100%" 
+              height="100%" 
+              fill="url(#hexagons)" 
+              className="text-gray-400"
+            />
           </svg>
         </div>
         <div className="relative z-10">
           <Suspense fallback={null}>
           <PageViewTracker />
           </Suspense>
-          <div className="build-page-hidden">
-            <Header />
-          </div>
-          <main className="min-h-screen pt-24 lg:pt-28 build-page-main">{children}</main>
-          <div className="build-page-hidden">
-            <Footer />
-            <ReturnToTop />
-          </div>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
         </div>
       </body>
     </html>

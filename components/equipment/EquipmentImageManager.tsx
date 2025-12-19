@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Upload, X, Trash2, Plus, FolderOpen, Search, ImageIcon, Loader2, Star, Grid3x3, ChevronRight, Eye } from 'lucide-react'
 import { createClient } from '@/lib/supabase-client'
 import { getEquipmentImageUrl } from '@/lib/storage'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 interface ImageItem {
   url: string
@@ -510,7 +511,7 @@ export default function EquipmentImageManager({
             <div className="flex-1 overflow-y-auto p-4">
               {loadingFiles ? (
                 <div className="text-center py-12">
-                  <LoadingSpinner size="md" message="Loading images..." />
+                  <LoadingSpinner size="md" />
                 </div>
               ) : filteredFiles.length > 0 ? (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">

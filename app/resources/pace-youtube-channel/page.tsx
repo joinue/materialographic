@@ -88,9 +88,9 @@ export default function PACEYouTubeChannelPage() {
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">Sectioning</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• Precision sectioning techniques</li>
-                    <li>• Blade selection and setup</li>
-                    <li>• Cutting parameters</li>
+                    <li>Precision sectioning techniques</li>
+                    <li>Blade selection and setup</li>
+                    <li>Cutting parameters</li>
                   </ul>
                   <Link 
                     href="/guides/sectioning#precision-sectioning-video"
@@ -103,9 +103,9 @@ export default function PACEYouTubeChannelPage() {
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">Mounting</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• Compression mounting process</li>
-                    <li>• Castable/cold mounting with vacuum</li>
-                    <li>• Resin selection and techniques</li>
+                    <li>Compression mounting process</li>
+                    <li>Castable/cold mounting with vacuum</li>
+                    <li>Resin selection and techniques</li>
                   </ul>
                   <Link 
                     href="/guides/mounting#compression-mounting-video"
@@ -118,9 +118,9 @@ export default function PACEYouTubeChannelPage() {
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">Grinding</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• Manual grinding techniques</li>
-                    <li>• Automated grinding systems</li>
-                    <li>• Proper sample orientation</li>
+                    <li>Manual grinding techniques</li>
+                    <li>Automated grinding systems</li>
+                    <li>Proper sample orientation</li>
                   </ul>
                   <Link 
                     href="/guides/grinding-techniques#manual-grinding-video"
@@ -133,9 +133,9 @@ export default function PACEYouTubeChannelPage() {
                 <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">Polishing</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• Automated polishing systems</li>
-                    <li>• Vibratory polishing techniques</li>
-                    <li>• Final polishing procedures</li>
+                    <li>Automated polishing systems</li>
+                    <li>Vibratory polishing techniques</li>
+                    <li>Final polishing procedures</li>
                   </ul>
                   <Link 
                     href="/guides/polishing-methods#vibratory-polishing-video"

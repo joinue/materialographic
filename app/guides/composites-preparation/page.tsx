@@ -125,11 +125,11 @@ export default function CompositesGuide() {
                 </p>
                 <div className="bg-gray-50 p-4 my-6 rounded">
                   <h4 className="font-semibold mb-2">Composite Material Characteristics</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• <strong><MaterialTooltip materialName="Carbon Fiber Reinforced Polymer (CFRP)">CFRP (Carbon Fiber Reinforced Polymer)</MaterialTooltip>:</strong> Very hard carbon fibers in polymer matrix, requires careful handling to prevent fiber pullout</li>
-                    <li>• <strong><MaterialTooltip materialName="Glass Fiber Reinforced Polymer (GFRP)">GFRP (Glass Fiber Reinforced Polymer)</MaterialTooltip>:</strong> Glass fibers in polymer matrix, sensitive to thermal damage during sectioning</li>
-                    <li>• <strong>MMC (Metal Matrix Composites):</strong> Ceramic or carbon fibers in metal matrix, may allow some etching of matrix phase. Common examples include <MaterialTooltip materialName="Aluminum Matrix Composite (AMC)">aluminum matrix composites</MaterialTooltip> and <MaterialTooltip materialName="Titanium Matrix Composite (TMC)">titanium matrix composites</MaterialTooltip></li>
-                    <li>• <strong><MaterialTooltip materialName="Ceramic Matrix Composite (CMC)">CMC (Ceramic Matrix Composites)</MaterialTooltip>:</strong> Fibers in ceramic matrix, very hard, requires diamond abrasives throughout</li>
+                  <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li><strong><MaterialTooltip materialName="Carbon Fiber Reinforced Polymer (CFRP)">CFRP (Carbon Fiber Reinforced Polymer)</MaterialTooltip>:</strong> Very hard carbon fibers in polymer matrix, requires careful handling to prevent fiber pullout</li>
+                    <li><strong><MaterialTooltip materialName="Glass Fiber Reinforced Polymer (GFRP)">GFRP (Glass Fiber Reinforced Polymer)</MaterialTooltip>:</strong> Glass fibers in polymer matrix, sensitive to thermal damage during sectioning</li>
+                    <li><strong>MMC (Metal Matrix Composites):</strong> Ceramic or carbon fibers in metal matrix, may allow some etching of matrix phase. Common examples include <MaterialTooltip materialName="Aluminum Matrix Composite (AMC)">aluminum matrix composites</MaterialTooltip> and <MaterialTooltip materialName="Titanium Matrix Composite (TMC)">titanium matrix composites</MaterialTooltip></li>
+                    <li><strong><MaterialTooltip materialName="Ceramic Matrix Composite (CMC)">CMC (Ceramic Matrix Composites)</MaterialTooltip>:</strong> Fibers in ceramic matrix, very hard, requires diamond abrasives throughout</li>
                   </ul>
                 </div>
               </section>
@@ -369,13 +369,13 @@ export default function CompositesGuide() {
                 </ul>
                 <div className="bg-gray-50 p-4 my-6 rounded">
                   <h4 className="font-semibold mb-2">Grinding Tips for Composites</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Use very light pressure throughout - composites are more sensitive than metals</li>
-                    <li>• Monitor the surface frequently to detect fiber pullout early</li>
-                    <li>• Use fresh grinding papers - loaded papers can cause excessive pullout</li>
-                    <li>• For soft matrix composites, consider starting with finer grits (240 or 400)</li>
-                    <li>• Ensure all scratches from previous grit are removed before proceeding</li>
-                    <li>• Avoid excessive grinding time which can cause relief between matrix and fiber</li>
+                  <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li>Use very light pressure throughout - composites are more sensitive than metals</li>
+                    <li>Monitor the surface frequently to detect fiber pullout early</li>
+                    <li>Use fresh grinding papers - loaded papers can cause excessive pullout</li>
+                    <li>For soft matrix composites, consider starting with finer grits (240 or 400)</li>
+                    <li>Ensure all scratches from previous grit are removed before proceeding</li>
+                    <li>Avoid excessive grinding time which can cause relief between matrix and fiber</li>
                   </ul>
                 </div>
                 <ProductLink 

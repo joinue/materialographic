@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import type { User } from '@supabase/supabase-js'
-import { Package, FlaskConical, FileText, Users, BarChart3, Database, Wrench, ShoppingCart } from 'lucide-react'
+import { Package, FlaskConical, FileText, Users, BarChart3, Database, Wrench, ShoppingCart, Briefcase } from 'lucide-react'
 
 interface AdminDashboardProps {
   user: User
@@ -89,6 +89,15 @@ const adminOptions: AdminOption[] = [
     icon: BarChart3,
     color: 'pink',
     href: '/admin/analytics',
+    status: 'active',
+  },
+  {
+    id: 'careers',
+    title: 'Careers',
+    description: 'Manage job postings and applications',
+    icon: Briefcase,
+    color: 'amber',
+    href: '/admin/careers',
     status: 'active',
   },
 ]
@@ -179,6 +188,14 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
         description: 'text-cyan-700',
         border: 'border-cyan-200',
       },
+      amber: {
+        bg: 'bg-amber-50',
+        hover: 'hover:bg-amber-100',
+        icon: 'text-amber-600',
+        title: 'text-amber-900',
+        description: 'text-amber-700',
+        border: 'border-amber-200',
+      },
     }
 
     return colors[color] || colors.blue
@@ -186,13 +203,13 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-          <p className="text-gray-600">Manage your site content and settings</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Admin Dashboard</h1>
+          <p className="text-sm text-gray-600">Manage your site content and settings</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4">
           {adminOptions.map((option) => {
             const Icon = option.icon
             const colors = getColorClasses(option.color, option.status)
@@ -204,37 +221,24 @@ export default function AdminDashboard({ user }: AdminDashboardProps) {
                 onClick={() => handleCardClick(option)}
                 className={`
                   ${colors.bg} ${isActive ? colors.hover : ''} ${colors.border}
-                  border-2 rounded-xl p-6 transition-all duration-200
+                  border rounded-lg p-4 transition-all duration-200
                   ${isActive ? 'cursor-pointer shadow-sm hover:shadow-md' : 'cursor-not-allowed opacity-60'}
                   ${isActive ? 'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500' : ''}
                 `}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`p-3 rounded-lg ${colors.bg} ${colors.border} border`}>
-                    <Icon className={`w-6 h-6 ${colors.icon}`} />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`p-2 rounded-lg ${colors.bg} ${colors.border} border flex-shrink-0`}>
+                    <Icon className={`w-5 h-5 ${colors.icon}`} />
                   </div>
-                  {option.status === 'coming-soon' && (
-                    <span className="text-xs font-medium text-gray-500 bg-gray-200 px-2 py-1 rounded">
-                      Coming Soon
-                    </span>
-                  )}
-                  {option.status === 'active' && (
-                    <span className="text-xs font-medium text-primary-600 bg-primary-100 px-2 py-1 rounded">
-                      Active
-                    </span>
-                  )}
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`text-base font-bold ${colors.title} truncate`}>
+                      {option.title}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className={`text-xl font-bold ${colors.title} mb-2`}>
-                  {option.title}
-                </h3>
-                <p className={`text-sm ${colors.description} leading-relaxed`}>
+                <p className={`text-xs ${colors.description} leading-snug line-clamp-2`}>
                   {option.description}
                 </p>
-                {isActive && (
-                  <div className="mt-4 flex items-center text-sm font-medium text-gray-600">
-                    <span>Manage →</span>
-                  </div>
-                )}
               </div>
             )
           })}

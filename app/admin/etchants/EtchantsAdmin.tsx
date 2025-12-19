@@ -104,7 +104,7 @@ export default function EtchantsAdmin() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <LoadingSpinner size="lg" message="Loading etchants..." />
+          <LoadingSpinner size="lg" />
         </div>
       </div>
     )

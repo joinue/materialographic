@@ -328,11 +328,32 @@ export default function Header() {
                           </div>
                           
                           {/* Featured Product - 1 column */}
-                          {featuredEquipment && (
+                          {featuredEquipment && (() => {
+                            // Normalize subcategory for URL (e.g., 'castable-mounting' -> 'castable')
+                            const normalizeSubcategoryForUrl = (category: string, subcategory: string | null | undefined): string | null => {
+                              if (!subcategory) return null
+                              if (category === 'mounting') {
+                                if (subcategory === 'compression' || subcategory === 'compression-mounting') {
+                                  return 'compression'
+                                } else if (subcategory === 'castable' || subcategory === 'castable-mounting') {
+                                  return 'castable'
+                                }
+                              }
+                              return subcategory
+                            }
+                            
+                            const normalizedSubcategory = normalizeSubcategoryForUrl(featuredEquipment.category, featuredEquipment.subcategory)
+                            const equipmentUrl = featuredEquipment.slug 
+                              ? normalizedSubcategory
+                                ? `/equipment/${featuredEquipment.category}/${normalizedSubcategory}/${featuredEquipment.slug}`
+                                : `/equipment/${featuredEquipment.category}/${featuredEquipment.slug}`
+                              : `/equipment`
+                            
+                            return (
                             <div className="col-span-1 pl-4 border-l border-gray-200">
                               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Featured</p>
                               <Link 
-                                href={featuredEquipment.slug ? `/equipment/${featuredEquipment.category}/${featuredEquipment.slug}` : `/equipment`}
+                                href={equipmentUrl}
                                 onClick={() => setActiveDropdown(null)}
                                 className="group block"
                               >
@@ -368,7 +389,8 @@ export default function Header() {
                                 )}
                               </Link>
                             </div>
-                          )}
+                            )
+                          })()}
                         </div>
                       </div>
                     </div>
@@ -582,10 +604,11 @@ export default function Header() {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link 
-                  href="/quote" 
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1"
+                  href="/services" 
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group"
                 >
                   Services
+                  <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </Link>
                 {activeDropdown === 'services' && (
@@ -593,16 +616,22 @@ export default function Header() {
                     {/* Invisible bridge to prevent gap */}
                     <div className="absolute top-full left-0 w-full h-2"></div>
                     <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/quote" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
-                        Request Quote
+                      <Link href="/services" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
+                        All Services
                       </Link>
                       <div className="border-t border-gray-200 my-2 mx-2"></div>
                       <div className="px-2">
-                        <Link href="/contact" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
-                          Contact Us
+                        <Link href="/quote" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Request Quote
+                        </Link>
+                        <Link href="/keeppace" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Service Plans
                         </Link>
                         <Link href="/builder" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
                           Build Your Lab
+                        </Link>
+                        <Link href="/contact" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                          Contact Us
                         </Link>
                       </div>
                     </div>
@@ -948,7 +977,7 @@ export default function Header() {
             <div className="mb-2">
               <div className="flex items-center justify-between py-2.5 border-b border-gray-200">
                 <Link 
-                  href="/quote" 
+                  href="/services" 
                   className="flex-1 text-gray-900 hover:text-primary-600 font-semibold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -967,9 +996,12 @@ export default function Header() {
               </div>
               {mobileExpandedSection === 'services' && (
                 <div className="pl-4 pt-2 pb-2 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                  <Link href="/services" className="block py-1.5 text-sm font-semibold text-primary-600" onClick={() => setMobileMenuOpen(false)}>All Services</Link>
+                  <div className="border-t border-gray-200 my-2"></div>
                   <Link href="/quote" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Request Quote</Link>
-                  <Link href="/contact" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
+                  <Link href="/keeppace" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Service Plans</Link>
                   <Link href="/builder" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Build Your Lab</Link>
+                  <Link href="/contact" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
                 </div>
               )}
             </div>

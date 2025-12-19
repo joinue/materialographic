@@ -372,7 +372,7 @@ export default function StandardsDatabasePage() {
         {/* Standards Grid */}
         {loading ? (
           <div className="text-center py-12">
-            <LoadingSpinner size="md" message="Loading standards..." />
+            <LoadingSpinner size="md" />
           </div>
         ) : filteredStandards.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

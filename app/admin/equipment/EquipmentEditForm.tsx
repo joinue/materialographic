@@ -44,13 +44,13 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
     image_url: equipment?.image_url || '',
     images: equipment?.images ? JSON.stringify(equipment.images, null, 2) : '[]',
     
-    // Technical Specifications
-    blade_size_mm: equipment?.blade_size_mm?.toString() || '',
-    blade_size_inches: equipment?.blade_size_inches?.toString() || '',
-    automation_level: equipment?.automation_level || '',
-    wheel_size_inches: equipment?.wheel_size_inches?.join(', ') || '',
-    max_cutting_capacity_mm: equipment?.max_cutting_capacity_mm?.toString() || '',
-    max_cutting_capacity_inches: equipment?.max_cutting_capacity_inches?.toString() || '',
+    // Technical Specifications (loaded from category-specific tables)
+    blade_size_mm: '',
+    blade_size_inches: '',
+    automation_level: '',
+    wheel_size_inches: '',
+    max_cutting_capacity_mm: '',
+    max_cutting_capacity_inches: '',
     
     // Suitability Attributes
     suitable_for_material_types: equipment?.suitable_for_material_types?.join(', ') || '',

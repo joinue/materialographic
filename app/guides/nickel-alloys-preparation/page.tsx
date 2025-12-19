@@ -419,11 +419,11 @@ export default function NickelAlloysGuide() {
 
               <div className="bg-gray-50 p-4 my-6 rounded">
                 <h4 className="font-semibold mb-2">Grinding Tips for Nickel Alloys</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• Use fresh grinding papers - nickel alloys can quickly load papers</li>
-                  <li>• Maintain consistent pressure throughout each step</li>
-                  <li>• Ensure all scratches from previous grit are removed before proceeding</li>
-                  <li>• For superalloys, consider using SiC papers up to 1200 grit</li>
+                <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li> Use fresh grinding papers - nickel alloys can quickly load papers</li>
+                    <li> Maintain consistent pressure throughout each step</li>
+                    <li> Ensure all scratches from previous grit are removed before proceeding</li>
+                    <li> For superalloys, consider using SiC papers up to 1200 grit</li>
                 </ul>
               </div>
             </section>

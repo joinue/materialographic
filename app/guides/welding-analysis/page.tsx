@@ -925,10 +925,10 @@ export default function WeldingAnalysisGuide() {
                   <div className="bg-white p-4 rounded-lg border border-gray-200">
                     <h4 className="text-base font-semibold mb-2">Stainless Steel Welds</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Distinct weld metal with columnar grains</li>
-                      <li>• HAZ showing grain growth and phase changes</li>
-                      <li>• Delta ferrite in austenitic welds</li>
-                      <li>• Fusion boundary clearly visible</li>
+                      <li>Distinct weld metal with columnar grains</li>
+                      <li>HAZ showing grain growth and phase changes</li>
+                      <li>Delta ferrite in austenitic welds</li>
+                      <li>Fusion boundary clearly visible</li>
                     </ul>
                     <p className="text-xs text-gray-600 mt-2">
                       Etched with Vilella's reagent or electrolytic oxalic acid
@@ -937,10 +937,10 @@ export default function WeldingAnalysisGuide() {
                   <div className="bg-white p-4 rounded-lg border border-gray-200">
                     <h4 className="text-base font-semibold mb-2">Carbon Steel Welds</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Weld metal with as-cast microstructure</li>
-                      <li>• HAZ showing grain growth and transformation</li>
-                      <li>• Possible martensite or bainite in HAZ</li>
-                      <li>• Base metal with original structure</li>
+                      <li>Weld metal with as-cast microstructure</li>
+                      <li>HAZ showing grain growth and transformation</li>
+                      <li>Possible martensite or bainite in HAZ</li>
+                      <li>Base metal with original structure</li>
                     </ul>
                     <p className="text-xs text-gray-600 mt-2">
                       Etched with 2% Nital or 4% Picral
@@ -949,10 +949,10 @@ export default function WeldingAnalysisGuide() {
                   <div className="bg-white p-4 rounded-lg border border-gray-200">
                     <h4 className="text-base font-semibold mb-2">Aluminum Welds</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Dendritic structure in weld metal</li>
-                      <li>• Recrystallized grains in HAZ</li>
-                      <li>• Precipitate distribution changes</li>
-                      <li>• Possible softening in HAZ</li>
+                      <li>Dendritic structure in weld metal</li>
+                      <li>Recrystallized grains in HAZ</li>
+                      <li>Precipitate distribution changes</li>
+                      <li>Possible softening in HAZ</li>
                     </ul>
                     <p className="text-xs text-gray-600 mt-2">
                       Etched with Keller's reagent or anodized
@@ -961,10 +961,10 @@ export default function WeldingAnalysisGuide() {
                   <div className="bg-white p-4 rounded-lg border border-gray-200">
                     <h4 className="text-base font-semibold mb-2">Friction Stir Welds</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
-                      <li>• Stir zone with fine recrystallized grains</li>
-                      <li>• TMAZ showing deformation structure</li>
-                      <li>• Material flow patterns</li>
-                      <li>• No traditional fusion zone</li>
+                      <li>Stir zone with fine recrystallized grains</li>
+                      <li>TMAZ showing deformation structure</li>
+                      <li>Material flow patterns</li>
+                      <li>No traditional fusion zone</li>
                     </ul>
                     <p className="text-xs text-gray-600 mt-2">
                       Material-specific etchants required

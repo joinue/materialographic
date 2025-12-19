@@ -103,13 +103,13 @@ export default function CeramicsGuide() {
                 </p>
                 <div className="bg-gray-50 p-4 my-6 rounded">
                   <h4 className="font-semibold mb-2">Ceramic Material Characteristics</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• <strong>Alumina (Al₂O₃):</strong> Very hard (~2000 HV), chemically stable, commonly used in wear applications</li>
-                    <li>• <strong>Zirconia (ZrO₂):</strong> High toughness for a ceramic, may undergo phase transformation, requires careful handling</li>
-                    <li>• <strong>Silicon Carbide (SiC):</strong> Extremely hard (~2500-3000 HV), requires aggressive diamond abrasives throughout</li>
-                    <li>• <strong>Silicon Nitride (Si₃N₄):</strong> High strength and hardness, good thermal shock resistance</li>
-                    <li>• <strong>Boron Carbide (B₄C):</strong> One of the hardest known materials (~2800 HV), extremely challenging to prepare</li>
-                    <li>• <strong>Porous Ceramics:</strong> May require vacuum impregnation during mounting to prevent pullout</li>
+                  <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li><strong>Alumina (Al₂O₃):</strong> Very hard (~2000 HV), chemically stable, commonly used in wear applications</li>
+                    <li><strong>Zirconia (ZrO₂):</strong> High toughness for a ceramic, may undergo phase transformation, requires careful handling</li>
+                    <li><strong>Silicon Carbide (SiC):</strong> Extremely hard (~2500-3000 HV), requires aggressive diamond abrasives throughout</li>
+                    <li><strong>Silicon Nitride (Si₃N₄):</strong> High strength and hardness, good thermal shock resistance</li>
+                    <li><strong>Boron Carbide (B₄C):</strong> One of the hardest known materials (~2800 HV), extremely challenging to prepare</li>
+                    <li><strong>Porous Ceramics:</strong> May require vacuum impregnation during mounting to prevent pullout</li>
                   </ul>
                 </div>
                 <p>
@@ -298,16 +298,16 @@ export default function CeramicsGuide() {
                 </ul>
                 <div className="bg-gray-50 p-4 my-6 rounded">
                   <h4 className="font-semibold mb-2">Grinding Tips for Ceramics</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Use diamond grinding wheels or diamond-impregnated papers - standard SiC papers will not work</li>
-                    <li>• Metal-bonded diamond wheels provide more aggressive cutting for hardest ceramics (SiC, B₄C)</li>
-                    <li>• Allow extended time at each grit - ceramics require much longer grinding times than metals (8-15 minutes for coarse steps)</li>
-                    <li>• Ensure all scratches from previous grit are completely removed before proceeding - use magnification to verify</li>
-                    <li>• Use fresh diamond wheels/papers - worn abrasives will take much longer and may cause damage</li>
-                    <li>• Maintain consistent pressure throughout each step - avoid varying pressure which can cause relief</li>
-                    <li>• Check frequently for chipping or cracking - stop if damage is observed and assess if sample can be salvaged</li>
-                    <li>• For porous ceramics, ensure proper vacuum impregnation before grinding to prevent pullout</li>
-                    <li>• Consider sample orientation for anisotropic ceramics to maintain consistent grinding behavior</li>
+                  <ul className="text-sm space-y-1 list-disc list-inside">
+                    <li>Use diamond grinding wheels or diamond-impregnated papers - standard SiC papers will not work</li>
+                    <li>Metal-bonded diamond wheels provide more aggressive cutting for hardest ceramics (SiC, B₄C)</li>
+                    <li>Allow extended time at each grit - ceramics require much longer grinding times than metals (8-15 minutes for coarse steps)</li>
+                    <li>Ensure all scratches from previous grit are completely removed before proceeding - use magnification to verify</li>
+                    <li>Use fresh diamond wheels/papers - worn abrasives will take much longer and may cause damage</li>
+                    <li>Maintain consistent pressure throughout each step - avoid varying pressure which can cause relief</li>
+                    <li>Check frequently for chipping or cracking - stop if damage is observed and assess if sample can be salvaged</li>
+                    <li>For porous ceramics, ensure proper vacuum impregnation before grinding to prevent pullout</li>
+                    <li>Consider sample orientation for anisotropic ceramics to maintain consistent grinding behavior</li>
                   </ul>
                 </div>
                 <ProductLink 

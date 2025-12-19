@@ -6,9 +6,9 @@ const nextConfig = {
   images: {
     // Remove unoptimized for production builds on Vercel
     // Vercel will handle image optimization automatically
-    // Configure allowed quality values to match what's used in Image components
-    // Without this, Next.js defaults to [75] and rounds other values
-    qualities: [50, 60, 70, 75],
+      // Configure allowed quality values to match what's used in Image components
+      // Without this, Next.js defaults to [75] and rounds other values
+      qualities: [30, 50, 60, 70, 75, 85, 90, 100],
     formats: ['image/webp', 'image/avif'],
     // Quality values used in components:
     // - Hero image: quality={50} (app/page.tsx:353)
@@ -33,6 +33,25 @@ const nextConfig = {
   experimental: {
     // Optimize package imports to reduce bundle size
     optimizePackageImports: ['lucide-react'],
+  },
+  // Compression and performance
+  compress: true,
+  // Power optimization
+  poweredByHeader: false,
+  // Redirects for equipment subcategory aliases
+  async redirects() {
+    return [
+      {
+        source: '/equipment/mounting/compression-mounting',
+        destination: '/equipment/mounting/compression',
+        permanent: true,
+      },
+      {
+        source: '/equipment/mounting/castable-mounting',
+        destination: '/equipment/mounting/castable',
+        permanent: true,
+      },
+    ]
   },
 }
 

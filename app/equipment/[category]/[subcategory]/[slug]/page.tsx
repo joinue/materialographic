@@ -9,6 +9,8 @@ import type { SubcategoryMetadata, Equipment, EquipmentWithDetails } from '@/lib
 import { ChevronRight, ArrowLeft, X, ChevronLeft, ShoppingBag, ExternalLink, Package } from 'lucide-react'
 import { getEquipmentImageUrl } from '@/lib/storage'
 import LoadingSpinner from '@/components/LoadingSpinner'
+import { generateProductSchema } from '@/lib/product-schema'
+import YouTubeVideo from '@/components/YouTubeVideo'
 import SectioningSpecs from '@/components/equipment/SectioningSpecs'
 import MountingSpecs from '@/components/equipment/MountingSpecs'
 import GrindingPolishingSpecs from '@/components/equipment/GrindingPolishingSpecs'
@@ -180,11 +182,17 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
 
         setEquipment(equipmentWithDetails)
 
-        // Fetch subcategory metadata
-        if (data?.subcategory) {
-          const meta = await getSubcategoryMetadata(category, data.subcategory, 'equipment')
-          setSubcategoryMeta(meta)
+        // Fetch subcategory metadata - prioritize URL parameter, fallback to equipment subcategory
+        let meta = null
+        // First try with URL subcategory parameter (what the user expects)
+        if (subcategory) {
+          meta = await getSubcategoryMetadata(category, subcategory, 'equipment')
         }
+        // Fallback to equipment's subcategory if URL parameter didn't work
+        if (!meta && data?.subcategory) {
+          meta = await getSubcategoryMetadata(category, data.subcategory, 'equipment')
+        }
+        setSubcategoryMeta(meta)
 
         // Set consumables cover image path - explicit mapping to actual filenames
         const coverImageMap: Record<string, string> = {
@@ -236,14 +244,38 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
   }, [category, subcategory, slug])
 
   const categoryLabel = categoryLabels[category] || category
-  const subcategoryLabel = subcategoryMeta?.subcategory_label || subcategory
+  let subcategoryLabel = subcategoryMeta?.subcategory_label || subcategory
+  
+  // Add fallback mappings for common subcategories if metadata is missing
+  if (!subcategoryMeta) {
+    // Grinding & Polishing subcategories
+    if (category === 'grinding-polishing') {
+      const subcategoryLower = subcategory.toLowerCase()
+      if (subcategoryLower === 'manual' || subcategoryLower.includes('manual')) {
+        subcategoryLabel = 'Manual Grinder/Polishers'
+      } else if (subcategoryLower === 'automated' || subcategoryLower.includes('automated') || subcategoryLower.includes('automatic')) {
+        subcategoryLabel = 'Automated Grinder/Polishers'
+      }
+    }
+    // Sectioning subcategories
+    else if (category === 'sectioning') {
+      const subcategoryLower = subcategory.toLowerCase()
+      if ((subcategoryLower.includes('automated') || subcategoryLower.includes('automatic')) && 
+          !subcategoryLabel.toLowerCase().includes('abrasive cutters')) {
+        subcategoryLabel = 'Automated Abrasive Cutters'
+      } else if (subcategoryLower.includes('manual') && 
+                 !subcategoryLabel.toLowerCase().includes('abrasive cutters')) {
+        subcategoryLabel = 'Manual Abrasive Cutters'
+      }
+    }
+  }
 
   if (loading) {
     return (
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           <div className="text-center py-12">
-            <LoadingSpinner size="md" message="Loading equipment..." />
+            <LoadingSpinner size="md" />
           </div>
         </div>
       </div>
@@ -266,10 +298,22 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
     )
   }
 
+  // Generate Product schema for SEO and AI
+  const productSchema = equipment ? generateProductSchema(equipment, category, subcategory) : null
+
   return (
-    <div className="py-4 sm:py-6 md:py-12">
-      <div className="container-custom">
-        {/* Breadcrumb */}
+    <>
+      {productSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(productSchema),
+          }}
+        />
+      )}
+      <div className="py-4 sm:py-6 md:py-12">
+        <div className="container-custom">
+          {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
           <Link 
             href="/equipment"
@@ -329,13 +373,17 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
               if (equipment.images) {
                 if (Array.isArray(equipment.images)) {
                   imagesArray = equipment.images
-                } else if (typeof equipment.images === 'string') {
-                  try {
-                    imagesArray = JSON.parse(equipment.images)
-                  } catch {
-                    // If parsing fails, try to treat as single URL
-                    if (equipment.images.trim()) {
-                      imagesArray = [{ url: equipment.images }]
+                } else {
+                  // Handle case where images might be a string (from database)
+                  const imagesValue = equipment.images as unknown
+                  if (typeof imagesValue === 'string') {
+                    try {
+                      imagesArray = JSON.parse(imagesValue)
+                    } catch {
+                      // If parsing fails, try to treat as single URL
+                      if (imagesValue.trim()) {
+                        imagesArray = [{ url: imagesValue }]
+                      }
                     }
                   }
                 }
@@ -611,9 +659,9 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         )}
 
         {/* Material & Sample Suitability */}
-        {(equipment.suitable_for_material_types?.length > 0 || 
-          equipment.suitable_for_hardness?.length > 0 || 
-          equipment.suitable_for_sample_sizes?.length > 0) && (
+        {((equipment.suitable_for_material_types?.length ?? 0) > 0 || 
+          (equipment.suitable_for_hardness?.length ?? 0) > 0 || 
+          (equipment.suitable_for_sample_sizes?.length ?? 0) > 0) && (
           <section className="mt-12 mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Suitability</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -682,35 +730,37 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
                     <span className="ml-2 text-sm text-gray-900">{equipment.item_id}</span>
                   </div>
                 )}
-                {equipment.automation_level && (
+                {(equipment.sectioning?.automation_level || equipment.grinding_polishing?.automation_level) && (
                   <div>
                     <span className="text-sm font-medium text-gray-600">Automation Level:</span>
-                    <span className="ml-2 text-sm text-gray-900 capitalize">{equipment.automation_level.replace(/-/g, ' ')}</span>
+                    <span className="ml-2 text-sm text-gray-900 capitalize">
+                      {(equipment.sectioning?.automation_level || equipment.grinding_polishing?.automation_level || '').replace(/-/g, ' ')}
+                    </span>
                   </div>
                 )}
-                {equipment.blade_size_mm && (
+                {equipment.sectioning?.blade_size_mm && (
                   <div>
                     <span className="text-sm font-medium text-gray-600">Blade Size:</span>
-                    <span className="ml-2 text-sm text-gray-900">{equipment.blade_size_mm} mm</span>
-                    {equipment.blade_size_inches && (
-                      <span className="ml-1 text-sm text-gray-500">({equipment.blade_size_inches}")</span>
+                    <span className="ml-2 text-sm text-gray-900">{equipment.sectioning.blade_size_mm} mm</span>
+                    {equipment.sectioning.blade_size_inches && (
+                      <span className="ml-1 text-sm text-gray-500">({equipment.sectioning.blade_size_inches}")</span>
                     )}
                   </div>
                 )}
-                {equipment.max_cutting_capacity_mm && (
+                {equipment.sectioning?.max_cutting_capacity_mm && (
                   <div>
                     <span className="text-sm font-medium text-gray-600">Max Cutting Capacity:</span>
-                    <span className="ml-2 text-sm text-gray-900">{equipment.max_cutting_capacity_mm} mm</span>
-                    {equipment.max_cutting_capacity_inches && (
-                      <span className="ml-1 text-sm text-gray-500">({equipment.max_cutting_capacity_inches}")</span>
+                    <span className="ml-2 text-sm text-gray-900">{equipment.sectioning.max_cutting_capacity_mm} mm</span>
+                    {equipment.sectioning.max_cutting_capacity_inches && (
+                      <span className="ml-1 text-sm text-gray-500">({equipment.sectioning.max_cutting_capacity_inches}")</span>
                     )}
                   </div>
                 )}
-                {equipment.wheel_size_inches && equipment.wheel_size_inches.length > 0 && (
+                {equipment.grinding_polishing?.wheel_size_inches && equipment.grinding_polishing.wheel_size_inches.length > 0 && (
                   <div>
                     <span className="text-sm font-medium text-gray-600">Wheel Sizes:</span>
                     <span className="ml-2 text-sm text-gray-900">
-                      {equipment.wheel_size_inches.map(size => `${size}"`).join(', ')}
+                      {equipment.grinding_polishing.wheel_size_inches.map(size => `${size}"`).join(', ')}
                     </span>
                   </div>
                 )}
@@ -718,6 +768,115 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
             </div>
           </div>
         </section>
+
+        {/* YouTube Video Section */}
+        {(() => {
+          // Map equipment items to YouTube videos by item_id or slug
+          const equipmentVideos: Record<string, { videoId: string; title: string; description: string }> = {
+            // Sectioning
+            'pico-155s': {
+              videoId: 'nQ7nM3VhWEU',
+              title: 'Precision Sectioning with PICO-155S',
+              description: 'Watch Dr. Donald Zipperian demonstrate precision wafering techniques using the PICO-155S precision cutter. Learn proper setup, feed rate control, and techniques for minimal deformation cutting.'
+            },
+            'pico-155p': {
+              videoId: 'nQ7nM3VhWEU',
+              title: 'Precision Sectioning with PICO-155S',
+              description: 'Watch Dr. Donald Zipperian demonstrate precision wafering techniques using the PICO-155S precision cutter. Learn proper setup, feed rate control, and techniques for minimal deformation cutting.'
+            },
+            // Mounting
+            'tp-7500s': {
+              videoId: 'ghEnwKGf8Nc',
+              title: 'Compression Mounting with TP-7500S',
+              description: 'Learn compression mounting techniques with the TP-7500S hydraulic mounting press. This video demonstrates proper sample preparation, resin selection, and mounting procedures for high-quality mounts.'
+            },
+            'teravac': {
+              videoId: 'g8QCrWxyRZ4',
+              title: 'Castable Mounting with TeraVac',
+              description: 'Watch demonstrations of castable mounting using the TeraVac (formerly LSSA-011) vacuum mounting system. Learn vacuum techniques for removing air bubbles and achieving void-free mounts.'
+            },
+            'lssa-011': {
+              videoId: 'g8QCrWxyRZ4',
+              title: 'Castable Mounting with TeraVac',
+              description: 'Watch demonstrations of castable mounting using the TeraVac (formerly LSSA-011) vacuum mounting system. Learn vacuum techniques for removing air bubbles and achieving void-free mounts.'
+            },
+            // Grinding & Polishing
+            'giga-s': {
+              videoId: 'cPkzthQbLcM',
+              title: 'Vibratory Polishing with the GIGA S',
+              description: 'Learn vibratory polishing techniques from Dr. Donald Zipperian. This video demonstrates how to use the GIGA S vibratory polisher for final polishing, including setup, parameter selection, and achieving superior surface finishes for EBSD and high-quality microstructural analysis.'
+            },
+            'giga': {
+              videoId: 'cPkzthQbLcM',
+              title: 'Vibratory Polishing with the GIGA S',
+              description: 'Learn vibratory polishing techniques from Dr. Donald Zipperian. This video demonstrates how to use the GIGA S vibratory polisher for final polishing, including setup, parameter selection, and achieving superior surface finishes for EBSD and high-quality microstructural analysis.'
+            },
+            'nano-1000s': {
+              videoId: 'PT2fRdSvhDM',
+              title: 'Automated Grinding & Polishing with NANO 1000S & FEMTO 1100S',
+              description: 'Watch Dr. Donald Zipperian demonstrate automated grinding and polishing using the NANO 1000S and FEMTO 1100S systems. Learn how to program and operate these semi-automated systems for consistent, high-quality results.'
+            },
+            'femto-1100s': {
+              videoId: 'PT2fRdSvhDM',
+              title: 'Automated Grinding & Polishing with NANO 1000S & FEMTO 1100S',
+              description: 'Watch Dr. Donald Zipperian demonstrate automated grinding and polishing using the NANO 1000S and FEMTO 1100S systems. Learn how to program and operate these semi-automated systems for consistent, high-quality results.'
+            },
+            'penta-7500s': {
+              videoId: 'oFQoUkcwTMc',
+              title: 'Manual Grinding with PENTA 7500S & PENTA 5000A',
+              description: 'Learn proper manual grinding techniques from Dr. Donald Zipperian. This video demonstrates correct sample orientation, grinding motion, pressure control, and proper use of the PENTA manual grinding systems.'
+            },
+            'penta-5000a': {
+              videoId: 'oFQoUkcwTMc',
+              title: 'Manual Grinding with PENTA 7500S & PENTA 5000A',
+              description: 'Learn proper manual grinding techniques from Dr. Donald Zipperian. This video demonstrates correct sample orientation, grinding motion, pressure control, and proper use of the PENTA manual grinding systems.'
+            }
+          }
+
+          if (!equipment) return null
+
+          // Try to find video by slug first, then by item_id
+          const slugKey = slug.toLowerCase()
+          const itemIdKey = equipment.item_id?.toLowerCase().replace(/[^a-z0-9-]/g, '')
+          
+          let video = equipmentVideos[slugKey] || equipmentVideos[itemIdKey || '']
+          
+          // Also try matching by item_id patterns (e.g., GIGA-S, PICO-155S)
+          if (!video && equipment.item_id) {
+            const itemIdNormalized = equipment.item_id.toUpperCase()
+            if (itemIdNormalized.includes('GIGA')) {
+              video = equipmentVideos['giga-s']
+            } else if (itemIdNormalized.includes('PICO-155')) {
+              video = equipmentVideos['pico-155s']
+            } else if (itemIdNormalized.includes('TP-7500')) {
+              video = equipmentVideos['tp-7500s']
+            } else if (itemIdNormalized.includes('TERAVAC') || itemIdNormalized.includes('LSSA-011')) {
+              video = equipmentVideos['teravac']
+            } else if (itemIdNormalized.includes('NANO-1000')) {
+              video = equipmentVideos['nano-1000s']
+            } else if (itemIdNormalized.includes('FEMTO-1100')) {
+              video = equipmentVideos['femto-1100s']
+            } else if (itemIdNormalized.includes('PENTA-7500')) {
+              video = equipmentVideos['penta-7500s']
+            } else if (itemIdNormalized.includes('PENTA-5000')) {
+              video = equipmentVideos['penta-5000a']
+            }
+          }
+          
+          if (!video) return null
+
+          return (
+            <section className="mt-12 mb-8 sm:mb-12">
+              <div className="max-w-4xl mx-auto">
+                <YouTubeVideo
+                  videoId={video.videoId}
+                  title={video.title}
+                  description={video.description}
+                />
+              </div>
+            </section>
+          )
+        })()}
 
         {/* Relevant Consumables Categories Section - At the bottom */}
         {(() => {
@@ -748,7 +907,7 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
                         unoptimized
                         onError={(e) => {
                           // Hide parent div if image fails to load
-                          const parent = e.currentTarget.closest('div.lg\\:col-span-1')
+                          const parent = e.currentTarget.closest('div.lg\\:col-span-1') as HTMLElement | null
                           if (parent) {
                             parent.style.display = 'none'
                           }
@@ -781,6 +940,7 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         })()}
       </div>
     </div>
+    </>
   )
 }
 

@@ -111,7 +111,7 @@ export default function BlogAdmin() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <LoadingSpinner size="lg" message="Loading blog posts..." />
+          <LoadingSpinner size="lg" />
         </div>
       </div>
     )

@@ -198,111 +198,136 @@ export default function Footer() {
         <div className="container-custom relative z-10 py-16 md:py-20">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
-            {/* Brand Section - Takes more space */}
+            {/* Company/Brand Section */}
             <div className="md:col-span-4">
-              <h2 className="text-2xl font-bold text-white tracking-tight mb-6 flex items-center gap-3">
+              <div className="flex items-center gap-3 mb-6">
                 <Image 
                   src="/images/pace/tri-structure.png" 
-                  alt="" 
-                  width={32} 
-                  height={32}
-                  className="h-6 w-auto"
+                  alt="PACE Technologies" 
+                  width={40} 
+                  height={40}
+                  className="h-8 w-auto"
                 />
-                Materialographic.com
-              </h2>
+                <div>
+                  <h2 className="text-2xl font-bold text-white tracking-tight">
+                    PACE Technologies
+                  </h2>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Materialographic.com
+                  </p>
+                </div>
+              </div>
               <p className="text-base text-gray-300 leading-relaxed mb-6 max-w-md">
-                Comprehensive metallographic sample preparation resources. 
-                Expert guides, databases, and knowledge from PACE Technologies.
+                Leading provider of metallographic sample preparation equipment, consumables, and expertise. 
+                Comprehensive resources for materials science professionals worldwide.
               </p>
+              <div className="space-y-2 text-sm text-gray-400">
+                <p>
+                  <Link 
+                    href="https://metallographic.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    www.metallographic.com
+                  </Link>
+                </p>
+              </div>
             </div>
             
-            {/* Learn Section */}
+            {/* Company Section */}
             <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Learn</h3>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Company</h3>
               <ul className="space-y-3">
-                <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Guides</Link></li>
-                <li><Link href="/resources" className="text-gray-400 hover:text-white transition-colors text-sm">Resources</Link></li>
-                <li><Link href="/tools" className="text-gray-400 hover:text-white transition-colors text-sm">Tools</Link></li>
+                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</Link></li>
+                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact Us</Link></li>
+                <li><Link href="/careers" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</Link></li>
+                <li>
+                  <Link 
+                    href="https://shop.metallographic.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Online Shop
+                  </Link>
+                </li>
+                <li><Link href="/quote" className="text-gray-400 hover:text-white transition-colors text-sm">Request Quote</Link></li>
+              </ul>
+            </div>
+            
+            {/* Products Section */}
+            <div className="md:col-span-2">
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Products</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link 
+                    href="/equipment" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Equipment
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/consumables" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Consumables
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="https://shop.metallographic.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Shop Consumables
+                  </Link>
+                </li>
+                <li><Link href="/quote" className="text-gray-400 hover:text-white transition-colors text-sm">Custom Solutions</Link></li>
+              </ul>
+            </div>
+            
+            {/* Resources Section */}
+            <div className="md:col-span-2">
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Resources</h3>
+              <ul className="space-y-3">
+                <li><Link href="/guides" className="text-gray-400 hover:text-white transition-colors text-sm">Preparation Guides</Link></li>
+                <li><Link href="/databases" className="text-gray-400 hover:text-white transition-colors text-sm">Databases</Link></li>
+                <li><Link href="/standards" className="text-gray-400 hover:text-white transition-colors text-sm">Standards</Link></li>
+                <li><Link href="/tools" className="text-gray-400 hover:text-white transition-colors text-sm">Tools & Calculators</Link></li>
                 <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</Link></li>
                 <li><Link href="/glossary" className="text-gray-400 hover:text-white transition-colors text-sm">Glossary</Link></li>
               </ul>
             </div>
             
-            {/* Databases Section */}
+            {/* Legal & Support Section */}
             <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Databases</h3>
+              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Legal & Support</h3>
               <ul className="space-y-3">
-                <li><Link href="/materials" className="text-gray-400 hover:text-white transition-colors text-sm">Materials</Link></li>
-                <li><Link href="/etchants" className="text-gray-400 hover:text-white transition-colors text-sm">Etchants</Link></li>
-                <li><Link href="/standards" className="text-gray-400 hover:text-white transition-colors text-sm">Standards</Link></li>
-                <li><Link href="/microstructures" className="text-gray-400 hover:text-white transition-colors text-sm">Microstructure Gallery</Link></li>
+                <li><Link href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">Terms & Conditions</Link></li>
+                <li>
+                  <Link 
+                    href="/support" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Customer Support
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/distribution" 
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    International Distribution
+                  </Link>
+                </li>
+                <li><Link href="/site-map" className="text-gray-400 hover:text-white transition-colors text-sm">Sitemap</Link></li>
               </ul>
             </div>
-            
-            {/* Info Section */}
-            <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Info</h3>
-              <ul className="space-y-3">
-                <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">About</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</Link></li>
-                <li><Link href="/quote" className="text-gray-400 hover:text-white transition-colors text-sm">Request Quote</Link></li>
-                <li>
-                  <Link href="/guides?category=Material-Specific" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    Procedure Guides
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            
-            {/* External Sites Section */}
-            <div className="md:col-span-2">
-              <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Our Sites</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="https://metallographic.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    Metallographic.com
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://shop.metallographic.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    Shop Consumables
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://metallographic.com/equipment" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm">
-                    Shop Equipment
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
-            <Link 
-              href="https://www.metallographic.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-tertiary text-center whitespace-nowrap"
-            >
-              Metallographic.com
-            </Link>
-            <Link 
-              href="https://shop.metallographic.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-center whitespace-nowrap"
-            >
-              Shop Consumables
-            </Link>
-            <Link 
-              href="https://metallographic.com/equipment" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary text-center whitespace-nowrap"
-            >
-              Browse Equipment
-            </Link>
           </div>
           
           {/* Bottom Bar */}
@@ -310,19 +335,11 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex flex-col md:flex-row items-baseline gap-2 md:gap-3">
                 <span className="text-sm text-gray-500">
-                  &copy; {new Date().getFullYear()} Materialographic.com. All rights reserved.
+                  &copy; {new Date().getFullYear()} PACE Technologies Corporation. All rights reserved.
                 </span>
                 <span className="hidden md:inline text-gray-600">•</span>
                 <span className="text-sm text-gray-500">
-                  Owned and operated by{' '}
-                  <Link 
-                    href="https://metallographic.com" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    PACE Technologies Corporation
-                  </Link>
+                  Materialographic.com is owned and operated by PACE Technologies
                 </span>
               </div>
               <div className="flex items-center gap-6 text-sm">
@@ -348,6 +365,17 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Login Link - Bottom Left of Footer */}
+      <div className="absolute bottom-2 left-2 z-10">
+        <Link 
+          href="/admin/login" 
+          className="text-[10px] text-gray-500 hover:text-gray-300 transition-colors opacity-60 hover:opacity-100 font-normal"
+          title="Admin Login"
+        >
+          Login
+        </Link>
       </div>
     </footer>
   )

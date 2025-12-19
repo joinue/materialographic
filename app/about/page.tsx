@@ -257,12 +257,12 @@ export default function AboutPage() {
               and operated company, we're deeply rooted in the Tucson community and committed to 
               supporting the local economy while serving the international metallography community.
             </p>
-            <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/images/pace/building banner.jpg"
                 alt="PACE Technologies facility in Tucson, Arizona"
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center"
                 loading="lazy"
                 quality={80}
                 sizes="100vw"

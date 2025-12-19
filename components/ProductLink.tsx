@@ -31,7 +31,7 @@ export default function ProductLink({ productName, href, description }: ProductL
           rel="noopener noreferrer"
           className="text-primary-600 hover:text-primary-700 font-semibold"
         >
-          commercial supplier website
+          PACE Consumables Shop
         </Link>.
       </p>
     </div>

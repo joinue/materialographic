@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef, useMemo } from 'react'
-import { Search, X, BookOpen, FileText, Calculator, ChevronRight, Hash, Database, Newspaper } from 'lucide-react'
+import { Search, X, BookOpen, FileText, Calculator, ChevronRight, Hash, Database, Newspaper, Wrench, Package } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { getAllMaterials, getPublishedBlogPosts, type Material, type BlogPost } from '@/lib/supabase'
+import { getAllMaterials, getPublishedBlogPosts, getAllEquipment, getAllConsumables, type Material, type BlogPost, type Equipment, type Consumable } from '@/lib/supabase'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 // Search data structure
 interface SearchItem {
@@ -12,7 +13,7 @@ interface SearchItem {
   title: string
   description?: string
   url: string
-  type: 'guide' | 'guide-section' | 'resource' | 'tool' | 'material' | 'blog'
+  type: 'guide' | 'guide-section' | 'resource' | 'tool' | 'material' | 'blog' | 'equipment' | 'consumable'
   category?: string
   guideSlug?: string
   alternativeNames?: string[] // For materials with alternative names
@@ -343,6 +344,14 @@ const MATERIALS_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
 const BLOG_POSTS_CACHE_KEY = 'global-search-blog-posts'
 const BLOG_POSTS_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
 
+// Cache key for equipment
+const EQUIPMENT_CACHE_KEY = 'global-search-equipment'
+const EQUIPMENT_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
+
+// Cache key for consumables
+const CONSUMABLES_CACHE_KEY = 'global-search-consumables'
+const CONSUMABLES_CACHE_EXPIRY = 1000 * 60 * 30 // 30 minutes
+
 interface GlobalSearchProps {
   isOpen: boolean
   onClose: () => void
@@ -354,9 +363,13 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [materials, setMaterials] = useState<Material[]>([])
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [equipment, setEquipment] = useState<Equipment[]>([])
+  const [consumables, setConsumables] = useState<Consumable[]>([])
   const [searchIndex, setSearchIndex] = useState<SearchItem[]>(baseSearchIndex)
   const [isLoadingMaterials, setIsLoadingMaterials] = useState(false)
   const [isLoadingBlogPosts, setIsLoadingBlogPosts] = useState(false)
+  const [isLoadingEquipment, setIsLoadingEquipment] = useState(false)
+  const [isLoadingConsumables, setIsLoadingConsumables] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
@@ -511,9 +524,169 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       })
     }
     
+    async function loadEquipment() {
+      // Check cache first
+      try {
+        const cached = sessionStorage.getItem(EQUIPMENT_CACHE_KEY)
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached)
+          const age = Date.now() - timestamp
+          if (age < EQUIPMENT_CACHE_EXPIRY) {
+            setEquipment(data)
+            buildEquipmentSearchIndex(data)
+            return
+          }
+        }
+      } catch (e) {
+        // Cache invalid, continue to fetch
+      }
+
+      setIsLoadingEquipment(true)
+      try {
+        const allEquipment = await getAllEquipment()
+        setEquipment(allEquipment)
+        
+        // Cache the equipment
+        try {
+          sessionStorage.setItem(EQUIPMENT_CACHE_KEY, JSON.stringify({
+            data: allEquipment,
+            timestamp: Date.now(),
+          }))
+        } catch (e) {
+          // SessionStorage might be disabled, continue without cache
+        }
+        
+        buildEquipmentSearchIndex(allEquipment)
+      } catch (error) {
+        console.error('Error loading equipment for search:', error)
+        // Continue with base search index if equipment fails to load
+      } finally {
+        setIsLoadingEquipment(false)
+      }
+    }
+
+    async function loadConsumables() {
+      // Check cache first
+      try {
+        const cached = sessionStorage.getItem(CONSUMABLES_CACHE_KEY)
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached)
+          const age = Date.now() - timestamp
+          if (age < CONSUMABLES_CACHE_EXPIRY) {
+            setConsumables(data)
+            buildConsumablesSearchIndex(data)
+            return
+          }
+        }
+      } catch (e) {
+        // Cache invalid, continue to fetch
+      }
+
+      setIsLoadingConsumables(true)
+      try {
+        const allConsumables = await getAllConsumables()
+        setConsumables(allConsumables)
+        
+        // Cache the consumables
+        try {
+          sessionStorage.setItem(CONSUMABLES_CACHE_KEY, JSON.stringify({
+            data: allConsumables,
+            timestamp: Date.now(),
+          }))
+        } catch (e) {
+          // SessionStorage might be disabled, continue without cache
+        }
+        
+        buildConsumablesSearchIndex(allConsumables)
+      } catch (error) {
+        console.error('Error loading consumables for search:', error)
+        // Continue with base search index if consumables fail to load
+      } finally {
+        setIsLoadingConsumables(false)
+      }
+    }
+
+    function buildEquipmentSearchIndex(allEquipment: Equipment[]) {
+      // Helper function to convert subcategory to URL slug format
+      const slugifySubcategory = (subcategory: string): string => {
+        return subcategory
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+      }
+      
+      const equipmentItems: SearchItem[] = allEquipment.map(item => {
+        // Build URL based on category and slug
+        const categoryMap: Record<string, string> = {
+          'sectioning': 'sectioning',
+          'mounting': 'mounting',
+          'grinding-polishing': 'grinding-polishing',
+          'microscopy': 'microscopy',
+          'hardness-testing': 'hardness-testing',
+          'lab-furniture': 'lab-furniture',
+        }
+        const categorySlug = categoryMap[item.category] || item.category
+        const slug = item.slug || item.item_id?.toLowerCase() || item.item_id
+        const subcategorySlug = item.subcategory ? slugifySubcategory(item.subcategory) : null
+        const url = subcategorySlug 
+          ? `/equipment/${categorySlug}/${subcategorySlug}/${slug}`
+          : `/equipment/${categorySlug}/${slug}`
+        
+        return {
+          id: `equipment-${item.id}`,
+          title: item.name,
+          description: item.description || `${item.category} equipment`,
+          url,
+          type: 'equipment',
+          category: item.category,
+        }
+      })
+      
+      // Update search index with equipment
+      setSearchIndex(prev => {
+        const existingItems = prev.filter(item => item.type !== 'equipment')
+        return [...existingItems, ...equipmentItems]
+      })
+    }
+
+    function buildConsumablesSearchIndex(allConsumables: Consumable[]) {
+      const consumableItems: SearchItem[] = allConsumables.map(item => {
+        // Build URL based on category and slug
+        const categoryMap: Record<string, string> = {
+          'sectioning': 'sectioning',
+          'mounting': 'mounting',
+          'grinding-lapping': 'grinding-lapping',
+          'polishing': 'polishing',
+          'etching': 'etching',
+          'cleaning': 'cleaning',
+          'hardness-testing': 'hardness-testing',
+        }
+        const categorySlug = categoryMap[item.category] || item.category
+        const slug = item.slug || item.item_id
+        const url = `/consumables/${categorySlug}/${item.subcategory ? `${item.subcategory}/${slug}` : slug}`
+        
+        return {
+          id: `consumable-${item.id}`,
+          title: item.name,
+          description: item.description || `${item.category} consumable`,
+          url,
+          type: 'consumable',
+          category: item.category,
+        }
+      })
+      
+      // Update search index with consumables
+      setSearchIndex(prev => {
+        const existingItems = prev.filter(item => item.type !== 'consumable')
+        return [...existingItems, ...consumableItems]
+      })
+    }
+
     if (isOpen) {
       loadMaterials()
       loadBlogPosts()
+      loadEquipment()
+      loadConsumables()
     }
   }, [isOpen])
 
@@ -633,11 +806,13 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       // First priority: type (differentiated priorities)
       const typePriority: Record<SearchItem['type'], number> = {
         'guide': 1,        // Highest priority
-        'blog': 2,        // Second priority (blog posts)
-        'resource': 3,    // Third priority
-        'tool': 4,        // Fourth priority
-        'material': 5,    // Fifth priority (main entries only, tabs filtered below)
-        'guide-section': 6, // Lowest priority
+        'equipment': 2,    // Second priority
+        'consumable': 3,   // Third priority
+        'blog': 4,         // Fourth priority
+        'resource': 5,     // Fifth priority
+        'tool': 6,         // Sixth priority
+        'material': 7,      // Seventh priority (main entries only, tabs filtered below)
+        'guide-section': 8, // Lowest priority
       }
       
       // Separate main material entries from tab entries
@@ -709,6 +884,10 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return <Database className="w-4 h-4" />
       case 'blog':
         return <Newspaper className="w-4 h-4" />
+      case 'equipment':
+        return <Wrench className="w-4 h-4" />
+      case 'consumable':
+        return <Package className="w-4 h-4" />
     }
   }
 
@@ -726,6 +905,10 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return 'Material'
       case 'blog':
         return 'Blog'
+      case 'equipment':
+        return 'Equipment'
+      case 'consumable':
+        return 'Consumable'
     }
   }
 
@@ -743,6 +926,10 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         return 'bg-indigo-100 text-indigo-700 border-indigo-200'
       case 'blog':
         return 'bg-pink-100 text-pink-700 border-pink-200'
+      case 'equipment':
+        return 'bg-cyan-100 text-cyan-700 border-cyan-200'
+      case 'consumable':
+        return 'bg-amber-100 text-amber-700 border-amber-200'
     }
   }
 
@@ -750,6 +937,8 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   const groupedResults = useMemo(() => {
     const groups: Record<string, SearchItem[]> = {
       'guide': [],
+      'equipment': [],
+      'consumable': [],
       'blog': [],
       'resource': [],
       'tool': [],
@@ -771,9 +960,11 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   }, [results])
 
   // Type order for display
-  const typeOrder: SearchItem['type'][] = ['guide', 'blog', 'resource', 'tool', 'material', 'guide-section']
+  const typeOrder: SearchItem['type'][] = ['guide', 'equipment', 'consumable', 'blog', 'resource', 'tool', 'material', 'guide-section']
   const typeLabels: Record<SearchItem['type'], string> = {
     'guide': 'Guides',
+    'equipment': 'Equipment',
+    'consumable': 'Consumables',
     'blog': 'Blog Posts',
     'resource': 'Resources',
     'tool': 'Tools',
@@ -810,7 +1001,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Search guides, blog posts, resources, tools, materials..."
+              placeholder="Search guides, equipment, consumables, resources, tools, materials..."
               className="flex-1 outline-none text-gray-900 placeholder-gray-400 text-base sm:text-base bg-transparent"
               style={{ fontSize: '16px' }}
             />
@@ -836,7 +1027,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             {/* Results - Grouped by Type */}
             {results.length > 0 && (
               <div className="border-t border-gray-200 flex-1 overflow-y-auto">
-                {(isLoadingMaterials || isLoadingBlogPosts) && (
+                {(isLoadingMaterials || isLoadingBlogPosts || isLoadingEquipment || isLoadingConsumables) && (
                   <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
                     <LoadingSpinner size="sm" />
                   </div>
@@ -902,7 +1093,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             )}
 
             {/* No Results */}
-            {query && results.length === 0 && !isLoadingMaterials && !isLoadingBlogPosts && (
+            {query && results.length === 0 && !isLoadingMaterials && !isLoadingBlogPosts && !isLoadingEquipment && !isLoadingConsumables && (
               <div className="border-t border-gray-200 px-4 sm:px-6 py-8 sm:py-12 text-center">
                 <p className="text-gray-500">No results found for "{query}"</p>
                 <p className="text-sm text-gray-400 mt-2">Try a different search term</p>
@@ -916,11 +1107,12 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               <p className="text-sm text-gray-500 mb-3 sm:mb-4">Start typing to search...</p>
               <div className="flex flex-wrap gap-2 justify-center px-2">
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Guides</span>
+                <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Equipment</span>
+                <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Consumables</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Blog</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Resources</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Tools</span>
                 <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Materials</span>
-                <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full whitespace-nowrap">Sections</span>
               </div>
             </div>
           )}

@@ -318,15 +318,15 @@ export default function HardnessScaleConversionPage() {
           <div className="mt-8 pt-6 border-t border-gray-200">
             <h3 className="text-lg font-bold mb-4">Notes</h3>
             <ul className="space-y-2 text-sm text-gray-700">
-              <li>• <strong>HRC:</strong> Rockwell C scale (diamond cone, 150 kgf) - for hard materials</li>
-              <li>• <strong>HRB:</strong> Rockwell B scale (1/16" ball, 100 kgf) - for softer materials</li>
-              <li>• <strong>HB:</strong> Brinell Hardness (10mm ball, 3000 kgf)</li>
-              <li>• <strong>HV:</strong> Vickers Hardness (diamond pyramid indenter)</li>
-              <li>• <strong>HK:</strong> Knoop Hardness (elongated diamond pyramid)</li>
-              <li>• <strong>HRA:</strong> Rockwell A scale (diamond cone, 60 kgf) - for very hard materials</li>
-              <li>• Conversions are approximate; actual values may vary slightly between materials</li>
-              <li>• Always verify with direct measurement when accuracy is critical</li>
-              <li>• For precise conversions, refer to ASTM E140 standard conversion tables</li>
+                    <li> <strong>HRC:</strong> Rockwell C scale (diamond cone, 150 kgf) - for hard materials</li>
+                    <li> <strong>HRB:</strong> Rockwell B scale (1/16" ball, 100 kgf) - for softer materials</li>
+                    <li> <strong>HB:</strong> Brinell Hardness (10mm ball, 3000 kgf)</li>
+                    <li> <strong>HV:</strong> Vickers Hardness (diamond pyramid indenter)</li>
+                    <li> <strong>HK:</strong> Knoop Hardness (elongated diamond pyramid)</li>
+                    <li> <strong>HRA:</strong> Rockwell A scale (diamond cone, 60 kgf) - for very hard materials</li>
+                    <li> Conversions are approximate; actual values may vary slightly between materials</li>
+                    <li> Always verify with direct measurement when accuracy is critical</li>
+                    <li> For precise conversions, refer to ASTM E140 standard conversion tables</li>
             </ul>
           </div>
         </div>

@@ -547,6 +547,7 @@ export interface SubcategoryMetadata {
   cover_image_url?: string | null
   meta_title?: string | null
   meta_description?: string | null
+  featured_equipment_id?: string | null
   is_active?: boolean | null
   created_at?: string
   updated_at?: string
@@ -989,6 +990,22 @@ export async function getEquipmentByCategoryAndSubcategory(
   return data || []
 }
 
+export async function getAllEquipment(): Promise<Equipment[]> {
+  const { data, error } = await supabase
+    .from('equipment')
+    .select('*')
+    .eq('status', 'active')
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching all equipment:', error)
+    throw error
+  }
+
+  return data || []
+}
+
 export async function getEquipmentByItemId(itemId: string): Promise<Equipment | null> {
   const { data, error } = await supabase
     .from('equipment')
@@ -1072,6 +1089,23 @@ export async function getConsumablesByCategoryAndSubcategory(
 
   if (error) {
     console.error('Error fetching consumables by category and subcategory:', error)
+    throw error
+  }
+
+  return data || []
+}
+
+export async function getAllConsumables(): Promise<Consumable[]> {
+  const { data, error } = await supabase
+    .from('consumables')
+    .select('*')
+    .eq('status', 'active')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    console.error('Error fetching all consumables:', error)
     throw error
   }
 
@@ -1287,11 +1321,25 @@ export async function getConsumablesBySubcategory(
     query = query.eq('subcategory', dbSubcategory)
   } else if (category === 'polishing') {
     const subcategoryMap: Record<string, string> = {
-      'rough-polishing': 'Rough Polishing',
-      'final-polishing': 'Final Polishing'
+      'rough-polishing': 'rough',
+      'rough': 'rough',
+      'diamond-paste': 'rough',
+      'final-polishing': 'final',
+      'final': 'final'
     }
     const dbSubcategory = subcategoryMap[subcategory] || slugToSubcategory(subcategory)
-    query = query.eq('subcategory', dbSubcategory)
+    
+    // Special handling for diamond-paste: filter for items that are specifically diamond pastes
+    // After migration, items should have subcategory 'rough' and contain "paste" in name/description
+    if (subcategory === 'diamond-paste') {
+      // Filter for subcategory 'rough' AND items with "paste" in name or description
+      // Also include items with old subcategory names for backward compatibility
+      query = query
+        .or('subcategory.eq.rough,subcategory.ilike.%Polycrystalline Diamond Paste%,subcategory.ilike.%Monocrystalline Diamond Paste%')
+        .or('name.ilike.%paste%,description.ilike.%paste%')
+    } else {
+      query = query.eq('subcategory', dbSubcategory)
+    }
   } else {
     // For other categories, convert slug to subcategory name and match exactly
     const dbSubcategory = slugToSubcategory(subcategory)

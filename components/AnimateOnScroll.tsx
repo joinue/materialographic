@@ -87,7 +87,8 @@ export default function AnimateOnScroll({
         },
         {
           threshold,
-          rootMargin: isMobile ? '0px 0px -100px 0px' : '0px 0px -50px 0px',
+          // Start loading images earlier (200px before entering viewport) for better perceived performance
+          rootMargin: isMobile ? '200px 0px -100px 0px' : '300px 0px -50px 0px',
         }
       )
 
@@ -118,6 +119,9 @@ export default function AnimateOnScroll({
       style={{
         animationDelay: isVisible ? `${delay}ms` : '0ms',
         animationDuration: isVisible ? `${duration}ms` : '0ms',
+        // GPU acceleration for smoother animations
+        willChange: isVisible ? 'transform, opacity' : 'auto',
+        transform: 'translateZ(0)', // Force GPU acceleration
       }}
     >
       {children}

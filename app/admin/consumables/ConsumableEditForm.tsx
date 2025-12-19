@@ -46,11 +46,11 @@ export default function ConsumableEditForm({ consumable }: ConsumableEditFormPro
     list_price: consumable?.list_price?.toString() || '',
     
     // Technical Specifications
-    size_mm: consumable?.size_mm?.toString() || '',
-    size_inches: consumable?.size_inches?.toString() || '',
-    grit_size: consumable?.grit_size || '',
-    material_composition: consumable?.material_composition || '',
-    type: consumable?.type || '',
+    size_mm: '',
+    size_inches: '',
+    grit_size: '',
+    material_composition: '',
+    type: '',
     
     // Suitability Attributes
     suitable_for_material_types: consumable?.suitable_for_material_types?.join(', ') || '',

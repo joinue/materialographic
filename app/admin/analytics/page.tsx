@@ -163,7 +163,7 @@ export default async function AnalyticsPage({ searchParams }: PageProps) {
   const referrerStats = referrerStatsRaw?.filter(r => !r.path?.startsWith('/admin')) || []
 
   // Log errors for debugging (only if there's a meaningful error)
-  if (blogError && (blogError.message || blogError.code)) {
+  if (blogError && (blogError.message || blogError.code || Object.keys(blogError).length > 0)) {
     console.error('Error fetching blog posts:', {
       message: blogError.message,
       code: blogError.code,
@@ -172,14 +172,17 @@ export default async function AnalyticsPage({ searchParams }: PageProps) {
       error: blogError
     })
   }
-  if (subError && (subError.message || subError.code)) {
-    console.error('Error fetching newsletter subscriptions:', {
-      message: subError.message,
-      code: subError.code,
-      details: subError.details,
-      hint: subError.hint,
-      error: subError
-    })
+  if (subError) {
+    // Only log if there's actual error content (not just an empty object)
+    const hasErrorContent = subError.message || subError.code || subError.details || subError.hint
+    if (hasErrorContent) {
+      console.error('Error fetching newsletter subscriptions:', {
+        message: subError.message,
+        code: subError.code,
+        details: subError.details,
+        hint: subError.hint,
+      })
+    }
   }
   if (pageViewsError && (pageViewsError.message || pageViewsError.code)) {
     console.error('Error fetching page views:', {

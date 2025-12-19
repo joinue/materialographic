@@ -105,7 +105,7 @@ export default function EquipmentAdmin() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <LoadingSpinner size="lg" message="Loading equipment..." />
+        <LoadingSpinner size="lg" />
       </div>
     )
   }

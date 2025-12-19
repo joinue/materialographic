@@ -164,10 +164,10 @@ export default function EquipmentOverviewGuide() {
                     Operator-controlled cutting with manual feed. Suitable for low to medium volume work and when 
                     operator control over cutting speed is important.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Manual feed control</li>
-                    <li>• Cost-effective for smaller labs</li>
-                    <li>• Good for various material types</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Manual feed control</li>
+                    <li>Cost-effective for smaller labs</li>
+                    <li>Good for various material types</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/abrasive-sectioning/manual-abrasive-cutters.html"
@@ -203,10 +203,10 @@ export default function EquipmentOverviewGuide() {
                     Programmable cutting with automatic feed control. Ideal for high-volume work, consistent cutting 
                     parameters, and reduced operator fatigue.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Programmable cutting parameters</li>
-                    <li>• Consistent, repeatable results</li>
-                    <li>• Higher throughput</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Programmable cutting parameters</li>
+                    <li>Consistent, repeatable results</li>
+                    <li>Higher throughput</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/abrasive-sectioning/automated-abrasive-cutters.html"
@@ -262,10 +262,10 @@ export default function EquipmentOverviewGuide() {
                     intervention. The weight of the cutting head provides consistent feed pressure. Excellent for 
                     delicate materials, small samples, and when consistent cutting parameters are needed.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Consistent feed pressure from gravity</li>
-                    <li>• Minimal operator intervention required</li>
-                    <li>• Ideal for delicate and small samples</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Consistent feed pressure from gravity</li>
+                    <li>Minimal operator intervention required</li>
+                    <li>Ideal for delicate and small samples</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/precision-wafering/gravity-feed-precision-cutters.html"
@@ -300,10 +300,10 @@ export default function EquipmentOverviewGuide() {
                     excellent control and repeatability for high-precision applications. Ideal for production environments 
                     and when precise, repeatable cutting parameters are required.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Programmable feed rates</li>
-                    <li>• Excellent repeatability</li>
-                    <li>• Ideal for production and high-precision work</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Programmable feed rates</li>
+                    <li>Excellent repeatability</li>
+                    <li>Ideal for production and high-precision work</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/precision-wafering/table-feed-precision-cutters.html"
@@ -355,10 +355,10 @@ export default function EquipmentOverviewGuide() {
                     consistent pressure application. Good for medium to high volume work. Generally more cost-effective 
                     than hydraulic systems for standard applications.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Fast cycle times</li>
-                    <li>• Consistent pressure application</li>
-                    <li>• Cost-effective for standard applications</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Fast cycle times</li>
+                    <li>Consistent pressure application</li>
+                    <li>Cost-effective for standard applications</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/compression-mounting/pneumatic-mounting-press.html"
@@ -393,10 +393,10 @@ export default function EquipmentOverviewGuide() {
                     capability than pneumatic systems, making them suitable for larger samples, harder mounting materials, 
                     or when maximum pressure is required for optimal edge retention.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Higher pressure capability</li>
-                    <li>• Suitable for larger samples</li>
-                    <li>• Ideal for harder mounting materials</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Higher pressure capability</li>
+                    <li>Suitable for larger samples</li>
+                    <li>Ideal for harder mounting materials</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/compression-mounting/hydraulic-mounting-press.html"
@@ -542,10 +542,10 @@ export default function EquipmentOverviewGuide() {
                     Single-wheel manual systems for grinding and polishing. Operator controls pressure, speed, and 
                     technique. Cost-effective and versatile.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Single or dual wheel options</li>
-                    <li>• Operator-controlled preparation</li>
-                    <li>• Suitable for various materials</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Single or dual wheel options</li>
+                    <li>Operator-controlled preparation</li>
+                    <li>Suitable for various materials</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/grinding-polishing/nano.html"
@@ -660,10 +660,10 @@ export default function EquipmentOverviewGuide() {
                   material removal rates. Ideal for plano-parallel sample preparation and applications where material 
                   removal must be precisely controlled.
                 </p>
-                <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                  <li>• Precise depth control and measurement</li>
-                  <li>• Ideal for thin sections and coatings</li>
-                  <li>• Essential for PCB and electronic component preparation</li>
+                <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                  <li>Precise depth control and measurement</li>
+                  <li>Ideal for thin sections and coatings</li>
+                  <li>Essential for PCB and electronic component preparation</li>
                 </ul>
                 <Link 
                   href="https://metallographic.com/metallographic-equipment/grinding-polishing/atto.html"
@@ -704,12 +704,12 @@ export default function EquipmentOverviewGuide() {
                   Cost-effective alternative for final polishing that eliminates subsurface damage and produces superior 
                   flatness and planarity. Ideal for batch processing and applications requiring minimal deformation.
                 </p>
-                <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                  <li>• Eliminates subsurface damage</li>
-                  <li>• Superior flatness and planarity</li>
-                  <li>• Ideal for EBSD preparation</li>
-                  <li>• Batch processing capability</li>
-                  <li>• Reduces operator variability</li>
+                <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                  <li>Eliminates subsurface damage</li>
+                  <li>Superior flatness and planarity</li>
+                  <li>Ideal for EBSD preparation</li>
+                  <li>Batch processing capability</li>
+                  <li>Reduces operator variability</li>
                 </ul>
                 <Link 
                   href="https://metallographic.com/metallographic-equipment/grinding-polishing/giga.html"
@@ -769,11 +769,11 @@ export default function EquipmentOverviewGuide() {
                     Reflected light microscopes for examining prepared metallographic samples. Standard equipment for 
                     microstructure analysis.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Brightfield, darkfield, and DIC (Differential Interference Contrast) illumination modes</li>
-                    <li>• Magnifications typically from 50x to 1000x or higher</li>
-                    <li>• Digital imaging capabilities for documentation and analysis</li>
-                    <li>• Polarized light options for certain applications</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Brightfield, darkfield, and DIC (Differential Interference Contrast) illumination modes</li>
+                    <li>Magnifications typically from 50x to 1000x or higher</li>
+                    <li>Digital imaging capabilities for documentation and analysis</li>
+                    <li>Polarized light options for certain applications</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/microscopy/metallurgical-microscopes.html"
@@ -808,10 +808,10 @@ export default function EquipmentOverviewGuide() {
                     examination, and general sample observation. Essential for macroscopic examination before and after 
                     preparation, checking for defects, and orienting samples.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Low magnification (5x-50x typical range)</li>
-                    <li>• 3D depth perception</li>
-                    <li>• Useful for fracture analysis and sample inspection</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Low magnification (5x-50x typical range)</li>
+                    <li>3D depth perception</li>
+                    <li>Useful for fracture analysis and sample inspection</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/microscopy/stereo-microscopes.html"
@@ -839,7 +839,7 @@ export default function EquipmentOverviewGuide() {
                     className="hover:opacity-90 transition-opacity w-full h-full flex items-center justify-center"
                   >
                     <Image
-                      src="/images/equipment/microscopy/image analysis/image-analysis-cover.webp"
+                      src="/images/equipment/microscopy/image analysis/material-plus-cover.webp"
                       alt="Image analysis system"
                       width={300}
                       height={225}
@@ -894,10 +894,10 @@ export default function EquipmentOverviewGuide() {
                     readout, suitable for a wide range of materials and hardness levels. Uses different scales (A, B, C, 
                     etc.) for different material types and hardness ranges.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Fast, direct readout</li>
-                    <li>• Multiple scales for different materials</li>
-                    <li>• Suitable for production testing</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Fast, direct readout</li>
+                    <li>Multiple scales for different materials</li>
+                    <li>Suitable for production testing</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/hardness-testing/rockwell-tester.html"
@@ -933,10 +933,10 @@ export default function EquipmentOverviewGuide() {
                     for case depth measurements, small feature analysis, and when testing individual phases or 
                     microstructural features.
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 mb-3">
-                    <li>• Vickers and Knoop test methods</li>
-                    <li>• Low loads (typically 10g to 1000g)</li>
-                    <li>• Essential for case depth and small feature analysis</li>
+                  <ul className="text-xs text-gray-600 space-y-1 mb-3 list-disc list-inside">
+                    <li>Vickers and Knoop test methods</li>
+                    <li>Low loads (typically 10g to 1000g)</li>
+                    <li>Essential for case depth and small feature analysis</li>
                   </ul>
                   <Link 
                     href="https://metallographic.com/metallographic-equipment/hardness-testing/microhardness-tester.html"
@@ -1116,12 +1116,12 @@ export default function EquipmentOverviewGuide() {
                 <p className="text-sm text-gray-700 mb-2">
                   Equipment manufacturers and suppliers can provide valuable guidance on equipment selection. Consider:
                 </p>
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Requesting demonstrations or trials</li>
-                  <li>• Consulting with experienced metallographers</li>
-                  <li>• Reviewing application notes and case studies</li>
-                  <li>• Understanding service and support options</li>
-                  <li>• Planning for training and operator education</li>
+                <ul className="text-sm text-gray-700 space-y-1 list-disc list-inside">
+                  <li>Requesting demonstrations or trials</li>
+                  <li>Consulting with experienced metallographers</li>
+                  <li>Reviewing application notes and case studies</li>
+                  <li>Understanding service and support options</li>
+                  <li>Planning for training and operator education</li>
                 </ul>
               </div>
             </section>

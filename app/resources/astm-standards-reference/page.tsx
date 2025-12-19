@@ -5,6 +5,7 @@ import jsPDF from 'jspdf'
 import { Download } from 'lucide-react'
 import Link from 'next/link'
 import { Standard, getAllStandards } from '@/lib/supabase'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function ASTMStandardsReferencePage() {
   const guideRef = useRef<HTMLDivElement>(null)
@@ -220,7 +221,7 @@ export default function ASTMStandardsReferencePage() {
 
             {loading ? (
               <div className="text-center py-12">
-                <LoadingSpinner size="md" message="Loading standards..." />
+                <LoadingSpinner size="md" />
               </div>
             ) : (
               <div className="space-y-8">

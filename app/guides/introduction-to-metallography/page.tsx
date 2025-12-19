@@ -574,33 +574,33 @@ export default function IntroductionToMetallographyGuide() {
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <h4 className="font-semibold mb-2">Aerospace</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• Titanium and superalloy characterization</li>
-                    <li>• Coating and surface treatment analysis</li>
-                    <li>• Fatigue and creep damage assessment</li>
+                    <li>Titanium and superalloy characterization</li>
+                    <li>Coating and surface treatment analysis</li>
+                    <li>Fatigue and creep damage assessment</li>
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Automotive</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• Steel and aluminum processing verification</li>
-                    <li>• Heat treatment validation</li>
-                    <li>• Weld quality assessment</li>
+                    <li>Steel and aluminum processing verification</li>
+                    <li>Heat treatment validation</li>
+                    <li>Weld quality assessment</li>
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Medical Devices</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• Implant material characterization</li>
-                    <li>• Biocompatibility studies</li>
-                    <li>• Surface finish verification</li>
+                    <li>Implant material characterization</li>
+                    <li>Biocompatibility studies</li>
+                    <li>Surface finish verification</li>
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Energy</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• Power plant material analysis</li>
-                    <li>• Pipeline and pressure vessel inspection</li>
-                    <li>• Corrosion and degradation studies</li>
+                    <li>Power plant material analysis</li>
+                    <li>Pipeline and pressure vessel inspection</li>
+                    <li>Corrosion and degradation studies</li>
                   </ul>
                     </div>
                   </div>
@@ -700,13 +700,13 @@ export default function IntroductionToMetallographyGuide() {
                 <AnimateOnScroll animation="fadeInUp" delay={150}>
                   <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
                     <h4 className="font-semibold mb-2">Chemical Safety</h4>
-                    <ul className="text-sm space-y-1 text-gray-700">
-                      <li>• Always read Safety Data Sheets (SDS) for all chemicals before use</li>
-                      <li>• Use appropriate personal protective equipment (gloves, eye protection, lab coat)</li>
-                      <li>• Work in well-ventilated areas, preferably in a fume hood when using etchants</li>
-                      <li>• Store chemicals properly and label all containers clearly</li>
-                      <li>• Dispose of chemical waste according to local regulations</li>
-                      <li>• Never mix chemicals unless you know the reaction products are safe</li>
+                    <ul className="text-sm space-y-1 text-gray-700 list-disc list-inside">
+                      <li>Always read Safety Data Sheets (SDS) for all chemicals before use</li>
+                      <li>Use appropriate personal protective equipment (gloves, eye protection, lab coat)</li>
+                      <li>Work in well-ventilated areas, preferably in a fume hood when using etchants</li>
+                      <li>Store chemicals properly and label all containers clearly</li>
+                      <li>Dispose of chemical waste according to local regulations</li>
+                      <li>Never mix chemicals unless you know the reaction products are safe</li>
                     </ul>
                   </div>
                 </AnimateOnScroll>
@@ -715,12 +715,12 @@ export default function IntroductionToMetallographyGuide() {
                   <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 my-4 rounded">
                     <h4 className="font-semibold mb-2">Equipment Safety</h4>
                     <ul className="text-sm space-y-1 text-gray-700">
-                      <li>• Follow manufacturer instructions for all equipment</li>
-                      <li>• Use proper guards and safety features on cutting and grinding equipment</li>
-                      <li>• Secure samples properly to prevent movement during cutting or grinding</li>
-                      <li>• Be aware of rotating equipment and moving parts</li>
-                      <li>• Keep work areas clean and organized to prevent accidents</li>
-                      <li>• Use appropriate eye protection when operating any equipment</li>
+                      <li>Follow manufacturer instructions for all equipment</li>
+                      <li>Use proper guards and safety features on cutting and grinding equipment</li>
+                      <li>Secure samples properly to prevent movement during cutting or grinding</li>
+                      <li>Be aware of rotating equipment and moving parts</li>
+                      <li>Keep work areas clean and organized to prevent accidents</li>
+                      <li>Use appropriate eye protection when operating any equipment</li>
                     </ul>
                   </div>
                 </AnimateOnScroll>

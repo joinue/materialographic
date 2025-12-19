@@ -329,13 +329,13 @@ export default function GritSizeChartPage() {
           <div className="mt-8 pt-6 border-t border-gray-200">
             <h3 className="text-lg font-bold mb-4">Notes</h3>
             <ul className="space-y-2 text-sm text-gray-700">
-              <li>• <strong>FEPA:</strong> Federation of European Producers of Abrasives standard (P-grade)</li>
-              <li>• <strong>ANSI:</strong> American National Standards Institute</li>
-              <li>• <strong>JIS:</strong> Japanese Industrial Standards</li>
-              <li>• <strong>Micron (μm):</strong> Average particle size in micrometers</li>
-              <li>• <strong>Mesh:</strong> US Standard mesh size (particles per inch)</li>
-              <li>• Conversions are approximate; actual values may vary slightly between manufacturers</li>
-              <li>• Always refer to manufacturer specifications for critical applications</li>
+                    <li> <strong>FEPA:</strong> Federation of European Producers of Abrasives standard (P-grade)</li>
+                    <li> <strong>ANSI:</strong> American National Standards Institute</li>
+                    <li> <strong>JIS:</strong> Japanese Industrial Standards</li>
+                    <li> <strong>Micron (μm):</strong> Average particle size in micrometers</li>
+                    <li> <strong>Mesh:</strong> US Standard mesh size (particles per inch)</li>
+                    <li> Conversions are approximate; actual values may vary slightly between manufacturers</li>
+                    <li> Always refer to manufacturer specifications for critical applications</li>
             </ul>
           </div>
         </div>

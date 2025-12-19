@@ -540,11 +540,11 @@ export default function CommonMisconceptionsGuide() {
                   Everyone makes mistakes when learning metallography. The key is to:
                 </p>
                 <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Recognize mistakes when they happen</li>
-                  <li>• Understand why they occurred</li>
-                  <li>• Learn how to avoid them in the future</li>
-                  <li>• Don't repeat the same mistakes</li>
-                  <li>• Share knowledge with others</li>
+                    <li> Recognize mistakes when they happen</li>
+                    <li> Understand why they occurred</li>
+                    <li> Learn how to avoid them in the future</li>
+                    <li> Don't repeat the same mistakes</li>
+                    <li> Share knowledge with others</li>
                 </ul>
                 <p className="text-sm text-gray-700 mt-3">
                   By understanding common misconceptions, you're already ahead. Now combine this knowledge with practice 

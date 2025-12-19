@@ -35,7 +35,7 @@ const files = allFiles
   .sort() // Sort to process in order
 
 if (files.length === 0) {
-  console.error(`No files found matching pattern: ${pattern}`)
+  console.error(`No files found matching pattern: ${baseName}_part_*.sql`)
   process.exit(1)
 }
 

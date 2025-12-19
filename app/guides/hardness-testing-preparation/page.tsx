@@ -342,17 +342,17 @@ export default function HardnessTestingPreparationGuide() {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Rockwell & Brinell</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• 1 μm diamond polishing sufficient</li>
-                    <li>• Final colloidal silica optional</li>
-                    <li>• Focus on flatness</li>
+                    <li>1 μm diamond polishing sufficient</li>
+                    <li>Final colloidal silica optional</li>
+                    <li>Focus on flatness</li>
                   </ul>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2">Vickers & Knoop</h4>
                   <ul className="text-sm space-y-1 text-gray-700">
-                    <li>• Must polish to 0.05 μm colloidal silica</li>
-                    <li>• Scratch-free surface critical</li>
-                    <li>• Excellent flatness required</li>
+                    <li>Must polish to 0.05 μm colloidal silica</li>
+                    <li>Scratch-free surface critical</li>
+                    <li>Excellent flatness required</li>
                   </ul>
                 </div>
               </div>

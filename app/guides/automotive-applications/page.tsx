@@ -658,7 +658,7 @@ export default function AutomotiveApplicationsPage() {
                 <AnimateOnScroll animation="fadeInUp" delay={150}>
                   <div className="my-6 rounded-lg overflow-hidden max-w-xl mx-auto">
                     <Link 
-                      href="https://shop.metallographic.com/collections/grinding-lapping"
+                      href="https://shop.metallographic.com/collections/grinding"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block hover:opacity-90 transition-opacity"
@@ -678,7 +678,7 @@ export default function AutomotiveApplicationsPage() {
                 </AnimateOnScroll>
                 <ProductLink 
                   productName="Silicon Carbide Grinding Papers"
-                  href="https://shop.metallographic.com/collections/grinding-lapping"
+                  href="https://shop.metallographic.com/collections/grinding"
                   description="Progressive grinding papers (120, 240, 400, 600 grit) for automotive sample preparation"
                 />
                 <AnimateOnScroll animation="fadeInUp" delay={200}>

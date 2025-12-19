@@ -108,7 +108,7 @@ WHERE item_id = 'GIGA-S';
 -- MICROSCOPY EQUIPMENT
 -- ============================================================================
 
-UPDATE equipment SET image_url = '/images/equipment/microscopy/image analysis/image-analysis-cover.webp'
+UPDATE equipment SET image_url = '/images/equipment/microscopy/image analysis/material-plus-cover.webp'
 WHERE item_id LIKE '%IMAGE-ANALYSIS%' OR name ILIKE '%image analysis%';
 
 UPDATE equipment SET image_url = '/images/equipment/microscopy/metallurgical microscopes/im-3000b/im-3000b-cover.webp'

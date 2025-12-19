@@ -450,7 +450,7 @@ export default function CategoryConfiguration() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <LoadingSpinner size="lg" message="Loading category configuration..." />
+        <LoadingSpinner size="lg" />
       </div>
     )
   }
