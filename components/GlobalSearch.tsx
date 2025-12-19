@@ -632,10 +632,19 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
           ? `/equipment/${categorySlug}/${subcategorySlug}/${slug}`
           : `/equipment/${categorySlug}/${slug}`
         
+        // Build a more comprehensive description that includes tags and item_id for better searchability
+        const descriptionParts = [item.description || `${item.category} equipment`]
+        if (item.tags && item.tags.length > 0) {
+          descriptionParts.push(item.tags.join(', '))
+        }
+        if (item.item_id) {
+          descriptionParts.push(item.item_id)
+        }
+        
         return {
           id: `equipment-${item.id}`,
           title: item.name,
-          description: item.description || `${item.category} equipment`,
+          description: descriptionParts.join(' - '),
           url,
           type: 'equipment',
           category: item.category,
@@ -742,15 +751,12 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
       // Check if all words from the search query appear (word order flexible)
       const allWordsMatch = searchWords.length > 0 && searchWords.every(word => allSearchableText.includes(word))
       
-      // If all words don't match, skip this item (unless exact phrase matches)
-      if (!allWordsMatch && !lowerTitle.includes(searchTerm) && !lowerDesc.includes(searchTerm)) {
-        return { ...item, score: 0 }
-      }
-      
-      // Check all search terms (including synonyms)
+      // Check all search terms (including synonyms) to see if ANY match
+      let hasAnyMatch = false
       for (const term of searchTerms) {
         // Title matches (highest weight)
         if (lowerTitle.includes(term)) {
+          hasAnyMatch = true
           const position = lowerTitle.indexOf(term)
           // Boost score if match is at start of title
           score += position === 0 ? 100 : 50
@@ -760,21 +766,25 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
         
         // Description matches (medium weight)
         if (lowerDesc.includes(term)) {
+          hasAnyMatch = true
           score += 20
         }
         
         // Category matches (low weight, but higher for materials)
         if (lowerCategory.includes(term)) {
+          hasAnyMatch = true
           score += item.type === 'material' ? 40 : 10 // Boost category matches for materials
         }
         
         // Alternative names (for materials)
         if (item.alternativeNames?.some(altName => altName.toLowerCase().includes(term))) {
+          hasAnyMatch = true
           score += 30
         }
         
         // For materials, also check if term appears in composition (description format: "Category - Composition")
         if (item.type === 'material' && lowerDesc.includes(term)) {
+          hasAnyMatch = true
           // Check if match is in category part (before " - ") or composition part
           const descParts = lowerDesc.split(' - ')
           if (descParts.length >= 2) {
@@ -788,6 +798,11 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
             }
           }
         }
+      }
+      
+      // Only filter out if no matches found at all (more flexible than requiring all words or exact phrase)
+      if (!hasAnyMatch && !allWordsMatch) {
+        return { ...item, score: 0 }
       }
       
       // Bonus for word-order-flexible matches (all words found in any order)

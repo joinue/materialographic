@@ -24,32 +24,62 @@ export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
-  // Handle scroll effect and header height
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
       setIsScrolled(scrollPosition > 50)
     }
 
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.getBoundingClientRect().height)
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    updateHeaderHeight()
-    window.addEventListener('resize', updateHeaderHeight)
-    
-    // Update height when scroll state changes
-    const interval = setInterval(updateHeaderHeight, 100)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', updateHeaderHeight)
-      clearInterval(interval)
     }
-  }, [isScrolled])
+  }, [])
+
+  // Handle header height tracking with ResizeObserver (more efficient than polling)
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        // Use requestAnimationFrame to batch layout reads and avoid forced reflow
+        requestAnimationFrame(() => {
+          if (headerRef.current) {
+            const newHeight = headerRef.current.getBoundingClientRect().height
+            // Only update state if height actually changed to minimize re-renders
+            setHeaderHeight(prevHeight => prevHeight !== newHeight ? newHeight : prevHeight)
+          }
+        })
+      }
+    }
+
+    // Use ResizeObserver for efficient height tracking instead of polling
+    let resizeObserver: ResizeObserver | null = null
+    if (typeof ResizeObserver !== 'undefined' && headerRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        updateHeaderHeight()
+      })
+      resizeObserver.observe(headerRef.current)
+    }
+
+    // Initial height measurement (deferred to avoid blocking initial render)
+    requestAnimationFrame(() => {
+      updateHeaderHeight()
+    })
+
+    // Fallback for browsers without ResizeObserver support
+    const handleResize = () => {
+      updateHeaderHeight()
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+    
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      if (resizeObserver && headerRef.current) {
+        resizeObserver.unobserve(headerRef.current)
+      }
+    }
+  }, [isScrolled]) // Re-run when scroll state changes (header height may change)
 
   // Check if user is logged in as admin
   useEffect(() => {
@@ -174,7 +204,8 @@ export default function Header() {
                   }`}
                   priority
                   fetchPriority="high"
-                  quality={100}
+                  quality={85}
+                  sizes="(max-width: 1024px) 80px, 160px"
                 />
               </div>
             </Link>
@@ -877,12 +908,13 @@ export default function Header() {
                 <Image 
                   src="/images/pace/tri-structure.png" 
                   alt="Materialographic.com" 
-                  width={96} 
-                  height={96}
+                  width={48} 
+                  height={48}
                   className="h-12 w-auto object-contain"
                   priority
                   fetchPriority="high"
-                  quality={100}
+                  quality={75}
+                  sizes="48px"
                 />
               </div>
             </Link>

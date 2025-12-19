@@ -5,6 +5,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  // Safelist only classes that are dynamically generated or used in JS
+  safelist: [
+    // Animation classes used by AnimateOnScroll (dynamically applied)
+    {
+      pattern: /^animate-(fadeIn|fadeInUp|fadeInDown|fadeInLeft|fadeInRight|scaleIn)/,
+    },
+    // Button classes (used as component classes)
+    'btn-primary',
+    'btn-secondary',
+    'btn-tertiary',
+  ],
   theme: {
     extend: {
       screens: {

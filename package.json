@@ -7,10 +7,10 @@
   },
   "browserslist": {
     "production": [
-      "chrome >= 90",
-      "firefox >= 88",
-      "safari >= 14",
-      "edge >= 90"
+      "chrome >= 93",
+      "firefox >= 92",
+      "safari >= 15.4",
+      "edge >= 93"
     ],
     "development": [
       "last 1 chrome version",
@@ -28,6 +28,7 @@
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.45.4",
+    "critters": "^0.0.23",
     "jspdf": "^3.0.4",
     "lucide-react": "^0.468.0",
     "next": "^16.0.7",
@@ -40,6 +41,7 @@
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
+    "cssnano": "^7.1.2",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.7",
     "postcss": "^8.4.49",

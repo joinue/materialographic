@@ -33,6 +33,8 @@ const nextConfig = {
   experimental: {
     // Optimize package imports to reduce bundle size
     optimizePackageImports: ['lucide-react'],
+    // Optimize CSS loading to reduce render blocking and improve critical path
+    optimizeCss: true,
   },
   // Compression and performance
   compress: true,

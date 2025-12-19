@@ -4,12 +4,16 @@ import { Suspense } from 'react'
 import './globals.css'
 import ConditionalLayout from '@/components/ConditionalLayout'
 import PageViewTracker from '@/components/PageViewTracker'
+import CSSOptimizer from '@/components/CSSOptimizer'
 
 const inter = Inter({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
   weight: ['400', '600', '700'],
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -108,12 +112,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
-        {/* Resource hints for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        {/* CSS Optimizer - Preload CSS chunks early to reduce render blocking */}
+        <CSSOptimizer />
         
+        {/* Note: Next.js automatically handles font preloading when using next/font/google */}
+        {/* No need for Google Fonts preconnect since fonts are self-hosted by Next.js */}
+        {/* Fonts are served from the same origin, so no cross-origin preconnect needed */}
+        
+        {/* Note: Favicon preloading is handled automatically by Next.js metadata API */}
         {/* Dark mode favicon support - Next.js metadata API doesn't support media queries for icons */}
         <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/images/pace/tri-structure.png" media="(prefers-color-scheme: dark)" />
