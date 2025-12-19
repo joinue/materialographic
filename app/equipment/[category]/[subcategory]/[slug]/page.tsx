@@ -425,6 +425,7 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
                       alt={currentImage.alt || equipment.name}
                       fill
                       className="object-contain group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     {allImages.length > 1 && (
                       <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">

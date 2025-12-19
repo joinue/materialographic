@@ -641,6 +641,12 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
           descriptionParts.push(item.item_id)
         }
         
+        // Include item_id as alternative name for better searchability
+        const alternativeNames: string[] = []
+        if (item.item_id) {
+          alternativeNames.push(item.item_id)
+        }
+        
         return {
           id: `equipment-${item.id}`,
           title: item.name,
@@ -648,6 +654,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
           url,
           type: 'equipment',
           category: item.category,
+          alternativeNames: alternativeNames.length > 0 ? alternativeNames : undefined,
         }
       })
       
@@ -776,7 +783,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
           score += item.type === 'material' ? 40 : 10 // Boost category matches for materials
         }
         
-        // Alternative names (for materials)
+        // Alternative names (for materials and equipment item_ids)
         if (item.alternativeNames?.some(altName => altName.toLowerCase().includes(term))) {
           hasAnyMatch = true
           score += 30

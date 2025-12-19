@@ -543,6 +543,7 @@ export default function EquipmentCategoryPage({ params }: { params: Promise<{ ca
                   fill
                   className="object-contain"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             )}
@@ -818,6 +819,7 @@ export default function EquipmentCategoryPage({ params }: { params: Promise<{ ca
                 alt={`${categoryLabel} process illustration`}
                 fill
                 className="object-cover"
+                sizes="100vw"
               />
             </div>
           )}

@@ -1094,6 +1094,7 @@ export default function EquipmentSubcategoryPage({ params }: { params: Promise<{
                     fill
                     className="object-contain"
                     priority
+                    sizes="100vw"
                   />
                 </div>
               ) : null
@@ -1120,6 +1121,7 @@ export default function EquipmentSubcategoryPage({ params }: { params: Promise<{
                     alt="NANO grinder polisher base with FEMTO polishing heads and ZETA abrasive dispenser"
                     fill
                     className="object-contain p-4"
+                    sizes="100vw"
                   />
                 </div>
               )}
