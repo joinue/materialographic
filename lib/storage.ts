@@ -103,3 +103,25 @@ export function getBlogImageUrl(path: string | null | undefined): string | null 
   return getStorageUrl('blog-images', path.slice(1))
 }
 
+/**
+ * Get public URL for an equipment brochure
+ * @param path - Path to the brochure (can be relative path or full URL)
+ * @returns Public URL to the brochure PDF
+ */
+export function getBrochureUrl(path: string | null | undefined): string | null {
+  if (!path) return null
+  
+  // If it's already a full URL, return as-is
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path
+  }
+  
+  // If it's a storage path, use it directly
+  if (!path.startsWith('/')) {
+    return getStorageUrl('brochures', path)
+  }
+  
+  // Otherwise, assume it's a storage path and remove leading slash
+  return getStorageUrl('brochures', path.slice(1))
+}
+

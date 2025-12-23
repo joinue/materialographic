@@ -110,6 +110,9 @@ export default function BuilderPageLayout() {
   // Confirmation dialog state
   const [showBackConfirmation, setShowBackConfirmation] = useState(false)
 
+  // Track if this is the initial mount to prevent auto-scroll on page load
+  const isInitialMount = useRef(true)
+
   const { generateRecommendations } = useBuilderRecommendations()
 
   // Handle scroll to top button visibility
@@ -210,6 +213,12 @@ export default function BuilderPageLayout() {
 
   // Focus management: focus on step container when step changes
   useEffect(() => {
+    // Skip auto-scroll on initial mount (when page first loads)
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+      return
+    }
+    
     const stepElement = document.getElementById(`step-${step}`)
     if (stepElement) {
       // Small delay to ensure DOM is updated

@@ -37,13 +37,26 @@
   
   a {
     @apply text-primary-600 hover:text-primary-700 no-underline;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded;
+    /* Remove focus outline on mouse clicks, keep for keyboard navigation */
+    @apply focus:outline-none focus:ring-0;
   }
   
-  /* Accessibility: Focus styles for keyboard navigation */
+  /* Accessibility: Focus styles for keyboard navigation only */
   button:focus-visible,
   a:focus-visible {
     @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+  
+  /* Remove focus styles for mouse clicks */
+  button:focus:not(:focus-visible),
+  a:focus:not(:focus-visible) {
+    @apply outline-none ring-0;
+  }
+  
+  /* Remove focus outline from navigation links on click */
+  nav a:focus:not(:focus-visible),
+  header a:focus:not(:focus-visible) {
+    @apply outline-none ring-0;
   }
   
   /* Screen reader only class */

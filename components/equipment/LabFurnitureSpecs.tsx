@@ -2,9 +2,11 @@ import type { EquipmentLabFurniture } from '@/lib/supabase'
 
 interface LabFurnitureSpecsProps {
   specs: EquipmentLabFurniture | null | undefined
+  editMode?: boolean
+  onChange?: (data: EquipmentLabFurniture) => void
 }
 
-export default function LabFurnitureSpecs({ specs }: LabFurnitureSpecsProps) {
+export default function LabFurnitureSpecs({ specs, editMode = false, onChange }: LabFurnitureSpecsProps) {
   if (!specs) return null
 
   const hasAnySpec = 

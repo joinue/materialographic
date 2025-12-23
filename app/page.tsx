@@ -238,7 +238,7 @@ export default function Home() {
                   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 h-full flex flex-col">
                     <div className="text-2xl font-bold text-primary-600 mb-2">2</div>
                     <h4 className="font-semibold text-gray-900 mb-2">Mounting</h4>
-                    <p className="text-sm text-gray-600">Compression and castable mounting presses with a full range of mounting materials</p>
+                    <p className="text-sm text-gray-600">Compression mounting presses and castable mounting systems with a full range of mounting materials</p>
                   </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll animation="scaleIn" delay={150} duration={500}>

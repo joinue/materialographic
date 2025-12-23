@@ -185,6 +185,7 @@ export interface Equipment {
   subcategory?: string | null
   is_pace_product?: boolean | null
   product_url?: string | null
+  brochure_url?: string | null
   image_url?: string | null
   images?: Array<{
     url: string
@@ -202,6 +203,8 @@ export interface Equipment {
   tags?: string[] | null
   status?: 'active' | 'discontinued' | 'draft' | null
   sort_order?: number | null
+  related_consumables?: Array<{ name: string; url: string }> | null
+  related_consumables_image_url?: string | null
   created_at?: string
   updated_at?: string
 }
@@ -209,20 +212,59 @@ export interface Equipment {
 // Category-specific interfaces
 export interface EquipmentSectioning {
   equipment_id: string
-  blade_size_mm?: number | null
-  blade_size_inches?: number | null
+  // Blade specifications (TEXT for flexibility - can be ranges like "3-8 inches")
+  blade_size_mm?: string | null
+  blade_size_inches?: string | null
   blade_type?: string | null
-  max_cutting_capacity_mm?: number | null
-  max_cutting_capacity_inches?: number | null
+  arbor_size_mm?: string | null
+  arbor_size_inches?: string | null
+  // Cutting capacity (TEXT for flexibility)
+  max_cutting_capacity_mm?: string | null
+  max_cutting_capacity_inches?: string | null
+  cutting_capacity_height_mm?: string | null
+  cutting_capacity_height_inches?: string | null
+  cutting_capacity_depth_mm?: string | null
+  cutting_capacity_depth_inches?: string | null
+  max_cutting_diameter_mm?: string | null
+  max_cutting_diameter_inches?: string | null
   automation_level?: 'manual' | 'semi-automated' | 'automated' | null
-  cutting_speed_rpm?: number | null
-  feed_rate_mm_per_min?: number | null
+  // Speed and feed (TEXT for flexibility - can be ranges or descriptive)
+  cutting_speed_rpm?: string | null
+  feed_rate_mm_per_min?: string | null
   cooling_system?: string | null
   sample_holder_type?: string | null
   precision_level?: string | null
-  motor_power_watts?: number | null
+  // Movement (TEXT for flexibility)
+  vertical_movement_mm?: string | null
+  vertical_movement_inches?: string | null
+  // Table dimensions (JSONB for structured data)
+  table_dimensions_mm?: Record<string, number> | null
+  table_dimensions_inches?: Record<string, number> | null
+  // Motor and electrical (TEXT for flexibility)
+  motor_power_watts?: string | null
+  motor_power_kw?: string | null
+  motor_speed_range_rpm?: string | null // Changed from JSONB to TEXT for flexibility
+  electrical_specification?: string | null
+  cutting_force_max_amps?: string | null
+  cooling_unit_capacity_liters?: string | null
+  cooling_unit_capacity_gallons?: string | null
+  // Dimensions (JSONB for structured data)
   dimensions_mm?: Record<string, number> | null
-  weight_kg?: number | null
+  dimensions_hood_closed_mm?: Record<string, number> | null
+  dimensions_hood_open_mm?: Record<string, number> | null
+  weight_kg?: number | null // Keep as number for calculations/sorting
+  optional_accessories?: Array<{ item_id: string; name: string; description?: string }> | null
+  // Precision Wafering specific fields (all TEXT for flexibility)
+  control_type?: string | null
+  control_description?: string | null
+  cutting_load_grams?: string | null
+  micrometer_feed_distance_mm?: string | null
+  micrometer_feed_distance_inches?: string | null
+  micrometer_accuracy_microns?: string | null
+  table_feed_range_mm?: string | null
+  table_feed_range_inches?: string | null
+  coolant_system_description?: string | null
+  specimen_feed_type?: string | null // e.g., 'table-feed', 'gravity-feed', 'manual-feed'
   created_at?: string
   updated_at?: string
 }
@@ -230,23 +272,64 @@ export interface EquipmentSectioning {
 export interface EquipmentMounting {
   equipment_id: string
   mounting_type?: string | null
-  max_pressure_psi?: number | null
-  max_pressure_mpa?: number | null
+  // Compression mounting fields
+  control?: string | null
+  mount_sizes?: string | null
+  mount_sizes_mm?: string | null
+  mount_sizes_inches?: string | null
+  mold_cylinders?: string | null
+  force_type?: string | null
+  max_force_mpa?: string | null
+  max_force_psi?: string | null
+  incoming_pressure_max_psi?: string | null
+  max_pressure_psi?: string | null
+  max_pressure_mpa?: string | null
   pressure_range_psi?: string | null
-  max_temperature_celsius?: number | null
-  min_temperature_celsius?: number | null
+  heater_specification?: string | null
+  max_temperature_celsius?: string | null
+  max_temperature_fahrenheit?: string | null
+  min_temperature_celsius?: string | null
   heating_capability?: boolean | null
   cooling_capability?: boolean | null
+  cooling_system_description?: string | null
   chamber_size_mm?: Record<string, number> | null
   max_sample_size_mm?: Record<string, number> | null
-  vacuum_level_mbar?: number | null
+  // UV curing fields
+  sample_support_surface_dimension_mm?: Record<string, number> | null
+  sample_support_surface_dimension_inches?: Record<string, number> | null
+  sample_support_surface_max_height_mm?: string | null
+  sample_support_surface_max_height_inches?: string | null
+  uv_curing_time_min?: string | null
+  uv_wavelength_nm?: string | null
+  dimensions_closed_mm?: Record<string, number> | null
+  dimensions_closed_inches?: Record<string, number> | null
+  dimensions_open_mm?: Record<string, number> | null
+  dimensions_open_inches?: Record<string, number> | null
+  voltage_frequency?: string | null
+  // Pressure mounting fields
+  operating_pressure_bar?: string | null
+  safety_valve_overflow_pressure_bar?: string | null
+  // Vacuum mounting fields
+  bell_jar_description?: string | null
+  vacuum_level_mbar?: string | null
   vacuum_pump_required?: boolean | null
+  // Cooling tank/accessory fields
+  pump_flow_rate_gpm?: string | null
+  pump_flow_rate_liters_per_min?: string | null
+  tank_volume_gallons?: string | null
+  tank_volume_liters?: string | null
+  electrical_specification?: string | null
+  // Features
   programmable_cycles?: boolean | null
   digital_controls?: boolean | null
   safety_features?: string[] | null
-  power_consumption_watts?: number | null
+  // General specifications
+  power_consumption_watts?: string | null
   dimensions_mm?: Record<string, number> | null
-  weight_kg?: number | null
+  dimensions_inches?: Record<string, number> | null
+  weight_kg?: string | null
+  weight_lbs?: string | null
+  optional_accessories?: Array<Record<string, any>> | null
   created_at?: string
   updated_at?: string
 }
@@ -263,9 +346,65 @@ export interface EquipmentGrindingPolishing {
   cooling_system?: string | null
   sample_holder_type?: string | null
   controlled_removal?: boolean | null
-  motor_power_watts?: number | null
+  motor_power_watts?: string | null
   dimensions_mm?: Record<string, number> | null
-  weight_kg?: number | null
+  weight_kg?: string | null
+  // Platen/wheel specifications
+  platen_size_inches?: string | null
+  platen_size_mm?: string | null
+  platen_diameter_inches?: string | null
+  platen_diameter_mm?: string | null
+  // Motor and power specifications
+  motor_power_hp?: string | null
+  motor_speed_range_rpm?: string | null
+  speed_control_type?: string | null
+  electrical_specification?: string | null
+  // Force control specifications
+  force_control_type?: string | null
+  force_range_per_sample_n?: string | null
+  force_resolution_n?: string | null
+  number_of_pistons?: number | null
+  independent_force_control?: boolean | null
+  // Programmable cycle specifications
+  programmable_cycles?: boolean | null
+  number_of_programmable_steps?: number | null
+  cycle_control_type?: string | null
+  compatible_base_models?: string | null
+  // Vibratory polishing specifications
+  vibration_frequency_hz?: string | null
+  vibration_amplitude_mm?: string | null
+  bowl_capacity_liters?: string | null
+  bowl_capacity_gallons?: string | null
+  bowl_material?: string | null
+  sample_capacity?: number | null
+  // Controlled removal specifications
+  removal_rate_control?: string | null
+  removal_rate_range_microns_per_min?: string | null
+  thickness_measurement_capability?: boolean | null
+  thickness_measurement_accuracy_microns?: string | null
+  parallelism_control?: boolean | null
+  parallelism_tolerance_microns?: string | null
+  // Hand/belt grinder specifications
+  belt_size_inches?: string | null
+  belt_size_mm?: string | null
+  belt_speed_range_sfpm?: string | null
+  belt_speed_range_mps?: string | null
+  belt_type?: string | null
+  work_rest_included?: boolean | null
+  // Cooling and fluid specifications
+  cooling_system_type?: string | null
+  fluid_dispenser_included?: boolean | null
+  fluid_dispenser_type?: string | null
+  fluid_dispenser_capacity_ml?: string | null
+  // Sample holder and fixture specifications
+  sample_holder_options?: string | null
+  fixture_included?: boolean | null
+  fixture_capacity?: number | null
+  // Dimensions and weight
+  weight_lbs?: string | null
+  dimensions_inches?: Record<string, number> | null
+  // Optional accessories
+  optional_accessories?: Array<Record<string, any>> | null
   created_at?: string
   updated_at?: string
 }
@@ -534,6 +673,21 @@ export type ConsumableWithDetails = Consumable & {
   etchants?: ConsumableEtchants | null
   cleaning?: ConsumableCleaning | null
   hardness_testing?: ConsumableHardnessTesting | null
+}
+
+export interface CategoryMetadata {
+  id: string
+  entity_type: 'equipment' | 'consumables'
+  category_key: string
+  category_label: string
+  display_order?: number | null
+  description?: string | null
+  cover_image_url?: string | null
+  meta_title?: string | null
+  meta_description?: string | null
+  is_active?: boolean | null
+  created_at?: string
+  updated_at?: string
 }
 
 export interface SubcategoryMetadata {

@@ -56,28 +56,28 @@ const categoryTechnicalContent: Record<string, {
 }> = {
   'mounting': {
     heroHeadline: 'Mounting Equipment',
-    heroDescription: 'Compression and castable mounting presses for embedding metallographic samples in resin. Supports hot compression mounting (150-200°C, up to 4000 PSI) and cold castable mounting (room temperature, vacuum/pressure options).',
+    heroDescription: 'Compression mounting presses and castable mounting systems for embedding metallographic samples in resin. Supports hot compression mounting (150-200°C, up to 4000 PSI) and cold castable mounting (room temperature, vacuum/pressure options).',
     useCases: [
       { title: 'Compression Mounting', description: 'Hot mounting at 150-200°C under 2000-4000 PSI pressure. Used for metals, ceramics, and high-volume production. Provides excellent edge retention and dimensional stability.', anchor: 'compression-mounting' },
       { title: 'Castable Mounting', description: 'Room temperature mounting using epoxy or acrylic resins. Required for heat-sensitive materials (polymers, electronic components, low-melting alloys). Vacuum systems remove air bubbles.', anchor: 'castable-mounting' },
       { title: 'Pressure Mounting', description: 'Castable mounting with applied pressure (up to 60 PSI) to improve resin penetration and reduce porosity. Suitable for porous materials and complex geometries.', anchor: 'castable-mounting' },
       { title: 'UV Curing Systems', description: 'Fast-curing mounting systems using UV-curable resins. Curing times of 5-15 minutes. Ideal for rapid turnaround and small sample batches.', anchor: 'castable-mounting' },
     ],
-    processDescription: 'Mounting embeds specimens in thermosetting or castable resins to create standardized, handleable samples. Compression mounting uses heat (150-200°C) and pressure (2000-4000 PSI) for rapid curing (5-10 minutes). Castable mounting cures at room temperature over 4-24 hours. Selection depends on material thermal sensitivity, sample geometry, throughput requirements, and edge retention needs.',
+    processDescription: 'Mounting embeds specimens in thermosetting or castable resins to create standardized, handleable samples. Compression mounting uses heat (150-200°C) and pressure (2000-4000 PSI) for rapid curing (typically 5-15 minutes). UV curing systems offer similar speed (5-15 minutes) using UV-curable resins. Traditional castable mounting cures at room temperature over 4-24 hours. Selection depends on material thermal sensitivity, sample geometry, throughput requirements, and edge retention needs.',
     keySpecifications: [
       'Pressure range: 0-4000 PSI (compression) or 0-60 PSI (castable pressure)',
       'Temperature range: 20-200°C (compression heating)',
       'Chamber sizes: 25mm to 50mm diameter typical',
-      'Curing time: 5-10 min (compression) or 4-24 hours (castable)',
+      'Curing time: 5-15 min (compression/UV curing) or 4-24 hours (traditional castable)',
       'Vacuum capability: 10-50 mbar for bubble removal',
     ],
     selectionConsiderations: [
       { title: 'Material Thermal Sensitivity', description: 'Heat-sensitive materials (polymers, electronics, low-melting alloys) require castable mounting. Metals and ceramics can use compression mounting for faster turnaround.' },
       { title: 'Sample Geometry', description: 'Irregular shapes and porous materials benefit from vacuum castable mounting. Standard shapes work well with compression mounting.' },
-      { title: 'Throughput Requirements', description: 'Compression mounting (5-10 min) suits high-volume labs. Castable mounting (4-24 hours) works for low-volume or batch processing.' },
+      { title: 'Throughput Requirements', description: 'Compression mounting typically takes 5-15 minutes per cycle. UV curing systems (5-15 minutes) offer similar speed to compression mounting. Traditional castable mounting (4-24 hours) is slower but suitable for batch processing. Choose based on your daily sample volume and turnaround needs.' },
     ],
     faqs: [
-      { question: 'When should I choose compression mounting over castable mounting?', answer: 'Choose compression mounting for metals, ceramics, and high-volume production where fast turnaround (5-10 minutes) is important. Compression mounting provides superior edge retention and dimensional stability. Use castable mounting for heat-sensitive materials (polymers, electronics, low-melting alloys) or when you need room-temperature processing. Castable mounting takes 4-24 hours but prevents thermal damage to sensitive samples.' },
+      { question: 'When should I choose compression mounting over castable mounting?', answer: 'Choose compression mounting for metals, ceramics, and high-volume production where fast turnaround (typically 5-15 minutes) is important. Compression mounting provides superior edge retention and dimensional stability. UV curing systems offer similar speed (5-15 minutes) for heat-sensitive materials. Traditional castable mounting (4-24 hours) is slower but prevents thermal damage to very sensitive samples and works well for batch processing.' },
       { question: 'Why is pressure important in mounting equipment?', answer: 'Pressure ensures proper resin penetration and eliminates voids. Compression mounting uses 2000-4000 PSI to force resin into sample pores and create dense mounts with excellent edge retention. Castable pressure mounting (up to 60 PSI) improves resin penetration for porous materials. Higher pressure in compression mounting also reduces curing time and improves dimensional stability, which is critical for quantitative measurements.' },
       { question: 'Do I need vacuum capability for castable mounting?', answer: 'Vacuum is essential for castable mounting when working with porous materials, irregular geometries, or when air bubbles would compromise mount quality. Vacuum removes trapped air (10-50 mbar) before resin cures, preventing voids that can cause edge chipping during grinding. For dense, non-porous samples with simple geometries, vacuum may not be necessary, but it generally improves mount quality and reduces failures.' },
     ],
@@ -88,7 +88,7 @@ const categoryTechnicalContent: Record<string, {
   },
   'sectioning': {
     heroHeadline: 'Sectioning Equipment',
-    heroDescription: 'Two distinct sectioning methods: precision wafering systems using diamond/CBN blades for minimal deformation, and abrasive sectioning systems using reinforced wheels for high-throughput cutting.',
+    heroDescription: 'Two distinct sectioning methods: precision wafering systems using diamond/CBN blades for minimal deformation, and abrasive sectioning systems using reinforced abrasive wheels for high-throughput cutting.',
     useCases: [
       { title: 'Precision Wafering', description: 'Diamond or CBN blades with controlled feed rates (0.001-0.1 mm/min). Minimal deformation (<10 μm), low heat generation. Used for delicate materials, small samples, and research applications. Gravity feed and table feed systems available.', anchor: 'precision-wafering' },
       { title: 'Manual Abrasive Sectioning', description: 'Reinforced abrasive wheels cutting at 1000-3000 RPM. Higher material removal rates, suitable for larger samples and production environments. Typical cut times: 30 seconds to 5 minutes. Manual systems require operator control of feed rate.', anchor: 'manual-abrasive' },
@@ -813,12 +813,12 @@ export default function EquipmentCategoryPage({ params }: { params: Promise<{ ca
           
           {/* Process Image */}
           {technicalContent.processImage && (
-            <div className="mt-8 relative w-full h-64 sm:h-80 rounded-lg overflow-hidden bg-gray-100">
+            <div className="mt-8 relative w-full h-80 sm:h-96 md:h-[500px] rounded-lg overflow-hidden p-2 sm:p-4">
               <Image
                 src={technicalContent.processImage}
                 alt={`${categoryLabel} process illustration`}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="100vw"
               />
             </div>

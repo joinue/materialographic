@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { Upload, X, Trash2, Plus, FolderOpen, Search, ImageIcon, Loader2, Star, Grid3x3, ChevronRight, Eye } from 'lucide-react'
+import { Upload, X, Trash2, Plus, FolderOpen, Search, ImageIcon, Loader2, Star, Grid3x3, ChevronRight, Eye, Video, Youtube } from 'lucide-react'
 import { createClient } from '@/lib/supabase-client'
 import { getEquipmentImageUrl } from '@/lib/storage'
 import LoadingSpinner from '@/components/LoadingSpinner'
@@ -11,6 +11,7 @@ interface ImageItem {
   url: string
   alt?: string
   caption?: string
+  mediaType?: 'image' | 'video'
 }
 
 interface EquipmentImageManagerProps {
@@ -49,8 +50,11 @@ export default function EquipmentImageManager({
   const [selectedFolder, setSelectedFolder] = useState<string>('equipment')
   const [folders, setFolders] = useState<string[]>([])
   const [previewImage, setPreviewImage] = useState<StorageFile | null>(null)
+  const [showVideoInput, setShowVideoInput] = useState(false)
+  const [videoUrl, setVideoUrl] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
   const additionalFileInputRef = useRef<HTMLInputElement>(null)
+  const videoFileInputRef = useRef<HTMLInputElement>(null)
 
   // Generate storage path based on equipment info
   const getStoragePath = (filename: string): string => {
@@ -139,6 +143,19 @@ export default function EquipmentImageManager({
     }
   }
 
+  // Helper function to detect if URL is a video
+  const isVideoUrl = (url: string): boolean => {
+    if (!url) return false
+    return url.includes('youtube.com') || url.includes('youtu.be') || url.includes('.mp4') || url.includes('.webm') || url.includes('.mov')
+  }
+
+  // Helper function to extract YouTube video ID
+  const getYouTubeVideoId = (url: string): string | null => {
+    if (!url) return null
+    const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)
+    return match ? match[1] : null
+  }
+
   // Upload image to storage
   const handleImageUpload = async (file: File, isPrimary: boolean = false) => {
     if (!file.type.startsWith('image/')) {
@@ -182,7 +199,7 @@ export default function EquipmentImageManager({
       } else {
         onAdditionalImagesChange([
           ...additionalImages,
-          { url: publicUrl, alt: '', caption: '' }
+          { url: publicUrl, alt: '', caption: '', mediaType: 'image' }
         ])
       }
 
@@ -232,6 +249,100 @@ export default function EquipmentImageManager({
   const handleRemoveFromForm = (index: number) => {
     const updated = additionalImages.filter((_, i) => i !== index)
     onAdditionalImagesChange(updated)
+  }
+
+  // Handle video URL addition (YouTube or direct video URL)
+  const handleAddVideoUrl = () => {
+    if (!videoUrl.trim()) {
+      alert('Please enter a video URL')
+      return
+    }
+
+    const isVideo = isVideoUrl(videoUrl)
+    if (!isVideo) {
+      alert('Please enter a valid video URL (YouTube or direct video file)')
+      return
+    }
+
+    onAdditionalImagesChange([
+      ...additionalImages,
+      { url: videoUrl.trim(), alt: '', caption: '', mediaType: 'video' }
+    ])
+    setVideoUrl('')
+    setShowVideoInput(false)
+  }
+
+  // Upload video file to storage
+  const handleVideoUpload = async (file: File) => {
+    if (!file.type.startsWith('video/')) {
+      alert('Please select a video file')
+      return
+    }
+
+    if (file.size > 100 * 1024 * 1024) {
+      alert('Video size must be less than 100MB')
+      return
+    }
+
+    setUploading(true)
+    try {
+      const supabase = createClient()
+      
+      const { data: { user }, error: authError } = await supabase.auth.getUser()
+      if (authError || !user) {
+        throw new Error('You must be logged in to upload videos')
+      }
+
+      // Generate storage path for videos (similar to images but in videos bucket)
+      const sanitize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      
+      let path = 'equipment'
+      if (category) {
+        path += `/${sanitize(category)}`
+      }
+      if (subcategory) {
+        path += `/${sanitize(subcategory)}`
+      }
+      if (itemSlug || itemId) {
+        const itemName = itemSlug || itemId?.toLowerCase() || 'unknown'
+        path += `/${sanitize(itemName)}`
+      }
+      
+      const timestamp = Date.now()
+      const random = Math.random().toString(36).substring(7)
+      const ext = file.name.split('.').pop()?.toLowerCase() || 'mp4'
+      const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase()
+      const storagePath = `${path}/${baseName}-${timestamp}-${random}.${ext}`
+
+      const { error: uploadError } = await supabase.storage
+        .from('videos')
+        .upload(storagePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('videos')
+        .getPublicUrl(storagePath)
+
+      onAdditionalImagesChange([
+        ...additionalImages,
+        { url: publicUrl, alt: '', caption: '', mediaType: 'video' }
+      ])
+
+      // Refresh storage files
+      await loadStorageFiles(selectedFolder)
+    } catch (error: any) {
+      console.error('Error uploading video:', error)
+      alert(error.message || 'Failed to upload video. Please try again.')
+    } finally {
+      setUploading(false)
+      if (videoFileInputRef.current) videoFileInputRef.current.value = ''
+    }
   }
 
   // Filter files by search and folder
@@ -334,18 +445,43 @@ export default function EquipmentImageManager({
           Additional Images ({additionalImages.length})
         </label>
 
-        {additionalImages.length > 0 ? (
+            {additionalImages.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-4">
-            {additionalImages.map((img, index) => (
+            {additionalImages.map((img, index) => {
+              const isVideo = img.mediaType === 'video' || isVideoUrl(img.url)
+              const videoId = isVideo ? getYouTubeVideoId(img.url) : null
+              
+              return (
               <div key={index} className="relative group">
                 <div className="relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
-                  <Image
-                    src={getEquipmentImageUrl(img.url) || img.url}
-                    alt={img.alt || `Image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
+                  {isVideo && videoId ? (
+                    <div className="relative w-full h-full">
+                      <img
+                        src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`}
+                        alt={img.alt || `Video ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  ) : isVideo ? (
+                    <video
+                      src={img.url}
+                      className="w-full h-full object-cover"
+                      muted
+                    />
+                  ) : (
+                    <Image
+                      src={getEquipmentImageUrl(img.url) || img.url}
+                      alt={img.alt || `Image ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  )}
                   <button
                     type="button"
                     onClick={() => handleRemoveFromForm(index)}
@@ -354,6 +490,11 @@ export default function EquipmentImageManager({
                   >
                     <X className="w-3 h-3" />
                   </button>
+                  {isVideo && (
+                    <div className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-semibold">
+                      VIDEO
+                    </div>
+                  )}
                 </div>
                 <div className="mt-2 space-y-1">
                   <input
@@ -380,7 +521,8 @@ export default function EquipmentImageManager({
                   />
                 </div>
               </div>
-            ))}
+            )
+            })}
           </div>
         ) : (
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center mb-4">
@@ -388,7 +530,7 @@ export default function EquipmentImageManager({
           </div>
         )}
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <input
             ref={additionalFileInputRef}
             type="file"
@@ -416,6 +558,41 @@ export default function EquipmentImageManager({
               </>
             )}
           </label>
+          <input
+            ref={videoFileInputRef}
+            type="file"
+            accept="video/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0]
+              if (file) handleVideoUpload(file)
+            }}
+            className="hidden"
+            id="video-upload"
+          />
+          <label
+            htmlFor="video-upload"
+            className="flex items-center gap-2 px-4 py-2 border-2 border-dashed border-blue-300 rounded-lg text-blue-700 hover:border-blue-500 hover:text-blue-600 cursor-pointer transition-colors"
+          >
+            {uploading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Uploading...
+              </>
+            ) : (
+              <>
+                <Video className="w-4 h-4" />
+                Upload Video
+              </>
+            )}
+          </label>
+          <button
+            type="button"
+            onClick={() => setShowVideoInput(!showVideoInput)}
+            className="flex items-center gap-2 px-4 py-2 border-2 border-dashed border-red-300 rounded-lg text-red-700 hover:border-red-500 hover:text-red-600 transition-colors"
+          >
+            <Youtube className="w-4 h-4" />
+            Add YouTube Video
+          </button>
           <button
             type="button"
             onClick={() => {
@@ -428,6 +605,39 @@ export default function EquipmentImageManager({
             Browse & Attach from Storage
           </button>
         </div>
+        {showVideoInput && (
+          <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              YouTube Video URL
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={videoUrl}
+                onChange={(e) => setVideoUrl(e.target.value)}
+                placeholder="https://www.youtube.com/watch?v=..."
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              />
+              <button
+                type="button"
+                onClick={handleAddVideoUrl}
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+              >
+                Add
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowVideoInput(false)
+                  setVideoUrl('')
+                }}
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Storage Browser Modal */}
@@ -567,9 +777,10 @@ export default function EquipmentImageManager({
                                 <button
                                   type="button"
                                   onClick={() => {
+                                    const isVideo = isVideoUrl(file.url)
                                     onAdditionalImagesChange([
                                       ...additionalImages,
-                                      { url: file.url, alt: '', caption: '' }
+                                      { url: file.url, alt: '', caption: '', mediaType: isVideo ? 'video' : 'image' }
                                     ])
                                   }}
                                   className="flex items-center gap-2 px-3 py-2 bg-primary-600 text-white rounded text-sm font-medium hover:bg-primary-700 transition-colors shadow-lg"
@@ -675,9 +886,10 @@ export default function EquipmentImageManager({
                       <button
                         type="button"
                         onClick={() => {
+                          const isVideo = isVideoUrl(previewImage.url)
                           onAdditionalImagesChange([
                             ...additionalImages,
-                            { url: previewImage.url, alt: '', caption: '' }
+                            { url: previewImage.url, alt: '', caption: '', mediaType: isVideo ? 'video' : 'image' }
                           ])
                           setPreviewImage(null)
                         }}

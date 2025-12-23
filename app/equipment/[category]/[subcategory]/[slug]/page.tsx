@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { use, useState, useEffect } from 'react'
+import { use, useState, useEffect, useRef } from 'react'
 import { createClient } from '@/lib/supabase-client'
 import { getSubcategoryMetadata } from '@/lib/supabase'
 import type { SubcategoryMetadata, Equipment, EquipmentWithDetails } from '@/lib/supabase'
-import { ChevronRight, ArrowLeft, X, ChevronLeft, ShoppingBag, ExternalLink, Package } from 'lucide-react'
-import { getEquipmentImageUrl } from '@/lib/storage'
+import { ChevronRight, ArrowLeft, X, ChevronLeft, ShoppingBag, ExternalLink, Package, Edit2, Save } from 'lucide-react'
+import { getEquipmentImageUrl, getBrochureUrl } from '@/lib/storage'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import { generateProductSchema } from '@/lib/product-schema'
 import YouTubeVideo from '@/components/YouTubeVideo'
@@ -17,6 +17,7 @@ import GrindingPolishingSpecs from '@/components/equipment/GrindingPolishingSpec
 import MicroscopySpecs from '@/components/equipment/MicroscopySpecs'
 import HardnessTestingSpecs from '@/components/equipment/HardnessTestingSpecs'
 import LabFurnitureSpecs from '@/components/equipment/LabFurnitureSpecs'
+import EquipmentImageManager from '@/components/equipment/EquipmentImageManager'
 
 const categoryLabels: Record<string, string> = {
   'sectioning': 'Sectioning',
@@ -108,6 +109,83 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
   const [loading, setLoading] = useState(true)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [editMode, setEditMode] = useState(false)
+  const [uploadingBrochure, setUploadingBrochure] = useState(false)
+  const [editBrochureUrl, setEditBrochureUrl] = useState<string>('')
+  const brochureFileInputRef = useRef<HTMLInputElement>(null)
+  const [uploadingConsumablesImage, setUploadingConsumablesImage] = useState(false)
+  const consumablesImageFileInputRef = useRef<HTMLInputElement>(null)
+  const [saving, setSaving] = useState(false)
+  const [editData, setEditData] = useState<Partial<EquipmentWithDetails>>({})
+  const [editImageUrl, setEditImageUrl] = useState<string>('')
+  const [editRelatedConsumablesImageUrl, setEditRelatedConsumablesImageUrl] = useState<string>('')
+  const [editImages, setEditImages] = useState<Array<{ url: string; alt?: string; caption?: string; mediaType?: 'image' | 'video' }>>([])
+
+  // Check if user is admin
+  useEffect(() => {
+    const checkAdmin = async () => {
+      try {
+        const supabase = createClient()
+        const { data: { user } } = await supabase.auth.getUser()
+        setIsAdmin(!!user)
+      } catch (error) {
+        setIsAdmin(false)
+      }
+    }
+    checkAdmin()
+  }, [])
+
+  // Set document title when equipment loads
+  useEffect(() => {
+    if (equipment) {
+      document.title = `${equipment.name} | Materialographic.com`
+    } else if (!loading) {
+      document.title = 'Equipment Not Found | Materialographic.com'
+    }
+  }, [equipment, loading])
+
+  // Initialize edit data when equipment loads or edit mode is enabled
+  useEffect(() => {
+    if (equipment && editMode) {
+      setEditData({
+        name: equipment.name,
+        description: equipment.description,
+        item_id: equipment.item_id,
+        related_consumables: equipment.related_consumables || [],
+        related_consumables_image_url: equipment.related_consumables_image_url || null,
+        sectioning: equipment.sectioning ? { ...equipment.sectioning } : undefined,
+        mounting: equipment.mounting ? { ...equipment.mounting } : undefined,
+        grinding_polishing: equipment.grinding_polishing ? { ...equipment.grinding_polishing } : undefined,
+        microscopy: equipment.microscopy ? { ...equipment.microscopy } : undefined,
+        hardness_testing: equipment.hardness_testing ? { ...equipment.hardness_testing } : undefined,
+        lab_furniture: equipment.lab_furniture ? { ...equipment.lab_furniture } : undefined,
+      })
+      setEditImageUrl(equipment.image_url || '')
+      setEditBrochureUrl(equipment.brochure_url || '')
+      setEditRelatedConsumablesImageUrl(equipment.related_consumables_image_url || '')
+      
+      // Parse images array
+      let imagesArray: any[] = []
+      if (equipment.images) {
+        if (Array.isArray(equipment.images)) {
+          imagesArray = equipment.images
+        } else if (typeof equipment.images === 'string') {
+          try {
+            imagesArray = JSON.parse(equipment.images)
+          } catch {
+            imagesArray = []
+          }
+        }
+      }
+      setEditImages(imagesArray.map((img: any) => ({
+        url: img.url || '',
+        alt: img.alt || '',
+        caption: img.caption || '',
+        mediaType: img.mediaType || (img.url?.includes('youtube.com') || img.url?.includes('youtu.be') ? 'video' : 'image')
+      })))
+    }
+  }, [equipment, editMode])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,12 +214,12 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
             .from('equipment')
             .select(`
               *,
-              equipment_sectioning (*),
-              equipment_mounting (*),
-              equipment_grinding_polishing (*),
-              equipment_microscopy (*),
-              equipment_hardness_testing (*),
-              equipment_lab_furniture (*)
+              equipment_sectioning!equipment_sectioning_equipment_id_fkey (*),
+              equipment_mounting!equipment_mounting_equipment_id_fkey (*),
+              equipment_grinding_polishing!equipment_grinding_polishing_equipment_id_fkey (*),
+              equipment_microscopy!equipment_microscopy_equipment_id_fkey (*),
+              equipment_hardness_testing!equipment_hardness_testing_equipment_id_fkey (*),
+              equipment_lab_furniture!equipment_lab_furniture_equipment_id_fkey (*)
             `)
             .ilike('item_id', slug.toUpperCase())
             .eq('status', 'active')
@@ -158,26 +236,39 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         }
 
         // Transform the data to match EquipmentWithDetails type
+        // Supabase returns joined data as arrays, but it might be empty or the relationship might not be set up correctly
         const equipmentWithDetails: EquipmentWithDetails = {
           ...data,
           sectioning: Array.isArray(data.equipment_sectioning) && data.equipment_sectioning.length > 0 
             ? data.equipment_sectioning[0] 
-            : null,
+            : (data.equipment_sectioning && !Array.isArray(data.equipment_sectioning)
+              ? data.equipment_sectioning  // Handle case where it's already an object
+              : null),
           mounting: Array.isArray(data.equipment_mounting) && data.equipment_mounting.length > 0 
             ? data.equipment_mounting[0] 
-            : null,
+            : (data.equipment_mounting && !Array.isArray(data.equipment_mounting)
+              ? data.equipment_mounting
+              : null),
           grinding_polishing: Array.isArray(data.equipment_grinding_polishing) && data.equipment_grinding_polishing.length > 0 
             ? data.equipment_grinding_polishing[0] 
-            : null,
+            : (data.equipment_grinding_polishing && !Array.isArray(data.equipment_grinding_polishing)
+              ? data.equipment_grinding_polishing
+              : null),
           microscopy: Array.isArray(data.equipment_microscopy) && data.equipment_microscopy.length > 0 
             ? data.equipment_microscopy[0] 
-            : null,
+            : (data.equipment_microscopy && !Array.isArray(data.equipment_microscopy)
+              ? data.equipment_microscopy
+              : null),
           hardness_testing: Array.isArray(data.equipment_hardness_testing) && data.equipment_hardness_testing.length > 0 
             ? data.equipment_hardness_testing[0] 
-            : null,
+            : (data.equipment_hardness_testing && !Array.isArray(data.equipment_hardness_testing)
+              ? data.equipment_hardness_testing
+              : null),
           lab_furniture: Array.isArray(data.equipment_lab_furniture) && data.equipment_lab_furniture.length > 0 
             ? data.equipment_lab_furniture[0] 
-            : null,
+            : (data.equipment_lab_furniture && !Array.isArray(data.equipment_lab_furniture)
+              ? data.equipment_lab_furniture
+              : null),
         }
 
         setEquipment(equipmentWithDetails)
@@ -194,7 +285,7 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         }
         setSubcategoryMeta(meta)
 
-        // Set consumables cover image path - explicit mapping to actual filenames
+        // Set consumables cover image - use database field first, then fallback to mapping
         const coverImageMap: Record<string, string> = {
           // Sectioning
           'precision-wafering': '/images/consumables/precision-wafering-cover.webp',
@@ -219,15 +310,20 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
         
         let coverImage: string | null = null
         
-        // Try subcategory first
-        if (equipmentWithDetails.subcategory) {
-          const subcategoryKey = equipmentWithDetails.subcategory.toLowerCase().replace(/\s+/g, '-')
-          coverImage = coverImageMap[subcategoryKey]
-        }
-        
-        // Fallback to category
-        if (!coverImage) {
-          coverImage = coverImageMap[category] || coverImageMap[category.replace(/\s+/g, '-')]
+        // First try database field
+        if (equipmentWithDetails.related_consumables_image_url) {
+          coverImage = equipmentWithDetails.related_consumables_image_url
+        } else {
+          // Fallback to mapping: try subcategory first
+          if (equipmentWithDetails.subcategory) {
+            const subcategoryKey = equipmentWithDetails.subcategory.toLowerCase().replace(/\s+/g, '-')
+            coverImage = coverImageMap[subcategoryKey]
+          }
+          
+          // Fallback to category
+          if (!coverImage) {
+            coverImage = coverImageMap[category] || coverImageMap[category.replace(/\s+/g, '-')]
+          }
         }
         
         if (coverImage) {
@@ -242,6 +338,742 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
 
     fetchData()
   }, [category, subcategory, slug])
+
+  // Handle save changes
+  const handleSave = async () => {
+    if (!equipment || !editData) return
+
+    setSaving(true)
+    try {
+      const supabase = createClient()
+      
+      // Update base equipment data
+      const { error: equipmentError } = await supabase
+        .from('equipment')
+        .update({
+          name: editData.name,
+          description: editData.description,
+          item_id: editData.item_id,
+          image_url: editImageUrl,
+          images: editImages.length > 0 ? editImages : null,
+          brochure_url: editBrochureUrl || null,
+          related_consumables: editData.related_consumables && editData.related_consumables.length > 0 
+            ? editData.related_consumables 
+            : null,
+          related_consumables_image_url: editRelatedConsumablesImageUrl || null,
+        })
+        .eq('id', equipment.id)
+
+      if (equipmentError) throw equipmentError
+
+      // Update category-specific specs
+      const categoryTableMap: Record<string, string> = {
+        'sectioning': 'equipment_sectioning',
+        'mounting': 'equipment_mounting',
+        'grinding-polishing': 'equipment_grinding_polishing',
+        'microscopy': 'equipment_microscopy',
+        'hardness-testing': 'equipment_hardness_testing',
+        'lab-furniture': 'equipment_lab_furniture',
+      }
+
+      const categoryTable = categoryTableMap[category]
+      if (categoryTable && editData[category as keyof typeof editData]) {
+        const categoryData = editData[category as keyof typeof editData]
+        if (categoryData && typeof categoryData === 'object' && 'equipment_id' in categoryData) {
+          // Remove equipment_id from update data
+          const { equipment_id, ...updateData } = categoryData as any
+          
+          // Ensure record exists
+          const { data: existing } = await supabase
+            .from(categoryTable)
+            .select('equipment_id')
+            .eq('equipment_id', equipment.id)
+            .single()
+
+          if (existing) {
+            const { error: categoryError } = await supabase
+              .from(categoryTable)
+              .update(updateData)
+              .eq('equipment_id', equipment.id)
+
+            if (categoryError) throw categoryError
+          } else {
+            const { error: categoryError } = await supabase
+              .from(categoryTable)
+              .insert({
+                equipment_id: equipment.id,
+                ...updateData,
+              })
+
+            if (categoryError) throw categoryError
+          }
+        }
+      }
+
+      // Update local state
+      setEquipment(prev => prev ? {
+        ...prev,
+        name: editData.name || prev.name,
+        description: editData.description || prev.description,
+        item_id: editData.item_id || prev.item_id,
+        image_url: editImageUrl || prev.image_url,
+        images: editImages.length > 0 ? editImages : prev.images,
+        brochure_url: editBrochureUrl || prev.brochure_url || null,
+        related_consumables: editData.related_consumables || prev.related_consumables || null,
+        related_consumables_image_url: editRelatedConsumablesImageUrl || prev.related_consumables_image_url || null,
+        sectioning: editData.sectioning || prev.sectioning,
+        mounting: editData.mounting || prev.mounting,
+        grinding_polishing: editData.grinding_polishing || prev.grinding_polishing,
+        microscopy: editData.microscopy || prev.microscopy,
+        hardness_testing: editData.hardness_testing || prev.hardness_testing,
+        lab_furniture: editData.lab_furniture || prev.lab_furniture,
+      } : null)
+      
+      // Update consumables cover image if changed
+      if (editRelatedConsumablesImageUrl) {
+        setConsumablesCoverImage(editRelatedConsumablesImageUrl)
+      } else {
+        // Recalculate fallback
+        const coverImageMap: Record<string, string> = {
+          'precision-wafering': '/images/consumables/precision-wafering-cover.webp',
+          'precision': '/images/consumables/precision-wafering-cover.webp',
+          'wafering': '/images/consumables/precision-wafering-cover.webp',
+          'abrasive-sectioning': '/images/consumables/abrasive-sectioning-cover.webp',
+          'automated': '/images/consumables/abrasive-sectioning-cover.webp',
+          'manual': '/images/consumables/abrasive-sectioning-cover.webp',
+          'compression-mounting': '/images/consumables/compression-mounting-cover.webp',
+          'compression': '/images/consumables/compression-mounting-cover.webp',
+          'castable-mounting': '/images/consumables/castable-mounting-cover.webp',
+          'castable': '/images/consumables/castable-mounting-cover.webp',
+          'grinding-polishing': '/images/consumables/grinding-cover.webp',
+          'grinding': '/images/consumables/grinding-cover.webp',
+          'polishing': '/images/consumables/polishing-cover.webp',
+          'hardness-testing': '/images/consumables/hardness-testing-cover.webp',
+          'hardness': '/images/consumables/hardness-testing-cover.webp',
+        }
+        let fallbackImage: string | null = null
+        if (equipment?.subcategory) {
+          const subcategoryKey = equipment.subcategory.toLowerCase().replace(/\s+/g, '-')
+          fallbackImage = coverImageMap[subcategoryKey]
+        }
+        if (!fallbackImage) {
+          fallbackImage = coverImageMap[category] || coverImageMap[category.replace(/\s+/g, '-')]
+        }
+        setConsumablesCoverImage(fallbackImage)
+      }
+
+      setEditMode(false)
+    } catch (error: any) {
+      console.error('Error saving equipment:', error)
+      alert('Failed to save changes: ' + (error.message || 'Unknown error'))
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  // Handle specs change
+  const handleSpecsChange = (category: string, data: any) => {
+    setEditData(prev => ({
+      ...prev,
+      [category]: data,
+    }))
+  }
+
+  // Handle cancel edit
+  const handleCancelEdit = () => {
+    setEditMode(false)
+    setEditData({})
+    setEditBrochureUrl('')
+    setEditRelatedConsumablesImageUrl('')
+  }
+
+  // Handle brochure upload
+  const handleBrochureUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    // Validate file type
+    if (file.type !== 'application/pdf') {
+      alert('Please select a PDF file')
+      return
+    }
+
+    // Validate file size (max 50MB)
+    if (file.size > 50 * 1024 * 1024) {
+      alert('Brochure size must be less than 50MB')
+      return
+    }
+
+    setUploadingBrochure(true)
+
+    try {
+      const supabase = createClient()
+      
+      // Verify user is authenticated
+      const { data: { user }, error: authError } = await supabase.auth.getUser()
+      if (authError || !user) {
+        throw new Error('You must be logged in to upload brochures')
+      }
+
+      if (!equipment) throw new Error('Equipment not found')
+
+      // Generate storage path - use item_id for cleaner structure
+      const sanitize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      
+      // Use item_id as the filename for cleaner URLs
+      const itemId = equipment.item_id?.toLowerCase() || equipment.slug || 'unknown'
+      const cleanItemId = sanitize(itemId)
+      const filePath = `${cleanItemId}.pdf`
+
+      // Check if file already exists and delete it first (upsert behavior)
+      const { data: existingFiles } = await supabase.storage
+        .from('brochures')
+        .list('', {
+          search: cleanItemId
+        })
+      
+      if (existingFiles && existingFiles.length > 0) {
+        // Delete existing brochure with same item_id
+        const filesToDelete = existingFiles
+          .filter(f => f.name.startsWith(cleanItemId) && f.name.endsWith('.pdf'))
+          .map(f => f.name)
+        
+        if (filesToDelete.length > 0) {
+          await supabase.storage
+            .from('brochures')
+            .remove(filesToDelete)
+        }
+      }
+
+      // Upload to Supabase storage
+      const { error: uploadError } = await supabase.storage
+        .from('brochures')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: true
+        })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('brochures')
+        .getPublicUrl(filePath)
+
+      setEditBrochureUrl(publicUrl)
+    } catch (error: any) {
+      console.error('Error uploading brochure:', error)
+      alert(error.message || 'Failed to upload brochure. Please try again.')
+    } finally {
+      setUploadingBrochure(false)
+      if (brochureFileInputRef.current) {
+        brochureFileInputRef.current.value = ''
+      }
+    }
+  }
+
+  // Handle consumables image upload
+  const handleConsumablesImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      alert('Please select an image file')
+      return
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image size must be less than 5MB')
+      return
+    }
+
+    setUploadingConsumablesImage(true)
+
+    try {
+      const supabase = createClient()
+      
+      // Verify user is authenticated
+      const { data: { user }, error: authError } = await supabase.auth.getUser()
+      if (authError || !user) {
+        throw new Error('You must be logged in to upload images')
+      }
+
+      if (!equipment) throw new Error('Equipment not found')
+
+      // Generate storage path
+      const sanitize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      const itemId = equipment.item_id?.toLowerCase() || equipment.slug || 'unknown'
+      const cleanItemId = sanitize(itemId)
+      const fileExt = file.name.split('.').pop() || 'webp'
+      const fileName = `${cleanItemId}-consumables-cover.${fileExt}`
+      const filePath = `consumables/${fileName}`
+
+      // Check if file already exists and delete it first (upsert behavior)
+      const { data: existingFiles } = await supabase.storage
+        .from('equipment-images')
+        .list('consumables', {
+          search: `${cleanItemId}-consumables-cover`
+        })
+      
+      if (existingFiles && existingFiles.length > 0) {
+        const filesToDelete = existingFiles
+          .filter(f => f.name.startsWith(`${cleanItemId}-consumables-cover`))
+          .map(f => `consumables/${f.name}`)
+        
+        if (filesToDelete.length > 0) {
+          await supabase.storage
+            .from('equipment-images')
+            .remove(filesToDelete)
+        }
+      }
+
+      // Upload to Supabase storage
+      const { error: uploadError } = await supabase.storage
+        .from('equipment-images')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: true
+        })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('equipment-images')
+        .getPublicUrl(filePath)
+
+      setEditRelatedConsumablesImageUrl(publicUrl)
+      setConsumablesCoverImage(publicUrl)
+    } catch (error: any) {
+      console.error('Error uploading consumables image:', error)
+      alert(error.message || 'Failed to upload image. Please try again.')
+    } finally {
+      setUploadingConsumablesImage(false)
+      if (consumablesImageFileInputRef.current) {
+        consumablesImageFileInputRef.current.value = ''
+      }
+    }
+  }
+
+  // Handle consumables image delete
+  const handleConsumablesImageDelete = async () => {
+    if (!editRelatedConsumablesImageUrl && !equipment?.related_consumables_image_url) return
+
+    if (!confirm('Are you sure you want to remove this image? It will revert to the default.')) return
+
+    try {
+      const supabase = createClient()
+      const imageUrl = editRelatedConsumablesImageUrl || equipment?.related_consumables_image_url
+      
+      if (imageUrl) {
+        // Extract file path from URL
+        try {
+          const url = new URL(imageUrl)
+          const pathParts = url.pathname.split('/')
+          const bucketIndex = pathParts.findIndex(part => part === 'equipment-images')
+          if (bucketIndex !== -1) {
+            const filePath = pathParts.slice(bucketIndex + 1).join('/')
+            
+            // Delete from storage
+            const { error: deleteError } = await supabase.storage
+              .from('equipment-images')
+              .remove([filePath])
+
+            if (deleteError) {
+              console.warn('Error deleting image from storage:', deleteError)
+              // Continue anyway to clear the URL
+            }
+          }
+        } catch (e) {
+          // URL might not be a storage URL, continue to clear it
+          console.warn('Could not parse image URL for deletion:', e)
+        }
+      }
+
+      setEditRelatedConsumablesImageUrl('')
+      // Recalculate fallback
+      const coverImageMap: Record<string, string> = {
+        'precision-wafering': '/images/consumables/precision-wafering-cover.webp',
+        'precision': '/images/consumables/precision-wafering-cover.webp',
+        'wafering': '/images/consumables/precision-wafering-cover.webp',
+        'abrasive-sectioning': '/images/consumables/abrasive-sectioning-cover.webp',
+        'automated': '/images/consumables/abrasive-sectioning-cover.webp',
+        'manual': '/images/consumables/abrasive-sectioning-cover.webp',
+        'compression-mounting': '/images/consumables/compression-mounting-cover.webp',
+        'compression': '/images/consumables/compression-mounting-cover.webp',
+        'castable-mounting': '/images/consumables/castable-mounting-cover.webp',
+        'castable': '/images/consumables/castable-mounting-cover.webp',
+        'grinding-polishing': '/images/consumables/grinding-cover.webp',
+        'grinding': '/images/consumables/grinding-cover.webp',
+        'polishing': '/images/consumables/polishing-cover.webp',
+        'hardness-testing': '/images/consumables/hardness-testing-cover.webp',
+        'hardness': '/images/consumables/hardness-testing-cover.webp',
+      }
+      let fallbackImage: string | null = null
+      if (equipment?.subcategory) {
+        const subcategoryKey = equipment.subcategory.toLowerCase().replace(/\s+/g, '-')
+        fallbackImage = coverImageMap[subcategoryKey]
+      }
+      if (!fallbackImage) {
+        fallbackImage = coverImageMap[category] || coverImageMap[category.replace(/\s+/g, '-')]
+      }
+      setConsumablesCoverImage(fallbackImage)
+    } catch (error: any) {
+      console.error('Error deleting consumables image:', error)
+      alert(error.message || 'Failed to delete image. Please try again.')
+    }
+  }
+
+  // Handle brochure delete
+  const handleBrochureDelete = async () => {
+    if (!equipment?.brochure_url) return
+
+    if (!confirm('Are you sure you want to delete this brochure?')) return
+
+    try {
+      const supabase = createClient()
+      
+      // Extract file path from URL
+      const url = new URL(equipment.brochure_url)
+      const pathParts = url.pathname.split('/')
+      const bucketIndex = pathParts.findIndex(part => part === 'brochures')
+      if (bucketIndex === -1) {
+        throw new Error('Invalid brochure URL')
+      }
+      const filePath = pathParts.slice(bucketIndex + 1).join('/')
+
+      // Delete from storage
+      const { error: deleteError } = await supabase.storage
+        .from('brochures')
+        .remove([filePath])
+
+      if (deleteError) {
+        throw deleteError
+      }
+
+      setEditBrochureUrl('')
+    } catch (error: any) {
+      console.error('Error deleting brochure:', error)
+      alert(error.message || 'Failed to delete brochure. Please try again.')
+    }
+  }
+
+  // Render media gallery (images and videos)
+  const renderMediaGallery = () => {
+    if (!equipment) return null
+    
+    // Helper function to detect if URL is a video
+    const isVideoUrl = (url: string, mediaType?: string): boolean => {
+      if (!url) return false
+      return mediaType === 'video' || url.includes('youtube.com') || url.includes('youtu.be') || url.includes('.mp4') || url.includes('.webm') || url.includes('.mov')
+    }
+    
+    // Helper function to extract YouTube video ID
+    const getYouTubeVideoId = (url: string): string | null => {
+      if (!url) return null
+      const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)
+      return match ? match[1] : null
+    }
+    
+    // Get all images and videos: primary image_url + additional images array
+    const allMedia: Array<{ url: string; alt?: string; caption?: string; mediaType?: 'image' | 'video'; videoId?: string | null }> = []
+    
+    // Normalize URLs for comparison (remove query params, trailing slashes, protocol)
+    const normalizeUrl = (url: string) => {
+      if (!url) return ''
+      // Remove protocol, query params, trailing slashes, and convert to lowercase
+      return url
+        .replace(/^https?:\/\//, '')
+        .split('?')[0]
+        .replace(/\/$/, '')
+        .toLowerCase()
+    }
+    
+    // Add additional images from images array first
+    // Handle both array and string (JSON) formats
+    let imagesArray: any[] = []
+    if (equipment.images) {
+      if (Array.isArray(equipment.images)) {
+        imagesArray = equipment.images
+      } else {
+        // Handle case where images might be a string (from database)
+        const imagesValue = equipment.images as unknown
+        if (typeof imagesValue === 'string') {
+          try {
+            imagesArray = JSON.parse(imagesValue)
+          } catch {
+            // If parsing fails, try to treat as single URL
+            if (imagesValue.trim()) {
+              imagesArray = [{ url: imagesValue }]
+            }
+          }
+        }
+      }
+    }
+    
+    // Normalize primary image URL for comparison
+    const primaryUrlNormalized = equipment.image_url ? normalizeUrl(equipment.image_url) : ''
+    
+    // Track URLs we've already added to avoid duplicates
+    const addedUrls = new Set<string>()
+    
+    // Add primary image/video if it exists (and it's not already in the images array)
+    if (equipment.image_url) {
+      const primaryNormalized = normalizeUrl(equipment.image_url)
+      // Check if primary image is already in the images array
+      const isInArray = imagesArray.some((img: any) => {
+        if (!img || !img.url) return false
+        return normalizeUrl(img.url) === primaryNormalized
+      })
+      
+      // Only add primary if it's not already in the array
+      if (!isInArray) {
+        const isVideo = isVideoUrl(equipment.image_url)
+        const videoId = isVideo ? getYouTubeVideoId(equipment.image_url) : null
+        allMedia.push({ 
+          url: equipment.image_url, 
+          alt: equipment.name,
+          caption: 'Primary ' + (isVideo ? 'video' : 'image'),
+          mediaType: isVideo ? 'video' : 'image',
+          videoId: videoId
+        })
+        addedUrls.add(primaryNormalized)
+      }
+    }
+    
+    // Add images from array, skipping duplicates
+    if (imagesArray.length > 0) {
+      imagesArray.forEach((img: any) => {
+        if (img && img.url) {
+          const imgUrlNormalized = normalizeUrl(img.url)
+          
+          // Skip if it's the same as primary (already added) or if we've already added it
+          if (imgUrlNormalized && imgUrlNormalized !== primaryUrlNormalized && !addedUrls.has(imgUrlNormalized)) {
+            const isVideo = img.mediaType === 'video' || isVideoUrl(img.url, img.mediaType)
+            const videoId = isVideo ? getYouTubeVideoId(img.url) : null
+            allMedia.push({
+              url: img.url,
+              alt: img.alt || equipment.name,
+              caption: img.caption,
+              mediaType: isVideo ? 'video' : 'image',
+              videoId: videoId
+            })
+            addedUrls.add(imgUrlNormalized)
+          }
+        }
+      })
+    }
+    
+    
+    if (allMedia.length === 0) return null
+    
+    // Ensure selectedImageIndex is within bounds
+    const safeIndex = Math.min(Math.max(0, selectedImageIndex), allMedia.length - 1)
+    const currentMedia = allMedia[safeIndex] || allMedia[0]
+    
+    return (
+      <>
+        <div 
+          className="relative w-full h-96 rounded-lg overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 mb-4 cursor-pointer group"
+          onClick={() => !currentMedia.mediaType || currentMedia.mediaType === 'image' ? setLightboxOpen(true) : null}
+        >
+          {currentMedia.mediaType === 'video' && currentMedia.videoId ? (
+            <div className="relative w-full h-full">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                src={`https://www.youtube.com/embed/${currentMedia.videoId}`}
+                title={currentMedia.alt || equipment.name}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          ) : currentMedia.mediaType === 'video' ? (
+            <video
+              src={currentMedia.url}
+              controls
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <Image
+              src={getEquipmentImageUrl(currentMedia.url) || currentMedia.url}
+              alt={currentMedia.alt || equipment.name}
+              fill
+              className="object-contain group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          )}
+          {allMedia.length > 1 && (
+            <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
+              {safeIndex + 1} / {allMedia.length}
+            </div>
+          )}
+          {currentMedia.caption && (
+            <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm max-w-xs">
+              {currentMedia.caption}
+            </div>
+          )}
+          {currentMedia.mediaType === 'video' && (
+            <div className="absolute top-4 left-4 bg-red-600 bg-opacity-75 text-white px-3 py-1 rounded text-xs font-semibold">
+              VIDEO
+            </div>
+          )}
+        </div>
+        
+        {/* Thumbnail Gallery */}
+        {allMedia.length > 1 && (
+          <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+            {allMedia.map((media, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => {
+                  setSelectedImageIndex(index)
+                  setLightboxOpen(false) // Close lightbox if open
+                }}
+                className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all bg-gradient-to-br from-gray-50 to-gray-100 ${
+                  safeIndex === index
+                    ? 'border-primary-600 ring-2 ring-primary-200'
+                    : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                {media.mediaType === 'video' && media.videoId ? (
+                  <div className="relative w-full h-full">
+                    <img
+                      src={`https://img.youtube.com/vi/${media.videoId}/mqdefault.jpg`}
+                      alt={media.alt || `${equipment.name} - Video ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                      <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                ) : media.mediaType === 'video' ? (
+                  <video
+                    src={media.url}
+                    className="w-full h-full object-cover"
+                    muted
+                  />
+                ) : (
+                  <Image
+                    src={getEquipmentImageUrl(media.url) || media.url}
+                    alt={media.alt || `${equipment.name} - Image ${index + 1}`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 25vw, 16vw"
+                  />
+                )}
+                {media.mediaType === 'video' && (
+                  <div className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1 rounded">
+                    VIDEO
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
+        
+        {/* Show message if only one media item */}
+        {allMedia.length === 1 && currentMedia.mediaType === 'image' && (
+          <p className="text-xs text-gray-500 mt-2 text-center">
+            Click image to view full size
+          </p>
+        )}
+        
+        {/* Lightbox Modal */}
+        {lightboxOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            
+            {allMedia.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setSelectedImageIndex((prev) => 
+                      prev > 0 ? prev - 1 : allMedia.length - 1
+                    )
+                  }}
+                  className="absolute left-4 text-white hover:text-gray-300 z-10"
+                >
+                  <ChevronLeft className="w-10 h-10" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setSelectedImageIndex((prev) => 
+                      prev < allMedia.length - 1 ? prev + 1 : 0
+                    )
+                  }}
+                  className="absolute right-4 text-white hover:text-gray-300 z-10"
+                >
+                  <ChevronRight className="w-10 h-10" />
+                </button>
+              </>
+            )}
+            
+            <div 
+              className="relative max-w-7xl max-h-full w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full bg-gradient-to-br from-gray-50 to-gray-100">
+                {currentMedia.mediaType === 'video' && currentMedia.videoId ? (
+                  <div className="relative w-full h-full">
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full rounded-lg"
+                      src={`https://www.youtube.com/embed/${currentMedia.videoId}`}
+                      title={currentMedia.alt || equipment.name}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : currentMedia.mediaType === 'video' ? (
+                  <video
+                    src={currentMedia.url}
+                    controls
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={getEquipmentImageUrl(currentMedia.url) || currentMedia.url}
+                    alt={currentMedia.alt || equipment.name}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                  />
+                )}
+                {currentMedia.caption && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 text-center">
+                    {currentMedia.caption}
+                  </div>
+                )}
+                {allMedia.length > 1 && (
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded">
+                    {safeIndex + 1} / {allMedia.length}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    )
+  }
 
   const categoryLabel = categoryLabels[category] || category
   let subcategoryLabel = subcategoryMeta?.subcategory_label || subcategory
@@ -314,250 +1146,136 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
       <div className="py-4 sm:py-6 md:py-12">
         <div className="container-custom">
           {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link 
-            href="/equipment"
-            className="hover:text-primary-600 transition-colors"
-          >
-            Equipment
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link 
-            href={`/equipment/${category}`}
-            className="hover:text-primary-600 transition-colors"
-          >
-            {categoryLabel}
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link 
-            href={`/equipment/${category}/${subcategory}`}
-            className="hover:text-primary-600 transition-colors"
-          >
-            {subcategoryLabel}
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-gray-900">{equipment.name}</span>
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <Link 
+              href="/equipment"
+              className="hover:text-primary-600 transition-colors"
+            >
+              Equipment
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link 
+              href={`/equipment/${category}`}
+              className="hover:text-primary-600 transition-colors"
+            >
+              {categoryLabel}
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link 
+              href={`/equipment/${category}/${subcategory}`}
+              className="hover:text-primary-600 transition-colors"
+            >
+              {subcategoryLabel}
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900">{equipment.name}</span>
+          </div>
+          
+          {isAdmin && (
+            <div className="flex items-center gap-2">
+              {editMode ? (
+                <>
+                  <button
+                    onClick={handleSave}
+                    disabled={saving}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Save className="w-4 h-4" />
+                    {saving ? 'Saving...' : 'Save'}
+                  </button>
+                  <button
+                    onClick={handleCancelEdit}
+                    disabled={saving}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <X className="w-4 h-4" />
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setEditMode(true)}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <Edit2 className="w-4 h-4" />
+                  Edit
+                </button>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Image Section */}
           <div>
-            {/* Main Image */}
-            {(() => {
-              // Get all images: primary image_url + additional images array
-              const allImages: Array<{ url: string; alt?: string; caption?: string }> = []
-              
-              // Normalize URLs for comparison (remove query params, trailing slashes, protocol)
-              const normalizeUrl = (url: string) => {
-                if (!url) return ''
-                // Remove protocol, query params, trailing slashes, and convert to lowercase
-                return url
-                  .replace(/^https?:\/\//, '')
-                  .split('?')[0]
-                  .replace(/\/$/, '')
-                  .toLowerCase()
-              }
-              
-              // Add primary image if it exists
-              if (equipment.image_url) {
-                allImages.push({ 
-                  url: equipment.image_url, 
-                  alt: equipment.name,
-                  caption: 'Primary image'
-                })
-              }
-              
-              // Add additional images from images array
-              // Handle both array and string (JSON) formats
-              let imagesArray: any[] = []
-              if (equipment.images) {
-                if (Array.isArray(equipment.images)) {
-                  imagesArray = equipment.images
-                } else {
-                  // Handle case where images might be a string (from database)
-                  const imagesValue = equipment.images as unknown
-                  if (typeof imagesValue === 'string') {
-                    try {
-                      imagesArray = JSON.parse(imagesValue)
-                    } catch {
-                      // If parsing fails, try to treat as single URL
-                      if (imagesValue.trim()) {
-                        imagesArray = [{ url: imagesValue }]
-                      }
-                    }
-                  }
-                }
-              }
-              
-              if (imagesArray.length > 0) {
-                const primaryUrlNormalized = equipment.image_url ? normalizeUrl(equipment.image_url) : ''
-                
-                imagesArray.forEach((img: any) => {
-                  if (img && img.url) {
-                    // Only add if it's different from the primary image (normalized comparison)
-                    const imgUrlNormalized = normalizeUrl(img.url)
-                    if (imgUrlNormalized && imgUrlNormalized !== primaryUrlNormalized) {
-                      allImages.push({
-                        url: img.url,
-                        alt: img.alt || equipment.name,
-                        caption: img.caption
-                      })
-                    }
-                  }
-                })
-              }
-              
-              
-              if (allImages.length === 0) return null
-              
-              // Ensure selectedImageIndex is within bounds
-              const safeIndex = Math.min(Math.max(0, selectedImageIndex), allImages.length - 1)
-              const currentImage = allImages[safeIndex] || allImages[0]
-              
-              return (
-                <>
-                  <div 
-                    className="relative w-full h-96 rounded-lg overflow-hidden bg-transparent mb-4 cursor-pointer group"
-                    onClick={() => setLightboxOpen(true)}
-                  >
-                    <Image
-                      src={getEquipmentImageUrl(currentImage.url) || currentImage.url}
-                      alt={currentImage.alt || equipment.name}
-                      fill
-                      className="object-contain group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    {allImages.length > 1 && (
-                      <div className="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm">
-                        {safeIndex + 1} / {allImages.length}
-                      </div>
-                    )}
-                    {currentImage.caption && (
-                      <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded text-sm max-w-xs">
-                        {currentImage.caption}
-                      </div>
-                    )}
-                  </div>
-                  
-                  {/* Thumbnail Gallery */}
-                  {allImages.length > 1 && (
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                      {allImages.map((img, index) => (
-                        <button
-                          key={index}
-                          type="button"
-                          onClick={() => {
-                            setSelectedImageIndex(index)
-                            setLightboxOpen(false) // Close lightbox if open
-                          }}
-                          className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                            safeIndex === index
-                              ? 'border-primary-600 ring-2 ring-primary-200'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
-                        >
-                          <Image
-                            src={getEquipmentImageUrl(img.url) || img.url}
-                            alt={img.alt || `${equipment.name} - Image ${index + 1}`}
-                            fill
-                            className="object-contain"
-                            sizes="(max-width: 640px) 25vw, 16vw"
-                          />
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {/* Show message if only one image */}
-                  {allImages.length === 1 && (
-                    <p className="text-xs text-gray-500 mt-2 text-center">
-                      Click image to view full size
-                    </p>
-                  )}
-                  
-                  {/* Lightbox Modal */}
-                  {lightboxOpen && (
-                    <div 
-                      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-                      onClick={() => setLightboxOpen(false)}
-                    >
-                      <button
-                        onClick={() => setLightboxOpen(false)}
-                        className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
-                      >
-                        <X className="w-8 h-8" />
-                      </button>
-                      
-                      {allImages.length > 1 && (
-                        <>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              setSelectedImageIndex((prev) => 
-                                prev > 0 ? prev - 1 : allImages.length - 1
-                              )
-                            }}
-                            className="absolute left-4 text-white hover:text-gray-300 z-10"
-                          >
-                            <ChevronLeft className="w-10 h-10" />
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              setSelectedImageIndex((prev) => 
-                                prev < allImages.length - 1 ? prev + 1 : 0
-                              )
-                            }}
-                            className="absolute right-4 text-white hover:text-gray-300 z-10"
-                          >
-                            <ChevronRight className="w-10 h-10" />
-                          </button>
-                        </>
-                      )}
-                      
-                      <div 
-                        className="relative max-w-7xl max-h-full w-full h-full flex items-center justify-center"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={getEquipmentImageUrl(currentImage.url) || currentImage.url}
-                            alt={currentImage.alt || equipment.name}
-                            fill
-                            className="object-contain"
-                            sizes="100vw"
-                          />
-                          {currentImage.caption && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 text-center">
-                              {currentImage.caption}
-                            </div>
-                          )}
-                          {allImages.length > 1 && (
-                            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded">
-                              {safeIndex + 1} / {allImages.length}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )
-            })()}
+            {editMode ? (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900">Photos & Videos</h3>
+                <EquipmentImageManager
+                  primaryImageUrl={editImageUrl}
+                  additionalImages={editImages}
+                  onPrimaryImageChange={(url) => setEditImageUrl(url)}
+                  onAdditionalImagesChange={(images) => setEditImages(images)}
+                  category={category}
+                  subcategory={equipment.subcategory || undefined}
+                  itemId={equipment.item_id}
+                  itemSlug={equipment.slug || undefined}
+                />
+              </div>
+            ) : (
+              renderMediaGallery()
+            )}
           </div>
 
           {/* Details Section */}
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              {equipment.name}
-            </h1>
-            {equipment.item_id && (
-              <p className="text-sm text-gray-500 mb-4">Item ID: {equipment.item_id}</p>
-            )}
-            {equipment.description && (
-              <div className="prose prose-sm max-w-none mb-6">
-                <p className="text-gray-700 leading-relaxed">{equipment.description}</p>
-              </div>
+            {editMode ? (
+              <>
+                <input
+                  type="text"
+                  value={editData.name || ''}
+                  onChange={(e) => setEditData(prev => ({ ...prev, name: e.target.value }))}
+                  className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                  placeholder="Equipment Name"
+                />
+                {editData.item_id !== undefined && (
+                  <div className="mb-4">
+                    <label className="block text-xs font-medium text-gray-500 mb-1">Item ID</label>
+                    <input
+                      type="text"
+                      value={editData.item_id || ''}
+                      onChange={(e) => setEditData(prev => ({ ...prev, item_id: e.target.value }))}
+                      className="text-sm text-gray-500 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                      placeholder="Item ID"
+                    />
+                  </div>
+                )}
+                <div className="mb-6">
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Description</label>
+                  <textarea
+                    value={editData.description || ''}
+                    onChange={(e) => setEditData(prev => ({ ...prev, description: e.target.value }))}
+                    rows={6}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none text-gray-700 leading-relaxed"
+                    placeholder="Equipment description"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  {equipment.name}
+                </h1>
+                {equipment.item_id && (
+                  <p className="text-sm text-gray-500 mb-4">Item ID: {equipment.item_id}</p>
+                )}
+                {equipment.description && (
+                  <div className="prose prose-sm max-w-none mb-6">
+                    <p className="text-gray-700 leading-relaxed">{equipment.description}</p>
+                  </div>
+                )}
+              </>
             )}
 
             {/* NANO Base Requirement for FEMTO Equipment */}
@@ -605,14 +1323,6 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
               return null
             })()}
 
-            {/* Category-Specific Specifications */}
-            {category === 'sectioning' && <SectioningSpecs specs={equipment.sectioning} />}
-            {category === 'mounting' && <MountingSpecs specs={equipment.mounting} />}
-            {category === 'grinding-polishing' && <GrindingPolishingSpecs specs={equipment.grinding_polishing} />}
-            {category === 'microscopy' && <MicroscopySpecs specs={equipment.microscopy} />}
-            {category === 'hardness-testing' && <HardnessTestingSpecs specs={equipment.hardness_testing} />}
-            {category === 'lab-furniture' && <LabFurnitureSpecs specs={equipment.lab_furniture} />}
-
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -621,15 +1331,77 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
               >
                 Request Quote
               </Link>
-              {equipment.product_url && (
-                <Link
-                  href={equipment.product_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-center"
-                >
-                  View Product Page
-                </Link>
+              {editMode ? (
+                <div className="space-y-2">
+                  <input
+                    ref={brochureFileInputRef}
+                    type="file"
+                    accept=".pdf"
+                    onChange={handleBrochureUpload}
+                    className="hidden"
+                    id="brochure-upload"
+                  />
+                  {(editBrochureUrl || equipment.brochure_url) && (() => {
+                    const currentBrochureUrl = editBrochureUrl || equipment.brochure_url
+                    const brochureUrl = currentBrochureUrl ? getBrochureUrl(currentBrochureUrl) : null
+                    return brochureUrl ? (
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={brochureUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-secondary text-center inline-flex items-center justify-center gap-2"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          {editBrochureUrl !== equipment.brochure_url ? 'View New Brochure' : 'View Brochure'}
+                        </a>
+                        <label
+                          htmlFor="brochure-upload"
+                          className="btn-secondary text-center inline-flex items-center justify-center gap-2 cursor-pointer"
+                          style={{ pointerEvents: uploadingBrochure ? 'none' : 'auto', opacity: uploadingBrochure ? 0.6 : 1 }}
+                        >
+                          {uploadingBrochure ? 'Uploading...' : 'Change Brochure'}
+                        </label>
+                        <button
+                          onClick={handleBrochureDelete}
+                          className="btn-secondary text-center inline-flex items-center justify-center gap-2 text-red-600 hover:text-red-700"
+                          disabled={uploadingBrochure}
+                        >
+                          <X className="w-4 h-4" />
+                          Remove
+                        </button>
+                      </div>
+                    ) : null
+                  })()}
+                  {!editBrochureUrl && !equipment.brochure_url && (
+                    <label
+                      htmlFor="brochure-upload"
+                      className="btn-secondary text-center inline-flex items-center justify-center gap-2 cursor-pointer"
+                      style={{ pointerEvents: uploadingBrochure ? 'none' : 'auto', opacity: uploadingBrochure ? 0.6 : 1 }}
+                    >
+                      {uploadingBrochure ? 'Uploading...' : 'Add Brochure'}
+                    </label>
+                  )}
+                </div>
+              ) : (
+                equipment.brochure_url && (() => {
+                  const brochureUrl = getBrochureUrl(equipment.brochure_url)
+                  return brochureUrl ? (
+                    <a
+                      href={brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary text-center inline-flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Brochure
+                    </a>
+                  ) : null
+                })()
               )}
             </div>
           </div>
@@ -659,67 +1431,53 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
           </section>
         )}
 
-        {/* Material & Sample Suitability */}
-        {((equipment.suitable_for_material_types?.length ?? 0) > 0 || 
-          (equipment.suitable_for_hardness?.length ?? 0) > 0 || 
-          (equipment.suitable_for_sample_sizes?.length ?? 0) > 0) && (
-          <section className="mt-12 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Suitability</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {equipment.suitable_for_material_types && equipment.suitable_for_material_types.length > 0 && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-3">Material Types</h3>
-                  <ul className="space-y-2">
-                    {equipment.suitable_for_material_types.map((material, index) => (
-                      <li key={index} className="text-sm text-gray-700 flex items-center gap-2">
-                        <span className="text-primary-600">•</span>
-                        <span className="capitalize">{material.replace(/-/g, ' ')}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {equipment.suitable_for_hardness && equipment.suitable_for_hardness.length > 0 && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-3">Hardness Range</h3>
-                  <ul className="space-y-2">
-                    {equipment.suitable_for_hardness.map((hardness, index) => (
-                      <li key={index} className="text-sm text-gray-700 flex items-center gap-2">
-                        <span className="text-primary-600">•</span>
-                        <span className="capitalize">{hardness.replace(/-/g, ' ')}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {equipment.suitable_for_sample_sizes && equipment.suitable_for_sample_sizes.length > 0 && (
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-semibold text-gray-900 mb-3">Sample Sizes</h3>
-                  <ul className="space-y-2">
-                    {equipment.suitable_for_sample_sizes.map((size, index) => (
-                      <li key={index} className="text-sm text-gray-700 flex items-center gap-2">
-                        <span className="text-primary-600">•</span>
-                        <span className="capitalize">{size.replace(/-/g, ' ')}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
         {/* Enhanced Specifications Section */}
         <section className="mt-12 mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
           <div className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8">
             {/* Category-Specific Specifications */}
-            {category === 'sectioning' && <SectioningSpecs specs={equipment.sectioning} />}
-            {category === 'mounting' && <MountingSpecs specs={equipment.mounting} />}
-            {category === 'grinding-polishing' && <GrindingPolishingSpecs specs={equipment.grinding_polishing} />}
-            {category === 'microscopy' && <MicroscopySpecs specs={equipment.microscopy} />}
-            {category === 'hardness-testing' && <HardnessTestingSpecs specs={equipment.hardness_testing} />}
-            {category === 'lab-furniture' && <LabFurnitureSpecs specs={equipment.lab_furniture} />}
+            {category === 'sectioning' && (
+              <SectioningSpecs 
+                specs={editMode && editData.sectioning ? editData.sectioning : equipment.sectioning}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('sectioning', data)}
+              />
+            )}
+            {category === 'mounting' && (
+              <MountingSpecs 
+                specs={editMode && editData.mounting ? editData.mounting : equipment.mounting}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('mounting', data)}
+              />
+            )}
+            {category === 'grinding-polishing' && (
+              <GrindingPolishingSpecs 
+                specs={editMode && editData.grinding_polishing ? editData.grinding_polishing : equipment.grinding_polishing}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('grinding_polishing', data)}
+              />
+            )}
+            {category === 'microscopy' && (
+              <MicroscopySpecs 
+                specs={editMode && editData.microscopy ? editData.microscopy : equipment.microscopy}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('microscopy', data)}
+              />
+            )}
+            {category === 'hardness-testing' && (
+              <HardnessTestingSpecs 
+                specs={editMode && editData.hardness_testing ? editData.hardness_testing : equipment.hardness_testing}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('hardness_testing', data)}
+              />
+            )}
+            {category === 'lab-furniture' && (
+              <LabFurnitureSpecs 
+                specs={editMode && editData.lab_furniture ? editData.lab_furniture : equipment.lab_furniture}
+                editMode={editMode}
+                onChange={(data) => handleSpecsChange('lab_furniture', data)}
+              />
+            )}
 
             {/* General Equipment Attributes */}
             <div className="mt-6 pt-6 border-t border-gray-200">
@@ -879,61 +1637,263 @@ export default function EquipmentProductPage({ params }: { params: Promise<{ cat
           )
         })()}
 
-        {/* Relevant Consumables Categories Section - At the bottom */}
+        {/* Related Consumables Section - At the bottom */}
         {(() => {
-          const consumableCategories = getRelevantConsumableCategories(
-            category,
-            equipment?.subcategory || undefined
-          )
+          // Use database field if available, otherwise fall back to function for backward compatibility
+          const relatedConsumables = equipment?.related_consumables && equipment.related_consumables.length > 0
+            ? equipment.related_consumables
+            : (editMode ? [] : getRelevantConsumableCategories(category, equipment?.subcategory || undefined))
           
-          if (consumableCategories.length === 0) return null
+          // Don't show if empty and not in edit mode
+          if ((!relatedConsumables || relatedConsumables.length === 0) && !editMode) return null
+          
+          // Get current consumables from editData if in edit mode, otherwise from equipment
+          const currentConsumables = editMode && editData.related_consumables !== undefined
+            ? editData.related_consumables
+            : (equipment?.related_consumables || [])
+          
+          const handleAddConsumable = () => {
+            const newConsumables = [...(currentConsumables || []), { name: '', url: '' }]
+            setEditData({ ...editData, related_consumables: newConsumables })
+          }
+          
+          const handleRemoveConsumable = (index: number) => {
+            const newConsumables = (currentConsumables || []).filter((_: any, i: number) => i !== index)
+            setEditData({ ...editData, related_consumables: newConsumables })
+          }
+          
+          const handleConsumableChange = (index: number, field: 'name' | 'url', value: string) => {
+            const newConsumables = [...(currentConsumables || [])]
+            newConsumables[index] = { ...newConsumables[index], [field]: value }
+            setEditData({ ...editData, related_consumables: newConsumables })
+          }
+          
+          // Get current image URL - use editData if in edit mode, otherwise equipment, then fallback
+          const getCurrentImageUrl = (): string | null => {
+            if (editMode && editRelatedConsumablesImageUrl !== undefined) {
+              return editRelatedConsumablesImageUrl || null
+            }
+            if (equipment?.related_consumables_image_url) {
+              return equipment.related_consumables_image_url
+            }
+            return consumablesCoverImage
+          }
+          
+          const currentImageUrl = getCurrentImageUrl()
           
           return (
             <section className="mt-12 mb-8">
               <div className="flex items-center gap-4 mb-6">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Relevant Consumables</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Related Consumables</h2>
+                {isAdmin && (
+                  editMode ? (
+                    <>
+                      <button
+                        onClick={handleSave}
+                        disabled={saving}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <Save className="w-4 h-4" />
+                        {saving ? 'Saving...' : 'Save'}
+                      </button>
+                      <button
+                        onClick={handleCancelEdit}
+                        disabled={saving}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <X className="w-4 h-4" />
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        setEditMode(true)
+                        setEditData({ ...editData, related_consumables: equipment?.related_consumables || [] })
+                        setEditRelatedConsumablesImageUrl(equipment?.related_consumables_image_url || '')
+                      }}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                      Edit
+                    </button>
+                  )
+                )}
               </div>
               
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
                 {/* Cover Image */}
-                {consumablesCoverImage && (
+                {(currentImageUrl || editMode) && (
                   <div className="lg:col-span-1">
-                    <div className="relative w-full h-48 lg:h-full min-h-[200px] rounded-lg overflow-hidden bg-transparent">
-                      <Image
-                        src={consumablesCoverImage}
-                        alt={`${categoryLabels[category]} consumables`}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 1024px) 100vw, 25vw"
-                        unoptimized
-                        onError={(e) => {
-                          // Hide parent div if image fails to load
-                          const parent = e.currentTarget.closest('div.lg\\:col-span-1') as HTMLElement | null
-                          if (parent) {
-                            parent.style.display = 'none'
-                          }
-                        }}
-                      />
-                    </div>
+                    {editMode ? (
+                      <div className="space-y-2">
+                        <div className="relative w-full h-48 lg:h-full min-h-[200px] rounded-lg overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                          {editRelatedConsumablesImageUrl && (
+                            <Image
+                              src={editRelatedConsumablesImageUrl}
+                              alt={`${categoryLabels[category]} consumables`}
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 1024px) 100vw, 25vw"
+                              unoptimized
+                              onError={(e) => {
+                                const parent = e.currentTarget.closest('div.relative') as HTMLElement | null
+                                if (parent) {
+                                  parent.style.display = 'none'
+                                }
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          <input
+                            ref={consumablesImageFileInputRef}
+                            type="file"
+                            accept="image/*"
+                            onChange={handleConsumablesImageUpload}
+                            className="hidden"
+                            id="consumables-image-upload"
+                          />
+                          <div className="flex gap-2">
+                            <label
+                              htmlFor="consumables-image-upload"
+                              className="flex-1 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg transition-colors cursor-pointer text-center"
+                              style={{ pointerEvents: uploadingConsumablesImage ? 'none' : 'auto', opacity: uploadingConsumablesImage ? 0.6 : 1 }}
+                            >
+                              {uploadingConsumablesImage ? 'Uploading...' : 'Upload Image'}
+                            </label>
+                            {(editRelatedConsumablesImageUrl || equipment?.related_consumables_image_url) && (
+                              <button
+                                onClick={handleConsumablesImageDelete}
+                                className="px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 border border-red-300 rounded-lg transition-colors"
+                                disabled={uploadingConsumablesImage}
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                            )}
+                          </div>
+                          <input
+                            type="text"
+                            value={editRelatedConsumablesImageUrl}
+                            onChange={(e) => {
+                              setEditRelatedConsumablesImageUrl(e.target.value)
+                              // Update display immediately
+                              if (e.target.value) {
+                                setConsumablesCoverImage(e.target.value)
+                              } else {
+                                // Recalculate fallback
+                                const coverImageMap: Record<string, string> = {
+                                  'precision-wafering': '/images/consumables/precision-wafering-cover.webp',
+                                  'precision': '/images/consumables/precision-wafering-cover.webp',
+                                  'wafering': '/images/consumables/precision-wafering-cover.webp',
+                                  'abrasive-sectioning': '/images/consumables/abrasive-sectioning-cover.webp',
+                                  'automated': '/images/consumables/abrasive-sectioning-cover.webp',
+                                  'manual': '/images/consumables/abrasive-sectioning-cover.webp',
+                                  'compression-mounting': '/images/consumables/compression-mounting-cover.webp',
+                                  'compression': '/images/consumables/compression-mounting-cover.webp',
+                                  'castable-mounting': '/images/consumables/castable-mounting-cover.webp',
+                                  'castable': '/images/consumables/castable-mounting-cover.webp',
+                                  'grinding-polishing': '/images/consumables/grinding-cover.webp',
+                                  'grinding': '/images/consumables/grinding-cover.webp',
+                                  'polishing': '/images/consumables/polishing-cover.webp',
+                                  'hardness-testing': '/images/consumables/hardness-testing-cover.webp',
+                                  'hardness': '/images/consumables/hardness-testing-cover.webp',
+                                }
+                                let fallbackImage: string | null = null
+                                if (equipment?.subcategory) {
+                                  const subcategoryKey = equipment.subcategory.toLowerCase().replace(/\s+/g, '-')
+                                  fallbackImage = coverImageMap[subcategoryKey]
+                                }
+                                if (!fallbackImage) {
+                                  fallbackImage = coverImageMap[category] || coverImageMap[category.replace(/\s+/g, '-')]
+                                }
+                                setConsumablesCoverImage(fallbackImage)
+                              }
+                            }}
+                            placeholder="Or enter image URL (leave empty for default)"
+                            className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                          />
+                          <p className="text-xs text-gray-500">
+                            Upload an image or enter a URL. Leave empty to use default image based on category/subcategory.
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative w-full h-48 lg:h-full min-h-[200px] rounded-lg overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                        <Image
+                          src={currentImageUrl!}
+                          alt={`${categoryLabels[category]} consumables`}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 1024px) 100vw, 25vw"
+                          unoptimized
+                          onError={(e) => {
+                            // Hide parent div if image fails to load
+                            const parent = e.currentTarget.closest('div.lg\\:col-span-1') as HTMLElement | null
+                            if (parent) {
+                              parent.style.display = 'none'
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
                 
-                {/* Consumable Categories - More compact layout */}
-                <div className={consumablesCoverImage ? "lg:col-span-3" : "lg:col-span-4"}>
-                  <div className="flex flex-wrap gap-2">
-                    {consumableCategories.map((cat, index) => (
-                      <Link
-                        key={index}
-                        href={cat.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:border-primary-600 hover:bg-primary-50 transition-all group text-sm font-medium text-gray-700 hover:text-primary-700"
+                {/* Consumable Categories */}
+                <div className={currentImageUrl ? "lg:col-span-3" : "lg:col-span-4"}>
+                  {editMode ? (
+                    <div className="space-y-3">
+                      {(currentConsumables || []).map((consumable: any, index: number) => (
+                        <div key={index} className="flex gap-2 items-start p-3 border border-gray-300 rounded-lg bg-white">
+                          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <input
+                              type="text"
+                              value={consumable.name || ''}
+                              onChange={(e) => handleConsumableChange(index, 'name', e.target.value)}
+                              placeholder="Consumable Name"
+                              className="px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                            />
+                            <input
+                              type="text"
+                              value={consumable.url || ''}
+                              onChange={(e) => handleConsumableChange(index, 'url', e.target.value)}
+                              placeholder="https://shop.metallographic.com/collections/..."
+                              className="px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                            />
+                          </div>
+                          <button
+                            onClick={() => handleRemoveConsumable(index)}
+                            className="px-2 py-2 text-red-600 hover:bg-red-50 rounded transition-colors"
+                            title="Remove"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        onClick={handleAddConsumable}
+                        className="w-full px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg transition-colors"
                       >
-                        <span>{cat.name}</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-primary-600 transition-colors flex-shrink-0" />
-                      </Link>
-                    ))}
-                  </div>
+                        + Add Consumable
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-wrap gap-2">
+                      {(currentConsumables || []).map((cat: any, index: number) => (
+                        <Link
+                          key={index}
+                          href={cat.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:border-primary-600 hover:bg-primary-50 transition-all group text-sm font-medium text-gray-700 hover:text-primary-700"
+                        >
+                          <span>{cat.name}</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-primary-600 transition-colors flex-shrink-0" />
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </section>

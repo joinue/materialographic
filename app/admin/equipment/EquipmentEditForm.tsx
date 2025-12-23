@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase-client'
-import type { Equipment } from '@/lib/supabase'
+import type { Equipment, SubcategoryMetadata } from '@/lib/supabase'
+import { getSubcategoriesForCategory } from '@/lib/supabase'
 import { ArrowLeft, Save } from 'lucide-react'
 import EquipmentImageManager from '@/components/equipment/EquipmentImageManager'
 
@@ -11,23 +12,32 @@ interface EquipmentEditFormProps {
   equipment: Equipment | null
 }
 
-const EQUIPMENT_CATEGORIES = [
-  'sectioning',
-  'mounting',
-  'grinding-polishing',
-  'microscopy',
-  'hardness-testing',
-  'lab-furniture',
-]
-
 const AUTOMATION_LEVELS = ['manual', 'semi-automated', 'automated'] as const
 const STATUS_OPTIONS = ['active', 'discontinued', 'draft'] as const
 const BUDGET_LEVELS = ['budget-conscious', 'standard', 'premium', 'enterprise'] as const
 
 export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+  const [uploadingBrochure, setUploadingBrochure] = useState(false)
+  const brochureFileInputRef = useRef<HTMLInputElement>(null)
+  const [subcategories, setSubcategories] = useState<SubcategoryMetadata[]>([])
+  const [loadingSubcategories, setLoadingSubcategories] = useState(false)
+  const [categories, setCategories] = useState<string[]>([])
+  const [loadingCategories, setLoadingCategories] = useState(false)
+
+  // Helper to get back URL with preserved filters
+  const getBackUrl = () => {
+    const params = new URLSearchParams()
+    const search = searchParams.get('search')
+    const status = searchParams.get('status')
+    if (search) params.set('search', search)
+    if (status) params.set('status', status)
+    const queryString = params.toString() ? `?${params.toString()}` : ''
+    return `/admin/equipment${queryString}`
+  }
 
   const [formData, setFormData] = useState({
     // Basic Information
@@ -41,6 +51,7 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
     // Product Attributes
     is_pace_product: equipment?.is_pace_product ?? true,
     product_url: equipment?.product_url || '',
+    brochure_url: equipment?.brochure_url || '',
     image_url: equipment?.image_url || '',
     images: equipment?.images ? JSON.stringify(equipment.images, null, 2) : '[]',
     
@@ -67,6 +78,48 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
     sort_order: equipment?.sort_order?.toString() || '0',
   })
 
+  // Load categories from database
+  useEffect(() => {
+    const loadCategories = async () => {
+      setLoadingCategories(true)
+      try {
+        const supabase = createClient()
+        const { data, error } = await supabase
+          .from('equipment')
+          .select('category')
+          .not('category', 'is', null)
+
+        if (error) throw error
+
+        // Get unique categories and sort them
+        const uniqueCategories = Array.from(new Set(data?.map(item => item.category).filter(Boolean) || []))
+          .sort((a, b) => a.localeCompare(b))
+        
+        // If editing and equipment has a category not in the list, add it
+        if (equipment?.category && !uniqueCategories.includes(equipment.category)) {
+          uniqueCategories.push(equipment.category)
+          uniqueCategories.sort((a, b) => a.localeCompare(b))
+        }
+        
+        setCategories(uniqueCategories)
+      } catch (error) {
+        console.error('Error loading categories:', error)
+        // Fallback to default categories if loading fails
+        const fallback = ['sectioning', 'mounting', 'grinding-polishing', 'microscopy', 'hardness-testing', 'lab-furniture']
+        // Add equipment category if it exists and isn't in fallback
+        if (equipment?.category && !fallback.includes(equipment.category)) {
+          fallback.push(equipment.category)
+          fallback.sort((a, b) => a.localeCompare(b))
+        }
+        setCategories(fallback)
+      } finally {
+        setLoadingCategories(false)
+      }
+    }
+
+    loadCategories()
+  }, [equipment?.category])
+
   // Auto-generate slug from name
   useEffect(() => {
     if (!equipment && formData.name && !formData.slug) {
@@ -77,6 +130,34 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
       setFormData(prev => ({ ...prev, slug }))
     }
   }, [formData.name, equipment])
+
+  // Load subcategories when category changes
+  useEffect(() => {
+    const loadSubcategories = async () => {
+      if (!formData.category) {
+        setSubcategories([])
+        return
+      }
+
+      setLoadingSubcategories(true)
+      try {
+        const subcats = await getSubcategoriesForCategory(formData.category, 'equipment')
+        setSubcategories(subcats)
+        
+        // If current subcategory is not in the list, clear it
+        if (formData.subcategory && !subcats.find(s => s.subcategory_key === formData.subcategory)) {
+          setFormData(prev => ({ ...prev, subcategory: '' }))
+        }
+      } catch (error) {
+        console.error('Error loading subcategories:', error)
+        setSubcategories([])
+      } finally {
+        setLoadingSubcategories(false)
+      }
+    }
+
+    loadSubcategories()
+  }, [formData.category])
 
   // Load category-specific data when editing
   useEffect(() => {
@@ -163,6 +244,124 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
     setFormData(prev => ({ ...prev, images: JSON.stringify(images, null, 2) }))
   }
 
+  // Handle brochure upload
+  const handleBrochureUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    // Validate file type
+    if (file.type !== 'application/pdf') {
+      setError('Please select a PDF file')
+      return
+    }
+
+    // Validate file size (max 50MB)
+    if (file.size > 50 * 1024 * 1024) {
+      setError('Brochure size must be less than 50MB')
+      return
+    }
+
+    setUploadingBrochure(true)
+    setError('')
+
+    try {
+      const supabase = createClient()
+      
+      // Verify user is authenticated
+      const { data: { user }, error: authError } = await supabase.auth.getUser()
+      if (authError || !user) {
+        throw new Error('You must be logged in to upload brochures')
+      }
+
+      // Generate storage path - use item_id for cleaner structure
+      const sanitize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      
+      // Use item_id as the filename for cleaner URLs
+      const itemId = formData.item_id?.toLowerCase() || formData.slug || 'unknown'
+      const cleanItemId = sanitize(itemId)
+      const filePath = `${cleanItemId}.pdf`
+      
+      // Check if file already exists and delete it first (upsert behavior)
+      const { data: existingFiles } = await supabase.storage
+        .from('brochures')
+        .list('', {
+          search: cleanItemId
+        })
+      
+      if (existingFiles && existingFiles.length > 0) {
+        // Delete existing brochure with same item_id
+        const filesToDelete = existingFiles
+          .filter(f => f.name.startsWith(cleanItemId) && f.name.endsWith('.pdf'))
+          .map(f => f.name)
+        
+        if (filesToDelete.length > 0) {
+          await supabase.storage
+            .from('brochures')
+            .remove(filesToDelete)
+        }
+      }
+
+      // Upload to Supabase storage
+      const { error: uploadError } = await supabase.storage
+        .from('brochures')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('brochures')
+        .getPublicUrl(filePath)
+
+      setFormData(prev => ({ ...prev, brochure_url: publicUrl }))
+    } catch (error: any) {
+      console.error('Error uploading brochure:', error)
+      setError(error.message || 'Failed to upload brochure. Please try again.')
+    } finally {
+      setUploadingBrochure(false)
+      if (brochureFileInputRef.current) {
+        brochureFileInputRef.current.value = ''
+      }
+    }
+  }
+
+  // Handle brochure deletion
+  const handleBrochureDelete = async () => {
+    if (!formData.brochure_url) return
+
+    try {
+      const supabase = createClient()
+      
+      // Extract path from URL
+      const url = new URL(formData.brochure_url)
+      const pathParts = url.pathname.split('/')
+      const pathIndex = pathParts.findIndex(part => part === 'brochures')
+      if (pathIndex === -1) {
+        throw new Error('Invalid brochure URL')
+      }
+      const filePath = pathParts.slice(pathIndex + 1).join('/')
+
+      // Delete from storage
+      const { error: deleteError } = await supabase.storage
+        .from('brochures')
+        .remove([filePath])
+
+      if (deleteError) {
+        throw deleteError
+      }
+
+      setFormData(prev => ({ ...prev, brochure_url: '' }))
+    } catch (error: any) {
+      console.error('Error deleting brochure:', error)
+      setError(error.message || 'Failed to delete brochure. Please try again.')
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
@@ -214,6 +413,7 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
         subcategory: formData.subcategory || null,
         is_pace_product: formData.is_pace_product,
         product_url: formData.product_url || null,
+        brochure_url: formData.brochure_url || null,
         image_url: formData.image_url || null,
         images: (() => {
           try {
@@ -454,7 +654,7 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
         }
       }
 
-      router.push('/admin/equipment')
+      router.push(getBackUrl())
       router.refresh()
     } catch (err: any) {
       console.error('Error saving equipment:', err)
@@ -470,7 +670,7 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
         {/* Header */}
         <div className="mb-6">
           <button
-            onClick={() => router.push('/admin/equipment')}
+            onClick={() => router.push(getBackUrl())}
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -541,23 +741,50 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
                   required
                   value={formData.category}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+                  disabled={loadingCategories}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
-                  {EQUIPMENT_CATEGORIES.map(cat => (
-                    <option key={cat} value={cat}>{cat}</option>
-                  ))}
+                  {loadingCategories ? (
+                    <option>Loading categories...</option>
+                  ) : categories.length > 0 ? (
+                    categories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))
+                  ) : (
+                    <option value="">No categories found</option>
+                  )}
                 </select>
+                {!loadingCategories && categories.length === 0 && (
+                  <p className="text-xs text-gray-500 mt-1">
+                    No categories found. Equipment will be created with the selected category.
+                  </p>
+                )}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Subcategory</label>
-                <input
-                  type="text"
+                <select
                   name="subcategory"
                   value={formData.subcategory}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
-                />
+                  disabled={loadingSubcategories}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                >
+                  <option value="">Select a subcategory (optional)</option>
+                  {subcategories.map(subcat => (
+                    <option key={subcat.id} value={subcat.subcategory_key}>
+                      {subcat.subcategory_label}
+                    </option>
+                  ))}
+                </select>
+                {loadingSubcategories && (
+                  <p className="text-xs text-gray-500 mt-1">Loading subcategories...</p>
+                )}
+                {!loadingSubcategories && subcategories.length === 0 && formData.category && (
+                  <p className="text-xs text-gray-500 mt-1">
+                    No subcategories configured for this category. <a href="/admin/equipment/configuration" className="text-primary-600 hover:underline">Configure subcategories</a>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -628,6 +855,62 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
                 placeholder="https://..."
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Brochure (PDF)</label>
+              <div className="space-y-2">
+                {formData.brochure_url ? (
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    <div className="flex-1 min-w-0">
+                      <a
+                        href={formData.brochure_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary-600 hover:text-primary-700 truncate block"
+                      >
+                        {formData.brochure_url.split('/').pop() || 'View Brochure'}
+                      </a>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleBrochureDelete}
+                      className="text-red-600 hover:text-red-700 text-sm font-medium"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <input
+                      ref={brochureFileInputRef}
+                      type="file"
+                      accept="application/pdf"
+                      onChange={handleBrochureUpload}
+                      disabled={uploadingBrochure}
+                      className="hidden"
+                      id="brochure-upload"
+                    />
+                    <label
+                      htmlFor="brochure-upload"
+                      className={`inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg cursor-pointer ${
+                        uploadingBrochure
+                          ? 'bg-gray-100 cursor-not-allowed opacity-50'
+                          : 'bg-white hover:bg-gray-50'
+                      }`}
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                      </svg>
+                      {uploadingBrochure ? 'Uploading...' : 'Upload Brochure PDF'}
+                    </label>
+                    <p className="text-xs text-gray-500 mt-1">Maximum file size: 50MB</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -1851,7 +2134,7 @@ export default function EquipmentEditForm({ equipment }: EquipmentEditFormProps)
           <div className="flex items-center justify-end gap-4 pt-6 border-t">
             <button
               type="button"
-              onClick={() => router.push('/admin/equipment')}
+              onClick={() => router.push(getBackUrl())}
               className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
             >
               Cancel

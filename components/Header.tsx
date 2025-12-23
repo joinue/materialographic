@@ -7,8 +7,9 @@ import { useRouter } from 'next/navigation'
 import { ChevronRight, Menu, X, ChevronDown, Search, LogOut, Scissors, Package, Gauge, Microscope, HardDrive, Home, FlaskConical, Droplet } from 'lucide-react'
 import GlobalSearch from '@/components/GlobalSearch'
 import { createClient } from '@/lib/supabase-client'
-import type { Equipment, Consumable } from '@/lib/supabase'
+import type { Equipment, Consumable, SubcategoryMetadata } from '@/lib/supabase'
 import { getEquipmentImageUrl } from '@/lib/storage'
+import { getSubcategoriesForCategory } from '@/lib/supabase'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,6 +22,7 @@ export default function Header() {
   const [featuredEquipment, setFeaturedEquipment] = useState<Equipment | null>(null)
   const [featuredConsumableType, setFeaturedConsumableType] = useState<{ subcategory: string; category: string; label: string; image: string } | null>(null)
   const [prevDropdown, setPrevDropdown] = useState<string | null>(null)
+  const [equipmentSubcategories, setEquipmentSubcategories] = useState<Record<string, SubcategoryMetadata[]>>({})
   const headerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
@@ -119,23 +121,43 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Fetch featured products when dropdown opens
+  // Fetch featured products and subcategories when dropdown opens
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
-      if (activeDropdown === 'equipment' && !featuredEquipment) {
-        try {
-          const supabase = createClient()
-          const { data } = await supabase
-            .from('equipment')
-            .select('*')
-            .eq('status', 'active')
-            .order('sort_order', { ascending: true })
-            .limit(1)
-            .single()
-          
-          if (data) setFeaturedEquipment(data)
-        } catch (error) {
-          console.error('Error fetching featured equipment:', error)
+      if (activeDropdown === 'equipment') {
+        // Fetch featured equipment if not already loaded
+        if (!featuredEquipment) {
+          try {
+            const supabase = createClient()
+            const { data } = await supabase
+              .from('equipment')
+              .select('*')
+              .eq('status', 'active')
+              .order('sort_order', { ascending: true })
+              .limit(1)
+              .single()
+            
+            if (data) setFeaturedEquipment(data)
+          } catch (error) {
+            console.error('Error fetching featured equipment:', error)
+          }
+        }
+
+        // Fetch subcategories for each equipment category if not already loaded
+        const categories = ['sectioning', 'mounting', 'grinding-polishing', 'microscopy', 'hardness-testing']
+        const categoriesToFetch = categories.filter(cat => !equipmentSubcategories[cat])
+        
+        if (categoriesToFetch.length > 0) {
+          try {
+            const subcategoriesMap: Record<string, SubcategoryMetadata[]> = {}
+            for (const category of categoriesToFetch) {
+              const subcats = await getSubcategoriesForCategory(category, 'equipment')
+              subcategoriesMap[category] = subcats
+            }
+            setEquipmentSubcategories(prev => ({ ...prev, ...subcategoriesMap }))
+          } catch (error) {
+            console.error('Error fetching equipment subcategories:', error)
+          }
         }
       }
       
@@ -220,7 +242,7 @@ export default function Header() {
               >
                 <Link 
                   href="/equipment" 
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group focus:outline-none focus:ring-0"
                 >
                   Equipment
                   <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -249,7 +271,7 @@ export default function Header() {
                     >
                       <div className="max-w-7xl mx-auto px-6 py-6">
                         <div className="grid grid-cols-7 gap-6">
-                          {/* Categories Grid - 6 columns */}
+                          {/* Categories Grid - 5 columns */}
                           <div className="col-span-6">
                             {/* All Equipment Link */}
                             <div className="mb-3 pb-3 border-b border-gray-200">
@@ -259,10 +281,10 @@ export default function Header() {
                               </Link>
                             </div>
                             
-                            <div className="grid grid-cols-6 gap-4">
+                            <div className="grid grid-cols-5 gap-4">
                               {/* Sectioning */}
                               <div className="col-span-1">
-                                <Link href="/equipment/sectioning" onClick={() => setActiveDropdown(null)} className="group block">
+                                <Link href="/equipment/sectioning" onClick={() => setActiveDropdown(null)} className="group block mb-2">
                                   <div className="flex items-center gap-2 mb-1.5">
                                     <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
                                       <Scissors className="w-4 h-4 text-primary-600" />
@@ -272,13 +294,39 @@ export default function Header() {
                                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                                     </h3>
                                   </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Cutting equipment for sectioning samples</p>
                                 </Link>
+                                <div className="ml-8 space-y-1">
+                                  {equipmentSubcategories['sectioning']?.sort((a, b) => {
+                                    const order = ['automated', 'manual', 'precision-wafering']
+                                    const aIndex = order.indexOf(a.subcategory_key)
+                                    const bIndex = order.indexOf(b.subcategory_key)
+                                    if (aIndex === -1 && bIndex === -1) return 0
+                                    if (aIndex === -1) return 1
+                                    if (bIndex === -1) return -1
+                                    return aIndex - bIndex
+                                  }).map((subcat) => {
+                                    const labelMap: Record<string, string> = {
+                                      'automated': 'Automated Abrasive Cutting',
+                                      'manual': 'Manual Abrasive Cutting',
+                                      'precision-wafering': 'Precision Wafering'
+                                    }
+                                    return (
+                                      <Link
+                                        key={subcat.id}
+                                        href={`/equipment/sectioning/${subcat.subcategory_key}`}
+                                        onClick={() => setActiveDropdown(null)}
+                                        className="block text-xs text-gray-600 hover:text-primary-600 transition-colors"
+                                      >
+                                        {labelMap[subcat.subcategory_key] || subcat.subcategory_label}
+                                      </Link>
+                                    )
+                                  })}
+                                </div>
                               </div>
                               
                               {/* Mounting */}
                               <div className="col-span-1">
-                                <Link href="/equipment/mounting" onClick={() => setActiveDropdown(null)} className="group block">
+                                <Link href="/equipment/mounting" onClick={() => setActiveDropdown(null)} className="group block mb-2">
                                   <div className="flex items-center gap-2 mb-1.5">
                                     <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
                                       <Package className="w-4 h-4 text-primary-600" />
@@ -288,13 +336,29 @@ export default function Header() {
                                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                                     </h3>
                                   </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Mounting presses and systems</p>
                                 </Link>
+                                <div className="ml-8 space-y-1">
+                                  {equipmentSubcategories['mounting']?.map((subcat) => {
+                                    const normalizedSubcategory = subcat.subcategory_key === 'compression-mounting' ? 'compression' : 
+                                                                  subcat.subcategory_key === 'castable-mounting' ? 'castable' : 
+                                                                  subcat.subcategory_key
+                                    return (
+                                      <Link
+                                        key={subcat.id}
+                                        href={`/equipment/mounting/${normalizedSubcategory}`}
+                                        onClick={() => setActiveDropdown(null)}
+                                        className="block text-xs text-gray-600 hover:text-primary-600 transition-colors"
+                                      >
+                                        {subcat.subcategory_label}
+                                      </Link>
+                                    )
+                                  })}
+                                </div>
                               </div>
                               
                               {/* Grinding & Polishing */}
                               <div className="col-span-1">
-                                <Link href="/equipment/grinding-polishing" onClick={() => setActiveDropdown(null)} className="group block">
+                                <Link href="/equipment/grinding-polishing" onClick={() => setActiveDropdown(null)} className="group block mb-2">
                                   <div className="flex items-center gap-2 mb-1.5">
                                     <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
                                       <Gauge className="w-4 h-4 text-primary-600" />
@@ -304,13 +368,41 @@ export default function Header() {
                                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                                     </h3>
                                   </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Grinders, polishers, and automated systems</p>
                                 </Link>
+                                <div className="ml-8 space-y-1">
+                                  {equipmentSubcategories['grinding-polishing']?.filter(subcat => subcat.subcategory_key.toLowerCase() !== 'automated').sort((a, b) => {
+                                    const order = ['hand-belt', 'manual', 'semi-automated', 'controlled-removal', 'vibratory']
+                                    const aIndex = order.indexOf(a.subcategory_key)
+                                    const bIndex = order.indexOf(b.subcategory_key)
+                                    if (aIndex === -1 && bIndex === -1) return 0
+                                    if (aIndex === -1) return 1
+                                    if (bIndex === -1) return -1
+                                    return aIndex - bIndex
+                                  }).map((subcat) => {
+                                    const labelMap: Record<string, string> = {
+                                      'hand-belt': 'Hand & Belt Grinders',
+                                      'manual': 'Manual Polishing Systems',
+                                      'semi-automated': 'Semi-Automated Systems',
+                                      'controlled-removal': 'Controlled Removal',
+                                      'vibratory': 'Vibratory Polishing'
+                                    }
+                                    return (
+                                      <Link
+                                        key={subcat.id}
+                                        href={`/equipment/grinding-polishing/${subcat.subcategory_key}`}
+                                        onClick={() => setActiveDropdown(null)}
+                                        className="block text-xs text-gray-600 hover:text-primary-600 transition-colors"
+                                      >
+                                        {labelMap[subcat.subcategory_key] || subcat.subcategory_label}
+                                      </Link>
+                                    )
+                                  })}
+                                </div>
                               </div>
                               
                               {/* Microscopy */}
                               <div className="col-span-1">
-                                <Link href="/equipment/microscopy" onClick={() => setActiveDropdown(null)} className="group block">
+                                <Link href="/equipment/microscopy" onClick={() => setActiveDropdown(null)} className="group block mb-2">
                                   <div className="flex items-center gap-2 mb-1.5">
                                     <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
                                       <Microscope className="w-4 h-4 text-primary-600" />
@@ -320,13 +412,24 @@ export default function Header() {
                                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                                     </h3>
                                   </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Metallurgical and stereo microscopes</p>
                                 </Link>
+                                <div className="ml-8 space-y-1">
+                                  {equipmentSubcategories['microscopy']?.map((subcat) => (
+                                    <Link
+                                      key={subcat.id}
+                                      href={`/equipment/microscopy/${subcat.subcategory_key}`}
+                                      onClick={() => setActiveDropdown(null)}
+                                      className="block text-xs text-gray-600 hover:text-primary-600 transition-colors"
+                                    >
+                                      {subcat.subcategory_label}
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
                               
                               {/* Hardness Testing */}
                               <div className="col-span-1">
-                                <Link href="/equipment/hardness-testing" onClick={() => setActiveDropdown(null)} className="group block">
+                                <Link href="/equipment/hardness-testing" onClick={() => setActiveDropdown(null)} className="group block mb-2">
                                   <div className="flex items-center gap-2 mb-1.5">
                                     <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
                                       <HardDrive className="w-4 h-4 text-primary-600" />
@@ -336,24 +439,19 @@ export default function Header() {
                                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
                                     </h3>
                                   </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Rockwell, microhardness, and Brinell testers</p>
                                 </Link>
-                              </div>
-                              
-                              {/* Lab Furniture */}
-                              <div className="col-span-1">
-                                <Link href="/equipment/lab-furniture" onClick={() => setActiveDropdown(null)} className="group block">
-                                  <div className="flex items-center gap-2 mb-1.5">
-                                    <div className="p-1.5 bg-primary-50 rounded-md group-hover:bg-primary-100 transition-colors">
-                                      <Home className="w-4 h-4 text-primary-600" />
-                                    </div>
-                                    <h3 className="text-xs font-semibold text-gray-900 group-hover:text-primary-600 transition-colors relative">
-                                      Lab Furniture
-                                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
-                                    </h3>
-                                  </div>
-                                  <p className="text-xs text-gray-600 ml-8 leading-tight">Workbenches, storage, and supporting equipment</p>
-                                </Link>
+                                <div className="ml-8 space-y-1">
+                                  {equipmentSubcategories['hardness-testing']?.map((subcat) => (
+                                    <Link
+                                      key={subcat.id}
+                                      href={`/equipment/hardness-testing/${subcat.subcategory_key}`}
+                                      onClick={() => setActiveDropdown(null)}
+                                      className="block text-xs text-gray-600 hover:text-primary-600 transition-colors"
+                                    >
+                                      {subcat.subcategory_label}
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -438,7 +536,7 @@ export default function Header() {
               >
                 <Link 
                   href="/consumables" 
-                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors duration-200 flex items-center gap-1 relative group focus:outline-none focus:ring-0"
                 >
                   Consumables
                   <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
@@ -647,21 +745,21 @@ export default function Header() {
                     {/* Invisible bridge to prevent gap */}
                     <div className="absolute top-full left-0 w-full h-2"></div>
                     <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-gray-200 py-3 z-50">
-                      <Link href="/services" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2">
+                      <Link href="/services" onClick={() => setActiveDropdown(null)} className="block px-5 py-2.5 text-sm font-semibold text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 mx-2 focus:outline-none focus:ring-0">
                         All Services
                       </Link>
                       <div className="border-t border-gray-200 my-2 mx-2"></div>
                       <div className="px-2">
-                        <Link href="/quote" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                        <Link href="/quote" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-0">
                           Request Quote
                         </Link>
-                        <Link href="/keeppace" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                        <Link href="/keeppace" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-0">
                           Service Plans
                         </Link>
-                        <Link href="/builder" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                        <Link href="/builder" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-0">
                           Build Your Lab
                         </Link>
-                        <Link href="/contact" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200">
+                        <Link href="/contact" onClick={() => setActiveDropdown(null)} className="block px-5 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50/50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-0">
                           Contact Us
                         </Link>
                       </div>
@@ -966,7 +1064,6 @@ export default function Header() {
                   <Link href="/equipment/grinding-polishing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Grinding & Polishing</Link>
                   <Link href="/equipment/microscopy" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Microscopy</Link>
                   <Link href="/equipment/hardness-testing" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Hardness Testing</Link>
-                  <Link href="/equipment/lab-furniture" className="block py-1.5 text-sm text-gray-600 hover:text-primary-600" onClick={() => setMobileMenuOpen(false)}>Lab Furniture</Link>
                 </div>
               )}
             </div>

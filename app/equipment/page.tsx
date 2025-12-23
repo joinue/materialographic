@@ -29,7 +29,7 @@ const categoryIcons: Record<string, typeof Scissors> = {
 
 const categoryDescriptions: Record<string, string> = {
   'sectioning': 'Precision cutters, abrasive saws, and wafering systems for sectioning samples.',
-  'mounting': 'Compression and castable mounting presses for embedding samples in resin.',
+  'mounting': 'Compression mounting presses and castable mounting systems for embedding samples in resin.',
   'grinding-polishing': 'Grinder-polishers, automated systems, and vibratory polishers for sample preparation.',
   'microscopy': 'Metallurgical and stereo microscopes for microstructural analysis.',
   'hardness-testing': 'Rockwell, microhardness, and Brinell testers for material characterization.',

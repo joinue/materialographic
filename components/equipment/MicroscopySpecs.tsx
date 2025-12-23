@@ -2,9 +2,11 @@ import type { EquipmentMicroscopy } from '@/lib/supabase'
 
 interface MicroscopySpecsProps {
   specs: EquipmentMicroscopy | null | undefined
+  editMode?: boolean
+  onChange?: (data: EquipmentMicroscopy) => void
 }
 
-export default function MicroscopySpecs({ specs }: MicroscopySpecsProps) {
+export default function MicroscopySpecs({ specs, editMode = false, onChange }: MicroscopySpecsProps) {
   if (!specs) return null
 
   const hasAnySpec = 

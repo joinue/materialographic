@@ -38,8 +38,10 @@ export default function OptimizedVideo({
           setIsIntersecting(entry.isIntersecting)
           
           if (entry.isIntersecting) {
-            // Video is in viewport - play if autoplay is enabled
-            if (autoPlay && !hasLoaded) {
+            // Video is in viewport - load and play if autoplay is enabled
+            if (!hasLoaded) {
+              // Set src and load video when it comes into view
+              video.src = src
               video.load() // Load video when it comes into view
               setHasLoaded(true)
             }
@@ -57,8 +59,8 @@ export default function OptimizedVideo({
         })
       },
       {
-        threshold: 0.5, // Trigger when 50% of video is visible
-        rootMargin: '50px', // Start loading slightly before entering viewport
+        threshold: 0.1, // Trigger when 10% of video is visible (earlier trigger)
+        rootMargin: '200px', // Start loading 200px before entering viewport (earlier preload)
       }
     )
 
@@ -67,7 +69,7 @@ export default function OptimizedVideo({
     return () => {
       observer.disconnect()
     }
-  }, [autoPlay, hasLoaded])
+  }, [autoPlay, hasLoaded, src])
 
   return (
     <video
@@ -78,7 +80,7 @@ export default function OptimizedVideo({
       loop={loop}
       muted={muted}
       playsInline={playsInline}
-      preload="metadata" // Only load metadata initially
+      preload="none" // Don't load anything until explicitly loaded (faster initial render)
       className={className}
       aria-label={ariaLabel}
     />

@@ -2,9 +2,11 @@ import type { EquipmentHardnessTesting } from '@/lib/supabase'
 
 interface HardnessTestingSpecsProps {
   specs: EquipmentHardnessTesting | null | undefined
+  editMode?: boolean
+  onChange?: (data: EquipmentHardnessTesting) => void
 }
 
-export default function HardnessTestingSpecs({ specs }: HardnessTestingSpecsProps) {
+export default function HardnessTestingSpecs({ specs, editMode = false, onChange }: HardnessTestingSpecsProps) {
   if (!specs) return null
 
   const hasAnySpec = 

@@ -1,20 +1,63 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { createClient } from '@/lib/supabase-client'
 import type { Equipment } from '@/lib/supabase'
 import { getEquipmentImageUrl } from '@/lib/storage'
-import { Plus, Search, Edit, Trash2, Eye, EyeOff } from 'lucide-react'
+import { Plus, Search, Edit, Trash2, Eye, EyeOff, Settings } from 'lucide-react'
 import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function EquipmentAdmin() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [equipment, setEquipment] = useState<Equipment[]>([])
   const [loading, setLoading] = useState(true)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'discontinued' | 'draft'>('all')
+  
+  // Initialize state from URL params
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '')
+  const [filterStatus, setFilterStatus] = useState<'all' | 'active' | 'discontinued' | 'draft'>(
+    (searchParams.get('status') as 'all' | 'active' | 'discontinued' | 'draft') || 'all'
+  )
+
+  // Update URL params when filters change (debounced for search)
+  useEffect(() => {
+    const params = new URLSearchParams()
+    if (searchQuery) {
+      params.set('search', searchQuery)
+    }
+    if (filterStatus !== 'all') {
+      params.set('status', filterStatus)
+    }
+    
+    const queryString = params.toString()
+    const newUrl = queryString 
+      ? `/admin/equipment?${queryString}`
+      : '/admin/equipment'
+    
+    // Only update URL if it's different to avoid infinite loops
+    const currentSearch = window.location.search
+    const expectedSearch = queryString ? `?${queryString}` : ''
+    if (currentSearch !== expectedSearch) {
+      router.replace(newUrl, { scroll: false })
+    }
+  }, [searchQuery, filterStatus, router])
+
+  // Sync state with URL params when they change externally (browser back/forward)
+  useEffect(() => {
+    const search = searchParams.get('search') || ''
+    const status = (searchParams.get('status') as 'all' | 'active' | 'discontinued' | 'draft') || 'all'
+    
+    // Only update if different to avoid loops
+    if (search !== searchQuery) {
+      setSearchQuery(search)
+    }
+    if (status !== filterStatus) {
+      setFilterStatus(status)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
 
   useEffect(() => {
     loadEquipment()
@@ -123,13 +166,22 @@ export default function EquipmentAdmin() {
                   Manage all equipment in the database
                 </p>
               </div>
-              <button
-                onClick={() => router.push('/admin/equipment/new')}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all"
-              >
-                <Plus className="w-5 h-5" />
-                Add New Equipment
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => router.push('/admin/equipment/configuration')}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all"
+                >
+                  <Settings className="w-5 h-5" />
+                  Category Configuration
+                </button>
+                <button
+                  onClick={() => router.push('/admin/equipment/new')}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all"
+                >
+                  <Plus className="w-5 h-5" />
+                  Add New Equipment
+                </button>
+              </div>
             </div>
           </div>
 
@@ -260,7 +312,14 @@ export default function EquipmentAdmin() {
                         <td className="px-4 py-4 whitespace-nowrap text-right text-sm font-medium sticky right-0 bg-white z-10 shadow-[2px_0_4px_rgba(0,0,0,0.05)]">
                           <div className="flex items-center justify-end gap-2">
                             <button
-                              onClick={() => router.push(`/admin/equipment/${item.id}`)}
+                              onClick={() => {
+                                // Preserve current filters in URL when navigating to edit
+                                const params = new URLSearchParams()
+                                if (searchQuery) params.set('search', searchQuery)
+                                if (filterStatus !== 'all') params.set('status', filterStatus)
+                                const queryString = params.toString() ? `?${params.toString()}` : ''
+                                router.push(`/admin/equipment/${item.id}${queryString}`)
+                              }}
                               className="text-primary-600 hover:text-primary-900 transition-colors"
                               title="Edit"
                             >
